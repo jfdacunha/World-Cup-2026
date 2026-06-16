@@ -1,5 +1,79 @@
 {
-  "updated_at": "2026-06-16T21:38:41.670704+00:00",
+  "updated_at": "2026-06-16T21:40:39.656383+00:00",
+  "api_diag": {
+    "key_present": true,
+    "key_length": 32,
+    "tests": [
+      {
+        "label": "list_competitions",
+        "status": 200,
+        "competitions": [
+          {
+            "code": "BSA",
+            "name": "Campeonato Brasileiro Série A"
+          },
+          {
+            "code": "ELC",
+            "name": "Championship"
+          },
+          {
+            "code": "PL",
+            "name": "Premier League"
+          },
+          {
+            "code": "CL",
+            "name": "UEFA Champions League"
+          },
+          {
+            "code": "EC",
+            "name": "European Championship"
+          },
+          {
+            "code": "FL1",
+            "name": "Ligue 1"
+          },
+          {
+            "code": "BL1",
+            "name": "Bundesliga"
+          },
+          {
+            "code": "SA",
+            "name": "Serie A"
+          },
+          {
+            "code": "DED",
+            "name": "Eredivisie"
+          },
+          {
+            "code": "PPL",
+            "name": "Primeira Liga"
+          },
+          {
+            "code": "CLI",
+            "name": "Copa Libertadores"
+          },
+          {
+            "code": "PD",
+            "name": "Primera Division"
+          },
+          {
+            "code": "WC",
+            "name": "FIFA World Cup"
+          }
+        ]
+      },
+      {
+        "label": "get_WC",
+        "status": 200,
+        "competition_name": "FIFA World Cup"
+      },
+      {
+        "label": "WC_standings",
+        "status": 200,
+        "standings_count": 12
+      }
+    ]
+  },
   "source": "fallback",
   "live_count": 0,
   "groups": [
