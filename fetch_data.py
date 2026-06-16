@@ -129,7 +129,9 @@ def fetch_standings():
     groups = {}
     for s in data.get("standings",[]):
         if s.get("type") != "TOTAL": continue
-        grp = s.get("group","").replace("GROUP_","").replace("GROUP ","").strip()
+        raw_grp = s.get("group","")
+        # API returns "Group A" or "GROUP_A" — normalise both
+        grp = raw_grp.replace("GROUP_","").replace("Group ","").replace("GROUP ","").strip()
         if not grp or len(grp)>2: continue
         teams = []
         for e in s.get("table",[]):
