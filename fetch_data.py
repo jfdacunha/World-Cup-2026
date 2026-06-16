@@ -325,6 +325,34 @@ FALLBACK_GROUPS = [
 def main():
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
     print(f"WC 2026 update at {now}")
+
+    # ── API DIAGNOSTIC ──────────────────────────────────────────────
+    api_diag = {"key_present": bool(API_KEY), "key_length": len(API_KEY), "tests": []}
+    if API_KEY:
+        import urllib.request as _ur, urllib.error as _ue
+        for _url, _lbl in [
+            ("https://api.football-data.org/v4/competitions/", "list_competitions"),
+            ("https://api.football-data.org/v4/competitions/WC", "get_WC"),
+            ("https://api.football-data.org/v4/competitions/WC/standings", "WC_standings"),
+        ]:
+            try:
+                _req = _ur.Request(_url, headers={"X-Auth-Token": API_KEY})
+                with _ur.urlopen(_req, timeout=10) as _r:
+                    _d = json.loads(_r.read())
+                    _result = {"label":_lbl,"status":200}
+                    if "competitions" in _d:
+                        _result["competitions"] = [{"code":c.get("code"),"name":c.get("name")} for c in _d["competitions"]]
+                    if "name" in _d:
+                        _result["competition_name"] = _d["name"]
+                    if "standings" in _d:
+                        _result["standings_count"] = len(_d["standings"])
+                    api_diag["tests"].append(_result)
+            except _ue.HTTPError as _e:
+                api_diag["tests"].append({"label":_lbl,"status":_e.code,"error":_e.read().decode()[:200]})
+            except Exception as _e:
+                api_diag["tests"].append({"label":_lbl,"status":0,"error":str(_e)})
+    print("API_DIAG:", json.dumps(api_diag))
+
     groups_out = None
     source = "fallback"
     if API_KEY:
@@ -347,6 +375,7 @@ def main():
     total_live = sum(len(g["live"]) for g in groups_out)
     output = {
         "updated_at": now,
+        "api_diag": api_diag,
         "source": source,
         "live_count": total_live,
         "groups": groups_out,
