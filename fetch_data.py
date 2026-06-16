@@ -326,32 +326,61 @@ def main():
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
     print(f"WC 2026 update at {now}")
 
+
     # ── API DIAGNOSTIC ──────────────────────────────────────────────
     api_diag = {"key_present": bool(API_KEY), "key_length": len(API_KEY), "tests": []}
     if API_KEY:
         import urllib.request as _ur, urllib.error as _ue
-        for _url, _lbl in [
-            ("https://api.football-data.org/v4/competitions/", "list_competitions"),
-            ("https://api.football-data.org/v4/competitions/WC", "get_WC"),
-            ("https://api.football-data.org/v4/competitions/WC/standings", "WC_standings"),
-        ]:
-            try:
-                _req = _ur.Request(_url, headers={"X-Auth-Token": API_KEY})
-                with _ur.urlopen(_req, timeout=10) as _r:
-                    _d = json.loads(_r.read())
-                    _result = {"label":_lbl,"status":200}
-                    if "competitions" in _d:
-                        _result["competitions"] = [{"code":c.get("code"),"name":c.get("name")} for c in _d["competitions"]]
-                    if "name" in _d:
-                        _result["competition_name"] = _d["name"]
-                    if "standings" in _d:
-                        _result["standings_count"] = len(_d["standings"])
-                    api_diag["tests"].append(_result)
-            except _ue.HTTPError as _e:
-                api_diag["tests"].append({"label":_lbl,"status":_e.code,"error":_e.read().decode()[:200]})
-            except Exception as _e:
-                api_diag["tests"].append({"label":_lbl,"status":0,"error":str(_e)})
+        # Test standings - dump raw group structure
+        try:
+            _req = _ur.Request("https://api.football-data.org/v4/competitions/WC/standings",
+                headers={"X-Auth-Token": API_KEY})
+            with _ur.urlopen(_req, timeout=10) as _r:
+                _d = json.loads(_r.read())
+                standings = _d.get("standings", [])
+                api_diag["standings_raw_count"] = len(standings)
+                api_diag["standings_types"] = [s.get("type") for s in standings]
+                api_diag["standings_groups"] = [s.get("group","") for s in standings[:3]]
+                # Show first group's table
+                if standings:
+                    total = [s for s in standings if s.get("type")=="TOTAL"]
+                    if total:
+                        api_diag["first_group"] = total[0].get("group","")
+                        api_diag["first_table"] = [
+                            {"pos":e.get("position"),"team":e.get("team",{}).get("name"),"pts":e.get("points")}
+                            for e in total[0].get("table",[])
+                        ]
+                api_diag["tests"].append({"label":"WC_standings","status":200,"standings_count":len(standings)})
+        except _ue.HTTPError as _e:
+            api_diag["tests"].append({"label":"WC_standings","status":_e.code,"error":_e.read().decode()[:200]})
+        except Exception as _e:
+            api_diag["tests"].append({"label":"WC_standings","status":0,"error":str(_e)})
+        
+        # Test matches
+        try:
+            _req = _ur.Request("https://api.football-data.org/v4/competitions/WC/matches?status=FINISHED",
+                headers={"X-Auth-Token": API_KEY})
+            with _ur.urlopen(_req, timeout=10) as _r:
+                _d = json.loads(_r.read())
+                matches = _d.get("matches",[])
+                api_diag["matches_finished"] = len(matches)
+                if matches:
+                    m = matches[0]
+                    api_diag["sample_match"] = {
+                        "home": m.get("homeTeam",{}).get("name"),
+                        "away": m.get("awayTeam",{}).get("name"),
+                        "score": m.get("score",{}).get("fullTime"),
+                        "group": m.get("group",""),
+                        "stage": m.get("stage",""),
+                        "status": m.get("status","")
+                    }
+                api_diag["tests"].append({"label":"WC_matches","status":200,"count":len(matches)})
+        except _ue.HTTPError as _e:
+            api_diag["tests"].append({"label":"WC_matches","status":_e.code,"error":_e.read().decode()[:200]})
+        except Exception as _e:
+            api_diag["tests"].append({"label":"WC_matches","status":0,"error":str(_e)})
     print("API_DIAG:", json.dumps(api_diag))
+
 
     groups_out = None
     source = "fallback"
