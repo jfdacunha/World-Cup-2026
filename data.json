@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-16T19:36:10.714657Z",
-  "source": "fallback",
+  "updated_at": "2026-06-16T21:08:26.155789Z",
+  "source": "manual-update",
   "groups": [
     {
       "letter": "A",
@@ -16,7 +16,8 @@
           "gd": 2,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 72
+          "qualify_prob": 72,
+          "eliminated": null
         },
         {
           "name": "South Korea",
@@ -29,7 +30,8 @@
           "gd": 1,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 58
+          "qualify_prob": 58,
+          "eliminated": null
         },
         {
           "name": "Czechia",
@@ -42,7 +44,8 @@
           "gd": -1,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 35
+          "qualify_prob": 35,
+          "eliminated": null
         },
         {
           "name": "South Africa",
@@ -55,7 +58,8 @@
           "gd": -2,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 22
+          "qualify_prob": 22,
+          "eliminated": null
         }
       ],
       "results": [
@@ -100,7 +104,8 @@
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 52
+          "qualify_prob": 52,
+          "eliminated": null
         },
         {
           "name": "Canada",
@@ -113,7 +118,8 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 48
+          "qualify_prob": 48,
+          "eliminated": null
         },
         {
           "name": "Qatar",
@@ -126,7 +132,8 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 30
+          "qualify_prob": 30,
+          "eliminated": null
         },
         {
           "name": "Bosnia and Herzegovina",
@@ -139,7 +146,8 @@
           "gd": 0,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 28
+          "qualify_prob": 28,
+          "eliminated": null
         }
       ],
       "results": [
@@ -184,7 +192,8 @@
           "gd": 1,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 44
+          "qualify_prob": 44,
+          "eliminated": null
         },
         {
           "name": "Brazil",
@@ -197,7 +206,8 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 70
+          "qualify_prob": 70,
+          "eliminated": null
         },
         {
           "name": "Morocco",
@@ -210,7 +220,8 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 58
+          "qualify_prob": 55,
+          "eliminated": null
         },
         {
           "name": "Haiti",
@@ -223,7 +234,8 @@
           "gd": -1,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 12
+          "qualify_prob": 12,
+          "eliminated": null
         }
       ],
       "results": [
@@ -268,7 +280,8 @@
           "gd": 2,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 78
+          "qualify_prob": 78,
+          "eliminated": null
         },
         {
           "name": "Australia",
@@ -281,7 +294,8 @@
           "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 52
+          "qualify_prob": 52,
+          "eliminated": null
         },
         {
           "name": "Paraguay",
@@ -294,7 +308,8 @@
           "gd": 0,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 38
+          "qualify_prob": 38,
+          "eliminated": null
         },
         {
           "name": "Türkiye",
@@ -307,7 +322,8 @@
           "gd": -2,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 34
+          "qualify_prob": 34,
+          "eliminated": null
         }
       ],
       "results": [
@@ -346,7 +362,8 @@
           "gd": 3,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 62
+          "qualify_prob": 62,
+          "eliminated": null
         },
         {
           "name": "Germany",
@@ -359,7 +376,8 @@
           "gd": 3,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 60
+          "qualify_prob": 60,
+          "eliminated": null
         },
         {
           "name": "Ivory Coast",
@@ -372,7 +390,8 @@
           "gd": -3,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 28
+          "qualify_prob": 28,
+          "eliminated": null
         },
         {
           "name": "Curaçao",
@@ -385,7 +404,8 @@
           "gd": -3,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 8
+          "qualify_prob": 8,
+          "eliminated": null
         }
       ],
       "results": [
@@ -430,7 +450,8 @@
           "gd": 4,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 65
+          "qualify_prob": 65,
+          "eliminated": null
         },
         {
           "name": "Netherlands",
@@ -443,7 +464,8 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 72
+          "qualify_prob": 72,
+          "eliminated": null
         },
         {
           "name": "Japan",
@@ -456,7 +478,8 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 42
+          "qualify_prob": 42,
+          "eliminated": null
         },
         {
           "name": "Tunisia",
@@ -469,7 +492,8 @@
           "gd": -4,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 14
+          "qualify_prob": 14,
+          "eliminated": null
         }
       ],
       "results": [
@@ -514,7 +538,8 @@
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 48
+          "qualify_prob": 48,
+          "eliminated": null
         },
         {
           "name": "Egypt",
@@ -527,7 +552,8 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 40
+          "qualify_prob": 40,
+          "eliminated": null
         },
         {
           "name": "Iran",
@@ -540,7 +566,8 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 32
+          "qualify_prob": 32,
+          "eliminated": null
         },
         {
           "name": "New Zealand",
@@ -553,7 +580,8 @@
           "gd": 0,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 24
+          "qualify_prob": 24,
+          "eliminated": null
         }
       ],
       "results": [
@@ -598,7 +626,8 @@
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 55
+          "qualify_prob": 55,
+          "eliminated": null
         },
         {
           "name": "Saudi Arabia",
@@ -611,7 +640,8 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 36
+          "qualify_prob": 36,
+          "eliminated": null
         },
         {
           "name": "Uruguay",
@@ -624,7 +654,8 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 44
+          "qualify_prob": 44,
+          "eliminated": null
         },
         {
           "name": "Cape Verde",
@@ -637,7 +668,8 @@
           "gd": 0,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 22
+          "qualify_prob": 22,
+          "eliminated": null
         }
       ],
       "results": [
@@ -673,20 +705,21 @@
       "teams": [
         {
           "name": "France",
-          "played": 0,
-          "win": 0,
+          "played": 1,
+          "win": 1,
           "draw": 0,
           "lose": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
+          "gf": 3,
+          "ga": 1,
+          "gd": 2,
+          "points": 3,
           "rank": 1,
-          "qualify_prob": 82
+          "qualify_prob": 88,
+          "eliminated": null
         },
         {
-          "name": "Senegal",
-          "played": 0,
+          "name": "Norway",
+          "played": 1,
           "win": 0,
           "draw": 0,
           "lose": 0,
@@ -695,11 +728,12 @@
           "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 55
+          "qualify_prob": 65,
+          "eliminated": null
         },
         {
-          "name": "Norway",
-          "played": 0,
+          "name": "Iraq",
+          "played": 1,
           "win": 0,
           "draw": 0,
           "lose": 0,
@@ -708,36 +742,52 @@
           "gd": 0,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 65
+          "qualify_prob": 20,
+          "eliminated": null
         },
         {
-          "name": "Iraq",
-          "played": 0,
+          "name": "Senegal",
+          "played": 1,
           "win": 0,
           "draw": 0,
-          "lose": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
+          "lose": 1,
+          "gf": 1,
+          "ga": 3,
+          "gd": -2,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 18
+          "qualify_prob": 42,
+          "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [
+      "results": [
         {
           "home": "France",
           "away": "Senegal",
-          "date": "2026-06-16"
-        },
-        {
-          "home": "Iraq",
-          "away": "Norway",
+          "score": "3–1",
           "date": "2026-06-16"
         }
       ],
-      "live": []
+      "upcoming": [
+        {
+          "home": "France",
+          "away": "Iraq",
+          "date": "2026-06-22"
+        },
+        {
+          "home": "Norway",
+          "away": "Senegal",
+          "date": "2026-06-22"
+        }
+      ],
+      "live": [
+        {
+          "home": "Iraq",
+          "away": "Norway",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "J",
@@ -753,7 +803,8 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 86
+          "qualify_prob": 86,
+          "eliminated": null
         },
         {
           "name": "Algeria",
@@ -766,7 +817,8 @@
           "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 45
+          "qualify_prob": 45,
+          "eliminated": null
         },
         {
           "name": "Austria",
@@ -779,7 +831,8 @@
           "gd": 0,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 38
+          "qualify_prob": 38,
+          "eliminated": null
         },
         {
           "name": "Jordan",
@@ -792,23 +845,31 @@
           "gd": 0,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 15
+          "qualify_prob": 15,
+          "eliminated": null
         }
       ],
       "results": [],
       "upcoming": [
         {
-          "home": "Argentina",
-          "away": "Algeria",
-          "date": "2026-06-16"
-        },
-        {
           "home": "Austria",
           "away": "Jordan",
           "date": "2026-06-17"
+        },
+        {
+          "home": "Argentina",
+          "away": "Austria",
+          "date": "2026-06-22"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Argentina",
+          "away": "Algeria",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "K",
@@ -824,7 +885,8 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 84
+          "qualify_prob": 84,
+          "eliminated": null
         },
         {
           "name": "Colombia",
@@ -837,7 +899,8 @@
           "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 60
+          "qualify_prob": 60,
+          "eliminated": null
         },
         {
           "name": "DR Congo",
@@ -850,7 +913,8 @@
           "gd": 0,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 28
+          "qualify_prob": 28,
+          "eliminated": null
         },
         {
           "name": "Uzbekistan",
@@ -863,7 +927,8 @@
           "gd": 0,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 18
+          "qualify_prob": 18,
+          "eliminated": null
         }
       ],
       "results": [],
@@ -895,7 +960,8 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 76
+          "qualify_prob": 76,
+          "eliminated": null
         },
         {
           "name": "Croatia",
@@ -908,7 +974,8 @@
           "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 55
+          "qualify_prob": 55,
+          "eliminated": null
         },
         {
           "name": "Ghana",
@@ -921,7 +988,8 @@
           "gd": 0,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 32
+          "qualify_prob": 32,
+          "eliminated": null
         },
         {
           "name": "Panama",
@@ -934,7 +1002,8 @@
           "gd": 0,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 20
+          "qualify_prob": 20,
+          "eliminated": null
         }
       ],
       "results": [],
@@ -964,13 +1033,13 @@
         "name": "South Korea",
         "label": "2A",
         "status": "confirmed",
-        "prob": 58
+        "prob": 8
       },
       "t2": {
         "name": "Canada",
         "label": "2B",
         "status": "confirmed",
-        "prob": 48
+        "prob": 9
       }
     },
     {
@@ -983,7 +1052,7 @@
         "name": "Ecuador",
         "label": "1E",
         "status": "confirmed",
-        "prob": 62
+        "prob": 13
       },
       "t2": {
         "name": null,
@@ -1002,13 +1071,13 @@
         "name": "Sweden",
         "label": "1F",
         "status": "confirmed",
-        "prob": 65
+        "prob": 16
       },
       "t2": {
         "name": "Brazil",
         "label": "2C",
         "status": "confirmed",
-        "prob": 70
+        "prob": 58
       }
     },
     {
@@ -1021,13 +1090,13 @@
         "name": "Scotland",
         "label": "1C",
         "status": "confirmed",
-        "prob": 44
+        "prob": 10
       },
       "t2": {
         "name": "Netherlands",
         "label": "2F",
         "status": "confirmed",
-        "prob": 72
+        "prob": 39
       }
     },
     {
@@ -1039,8 +1108,8 @@
       "t1": {
         "name": "France",
         "label": "1I",
-        "status": "likely",
-        "prob": 82
+        "status": "confirmed",
+        "prob": 99
       },
       "t2": {
         "name": null,
@@ -1062,10 +1131,10 @@
         "prob": 60
       },
       "t2": {
-        "name": "Senegal",
+        "name": "Norway",
         "label": "2I",
-        "status": "likely",
-        "prob": 55
+        "status": "confirmed",
+        "prob": 14
       }
     },
     {
@@ -1078,7 +1147,7 @@
         "name": "Mexico",
         "label": "1A",
         "status": "confirmed",
-        "prob": 72
+        "prob": 21
       },
       "t2": {
         "name": null,
@@ -1097,7 +1166,7 @@
         "name": "England",
         "label": "1L",
         "status": "likely",
-        "prob": 76
+        "prob": 60
       },
       "t2": {
         "name": null,
@@ -1116,7 +1185,7 @@
         "name": "United States",
         "label": "1D",
         "status": "confirmed",
-        "prob": 78
+        "prob": 37
       },
       "t2": {
         "name": null,
@@ -1135,7 +1204,7 @@
         "name": "Belgium",
         "label": "1G",
         "status": "confirmed",
-        "prob": 48
+        "prob": 23
       },
       "t2": {
         "name": null,
@@ -1154,13 +1223,13 @@
         "name": "Colombia",
         "label": "2K",
         "status": "likely",
-        "prob": 60
+        "prob": 17
       },
       "t2": {
         "name": "Croatia",
         "label": "2L",
         "status": "likely",
-        "prob": 55
+        "prob": 14
       }
     },
     {
@@ -1173,13 +1242,13 @@
         "name": "Spain",
         "label": "1H",
         "status": "confirmed",
-        "prob": 55
+        "prob": 60
       },
       "t2": {
         "name": "Algeria",
         "label": "2J",
         "status": "likely",
-        "prob": 45
+        "prob": 6
       }
     },
     {
@@ -1192,7 +1261,7 @@
         "name": "Switzerland",
         "label": "1B",
         "status": "confirmed",
-        "prob": 52
+        "prob": 13
       },
       "t2": {
         "name": null,
@@ -1211,13 +1280,13 @@
         "name": "Argentina",
         "label": "1J",
         "status": "likely",
-        "prob": 86
+        "prob": 66
       },
       "t2": {
         "name": "Saudi Arabia",
         "label": "2H",
         "status": "confirmed",
-        "prob": 36
+        "prob": 4
       }
     },
     {
@@ -1230,7 +1299,7 @@
         "name": "Portugal",
         "label": "1K",
         "status": "likely",
-        "prob": 84
+        "prob": 39
       },
       "t2": {
         "name": null,
@@ -1249,13 +1318,13 @@
         "name": "Australia",
         "label": "2D",
         "status": "likely",
-        "prob": 52
+        "prob": 8
       },
       "t2": {
         "name": "Egypt",
         "label": "2G",
         "status": "confirmed",
-        "prob": 40
+        "prob": 5
       }
     }
   ]
