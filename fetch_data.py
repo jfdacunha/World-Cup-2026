@@ -313,48 +313,96 @@ THIRD_PLACE_SLOTS = {
 
 
 def compute_best_thirds(groups_out):
-    """Rank all 12 third-place teams by pts → GD → GF."""
-    thirds = []
+    """
+    Rank all 12 third-place teams.
+    Key rules:
+    - Teams that have played are ranked by pts → GD → GF
+    - Teams that haven't played yet are shown as PENDING (can't be ranked)
+    - Best 8 of played-and-finished teams qualify
+    """
+    thirds_played   = []  # teams who have played at least 1 game
+    thirds_pending  = []  # teams whose group hasn't started
+
     for g in groups_out:
         teams = g["teams"]
         t3 = next((t for t in teams if t["rank"] == 3), teams[2] if len(teams) >= 3 else None)
-        if t3:
-            thirds.append({**t3, "group": g["letter"]})
-    thirds.sort(key=lambda x: (-x["points"], -(x.get("gd") or x["gf"]-x["ga"]), -x["gf"]))
-    best_8 = {t["group"] for t in thirds[:8]}
-    return thirds, best_8
+        if not t3:
+            continue
+        entry = {**t3, "group": g["letter"],
+                 "gd": t3.get("gd", t3["gf"] - t3["ga"])}
+        if t3["played"] > 0:
+            thirds_played.append(entry)
+        else:
+            thirds_pending.append(entry)
+
+    # Sort played teams: pts desc, gd desc, gf desc
+    thirds_played.sort(key=lambda x: (-x["points"], -x["gd"], -x["gf"]))
+
+    # Best 8 from played groups only (unplayed groups can still change everything)
+    # Mark in_best8 only when group stage is complete (played == 3)
+    # During group stage, show provisional top 8 from played games
+    best_8 = {t["group"] for t in thirds_played[:8]}
+
+    # Combine: played first (sorted), then pending
+    all_thirds = thirds_played + thirds_pending
+    return all_thirds, best_8
 
 
 def build_bracket(groups_out):
     gmap = {g["letter"]: g["teams"] for g in groups_out}
     thirds, best_8 = compute_best_thirds(groups_out)
-    used_thirds = set()  # prevent same 3rd-place team in two slots
+
+    # For each 3rd-place slot, find the best ELIGIBLE team from that slot's allowed groups
+    # Each group can only fill ONE slot
+    slot_assignments = {}  # slot_code → team dict
+    used_groups = set()
+
+    for slot_code, eligible_groups in THIRD_PLACE_SLOTS.items():
+        for t in thirds:
+            if t["group"] not in eligible_groups:
+                continue
+            if t["group"] in used_groups:
+                continue
+            if t["played"] == 0:
+                # Not played — show as TBD
+                slot_assignments[slot_code] = {
+                    "name":   None,
+                    "label":  f"3rd Grp{t['group']} (pending)",
+                    "status": "tbd",
+                    "prob":   None,
+                }
+                break
+            in_b8  = t["group"] in best_8
+            g_done = t["played"] == 3
+            if g_done and in_b8:
+                used_groups.add(t["group"])
+                slot_assignments[slot_code] = {
+                    "name":   t["name"],
+                    "label":  f"3rd Grp{t['group']}",
+                    "status": "confirmed",
+                    "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
+                }
+                break
+            # Ongoing group — show current 3rd as live candidate (don't lock the slot)
+            slot_assignments[slot_code] = {
+                "name":   t["name"],
+                "label":  f"3rd Grp{t['group']} ({t['points']}pts)",
+                "status": "likely",
+                "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
+            }
+            break
+        else:
+            slot_assignments[slot_code] = {
+                "name":   None,
+                "label":  "3rd " + slot_code[4:].replace("-", "/"),
+                "status": "tbd",
+                "prob":   None,
+            }
 
     def resolve_third(slot_code):
-        eligible = THIRD_PLACE_SLOTS.get(slot_code, [])
-        # Find best available 3rd-place team from eligible groups
-        for t in thirds:
-            if t["group"] in eligible and t["group"] not in used_thirds:
-                in_b8  = t["group"] in best_8
-                g_done = t["played"] == 3
-                if g_done and in_b8:
-                    used_thirds.add(t["group"])
-                    return {
-                        "name":   t["name"],
-                        "label":  f"3rd Grp{t['group']}",
-                        "status": "confirmed",
-                        "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
-                    }
-                elif t["played"] > 0:
-                    # Ongoing — show current 3rd as live candidate
-                    return {
-                        "name":   t["name"],
-                        "label":  f"3rd Grp{t['group']} ({t['points']}pts)",
-                        "status": "likely",
-                        "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
-                    }
-        label = "3rd " + slot_code[4:].replace("-", "/")
-        return {"name": None, "label": label, "status": "tbd", "prob": None}
+        return slot_assignments.get(slot_code, {
+            "name": None, "label": "3rd TBD", "status": "tbd", "prob": None
+        })
 
     def resolve(slot):
         if slot.startswith("3rd"):
