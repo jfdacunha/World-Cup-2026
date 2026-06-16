@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T21:50:04.330017+00:00",
+  "updated_at": "2026-06-16T21:57:22.998924+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -148,23 +148,23 @@
         },
         {
           "name": "Bosnia and Herzegovina",
-          "played": 0,
+          "played": 1,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 0,
-          "gf": 0,
-          "ga": 0,
+          "gf": 1,
+          "ga": 1,
           "gd": 0,
-          "points": 0,
+          "points": 1,
           "rank": 4,
-          "qualify_prob": 22,
+          "qualify_prob": 12,
           "eliminated": null
         }
       ],
       "results": [
         {
           "home": "Canada",
-          "away": "Bosnia-Herzegovina",
+          "away": "Bosnia and Herzegovina",
           "score": "1-1",
           "date": "2026-06-12"
         },
@@ -178,7 +178,7 @@
       "upcoming": [
         {
           "home": "Switzerland",
-          "away": "Bosnia-Herzegovina",
+          "away": "Bosnia and Herzegovina",
           "date": "2026-06-18"
         },
         {
@@ -192,7 +192,7 @@
           "date": "2026-06-24"
         },
         {
-          "home": "Bosnia-Herzegovina",
+          "home": "Bosnia and Herzegovina",
           "away": "Qatar",
           "date": "2026-06-24"
         }
@@ -736,14 +736,14 @@
         },
         {
           "name": "Cape Verde",
-          "played": 0,
+          "played": 1,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 0,
           "gf": 0,
           "ga": 0,
           "gd": 0,
-          "points": 0,
+          "points": 1,
           "rank": 4,
           "qualify_prob": 12,
           "eliminated": null
@@ -752,7 +752,7 @@
       "results": [
         {
           "home": "Spain",
-          "away": "Cape Verde Islands",
+          "away": "Cape Verde",
           "score": "0-0",
           "date": "2026-06-15"
         },
@@ -771,7 +771,7 @@
         },
         {
           "home": "Uruguay",
-          "away": "Cape Verde Islands",
+          "away": "Cape Verde",
           "date": "2026-06-21"
         },
         {
@@ -780,7 +780,7 @@
           "date": "2026-06-27"
         },
         {
-          "home": "Cape Verde Islands",
+          "home": "Cape Verde",
           "away": "Saudi Arabia",
           "date": "2026-06-27"
         }
