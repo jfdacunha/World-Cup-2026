@@ -298,20 +298,77 @@ def build_groups(standings, matches):
         })
     return groups_out
 
+# ── 3RD PLACE RULES ─────────────────────────────────────────────────
+# Fixed FIFA slot → eligible group combos for 3rd-place teams
+THIRD_PLACE_SLOTS = {
+    "3rd-ABCDF": ["A","B","C","D","F"],
+    "3rd-CDFGH": ["C","D","F","G","H"],
+    "3rd-CEFHI": ["C","E","F","H","I"],
+    "3rd-EHIJK": ["E","H","I","J","K"],
+    "3rd-BEFIJ": ["B","E","F","I","J"],
+    "3rd-AEHIJ": ["A","E","H","I","J"],
+    "3rd-EFGIJ": ["E","F","G","I","J"],
+    "3rd-DEIJL": ["D","E","I","J","L"],
+}
+
+
+def compute_best_thirds(groups_out):
+    """Rank all 12 third-place teams by pts → GD → GF."""
+    thirds = []
+    for g in groups_out:
+        teams = g["teams"]
+        t3 = next((t for t in teams if t["rank"] == 3), teams[2] if len(teams) >= 3 else None)
+        if t3:
+            thirds.append({**t3, "group": g["letter"]})
+    thirds.sort(key=lambda x: (-x["points"], -(x.get("gd") or x["gf"]-x["ga"]), -x["gf"]))
+    best_8 = {t["group"] for t in thirds[:8]}
+    return thirds, best_8
+
+
 def build_bracket(groups_out):
-    gmap = {g["letter"]:g["teams"] for g in groups_out}
+    gmap = {g["letter"]: g["teams"] for g in groups_out}
+    thirds, best_8 = compute_best_thirds(groups_out)
+    used_thirds = set()  # prevent same 3rd-place team in two slots
+
+    def resolve_third(slot_code):
+        eligible = THIRD_PLACE_SLOTS.get(slot_code, [])
+        # Find best available 3rd-place team from eligible groups
+        for t in thirds:
+            if t["group"] in eligible and t["group"] not in used_thirds:
+                in_b8  = t["group"] in best_8
+                g_done = t["played"] == 3
+                if g_done and in_b8:
+                    used_thirds.add(t["group"])
+                    return {
+                        "name":   t["name"],
+                        "label":  f"3rd Grp{t['group']}",
+                        "status": "confirmed",
+                        "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
+                    }
+                elif t["played"] > 0:
+                    # Ongoing — show current 3rd as live candidate
+                    return {
+                        "name":   t["name"],
+                        "label":  f"3rd Grp{t['group']} ({t['points']}pts)",
+                        "status": "likely",
+                        "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
+                    }
+        label = "3rd " + slot_code[4:].replace("-", "/")
+        return {"name": None, "label": label, "status": "tbd", "prob": None}
+
     def resolve(slot):
         if slot.startswith("3rd"):
-            return {"name":None,"label":"3rd "+slot[4:].replace("-","/"),"status":"tbd","prob":None}
-        gl,idx = SLOT_MAP.get(slot,(None,None))
-        if gl is None: return {"name":None,"label":slot,"status":"tbd","prob":None}
-        teams = gmap.get(gl,[])
-        if idx>=len(teams): return {"name":None,"label":slot,"status":"tbd","prob":None}
+            return resolve_third(slot)
+        gl, idx = SLOT_MAP.get(slot, (None, None))
+        if gl is None: return {"name": None, "label": slot, "status": "tbd", "prob": None}
+        teams = gmap.get(gl, [])
+        if idx >= len(teams): return {"name": None, "label": slot, "status": "tbd", "prob": None}
         t = teams[idx]
-        prob = qualify_prob(t["name"], idx+1, t["played"], t["points"])
-        status = "confirmed" if t["played"]>0 else "likely"
-        return {"name":t["name"],"label":slot,"status":status,"prob":prob}
-    return [{**m,"t1":resolve(m["s1"]),"t2":resolve(m["s2"])} for m in R32_MATCHES]
+        status = "confirmed" if t["played"] > 0 else "likely"
+        return {"name": t["name"], "label": slot, "status": status,
+                "prob": qualify_prob(t["name"], idx+1, t["played"], t["points"])}
+
+    return [{**m, "t1": resolve(m["s1"]), "t2": resolve(m["s2"])} for m in R32_MATCHES]
 
 # ── FALLBACK DATA (updated with real scores) ──────────────────────────
 FALLBACK_GROUPS = [
