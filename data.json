@@ -1,78 +1,75 @@
 {
-  "updated_at": "2026-06-16T21:40:39.656383+00:00",
+  "updated_at": "2026-06-16T21:42:49.051243+00:00",
   "api_diag": {
     "key_present": true,
     "key_length": 32,
     "tests": [
       {
-        "label": "list_competitions",
-        "status": 200,
-        "competitions": [
-          {
-            "code": "BSA",
-            "name": "Campeonato Brasileiro Série A"
-          },
-          {
-            "code": "ELC",
-            "name": "Championship"
-          },
-          {
-            "code": "PL",
-            "name": "Premier League"
-          },
-          {
-            "code": "CL",
-            "name": "UEFA Champions League"
-          },
-          {
-            "code": "EC",
-            "name": "European Championship"
-          },
-          {
-            "code": "FL1",
-            "name": "Ligue 1"
-          },
-          {
-            "code": "BL1",
-            "name": "Bundesliga"
-          },
-          {
-            "code": "SA",
-            "name": "Serie A"
-          },
-          {
-            "code": "DED",
-            "name": "Eredivisie"
-          },
-          {
-            "code": "PPL",
-            "name": "Primeira Liga"
-          },
-          {
-            "code": "CLI",
-            "name": "Copa Libertadores"
-          },
-          {
-            "code": "PD",
-            "name": "Primera Division"
-          },
-          {
-            "code": "WC",
-            "name": "FIFA World Cup"
-          }
-        ]
-      },
-      {
-        "label": "get_WC",
-        "status": 200,
-        "competition_name": "FIFA World Cup"
-      },
-      {
         "label": "WC_standings",
         "status": 200,
         "standings_count": 12
+      },
+      {
+        "label": "WC_matches",
+        "status": 200,
+        "count": 17
       }
-    ]
+    ],
+    "standings_raw_count": 12,
+    "standings_types": [
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL",
+      "TOTAL"
+    ],
+    "standings_groups": [
+      "Group A",
+      "Group B",
+      "Group C"
+    ],
+    "first_group": "Group A",
+    "first_table": [
+      {
+        "pos": 1,
+        "team": "Mexico",
+        "pts": 3
+      },
+      {
+        "pos": 2,
+        "team": "South Korea",
+        "pts": 3
+      },
+      {
+        "pos": 3,
+        "team": "Czechia",
+        "pts": 0
+      },
+      {
+        "pos": 4,
+        "team": "South Africa",
+        "pts": 0
+      }
+    ],
+    "matches_finished": 17,
+    "sample_match": {
+      "home": "Mexico",
+      "away": "South Africa",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "group": "GROUP_A",
+      "stage": "GROUP_STAGE",
+      "status": "FINISHED"
+    }
   },
   "source": "fallback",
   "live_count": 0,
