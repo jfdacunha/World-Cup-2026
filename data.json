@@ -1,77 +1,6 @@
 {
-  "updated_at": "2026-06-16T21:42:49.051243+00:00",
-  "api_diag": {
-    "key_present": true,
-    "key_length": 32,
-    "tests": [
-      {
-        "label": "WC_standings",
-        "status": 200,
-        "standings_count": 12
-      },
-      {
-        "label": "WC_matches",
-        "status": 200,
-        "count": 17
-      }
-    ],
-    "standings_raw_count": 12,
-    "standings_types": [
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL",
-      "TOTAL"
-    ],
-    "standings_groups": [
-      "Group A",
-      "Group B",
-      "Group C"
-    ],
-    "first_group": "Group A",
-    "first_table": [
-      {
-        "pos": 1,
-        "team": "Mexico",
-        "pts": 3
-      },
-      {
-        "pos": 2,
-        "team": "South Korea",
-        "pts": 3
-      },
-      {
-        "pos": 3,
-        "team": "Czechia",
-        "pts": 0
-      },
-      {
-        "pos": 4,
-        "team": "South Africa",
-        "pts": 0
-      }
-    ],
-    "matches_finished": 17,
-    "sample_match": {
-      "home": "Mexico",
-      "away": "South Africa",
-      "score": {
-        "home": 2,
-        "away": 0
-      },
-      "group": "GROUP_A",
-      "stage": "GROUP_STAGE",
-      "status": "FINISHED"
-    }
-  },
-  "source": "fallback",
+  "updated_at": "2026-06-16T21:44:38.359616+00:00",
+  "source": "live",
   "live_count": 0,
   "groups": [
     {
@@ -88,7 +17,7 @@
           "gd": 2,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 72,
+          "qualify_prob": 28,
           "eliminated": null
         },
         {
@@ -102,7 +31,7 @@
           "gd": 1,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 58,
+          "qualify_prob": 9,
           "eliminated": null
         },
         {
@@ -116,7 +45,7 @@
           "gd": -1,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 35,
+          "qualify_prob": 2,
           "eliminated": null
         },
         {
@@ -130,7 +59,7 @@
           "gd": -2,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 22,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
@@ -145,7 +74,7 @@
           "home": "South Korea",
           "away": "Czechia",
           "score": "2-1",
-          "date": "2026-06-11"
+          "date": "2026-06-12"
         }
       ],
       "upcoming": [
@@ -157,7 +86,17 @@
         {
           "home": "Mexico",
           "away": "South Korea",
-          "date": "2026-06-18"
+          "date": "2026-06-19"
+        },
+        {
+          "home": "Czechia",
+          "away": "Mexico",
+          "date": "2026-06-25"
+        },
+        {
+          "home": "South Africa",
+          "away": "South Korea",
+          "date": "2026-06-25"
         }
       ],
       "live": []
@@ -176,7 +115,7 @@
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 52,
+          "qualify_prob": 19,
           "eliminated": null
         },
         {
@@ -190,7 +129,7 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 48,
+          "qualify_prob": 10,
           "eliminated": null
         },
         {
@@ -204,28 +143,28 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 30,
+          "qualify_prob": 2,
           "eliminated": null
         },
         {
           "name": "Bosnia and Herzegovina",
-          "played": 1,
+          "played": 0,
           "win": 0,
-          "draw": 1,
+          "draw": 0,
           "lose": 0,
-          "gf": 1,
-          "ga": 1,
+          "gf": 0,
+          "ga": 0,
           "gd": 0,
-          "points": 1,
+          "points": 0,
           "rank": 4,
-          "qualify_prob": 28,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
       "results": [
         {
           "home": "Canada",
-          "away": "Bosnia and Herzegovina",
+          "away": "Bosnia-Herzegovina",
           "score": "1-1",
           "date": "2026-06-12"
         },
@@ -233,19 +172,29 @@
           "home": "Qatar",
           "away": "Switzerland",
           "score": "1-1",
-          "date": "2026-06-14"
+          "date": "2026-06-13"
         }
       ],
       "upcoming": [
         {
           "home": "Switzerland",
-          "away": "Bosnia and Herzegovina",
+          "away": "Bosnia-Herzegovina",
           "date": "2026-06-18"
         },
         {
           "home": "Canada",
           "away": "Qatar",
-          "date": "2026-06-19"
+          "date": "2026-06-18"
+        },
+        {
+          "home": "Switzerland",
+          "away": "Canada",
+          "date": "2026-06-24"
+        },
+        {
+          "home": "Bosnia-Herzegovina",
+          "away": "Qatar",
+          "date": "2026-06-24"
         }
       ],
       "live": []
@@ -264,21 +213,7 @@
           "gd": 1,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 44,
-          "eliminated": null
-        },
-        {
-          "name": "Brazil",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
-          "rank": 2,
-          "qualify_prob": 70,
+          "qualify_prob": 13,
           "eliminated": null
         },
         {
@@ -291,8 +226,22 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
+          "rank": 2,
+          "qualify_prob": 12,
+          "eliminated": null
+        },
+        {
+          "name": "Brazil",
+          "played": 1,
+          "win": 0,
+          "draw": 1,
+          "lose": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 1,
           "rank": 3,
-          "qualify_prob": 55,
+          "qualify_prob": 32,
           "eliminated": null
         },
         {
@@ -306,34 +255,44 @@
           "gd": -1,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 12,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
       "results": [
         {
-          "home": "Scotland",
-          "away": "Haiti",
-          "score": "1-0",
-          "date": "2026-06-14"
-        },
-        {
           "home": "Brazil",
           "away": "Morocco",
           "score": "1-1",
+          "date": "2026-06-13"
+        },
+        {
+          "home": "Haiti",
+          "away": "Scotland",
+          "score": "0-1",
           "date": "2026-06-14"
         }
       ],
       "upcoming": [
         {
-          "home": "Morocco",
-          "away": "Scotland",
-          "date": "2026-06-20"
+          "home": "Scotland",
+          "away": "Morocco",
+          "date": "2026-06-19"
         },
         {
           "home": "Brazil",
           "away": "Haiti",
           "date": "2026-06-20"
+        },
+        {
+          "home": "Morocco",
+          "away": "Haiti",
+          "date": "2026-06-24"
+        },
+        {
+          "home": "Scotland",
+          "away": "Brazil",
+          "date": "2026-06-24"
         }
       ],
       "live": []
@@ -347,40 +306,26 @@
           "win": 1,
           "draw": 0,
           "lose": 0,
-          "gf": 2,
-          "ga": 0,
-          "gd": 2,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 78,
+          "qualify_prob": 48,
           "eliminated": null
         },
         {
           "name": "Australia",
-          "played": 0,
-          "win": 0,
+          "played": 1,
+          "win": 1,
           "draw": 0,
           "lose": 0,
-          "gf": 0,
+          "gf": 2,
           "ga": 0,
-          "gd": 0,
-          "points": 0,
+          "gd": 2,
+          "points": 3,
           "rank": 2,
-          "qualify_prob": 52,
-          "eliminated": null
-        },
-        {
-          "name": "Paraguay",
-          "played": 0,
-          "win": 0,
-          "draw": 0,
-          "lose": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
-          "rank": 3,
-          "qualify_prob": 38,
+          "qualify_prob": 11,
           "eliminated": null
         },
         {
@@ -393,66 +338,12 @@
           "ga": 2,
           "gd": -2,
           "points": 0,
-          "rank": 4,
-          "qualify_prob": 34,
-          "eliminated": null
-        }
-      ],
-      "results": [
-        {
-          "home": "United States",
-          "away": "Türkiye",
-          "score": "2-0",
-          "date": "2026-06-12"
-        }
-      ],
-      "upcoming": [
-        {
-          "home": "Australia",
-          "away": "Paraguay",
-          "date": "2026-06-19"
-        },
-        {
-          "home": "United States",
-          "away": "Australia",
-          "date": "2026-06-19"
-        }
-      ],
-      "live": []
-    },
-    {
-      "letter": "E",
-      "teams": [
-        {
-          "name": "Ecuador",
-          "played": 1,
-          "win": 1,
-          "draw": 0,
-          "lose": 0,
-          "gf": 4,
-          "ga": 1,
-          "gd": 3,
-          "points": 3,
-          "rank": 1,
-          "qualify_prob": 62,
+          "rank": 3,
+          "qualify_prob": 3,
           "eliminated": null
         },
         {
-          "name": "Germany",
-          "played": 1,
-          "win": 1,
-          "draw": 0,
-          "lose": 0,
-          "gf": 3,
-          "ga": 0,
-          "gd": 3,
-          "points": 3,
-          "rank": 2,
-          "qualify_prob": 60,
-          "eliminated": null
-        },
-        {
-          "name": "Ivory Coast",
+          "name": "Paraguay",
           "played": 1,
           "win": 0,
           "draw": 0,
@@ -461,8 +352,92 @@
           "ga": 4,
           "gd": -3,
           "points": 0,
+          "rank": 4,
+          "qualify_prob": 1,
+          "eliminated": null
+        }
+      ],
+      "results": [
+        {
+          "home": "United States",
+          "away": "Paraguay",
+          "score": "4-1",
+          "date": "2026-06-13"
+        },
+        {
+          "home": "Australia",
+          "away": "Türkiye",
+          "score": "2-0",
+          "date": "2026-06-14"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "United States",
+          "away": "Australia",
+          "date": "2026-06-19"
+        },
+        {
+          "home": "Türkiye",
+          "away": "Paraguay",
+          "date": "2026-06-20"
+        },
+        {
+          "home": "Türkiye",
+          "away": "United States",
+          "date": "2026-06-26"
+        },
+        {
+          "home": "Paraguay",
+          "away": "Australia",
+          "date": "2026-06-26"
+        }
+      ],
+      "live": []
+    },
+    {
+      "letter": "E",
+      "teams": [
+        {
+          "name": "Germany",
+          "played": 1,
+          "win": 1,
+          "draw": 0,
+          "lose": 0,
+          "gf": 7,
+          "ga": 1,
+          "gd": 6,
+          "points": 3,
+          "rank": 1,
+          "qualify_prob": 96,
+          "eliminated": null
+        },
+        {
+          "name": "Ivory Coast",
+          "played": 1,
+          "win": 1,
+          "draw": 0,
+          "lose": 0,
+          "gf": 1,
+          "ga": 0,
+          "gd": 1,
+          "points": 3,
+          "rank": 2,
+          "qualify_prob": 6,
+          "eliminated": null
+        },
+        {
+          "name": "Ecuador",
+          "played": 1,
+          "win": 0,
+          "draw": 0,
+          "lose": 1,
+          "gf": 0,
+          "ga": 1,
+          "gd": -1,
+          "points": 0,
           "rank": 3,
-          "qualify_prob": 28,
+          "qualify_prob": 4,
           "eliminated": null
         },
         {
@@ -471,12 +446,12 @@
           "win": 0,
           "draw": 0,
           "lose": 1,
-          "gf": 0,
-          "ga": 3,
-          "gd": -3,
+          "gf": 1,
+          "ga": 7,
+          "gd": -6,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 8,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
@@ -484,14 +459,14 @@
         {
           "home": "Germany",
           "away": "Curaçao",
-          "score": "3-0",
-          "date": "2026-06-13"
+          "score": "7-1",
+          "date": "2026-06-14"
         },
         {
-          "home": "Ecuador",
-          "away": "Ivory Coast",
-          "score": "4-1",
-          "date": "2026-06-13"
+          "home": "Ivory Coast",
+          "away": "Ecuador",
+          "score": "1-0",
+          "date": "2026-06-14"
         }
       ],
       "upcoming": [
@@ -503,7 +478,17 @@
         {
           "home": "Ecuador",
           "away": "Curaçao",
-          "date": "2026-06-20"
+          "date": "2026-06-21"
+        },
+        {
+          "home": "Ecuador",
+          "away": "Germany",
+          "date": "2026-06-25"
+        },
+        {
+          "home": "Curaçao",
+          "away": "Ivory Coast",
+          "date": "2026-06-25"
         }
       ],
       "live": []
@@ -522,7 +507,7 @@
           "gd": 4,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 65,
+          "qualify_prob": 20,
           "eliminated": null
         },
         {
@@ -536,7 +521,7 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 72,
+          "qualify_prob": 41,
           "eliminated": null
         },
         {
@@ -549,8 +534,8 @@
           "ga": 2,
           "gd": 0,
           "points": 1,
-          "rank": 3,
-          "qualify_prob": 42,
+          "rank": 2,
+          "qualify_prob": 10,
           "eliminated": null
         },
         {
@@ -564,22 +549,22 @@
           "gd": -4,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 14,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
       "results": [
         {
-          "home": "Sweden",
-          "away": "Tunisia",
-          "score": "5-1",
-          "date": "2026-06-14"
-        },
-        {
           "home": "Netherlands",
           "away": "Japan",
           "score": "2-2",
           "date": "2026-06-14"
+        },
+        {
+          "home": "Sweden",
+          "away": "Tunisia",
+          "score": "5-1",
+          "date": "2026-06-15"
         }
       ],
       "upcoming": [
@@ -591,7 +576,17 @@
         {
           "home": "Tunisia",
           "away": "Japan",
-          "date": "2026-06-20"
+          "date": "2026-06-21"
+        },
+        {
+          "home": "Tunisia",
+          "away": "Netherlands",
+          "date": "2026-06-25"
+        },
+        {
+          "home": "Japan",
+          "away": "Sweden",
+          "date": "2026-06-25"
         }
       ],
       "live": []
@@ -600,31 +595,17 @@
       "letter": "G",
       "teams": [
         {
-          "name": "Belgium",
+          "name": "New Zealand",
           "played": 1,
           "win": 0,
           "draw": 1,
           "lose": 0,
-          "gf": 1,
-          "ga": 1,
+          "gf": 2,
+          "ga": 2,
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 48,
-          "eliminated": null
-        },
-        {
-          "name": "Egypt",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
-          "rank": 2,
-          "qualify_prob": 40,
+          "qualify_prob": 3,
           "eliminated": null
         },
         {
@@ -637,22 +618,36 @@
           "ga": 2,
           "gd": 0,
           "points": 1,
-          "rank": 3,
-          "qualify_prob": 32,
+          "rank": 2,
+          "qualify_prob": 4,
           "eliminated": null
         },
         {
-          "name": "New Zealand",
+          "name": "Belgium",
           "played": 1,
           "win": 0,
           "draw": 1,
           "lose": 0,
-          "gf": 2,
-          "ga": 2,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 1,
+          "rank": 3,
+          "qualify_prob": 12,
+          "eliminated": null
+        },
+        {
+          "name": "Egypt",
+          "played": 1,
+          "win": 0,
+          "draw": 1,
+          "lose": 0,
+          "gf": 1,
+          "ga": 1,
           "gd": 0,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 24,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
@@ -667,7 +662,7 @@
           "home": "Iran",
           "away": "New Zealand",
           "score": "2-2",
-          "date": "2026-06-15"
+          "date": "2026-06-16"
         }
       ],
       "upcoming": [
@@ -679,7 +674,17 @@
         {
           "home": "New Zealand",
           "away": "Egypt",
-          "date": "2026-06-21"
+          "date": "2026-06-22"
+        },
+        {
+          "home": "New Zealand",
+          "away": "Belgium",
+          "date": "2026-06-27"
+        },
+        {
+          "home": "Egypt",
+          "away": "Iran",
+          "date": "2026-06-27"
         }
       ],
       "live": []
@@ -688,17 +693,17 @@
       "letter": "H",
       "teams": [
         {
-          "name": "Spain",
+          "name": "Uruguay",
           "played": 1,
           "win": 0,
           "draw": 1,
           "lose": 0,
-          "gf": 0,
-          "ga": 0,
+          "gf": 1,
+          "ga": 1,
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 55,
+          "qualify_prob": 28,
           "eliminated": null
         },
         {
@@ -712,25 +717,11 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 36,
+          "qualify_prob": 4,
           "eliminated": null
         },
         {
-          "name": "Uruguay",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
-          "rank": 3,
-          "qualify_prob": 44,
-          "eliminated": null
-        },
-        {
-          "name": "Cape Verde",
+          "name": "Spain",
           "played": 1,
           "win": 0,
           "draw": 1,
@@ -739,15 +730,29 @@
           "ga": 0,
           "gd": 0,
           "points": 1,
+          "rank": 3,
+          "qualify_prob": 31,
+          "eliminated": null
+        },
+        {
+          "name": "Cape Verde",
+          "played": 0,
+          "win": 0,
+          "draw": 0,
+          "lose": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "points": 0,
           "rank": 4,
-          "qualify_prob": 22,
+          "qualify_prob": 1,
           "eliminated": null
         }
       ],
       "results": [
         {
           "home": "Spain",
-          "away": "Cape Verde",
+          "away": "Cape Verde Islands",
           "score": "0-0",
           "date": "2026-06-15"
         },
@@ -766,8 +771,18 @@
         },
         {
           "home": "Uruguay",
-          "away": "Cape Verde",
+          "away": "Cape Verde Islands",
           "date": "2026-06-21"
+        },
+        {
+          "home": "Uruguay",
+          "away": "Spain",
+          "date": "2026-06-27"
+        },
+        {
+          "home": "Cape Verde Islands",
+          "away": "Saudi Arabia",
+          "date": "2026-06-27"
         }
       ],
       "live": []
@@ -786,21 +801,35 @@
           "gd": 2,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 88,
+          "qualify_prob": 99,
           "eliminated": null
         },
         {
           "name": "Norway",
-          "played": 1,
-          "win": 1,
+          "played": 0,
+          "win": 0,
           "draw": 0,
           "lose": 0,
-          "gf": 2,
-          "ga": 1,
-          "gd": 1,
-          "points": 3,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "points": 0,
           "rank": 2,
-          "qualify_prob": 68,
+          "qualify_prob": 14,
+          "eliminated": null
+        },
+        {
+          "name": "Iraq",
+          "played": 0,
+          "win": 0,
+          "draw": 0,
+          "lose": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "points": 0,
+          "rank": 2,
+          "qualify_prob": 2,
           "eliminated": null
         },
         {
@@ -813,22 +842,8 @@
           "ga": 3,
           "gd": -2,
           "points": 0,
-          "rank": 3,
-          "qualify_prob": 42,
-          "eliminated": null
-        },
-        {
-          "name": "Iraq",
-          "played": 1,
-          "win": 0,
-          "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 2,
-          "gd": -1,
-          "points": 0,
           "rank": 4,
-          "qualify_prob": 18,
+          "qualify_prob": 2,
           "eliminated": null
         }
       ],
@@ -838,15 +853,14 @@
           "away": "Senegal",
           "score": "3-1",
           "date": "2026-06-16"
-        },
-        {
-          "home": "Norway",
-          "away": "Iraq",
-          "score": "2-1",
-          "date": "2026-06-16"
         }
       ],
       "upcoming": [
+        {
+          "home": "Iraq",
+          "away": "Norway",
+          "date": "2026-06-16"
+        },
         {
           "home": "France",
           "away": "Iraq",
@@ -855,7 +869,12 @@
         {
           "home": "Norway",
           "away": "Senegal",
-          "date": "2026-06-22"
+          "date": "2026-06-23"
+        },
+        {
+          "home": "Norway",
+          "away": "France",
+          "date": "2026-06-26"
         }
       ],
       "live": []
@@ -865,30 +884,30 @@
       "teams": [
         {
           "name": "Argentina",
-          "played": 1,
-          "win": 1,
+          "played": 0,
+          "win": 0,
           "draw": 0,
           "lose": 0,
-          "gf": 3,
-          "ga": 1,
-          "gd": 2,
-          "points": 3,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "points": 0,
           "rank": 1,
-          "qualify_prob": 90,
+          "qualify_prob": 92,
           "eliminated": null
         },
         {
           "name": "Algeria",
-          "played": 1,
+          "played": 0,
           "win": 0,
           "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 3,
-          "gd": -2,
+          "lose": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
           "points": 0,
-          "rank": 2,
-          "qualify_prob": 42,
+          "rank": 1,
+          "qualify_prob": 8,
           "eliminated": null
         },
         {
@@ -901,8 +920,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 3,
-          "qualify_prob": 38,
+          "rank": 1,
+          "qualify_prob": 8,
           "eliminated": null
         },
         {
@@ -915,20 +934,18 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 4,
-          "qualify_prob": 15,
+          "rank": 1,
+          "qualify_prob": 2,
           "eliminated": null
         }
       ],
-      "results": [
+      "results": [],
+      "upcoming": [
         {
           "home": "Argentina",
           "away": "Algeria",
-          "score": "3-1",
-          "date": "2026-06-16"
-        }
-      ],
-      "upcoming": [
+          "date": "2026-06-17"
+        },
         {
           "home": "Austria",
           "away": "Jordan",
@@ -938,6 +955,11 @@
           "home": "Argentina",
           "away": "Austria",
           "date": "2026-06-22"
+        },
+        {
+          "home": "Jordan",
+          "away": "Algeria",
+          "date": "2026-06-23"
         }
       ],
       "live": []
@@ -956,7 +978,7 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 84,
+          "qualify_prob": 55,
           "eliminated": null
         },
         {
@@ -969,8 +991,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 2,
-          "qualify_prob": 60,
+          "rank": 1,
+          "qualify_prob": 24,
           "eliminated": null
         },
         {
@@ -983,8 +1005,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 3,
-          "qualify_prob": 28,
+          "rank": 1,
+          "qualify_prob": 3,
           "eliminated": null
         },
         {
@@ -997,8 +1019,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 4,
-          "qualify_prob": 18,
+          "rank": 1,
+          "qualify_prob": 2,
           "eliminated": null
         }
       ],
@@ -1012,7 +1034,17 @@
         {
           "home": "Uzbekistan",
           "away": "Colombia",
-          "date": "2026-06-17"
+          "date": "2026-06-18"
+        },
+        {
+          "home": "Portugal",
+          "away": "Uzbekistan",
+          "date": "2026-06-23"
+        },
+        {
+          "home": "Colombia",
+          "away": "DR Congo",
+          "date": "2026-06-24"
         }
       ],
       "live": []
@@ -1031,7 +1063,7 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 76,
+          "qualify_prob": 84,
           "eliminated": null
         },
         {
@@ -1044,8 +1076,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 2,
-          "qualify_prob": 55,
+          "rank": 1,
+          "qualify_prob": 20,
           "eliminated": null
         },
         {
@@ -1058,8 +1090,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 3,
-          "qualify_prob": 32,
+          "rank": 1,
+          "qualify_prob": 4,
           "eliminated": null
         },
         {
@@ -1072,8 +1104,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 4,
-          "qualify_prob": 20,
+          "rank": 1,
+          "qualify_prob": 3,
           "eliminated": null
         }
       ],
@@ -1087,7 +1119,17 @@
         {
           "home": "Ghana",
           "away": "Panama",
-          "date": "2026-06-18"
+          "date": "2026-06-17"
+        },
+        {
+          "home": "England",
+          "away": "Ghana",
+          "date": "2026-06-23"
+        },
+        {
+          "home": "Panama",
+          "away": "Croatia",
+          "date": "2026-06-23"
         }
       ],
       "live": []
@@ -1120,10 +1162,10 @@
       "s1": "1E",
       "s2": "3rd-ABCDF",
       "t1": {
-        "name": "Ecuador",
+        "name": "Germany",
         "label": "1E",
         "status": "confirmed",
-        "prob": 13
+        "prob": 74
       },
       "t2": {
         "name": null,
@@ -1145,10 +1187,10 @@
         "prob": 16
       },
       "t2": {
-        "name": "Brazil",
+        "name": "Morocco",
         "label": "2C",
         "status": "confirmed",
-        "prob": 58
+        "prob": 11
       }
     },
     {
@@ -1196,16 +1238,16 @@
       "s1": "2E",
       "s2": "2I",
       "t1": {
-        "name": "Germany",
+        "name": "Ivory Coast",
         "label": "2E",
         "status": "confirmed",
-        "prob": 60
+        "prob": 6
       },
       "t2": {
         "name": "Norway",
         "label": "2I",
-        "status": "confirmed",
-        "prob": 17
+        "status": "likely",
+        "prob": 14
       }
     },
     {
@@ -1272,10 +1314,10 @@
       "s1": "1G",
       "s2": "3rd-AEHIJ",
       "t1": {
-        "name": "Belgium",
+        "name": "New Zealand",
         "label": "1G",
         "status": "confirmed",
-        "prob": 23
+        "prob": 2
       },
       "t2": {
         "name": null,
@@ -1310,15 +1352,15 @@
       "s1": "1H",
       "s2": "2J",
       "t1": {
-        "name": "Spain",
+        "name": "Uruguay",
         "label": "1H",
         "status": "confirmed",
-        "prob": 60
+        "prob": 20
       },
       "t2": {
         "name": "Algeria",
         "label": "2J",
-        "status": "confirmed",
+        "status": "likely",
         "prob": 6
       }
     },
@@ -1350,8 +1392,8 @@
       "t1": {
         "name": "Argentina",
         "label": "1J",
-        "status": "confirmed",
-        "prob": 99
+        "status": "likely",
+        "prob": 66
       },
       "t2": {
         "name": "Saudi Arabia",
@@ -1388,14 +1430,14 @@
       "t1": {
         "name": "Australia",
         "label": "2D",
-        "status": "likely",
-        "prob": 8
+        "status": "confirmed",
+        "prob": 10
       },
       "t2": {
-        "name": "Egypt",
+        "name": "Iran",
         "label": "2G",
         "status": "confirmed",
-        "prob": 5
+        "prob": 4
       }
     }
   ]
