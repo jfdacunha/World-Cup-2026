@@ -1,0 +1,44 @@
+name: Update World Cup Data
+
+on:
+  schedule:
+    # Run every hour during the tournament (Jun 11 – Jul 19 2026)
+    - cron: '0 * * * *'
+  # Also allow manual trigger from GitHub UI
+  workflow_dispatch:
+  # And run on every push (so first deploy works immediately)
+  push:
+    branches:
+      - main
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to commit data.json back to repo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # No pip installs needed — fetch_data.py uses only stdlib
+
+      - name: Fetch live World Cup data
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+        run: python fetch_data.py
+
+      - name: Commit updated data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          # Only commit if data.json actually changed
+          git diff --staged --quiet || git commit -m "chore: update World Cup data $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
