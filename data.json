@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-16T21:30:25.338136+00:00",
-  "source": "fallback",
+  "updated_at": "2026-06-16T21:33:11.704469+00:00",
+  "source": "manual",
   "live_count": 0,
   "groups": [
     {
@@ -720,16 +720,16 @@
         },
         {
           "name": "Norway",
-          "played": 1,
-          "win": 1,
+          "played": 0,
+          "win": 0,
           "draw": 0,
           "lose": 0,
-          "gf": 2,
-          "ga": 1,
-          "gd": 1,
-          "points": 3,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "points": 0,
           "rank": 2,
-          "qualify_prob": 68,
+          "qualify_prob": 65,
           "eliminated": null
         },
         {
@@ -748,13 +748,13 @@
         },
         {
           "name": "Iraq",
-          "played": 1,
+          "played": 0,
           "win": 0,
           "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 2,
-          "gd": -1,
+          "lose": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
           "points": 0,
           "rank": 4,
           "qualify_prob": 18,
@@ -767,15 +767,14 @@
           "away": "Senegal",
           "score": "3-1",
           "date": "2026-06-16"
-        },
-        {
-          "home": "Norway",
-          "away": "Iraq",
-          "score": "2-1",
-          "date": "2026-06-16"
         }
       ],
       "upcoming": [
+        {
+          "home": "Iraq",
+          "away": "Norway",
+          "date": "2026-06-17"
+        },
         {
           "home": "France",
           "away": "Iraq",
@@ -794,30 +793,30 @@
       "teams": [
         {
           "name": "Argentina",
-          "played": 1,
-          "win": 1,
+          "played": 0,
+          "win": 0,
           "draw": 0,
           "lose": 0,
-          "gf": 3,
-          "ga": 1,
-          "gd": 2,
-          "points": 3,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
+          "points": 0,
           "rank": 1,
-          "qualify_prob": 90,
+          "qualify_prob": 86,
           "eliminated": null
         },
         {
           "name": "Algeria",
-          "played": 1,
+          "played": 0,
           "win": 0,
           "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 3,
-          "gd": -2,
+          "lose": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 42,
+          "qualify_prob": 45,
           "eliminated": null
         },
         {
@@ -849,15 +848,13 @@
           "eliminated": null
         }
       ],
-      "results": [
+      "results": [],
+      "upcoming": [
         {
           "home": "Argentina",
           "away": "Algeria",
-          "score": "3-1",
-          "date": "2026-06-16"
-        }
-      ],
-      "upcoming": [
+          "date": "2026-06-17"
+        },
         {
           "home": "Austria",
           "away": "Jordan",
