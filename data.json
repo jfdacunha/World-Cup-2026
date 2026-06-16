@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-16T21:57:41.478211+00:00",
+  "updated_at": "2026-06-16T22:09:19.851383+00:00",
   "source": "live",
-  "live_count": 0,
+  "live_count": 1,
   "groups": [
     {
       "letter": "A",
@@ -74,7 +74,7 @@
           "home": "South Korea",
           "away": "Czechia",
           "score": "2-1",
-          "date": "2026-06-12"
+          "date": "2026-06-11"
         }
       ],
       "upcoming": [
@@ -86,17 +86,17 @@
         {
           "home": "Mexico",
           "away": "South Korea",
-          "date": "2026-06-19"
+          "date": "2026-06-18"
         },
         {
           "home": "Czechia",
           "away": "Mexico",
-          "date": "2026-06-25"
+          "date": "2026-06-24"
         },
         {
           "home": "South Africa",
           "away": "South Korea",
-          "date": "2026-06-25"
+          "date": "2026-06-24"
         }
       ],
       "live": []
@@ -270,7 +270,7 @@
           "home": "Haiti",
           "away": "Scotland",
           "score": "0-1",
-          "date": "2026-06-14"
+          "date": "2026-06-13"
         }
       ],
       "upcoming": [
@@ -282,7 +282,7 @@
         {
           "home": "Brazil",
           "away": "Haiti",
-          "date": "2026-06-20"
+          "date": "2026-06-19"
         },
         {
           "home": "Morocco",
@@ -362,7 +362,7 @@
           "home": "United States",
           "away": "Paraguay",
           "score": "4-1",
-          "date": "2026-06-13"
+          "date": "2026-06-12"
         },
         {
           "home": "Australia",
@@ -380,17 +380,17 @@
         {
           "home": "Türkiye",
           "away": "Paraguay",
-          "date": "2026-06-20"
+          "date": "2026-06-19"
         },
         {
           "home": "Türkiye",
           "away": "United States",
-          "date": "2026-06-26"
+          "date": "2026-06-25"
         },
         {
           "home": "Paraguay",
           "away": "Australia",
-          "date": "2026-06-26"
+          "date": "2026-06-25"
         }
       ],
       "live": []
@@ -478,7 +478,7 @@
         {
           "home": "Ecuador",
           "away": "Curaçao",
-          "date": "2026-06-21"
+          "date": "2026-06-20"
         },
         {
           "home": "Ecuador",
@@ -564,7 +564,7 @@
           "home": "Sweden",
           "away": "Tunisia",
           "score": "5-1",
-          "date": "2026-06-15"
+          "date": "2026-06-14"
         }
       ],
       "upcoming": [
@@ -662,7 +662,7 @@
           "home": "Iran",
           "away": "New Zealand",
           "score": "2-2",
-          "date": "2026-06-16"
+          "date": "2026-06-15"
         }
       ],
       "upcoming": [
@@ -674,17 +674,17 @@
         {
           "home": "New Zealand",
           "away": "Egypt",
-          "date": "2026-06-22"
+          "date": "2026-06-21"
         },
         {
           "home": "New Zealand",
           "away": "Belgium",
-          "date": "2026-06-27"
+          "date": "2026-06-26"
         },
         {
           "home": "Egypt",
           "away": "Iran",
-          "date": "2026-06-27"
+          "date": "2026-06-26"
         }
       ],
       "live": []
@@ -777,12 +777,12 @@
         {
           "home": "Uruguay",
           "away": "Spain",
-          "date": "2026-06-27"
+          "date": "2026-06-26"
         },
         {
           "home": "Cape Verde",
           "away": "Saudi Arabia",
-          "date": "2026-06-27"
+          "date": "2026-06-26"
         }
       ],
       "live": []
@@ -806,30 +806,30 @@
         },
         {
           "name": "Norway",
-          "played": 0,
+          "played": 1,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 0,
           "gf": 0,
           "ga": 0,
           "gd": 0,
-          "points": 0,
+          "points": 1,
           "rank": 2,
           "qualify_prob": 50,
           "eliminated": null
         },
         {
           "name": "Iraq",
-          "played": 0,
+          "played": 1,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 0,
           "gf": 0,
           "ga": 0,
           "gd": 0,
-          "points": 0,
+          "points": 1,
           "rank": 3,
-          "qualify_prob": 12,
+          "qualify_prob": 48,
           "eliminated": null
         },
         {
@@ -857,11 +857,6 @@
       ],
       "upcoming": [
         {
-          "home": "Iraq",
-          "away": "Norway",
-          "date": "2026-06-16"
-        },
-        {
           "home": "France",
           "away": "Iraq",
           "date": "2026-06-22"
@@ -869,15 +864,27 @@
         {
           "home": "Norway",
           "away": "Senegal",
-          "date": "2026-06-23"
+          "date": "2026-06-22"
         },
         {
           "home": "Norway",
           "away": "France",
           "date": "2026-06-26"
+        },
+        {
+          "home": "Senegal",
+          "away": "Iraq",
+          "date": "2026-06-26"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Iraq",
+          "away": "Norway",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "J",
@@ -944,7 +951,7 @@
         {
           "home": "Argentina",
           "away": "Algeria",
-          "date": "2026-06-17"
+          "date": "2026-06-16"
         },
         {
           "home": "Austria",
@@ -959,7 +966,7 @@
         {
           "home": "Jordan",
           "away": "Algeria",
-          "date": "2026-06-23"
+          "date": "2026-06-22"
         }
       ],
       "live": []
@@ -1034,7 +1041,7 @@
         {
           "home": "Uzbekistan",
           "away": "Colombia",
-          "date": "2026-06-18"
+          "date": "2026-06-17"
         },
         {
           "home": "Portugal",
@@ -1044,7 +1051,7 @@
         {
           "home": "Colombia",
           "away": "DR Congo",
-          "date": "2026-06-24"
+          "date": "2026-06-23"
         }
       ],
       "live": []
@@ -1246,7 +1253,7 @@
       "t2": {
         "name": "Norway",
         "label": "2I",
-        "status": "likely",
+        "status": "confirmed",
         "prob": 50
       }
     },
