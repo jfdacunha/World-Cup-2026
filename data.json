@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T22:14:29.209087+00:00",
+  "updated_at": "2026-06-16T22:22:29.872123+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -1175,10 +1175,10 @@
         "prob": 88
       },
       "t2": {
-        "name": null,
-        "label": "3rd ABCDF",
-        "status": "tbd",
-        "prob": null
+        "name": "Japan",
+        "label": "3rd GrpF (1pts)",
+        "status": "likely",
+        "prob": 29
       }
     },
     {
@@ -1232,10 +1232,10 @@
         "prob": 90
       },
       "t2": {
-        "name": null,
-        "label": "3rd CDFGH",
-        "status": "tbd",
-        "prob": null
+        "name": "Japan",
+        "label": "3rd GrpF (1pts)",
+        "status": "likely",
+        "prob": 29
       }
     },
     {
@@ -1270,10 +1270,10 @@
         "prob": 84
       },
       "t2": {
-        "name": null,
-        "label": "3rd CEFHI",
-        "status": "tbd",
-        "prob": null
+        "name": "Japan",
+        "label": "3rd GrpF (1pts)",
+        "status": "likely",
+        "prob": 29
       }
     },
     {
@@ -1289,10 +1289,10 @@
         "prob": 80
       },
       "t2": {
-        "name": null,
-        "label": "3rd EHIJK",
-        "status": "tbd",
-        "prob": null
+        "name": "Spain",
+        "label": "3rd GrpH (1pts)",
+        "status": "likely",
+        "prob": 35
       }
     },
     {
@@ -1308,10 +1308,10 @@
         "prob": 85
       },
       "t2": {
-        "name": null,
-        "label": "3rd BEFIJ",
-        "status": "tbd",
-        "prob": null
+        "name": "Japan",
+        "label": "3rd GrpF (1pts)",
+        "status": "likely",
+        "prob": 29
       }
     },
     {
@@ -1327,10 +1327,10 @@
         "prob": 63
       },
       "t2": {
-        "name": null,
-        "label": "3rd AEHIJ",
-        "status": "tbd",
-        "prob": null
+        "name": "Spain",
+        "label": "3rd GrpH (1pts)",
+        "status": "likely",
+        "prob": 35
       }
     },
     {
@@ -1384,10 +1384,10 @@
         "prob": 64
       },
       "t2": {
-        "name": null,
-        "label": "3rd EFGIJ",
-        "status": "tbd",
-        "prob": null
+        "name": "Japan",
+        "label": "3rd GrpF (1pts)",
+        "status": "likely",
+        "prob": 29
       }
     },
     {
@@ -1422,10 +1422,10 @@
         "prob": 70
       },
       "t2": {
-        "name": null,
-        "label": "3rd DEIJL",
-        "status": "tbd",
-        "prob": null
+        "name": "Iraq",
+        "label": "3rd GrpI (1pts)",
+        "status": "likely",
+        "prob": 28
       }
     },
     {
@@ -1446,6 +1446,128 @@
         "status": "confirmed",
         "prob": 48
       }
+    }
+  ],
+  "best_thirds": [
+    {
+      "name": "Japan",
+      "group": "F",
+      "played": 1,
+      "points": 1,
+      "gd": 0,
+      "gf": 2,
+      "in_best8": true,
+      "qualify_prob": 29
+    },
+    {
+      "name": "Qatar",
+      "group": "B",
+      "played": 1,
+      "points": 1,
+      "gd": 0,
+      "gf": 1,
+      "in_best8": true,
+      "qualify_prob": 28
+    },
+    {
+      "name": "Morocco",
+      "group": "C",
+      "played": 1,
+      "points": 1,
+      "gd": 0,
+      "gf": 1,
+      "in_best8": true,
+      "qualify_prob": 29
+    },
+    {
+      "name": "Belgium",
+      "group": "G",
+      "played": 1,
+      "points": 1,
+      "gd": 0,
+      "gf": 1,
+      "in_best8": true,
+      "qualify_prob": 31
+    },
+    {
+      "name": "Spain",
+      "group": "H",
+      "played": 1,
+      "points": 1,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": true,
+      "qualify_prob": 35
+    },
+    {
+      "name": "Iraq",
+      "group": "I",
+      "played": 1,
+      "points": 1,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": true,
+      "qualify_prob": 28
+    },
+    {
+      "name": "Austria",
+      "group": "J",
+      "played": 0,
+      "points": 0,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": true,
+      "qualify_prob": 35
+    },
+    {
+      "name": "DR Congo",
+      "group": "K",
+      "played": 0,
+      "points": 0,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": true,
+      "qualify_prob": 12
+    },
+    {
+      "name": "Ghana",
+      "group": "L",
+      "played": 0,
+      "points": 0,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 22
+    },
+    {
+      "name": "Czechia",
+      "group": "A",
+      "played": 1,
+      "points": 0,
+      "gd": -1,
+      "gf": 1,
+      "in_best8": false,
+      "qualify_prob": 16
+    },
+    {
+      "name": "Ecuador",
+      "group": "E",
+      "played": 1,
+      "points": 0,
+      "gd": -1,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 16
+    },
+    {
+      "name": "Türkiye",
+      "group": "D",
+      "played": 1,
+      "points": 0,
+      "gd": -2,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 16
     }
   ]
 }
