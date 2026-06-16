@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T21:46:02.753971+00:00",
+  "updated_at": "2026-06-16T21:50:04.330017+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -17,7 +17,7 @@
           "gd": 2,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 28,
+          "qualify_prob": 84,
           "eliminated": null
         },
         {
@@ -31,7 +31,7 @@
           "gd": 1,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 9,
+          "qualify_prob": 73,
           "eliminated": null
         },
         {
@@ -45,7 +45,7 @@
           "gd": -1,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 2,
+          "qualify_prob": 16,
           "eliminated": null
         },
         {
@@ -59,7 +59,7 @@
           "gd": -2,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 4,
           "eliminated": null
         }
       ],
@@ -115,7 +115,7 @@
           "gd": 0,
           "points": 1,
           "rank": 1,
-          "qualify_prob": 19,
+          "qualify_prob": 64,
           "eliminated": null
         },
         {
@@ -129,7 +129,7 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 10,
+          "qualify_prob": 49,
           "eliminated": null
         },
         {
@@ -143,7 +143,7 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 2,
+          "qualify_prob": 28,
           "eliminated": null
         },
         {
@@ -157,7 +157,7 @@
           "gd": 0,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 22,
           "eliminated": null
         }
       ],
@@ -213,21 +213,7 @@
           "gd": 1,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 13,
-          "eliminated": null
-        },
-        {
-          "name": "Morocco",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
-          "rank": 2,
-          "qualify_prob": 12,
+          "qualify_prob": 83,
           "eliminated": null
         },
         {
@@ -240,8 +226,22 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
+          "rank": 2,
+          "qualify_prob": 35,
+          "eliminated": null
+        },
+        {
+          "name": "Morocco",
+          "played": 1,
+          "win": 0,
+          "draw": 1,
+          "lose": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 1,
           "rank": 3,
-          "qualify_prob": 32,
+          "qualify_prob": 49,
           "eliminated": null
         },
         {
@@ -255,7 +255,7 @@
           "gd": -1,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 4,
           "eliminated": null
         }
       ],
@@ -311,7 +311,7 @@
           "gd": 3,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 48,
+          "qualify_prob": 85,
           "eliminated": null
         },
         {
@@ -325,7 +325,7 @@
           "gd": 2,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 11,
+          "qualify_prob": 73,
           "eliminated": null
         },
         {
@@ -339,7 +339,7 @@
           "gd": -2,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 3,
+          "qualify_prob": 16,
           "eliminated": null
         },
         {
@@ -353,7 +353,7 @@
           "gd": -3,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 4,
           "eliminated": null
         }
       ],
@@ -409,7 +409,7 @@
           "gd": 6,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 96,
+          "qualify_prob": 88,
           "eliminated": null
         },
         {
@@ -423,7 +423,7 @@
           "gd": 1,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 6,
+          "qualify_prob": 73,
           "eliminated": null
         },
         {
@@ -437,7 +437,7 @@
           "gd": -1,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 4,
+          "qualify_prob": 16,
           "eliminated": null
         },
         {
@@ -451,7 +451,7 @@
           "gd": -6,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 4,
           "eliminated": null
         }
       ],
@@ -507,7 +507,7 @@
           "gd": 4,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 20,
+          "qualify_prob": 83,
           "eliminated": null
         },
         {
@@ -521,7 +521,7 @@
           "gd": 0,
           "points": 1,
           "rank": 2,
-          "qualify_prob": 41,
+          "qualify_prob": 53,
           "eliminated": null
         },
         {
@@ -534,8 +534,8 @@
           "ga": 2,
           "gd": 0,
           "points": 1,
-          "rank": 2,
-          "qualify_prob": 10,
+          "rank": 3,
+          "qualify_prob": 49,
           "eliminated": null
         },
         {
@@ -549,7 +549,7 @@
           "gd": -4,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 4,
           "eliminated": null
         }
       ],
@@ -595,20 +595,6 @@
       "letter": "G",
       "teams": [
         {
-          "name": "New Zealand",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 2,
-          "ga": 2,
-          "gd": 0,
-          "points": 1,
-          "rank": 1,
-          "qualify_prob": 3,
-          "eliminated": null
-        },
-        {
           "name": "Iran",
           "played": 1,
           "win": 0,
@@ -618,8 +604,22 @@
           "ga": 2,
           "gd": 0,
           "points": 1,
+          "rank": 1,
+          "qualify_prob": 49,
+          "eliminated": null
+        },
+        {
+          "name": "New Zealand",
+          "played": 1,
+          "win": 0,
+          "draw": 1,
+          "lose": 0,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 1,
           "rank": 2,
-          "qualify_prob": 4,
+          "qualify_prob": 62,
           "eliminated": null
         },
         {
@@ -633,7 +633,7 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 12,
+          "qualify_prob": 31,
           "eliminated": null
         },
         {
@@ -647,7 +647,7 @@
           "gd": 0,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 13,
           "eliminated": null
         }
       ],
@@ -693,20 +693,6 @@
       "letter": "H",
       "teams": [
         {
-          "name": "Uruguay",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
-          "rank": 1,
-          "qualify_prob": 28,
-          "eliminated": null
-        },
-        {
           "name": "Saudi Arabia",
           "played": 1,
           "win": 0,
@@ -716,8 +702,22 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
+          "rank": 1,
+          "qualify_prob": 49,
+          "eliminated": null
+        },
+        {
+          "name": "Uruguay",
+          "played": 1,
+          "win": 0,
+          "draw": 1,
+          "lose": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 1,
           "rank": 2,
-          "qualify_prob": 4,
+          "qualify_prob": 64,
           "eliminated": null
         },
         {
@@ -731,7 +731,7 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 31,
+          "qualify_prob": 35,
           "eliminated": null
         },
         {
@@ -745,7 +745,7 @@
           "gd": 0,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 1,
+          "qualify_prob": 12,
           "eliminated": null
         }
       ],
@@ -801,7 +801,7 @@
           "gd": 2,
           "points": 3,
           "rank": 1,
-          "qualify_prob": 99,
+          "qualify_prob": 90,
           "eliminated": null
         },
         {
@@ -815,7 +815,7 @@
           "gd": 0,
           "points": 0,
           "rank": 2,
-          "qualify_prob": 14,
+          "qualify_prob": 50,
           "eliminated": null
         },
         {
@@ -828,8 +828,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 2,
-          "qualify_prob": 2,
+          "rank": 3,
+          "qualify_prob": 12,
           "eliminated": null
         },
         {
@@ -843,7 +843,7 @@
           "gd": -2,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 2,
+          "qualify_prob": 5,
           "eliminated": null
         }
       ],
@@ -893,7 +893,7 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 92,
+          "qualify_prob": 80,
           "eliminated": null
         },
         {
@@ -906,8 +906,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 8,
+          "rank": 2,
+          "qualify_prob": 35,
           "eliminated": null
         },
         {
@@ -920,8 +920,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 8,
+          "rank": 3,
+          "qualify_prob": 35,
           "eliminated": null
         },
         {
@@ -934,8 +934,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 2,
+          "rank": 4,
+          "qualify_prob": 12,
           "eliminated": null
         }
       ],
@@ -978,7 +978,7 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 55,
+          "qualify_prob": 70,
           "eliminated": null
         },
         {
@@ -991,8 +991,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 24,
+          "rank": 2,
+          "qualify_prob": 50,
           "eliminated": null
         },
         {
@@ -1005,8 +1005,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 3,
+          "rank": 3,
+          "qualify_prob": 12,
           "eliminated": null
         },
         {
@@ -1019,8 +1019,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 2,
+          "rank": 4,
+          "qualify_prob": 12,
           "eliminated": null
         }
       ],
@@ -1063,7 +1063,7 @@
           "gd": 0,
           "points": 0,
           "rank": 1,
-          "qualify_prob": 84,
+          "qualify_prob": 80,
           "eliminated": null
         },
         {
@@ -1076,8 +1076,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 20,
+          "rank": 2,
+          "qualify_prob": 50,
           "eliminated": null
         },
         {
@@ -1090,8 +1090,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 4,
+          "rank": 3,
+          "qualify_prob": 22,
           "eliminated": null
         },
         {
@@ -1104,8 +1104,8 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 1,
-          "qualify_prob": 3,
+          "rank": 4,
+          "qualify_prob": 12,
           "eliminated": null
         }
       ],
@@ -1146,13 +1146,13 @@
         "name": "South Korea",
         "label": "2A",
         "status": "confirmed",
-        "prob": 8
+        "prob": 73
       },
       "t2": {
         "name": "Canada",
         "label": "2B",
         "status": "confirmed",
-        "prob": 9
+        "prob": 49
       }
     },
     {
@@ -1165,7 +1165,7 @@
         "name": "Germany",
         "label": "1E",
         "status": "confirmed",
-        "prob": 74
+        "prob": 88
       },
       "t2": {
         "name": null,
@@ -1184,13 +1184,13 @@
         "name": "Sweden",
         "label": "1F",
         "status": "confirmed",
-        "prob": 16
+        "prob": 83
       },
       "t2": {
-        "name": "Morocco",
+        "name": "Brazil",
         "label": "2C",
         "status": "confirmed",
-        "prob": 11
+        "prob": 55
       }
     },
     {
@@ -1203,13 +1203,13 @@
         "name": "Scotland",
         "label": "1C",
         "status": "confirmed",
-        "prob": 10
+        "prob": 83
       },
       "t2": {
         "name": "Netherlands",
         "label": "2F",
         "status": "confirmed",
-        "prob": 39
+        "prob": 53
       }
     },
     {
@@ -1222,7 +1222,7 @@
         "name": "France",
         "label": "1I",
         "status": "confirmed",
-        "prob": 99
+        "prob": 90
       },
       "t2": {
         "name": null,
@@ -1241,13 +1241,13 @@
         "name": "Ivory Coast",
         "label": "2E",
         "status": "confirmed",
-        "prob": 6
+        "prob": 73
       },
       "t2": {
         "name": "Norway",
         "label": "2I",
         "status": "likely",
-        "prob": 14
+        "prob": 50
       }
     },
     {
@@ -1260,7 +1260,7 @@
         "name": "Mexico",
         "label": "1A",
         "status": "confirmed",
-        "prob": 21
+        "prob": 84
       },
       "t2": {
         "name": null,
@@ -1279,7 +1279,7 @@
         "name": "England",
         "label": "1L",
         "status": "likely",
-        "prob": 60
+        "prob": 80
       },
       "t2": {
         "name": null,
@@ -1298,7 +1298,7 @@
         "name": "United States",
         "label": "1D",
         "status": "confirmed",
-        "prob": 37
+        "prob": 85
       },
       "t2": {
         "name": null,
@@ -1314,10 +1314,10 @@
       "s1": "1G",
       "s2": "3rd-AEHIJ",
       "t1": {
-        "name": "New Zealand",
+        "name": "Iran",
         "label": "1G",
         "status": "confirmed",
-        "prob": 2
+        "prob": 63
       },
       "t2": {
         "name": null,
@@ -1336,13 +1336,13 @@
         "name": "Colombia",
         "label": "2K",
         "status": "likely",
-        "prob": 17
+        "prob": 50
       },
       "t2": {
         "name": "Croatia",
         "label": "2L",
         "status": "likely",
-        "prob": 14
+        "prob": 50
       }
     },
     {
@@ -1352,16 +1352,16 @@
       "s1": "1H",
       "s2": "2J",
       "t1": {
-        "name": "Uruguay",
+        "name": "Saudi Arabia",
         "label": "1H",
         "status": "confirmed",
-        "prob": 20
+        "prob": 63
       },
       "t2": {
         "name": "Algeria",
         "label": "2J",
         "status": "likely",
-        "prob": 6
+        "prob": 35
       }
     },
     {
@@ -1374,7 +1374,7 @@
         "name": "Switzerland",
         "label": "1B",
         "status": "confirmed",
-        "prob": 13
+        "prob": 64
       },
       "t2": {
         "name": null,
@@ -1393,13 +1393,13 @@
         "name": "Argentina",
         "label": "1J",
         "status": "likely",
-        "prob": 66
+        "prob": 80
       },
       "t2": {
-        "name": "Saudi Arabia",
+        "name": "Uruguay",
         "label": "2H",
         "status": "confirmed",
-        "prob": 4
+        "prob": 50
       }
     },
     {
@@ -1412,7 +1412,7 @@
         "name": "Portugal",
         "label": "1K",
         "status": "likely",
-        "prob": 39
+        "prob": 70
       },
       "t2": {
         "name": null,
@@ -1431,13 +1431,13 @@
         "name": "Australia",
         "label": "2D",
         "status": "confirmed",
-        "prob": 10
+        "prob": 73
       },
       "t2": {
-        "name": "Iran",
+        "name": "New Zealand",
         "label": "2G",
         "status": "confirmed",
-        "prob": 4
+        "prob": 48
       }
     }
   ]
