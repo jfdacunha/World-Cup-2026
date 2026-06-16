@@ -138,6 +138,7 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .right-side .team-name{text-align:right}
 .mteam.tbd .team-name{color:var(--faint);font-style:italic;font-weight:400;font-size:.64rem}
 .prob{font-family:'DM Mono',monospace;font-size:.54rem;padding:1px 5px;border-radius:20px;flex-shrink:0;font-weight:500;line-height:1.65}
+.prob-sm{font-family:'DM Mono',monospace;font-size:.6rem;padding:1px 6px;border-radius:20px;font-weight:500}
 .p-hi{background:rgba(34,197,94,.22);color:#4ade80}
 .p-mid{background:rgba(245,158,11,.22);color:#fbbf24}
 .p-lo{background:rgba(239,68,68,.2);color:#f87171}
@@ -202,6 +203,41 @@ tr.q4 .tc{color:var(--muted)}
 .li{display:flex;align-items:center;gap:5px}
 .ld{width:10px;height:10px;border-radius:2px;flex-shrink:0}
 .r32-note{font-size:.63rem;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:1.2rem;line-height:1.75;padding:10px 14px;background:var(--s2);border-radius:6px;border-left:3px solid var(--gold);max-width:860px}
+
+/* ── WIN PROBABILITY RANKINGS ── */
+.power-table{width:100%;border-collapse:collapse;font-size:.78rem;max-width:860px}
+.power-table thead tr{border-bottom:1px solid var(--border)}
+.power-table th{padding:7px 10px;text-align:left;font-size:.6rem;font-family:'DM Mono',monospace;color:var(--faint);font-weight:400;text-transform:uppercase;letter-spacing:.06em}
+.power-table th:last-child,.power-table th:nth-child(3),.power-table th:nth-child(4){text-align:right}
+.power-table tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+.power-table tbody tr:hover{background:rgba(255,255,255,.025)}
+.power-table td{padding:8px 10px;color:var(--muted);vertical-align:middle}
+.power-table th:nth-child(1),.power-table td:nth-child(1){width:44px;text-align:center}
+.power-table td:nth-child(3),.power-table td:nth-child(4){text-align:right}
+
+.rank-num{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;color:var(--faint)}
+.rank-num.top3{color:var(--gold);font-size:.78rem}
+.rank-medal{font-size:1rem}
+
+.pt-team{display:flex;align-items:center;gap:8px}
+.pt-flag{font-size:1rem;line-height:1;flex-shrink:0}
+.pt-name{font-weight:500;color:var(--text);font-size:.78rem}
+.pt-group{font-size:.6rem;font-family:'DM Mono',monospace;color:var(--faint);margin-left:2px}
+
+.win-bar-wrap{width:160px;height:6px;background:var(--s3);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:8px}
+@media(max-width:600px){.win-bar-wrap{width:80px}}
+.win-bar{height:100%;border-radius:3px;transition:width .4s ease}
+
+.win-pct{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;white-space:nowrap}
+
+.qualify-pct{font-family:'DM Mono',monospace;font-size:.68rem}
+
+.change-up{color:var(--green);font-size:.65rem;font-family:'DM Mono',monospace}
+.change-dn{color:var(--red);font-size:.65rem;font-family:'DM Mono',monospace}
+.change-eq{color:var(--faint);font-size:.65rem;font-family:'DM Mono',monospace}
+
+.podium-row td{background:rgba(212,168,67,.04)}
+.podium-row td .pt-name{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -211,6 +247,7 @@ tr.q4 .tc{color:var(--muted)}
   <nav>
     <a href="#bracket" class="active" id="nav-b">Bracket</a>
     <a href="#groups"  id="nav-g">Group Stage</a>
+    <a href="#power"   id="nav-p">Win Odds</a>
   </nav>
   <div class="hd-r">
     <span class="live-pill"><span class="dot"></span>Live · MD1</span>
@@ -288,6 +325,15 @@ tr.q4 .tc{color:var(--muted)}
   <div class="groups-grid" id="groupsEl">
     <div class="loading"><div class="spin"></div>Loading group data...</div>
   </div>
+</section>
+
+<hr class="div">
+
+<!-- WORLD CUP WIN PROBABILITY RANKINGS -->
+<section class="section" id="power">
+  <div class="sec-title">World Cup Win Probability</div>
+  <div class="sec-sub">All 48 teams ranked · Based on current group standing + pre-tournament strength · Updates every hour</div>
+  <div id="powerEl"><div class="loading"><div class="spin"></div>Loading...</div></div>
 </section>
 
 <!-- Ad Unit 3 — Above Footer -->
@@ -528,6 +574,131 @@ function renderGroups(groups){
   document.getElementById('st-live').textContent   = totalLive || '–';
 }
 
+// ── WIN PROBABILITY RANKINGS ──────────────────────────────────────────
+
+// Pre-tournament base win probabilities (from Dec 2025 betting markets)
+const BASE_WIN_PROB = {
+  'France':11.5,'Argentina':11.0,'England':10.0,'Brazil':9.0,
+  'Spain':8.5,'Germany':8.0,'Portugal':6.5,'Netherlands':6.0,
+  'USA':4.0,'Belgium':3.2,'Uruguay':2.8,'Colombia':2.8,
+  'Croatia':2.4,'Mexico':2.3,'Norway':2.3,'Switzerland':1.9,
+  'Sweden':1.7,'Australia':1.4,'Ecuador':1.4,'Canada':1.4,
+  'Japan':1.4,'Senegal':1.4,'Morocco':1.7,'Scotland':1.1,
+  'Algeria':0.95,'Austria':0.95,'South Korea':1.1,'Egypt':0.75,
+  'Czechia':0.75,'Iran':0.65,'Saudi Arabia':0.65,
+  'Bosnia and Herzegovina':0.55,'Qatar':0.45,'Tunisia':0.45,
+  'Ghana':0.45,'Panama':0.35,'Paraguay':0.55,'Türkiye':1.1,
+  'DR Congo':0.35,'Uzbekistan':0.28,'Jordan':0.28,'Iraq':0.38,
+  'Ivory Coast':0.75,'Haiti':0.18,'New Zealand':0.28,
+  'Cape Verde':0.28,'South Africa':0.38,'Curaçao':0.08,
+  'United States':4.0,
+};
+
+function calcWinProb(teamName, rank, played, points) {
+  const base = BASE_WIN_PROB[teamName] || 0.3;
+  // Position multiplier after MD1
+  let mult = 1.0;
+  if (played > 0) {
+    const ptsPerGame = points / played;
+    if (rank === 1)      mult = 1.0 + ptsPerGame * 0.18;
+    else if (rank === 2) mult = 1.0 + ptsPerGame * 0.08;
+    else if (rank === 3) mult = 1.0 - 0.15;
+    else                 mult = 1.0 - 0.35;
+  }
+  return Math.max(0.05, base * mult);
+}
+
+function renderPowerRankings(groups) {
+  const el = document.getElementById('powerEl');
+
+  // Build flat list of all teams with win probability
+  const allTeams = [];
+  groups.forEach(g => {
+    g.teams.forEach((t, i) => {
+      const rawProb = calcWinProb(t.name, t.rank || i+1, t.played, t.points);
+      allTeams.push({
+        name:        t.name,
+        group:       g.letter,
+        rank:        t.rank || i+1,
+        played:      t.played,
+        points:      t.points,
+        qualifyProb: t.qualify_prob || 50,
+        rawProb,
+      });
+    });
+  });
+
+  // Normalise so all win probs sum to 100%
+  const total = allTeams.reduce((s, t) => s + t.rawProb, 0);
+  allTeams.forEach(t => { t.winProb = (t.rawProb / total * 100); });
+
+  // Sort descending by win probability
+  allTeams.sort((a, b) => b.winProb - a.winProb);
+
+  // Bar colour based on rank
+  function barColor(i) {
+    if (i === 0) return '#d4a843';        // gold
+    if (i === 1) return '#a8a9ad';        // silver
+    if (i === 2) return '#cd7f32';        // bronze
+    if (i < 8)   return '#22c55e';        // green top 8
+    if (i < 16)  return '#3b82f6';        // blue top 16
+    return '#2f3f58';                     // faint rest
+  }
+
+  function medal(i) {
+    if (i === 0) return '🥇';
+    if (i === 1) return '🥈';
+    if (i === 2) return '🥉';
+    return '';
+  }
+
+  let html = `
+  <table class="power-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Team</th>
+        <th>Qualify %</th>
+        <th>Win Cup %</th>
+      </tr>
+    </thead>
+    <tbody>`;
+
+  allTeams.forEach((t, i) => {
+    const isPodium  = i < 3;
+    const rankDisp  = medal(i) || `<span class="rank-num${i<3?' top3':''}">${i+1}</span>`;
+    const barW      = Math.max(1, (t.winProb / allTeams[0].winProb) * 100).toFixed(1);
+    const winDisplay = t.winProb >= 1
+      ? t.winProb.toFixed(1) + '%'
+      : t.winProb.toFixed(2) + '%';
+    const qpCls = t.qualifyProb >= 70 ? 'p-hi' : t.qualifyProb >= 45 ? 'p-mid' : 'p-lo';
+    const em = f(t.name);
+
+    html += `<tr class="${isPodium?'podium-row':''}">
+      <td>${rankDisp}</td>
+      <td>
+        <div class="pt-team">
+          <span class="pt-flag">${em}</span>
+          <span class="pt-name">${t.name}</span>
+          <span class="pt-group">Grp ${t.group}</span>
+        </div>
+      </td>
+      <td><span class="qualify-pct prob-sm ${qpCls}">${t.qualifyProb}%</span></td>
+      <td>
+        <span class="win-bar-wrap"><span class="win-bar" style="width:${barW}%;background:${barColor(i)}"></span></span>
+        <span class="win-pct" style="color:${barColor(i)}">${winDisplay}</span>
+      </td>
+    </tr>`;
+  });
+
+  html += `</tbody></table>
+  <p style="font-size:.6rem;color:var(--faint);font-family:'DM Mono',monospace;margin-top:1rem;max-width:860px">
+    ⚠ Probabilities are model estimates based on pre-tournament betting market odds adjusted by current group stage standing. They are not real bookmaker odds. Updates every hour.
+  </p>`;
+
+  el.innerHTML = html;
+}
+
 // ── DATA LOADER ───────────────────────────────────────────────────────
 let refreshTimer = null;
 
@@ -543,6 +714,7 @@ async function loadData(){
 
     renderBracket(data.bracket || []);
     renderGroups(data.groups   || []);
+    renderPowerRankings(data.groups || []);
 
     // Format timestamp
     const dt  = new Date(data.updated_at);
@@ -569,8 +741,10 @@ function tick(){
 // ── NAV SCROLL HIGHLIGHT ──────────────────────────────────────────────
 window.addEventListener('scroll',()=>{
   const gt = document.getElementById('groups').getBoundingClientRect().top;
+  const pt = document.getElementById('power').getBoundingClientRect().top;
   document.getElementById('nav-b').classList.toggle('active', gt>100);
-  document.getElementById('nav-g').classList.toggle('active', gt<=100);
+  document.getElementById('nav-g').classList.toggle('active', gt<=100 && pt>100);
+  document.getElementById('nav-p').classList.toggle('active', pt<=100);
 });
 
 // ── INIT ──────────────────────────────────────────────────────────────
