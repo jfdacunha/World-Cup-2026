@@ -240,7 +240,19 @@ def fetch_matches():
         letter = grp.replace("GROUP_","").replace("Group ","").replace("GROUP ","").strip()
         sc = m.get("score",{}); ft = sc.get("fullTime",{}); ht = sc.get("halfTime",{})
         out.append({
-            "date":m.get("utcDate","")[:10],"group":letter,
+            # Convert UTC to ET (UTC-4 in June) for correct match date display
+            _utc_str = m.get("utcDate","")
+            if _utc_str:
+                try:
+                    import datetime as _dt
+                    _utc_dt = _dt.datetime.fromisoformat(_utc_str.replace("Z","+00:00"))
+                    _et_dt  = _utc_dt - _dt.timedelta(hours=4)  # ET = UTC-4 in June
+                    _date_str = _et_dt.strftime("%Y-%m-%d")
+                except:
+                    _date_str = _utc_str[:10]
+            else:
+                _date_str = ""
+            "date":_date_str,"group":letter,
             "stage":m.get("stage",""),"status":status,
             "home":normalize(m.get("homeTeam",{}).get("name","")),
             "away":normalize(m.get("awayTeam",{}).get("name","")),
