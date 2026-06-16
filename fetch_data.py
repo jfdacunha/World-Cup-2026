@@ -69,10 +69,28 @@ STATIC_TEAMS = {
 }
 
 NAME_MAP = {
-    "USA":"United States","Turkey":"Türkiye","Congo DR":"DR Congo",
-    "Cote d'Ivoire":"Ivory Coast","Côte d'Ivoire":"Ivory Coast",
-    "Cabo Verde":"Cape Verde","Bosnia and Herzegovina":"Bosnia and Herzegovina",
-    "Korea Republic":"South Korea",
+    # USA / Turkey variants
+    "USA":                      "United States",
+    "Turkey":                   "Türkiye",
+    # Africa
+    "Congo DR":                 "DR Congo",
+    "DR Congo":                 "DR Congo",
+    "Cote d'Ivoire":            "Ivory Coast",
+    "Côte d'Ivoire":            "Ivory Coast",
+    "Ivory Coast":              "Ivory Coast",
+    # Cape Verde — API uses "Cape Verde Islands"
+    "Cape Verde Islands":       "Cape Verde",
+    "Cabo Verde":               "Cape Verde",
+    "Cape Verde":               "Cape Verde",
+    # Bosnia — API uses "Bosnia-Herzegovina"
+    "Bosnia-Herzegovina":       "Bosnia and Herzegovina",
+    "Bosnia and Herzegovina":   "Bosnia and Herzegovina",
+    # Korea
+    "Korea Republic":           "South Korea",
+    "South Korea":              "South Korea",
+    # Others that may vary
+    "Iran":                     "Iran",
+    "IR Iran":                  "Iran",
 }
 
 def normalize(name):
