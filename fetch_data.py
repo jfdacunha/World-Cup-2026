@@ -97,19 +97,85 @@ def api_get(path):
         return None
 
 def qualify_prob(name, rank, played, points):
-    base = WIN_PROBS.get(name, 0.3)
+    """
+    Estimate % probability of qualifying from group stage (top 2 auto + best 8 third places).
+    Based purely on current standing + remaining matches + team strength modifier.
+    """
     remaining = 3 - played
+    max_pts = points + remaining * 3
+
+    # Base qualification probability from current standing
     if played == 0:
-        bonuses = {1:1.4,2:1.0,3:0.7,4:0.4}
-        raw = base * bonuses.get(rank, 0.5)
-    else:
-        ppg = points / played
-        proj = points + ppg * remaining
-        if rank==1: raw = base*(1.5+min(proj/9,1.0)*0.5)
-        elif rank==2: raw = base*(1.0+min(proj/9,0.8)*0.4)
-        elif rank==3: raw = base*(0.5+min(proj/9,0.5)*0.3)
-        else: raw = base*0.2
-    return min(99, max(1, round(raw*6)))
+        # Pre-tournament: use FIFA ranking tier as guide
+        strength = WIN_PROBS.get(name, 0.5)
+        total = 100.0  # will normalise across group later
+        # Rough tiers: top 5 teams 70-85%, mid 45-65%, minnows 15-35%
+        if strength >= 8.0:   return 80
+        elif strength >= 5.0: return 70
+        elif strength >= 3.0: return 60
+        elif strength >= 1.5: return 50
+        elif strength >= 0.8: return 35
+        elif strength >= 0.4: return 22
+        else:                 return 12
+
+    # After games played — model based on points trajectory
+    # Max possible points and current points determine fate
+
+    if played == 3:
+        # Group stage complete — definitive
+        if rank == 1:   return 99  # top 2 auto qualify
+        elif rank == 2: return 97
+        elif rank == 3: return 25  # best 8 third-places out of 12 groups
+        else:           return 1   # eliminated
+
+    # Mid-group: simulate remaining outcomes
+    # Use points as primary indicator, strength as tiebreaker
+    strength = WIN_PROBS.get(name, 0.5)
+    str_bonus = min(8, round(strength * 0.8))  # max +8 bonus from strength
+
+    if rank == 1:
+        if points == 3:
+            if remaining == 2: return min(95, 82 + str_bonus)
+            else:              return min(97, 88 + str_bonus)
+        elif points == 6:      return 99
+        elif points == 1:
+            if remaining == 1: return min(75, 58 + str_bonus)
+            else:              return min(80, 62 + str_bonus)
+        else: # 0 pts, somehow rank 1 (all drew)
+            return min(70, 50 + str_bonus)
+
+    elif rank == 2:
+        if points == 3:
+            if remaining == 2: return min(88, 72 + str_bonus)
+            else:              return min(92, 80 + str_bonus)
+        elif points == 6:      return 98
+        elif points == 1:
+            if remaining == 1: return min(55, 40 + str_bonus)
+            else:              return min(65, 48 + str_bonus)
+        else: # 0 pts rank 2
+            return min(60, 42 + str_bonus)
+
+    elif rank == 3:
+        if points == 3:        return min(60, 42 + str_bonus)
+        elif points == 1:
+            if remaining == 2: return min(42, 28 + str_bonus)
+            else:              return min(30, 18 + str_bonus)
+        elif points == 0:
+            if max_pts >= 9:   return min(38, 22 + str_bonus)
+            elif max_pts >= 6: return min(28, 15 + str_bonus)
+            else:              return min(15, 8 + str_bonus)
+        else: return min(50, 35 + str_bonus)
+
+    else:  # rank 4
+        if points == 3:        return min(45, 30 + str_bonus)  # weird but possible
+        elif points == 1:
+            if max_pts >= 7:   return min(22, 12 + str_bonus)
+            else:              return min(12, 5 + str_bonus)
+        elif points == 0:
+            if max_pts >= 9:   return min(18, 8 + str_bonus)
+            elif max_pts >= 6: return min(10, 4 + str_bonus)
+            else:              return 2  # basically eliminated
+        else: return min(18, 8 + str_bonus)
 
 def check_eliminated(teams):
     BEST3 = 4
@@ -183,7 +249,11 @@ def build_groups(standings, matches):
                 "qualify_prob":qualify_prob(name,rank,played,points),
                 "eliminated":None,
             })
-        teams_out.sort(key=lambda x:(x["rank"],-x["points"],-x["gd"],-x["gf"]))
+        # Sort by points desc, then GD desc, then GF desc (ignore API rank for ordering)
+        teams_out.sort(key=lambda x:(-x["points"],-x["gd"],-x["gf"]))
+        # Re-assign ranks based on our sort
+        for _i,_t in enumerate(teams_out):
+            _t["rank"] = _i + 1
         teams_out = check_eliminated(teams_out)
         gm = [m for m in matches if m["group"]==letter]
         results  = [m for m in gm if m["finished"]]
@@ -212,9 +282,7 @@ def build_bracket(groups_out):
         teams = gmap.get(gl,[])
         if idx>=len(teams): return {"name":None,"label":slot,"status":"tbd","prob":None}
         t = teams[idx]
-        base = WIN_PROBS.get(t["name"],0.3)
-        mult = (1.0+t["points"]/t["played"]*(0.18 if idx==0 else 0.08)) if t["played"]>0 else 1.0
-        prob = min(99,max(1,round(base*mult*6)))
+        prob = qualify_prob(t["name"], idx+1, t["played"], t["points"])
         status = "confirmed" if t["played"]>0 else "likely"
         return {"name":t["name"],"label":slot,"status":status,"prob":prob}
     return [{**m,"t1":resolve(m["s1"]),"t2":resolve(m["s2"])} for m in R32_MATCHES]
