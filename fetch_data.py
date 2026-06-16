@@ -239,20 +239,16 @@ def fetch_matches():
         grp = m.get("group","") or ""
         letter = grp.replace("GROUP_","").replace("Group ","").replace("GROUP ","").strip()
         sc = m.get("score",{}); ft = sc.get("fullTime",{}); ht = sc.get("halfTime",{})
+        # Convert UTC kickoff time to ET date (UTC-4 in June)
+        # Late US games (e.g. 9pm ET = 01:00 UTC next day) need this correction
+        _utc_str = m.get("utcDate","")
+        try:
+            _utc_dt  = datetime.datetime.fromisoformat(_utc_str.replace("Z","+00:00"))
+            _et_date = (_utc_dt - datetime.timedelta(hours=4)).strftime("%Y-%m-%d")
+        except Exception:
+            _et_date = _utc_str[:10]
         out.append({
-            # Convert UTC to ET (UTC-4 in June) for correct match date display
-            _utc_str = m.get("utcDate","")
-            if _utc_str:
-                try:
-                    import datetime as _dt
-                    _utc_dt = _dt.datetime.fromisoformat(_utc_str.replace("Z","+00:00"))
-                    _et_dt  = _utc_dt - _dt.timedelta(hours=4)  # ET = UTC-4 in June
-                    _date_str = _et_dt.strftime("%Y-%m-%d")
-                except:
-                    _date_str = _utc_str[:10]
-            else:
-                _date_str = ""
-            "date":_date_str,"group":letter,
+            "date":_et_date,"group":letter,
             "stage":m.get("stage",""),"status":status,
             "home":normalize(m.get("homeTeam",{}).get("name","")),
             "away":normalize(m.get("awayTeam",{}).get("name","")),
