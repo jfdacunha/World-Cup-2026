@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T22:23:40.144314+00:00",
+  "updated_at": "2026-06-16T22:25:42.575521+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -1510,43 +1510,13 @@
       "qualify_prob": 28
     },
     {
-      "name": "Austria",
-      "group": "J",
-      "played": 0,
-      "points": 0,
-      "gd": 0,
-      "gf": 0,
-      "in_best8": true,
-      "qualify_prob": 35
-    },
-    {
-      "name": "DR Congo",
-      "group": "K",
-      "played": 0,
-      "points": 0,
-      "gd": 0,
-      "gf": 0,
-      "in_best8": true,
-      "qualify_prob": 12
-    },
-    {
-      "name": "Ghana",
-      "group": "L",
-      "played": 0,
-      "points": 0,
-      "gd": 0,
-      "gf": 0,
-      "in_best8": false,
-      "qualify_prob": 22
-    },
-    {
       "name": "Czechia",
       "group": "A",
       "played": 1,
       "points": 0,
       "gd": -1,
       "gf": 1,
-      "in_best8": false,
+      "in_best8": true,
       "qualify_prob": 16
     },
     {
@@ -1556,7 +1526,7 @@
       "points": 0,
       "gd": -1,
       "gf": 0,
-      "in_best8": false,
+      "in_best8": true,
       "qualify_prob": 16
     },
     {
@@ -1568,6 +1538,36 @@
       "gf": 0,
       "in_best8": false,
       "qualify_prob": 16
+    },
+    {
+      "name": "Austria",
+      "group": "J",
+      "played": 0,
+      "points": 0,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 35
+    },
+    {
+      "name": "DR Congo",
+      "group": "K",
+      "played": 0,
+      "points": 0,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 12
+    },
+    {
+      "name": "Ghana",
+      "group": "L",
+      "played": 0,
+      "points": 0,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 22
     }
   ]
 }
