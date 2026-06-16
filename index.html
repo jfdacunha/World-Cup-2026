@@ -271,7 +271,7 @@ tr.q4 .tc{color:var(--muted)}
     <a href="#power"   id="nav-p">Win Odds</a>
   </nav>
   <div class="hd-r">
-    <span class="live-pill"><span class="dot"></span>Live · MD1</span>
+    <span class="live-pill" id="livePill"><span class="dot"></span>Live</span>
     <span class="update-badge" id="updateBadge" onclick="loadData()" title="Click to refresh now">⟳ Loading...</span>
   </div>
 </header>
@@ -788,20 +788,26 @@ function renderBestThirds(thirds) {
 // ── DATA LOADER ───────────────────────────────────────────────────────
 let refreshTimer = null;
 
-async function loadData(){
+async function loadData(attempt = 1){
   const badge = document.getElementById('updateBadge');
-  badge.textContent = '⟳ Updating...';
+  if(attempt === 1) badge.textContent = '⟳ Updating...';
 
   try {
     // Cache-bust so we always get the latest data.json
     const res  = await fetch('data.json?v=' + Date.now());
     if(!res.ok) throw new Error('HTTP '+res.status);
-    const data = await res.json();
+    const text = await res.text();
+    
+    // Guard: ensure we got valid JSON (not an empty response mid-deploy)
+    if(!text || text.trim().length < 10) throw new Error('Empty response');
+    const data = JSON.parse(text);
+    if(!data.groups || !data.bracket) throw new Error('Incomplete data');
 
     renderBracket(data.bracket || []);
     renderGroups(data.groups   || []);
     renderPowerRankings(data.groups || []);
     renderBestThirds(data.best_thirds || []);
+    updateLivePill(data.live_count || 0);
 
     // Format timestamp
     const dt  = new Date(data.updated_at);
@@ -809,20 +815,44 @@ async function loadData(){
     const src = data.source==='live' ? '🟢 live' : '🟡 cached';
     badge.textContent = `${src} · updated ${ago===0?'just now':ago+'m ago'} · click to refresh`;
 
-  } catch(e) {
-    console.error('Failed to load data.json:', e);
-    badge.textContent = '⚠️ Error loading — click to retry';
-  }
+    // Schedule next auto-refresh in 30 minutes
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(()=>loadData(1), 30 * 60 * 1000);
 
-  // Schedule next auto-refresh in 1 hour
-  clearTimeout(refreshTimer);
-  refreshTimer = setTimeout(loadData, 60 * 60 * 1000);
+  } catch(e) {
+    console.error(`Load attempt ${attempt} failed:`, e.message);
+    
+    if(attempt < 4) {
+      // Retry with exponential backoff: 5s, 15s, 45s
+      const delay = Math.pow(3, attempt) * 5000;
+      badge.textContent = `⟳ Retrying in ${Math.round(delay/1000)}s...`;
+      clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(()=>loadData(attempt+1), delay);
+    } else {
+      // All retries failed — show error but keep trying every 5 min
+      badge.textContent = '⚠️ Offline — retrying...';
+      clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(()=>loadData(1), 5 * 60 * 1000);
+    }
+  }
 }
 
 // ── CLOCK & DAYS LEFT ─────────────────────────────────────────────────
 function tick(){
   const diff = Math.ceil((new Date('2026-07-19') - new Date()) / 864e5);
   document.getElementById('st-days').textContent = Math.max(0,diff);
+}
+
+function updateLivePill(liveCount) {
+  const pill = document.getElementById('livePill');
+  if(!pill) return;
+  if(liveCount > 0) {
+    pill.innerHTML = `<span class="dot"></span>🔴 ${liveCount} Live`;
+    pill.style.color = 'var(--green)';
+  } else {
+    pill.innerHTML = '<span class="dot"></span>Live';
+    pill.style.color = 'var(--green)';
+  }
 }
 
 // ── NAV SCROLL HIGHLIGHT ──────────────────────────────────────────────
