@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T22:25:42.575521+00:00",
+  "updated_at": "2026-06-16T22:27:52.013860+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -1176,7 +1176,7 @@
       },
       "t2": {
         "name": "Japan",
-        "label": "3rd GrpF (1pts)",
+        "label": "Best 3rd A/B/C/D/F",
         "status": "likely",
         "prob": 29
       }
@@ -1233,7 +1233,7 @@
       },
       "t2": {
         "name": "Japan",
-        "label": "3rd GrpF (1pts)",
+        "label": "Best 3rd C/D/F/G/H",
         "status": "likely",
         "prob": 29
       }
@@ -1271,7 +1271,7 @@
       },
       "t2": {
         "name": "Japan",
-        "label": "3rd GrpF (1pts)",
+        "label": "Best 3rd C/E/F/H/I",
         "status": "likely",
         "prob": 29
       }
@@ -1290,7 +1290,7 @@
       },
       "t2": {
         "name": "Spain",
-        "label": "3rd GrpH (1pts)",
+        "label": "Best 3rd E/H/I/J/K",
         "status": "likely",
         "prob": 35
       }
@@ -1309,7 +1309,7 @@
       },
       "t2": {
         "name": "Japan",
-        "label": "3rd GrpF (1pts)",
+        "label": "Best 3rd B/E/F/I/J",
         "status": "likely",
         "prob": 29
       }
@@ -1328,7 +1328,7 @@
       },
       "t2": {
         "name": "Spain",
-        "label": "3rd GrpH (1pts)",
+        "label": "Best 3rd A/E/H/I/J",
         "status": "likely",
         "prob": 35
       }
@@ -1385,7 +1385,7 @@
       },
       "t2": {
         "name": "Japan",
-        "label": "3rd GrpF (1pts)",
+        "label": "Best 3rd E/F/G/I/J",
         "status": "likely",
         "prob": 29
       }
@@ -1423,7 +1423,7 @@
       },
       "t2": {
         "name": "Iraq",
-        "label": "3rd GrpI (1pts)",
+        "label": "Best 3rd D/E/I/J/L",
         "status": "likely",
         "prob": 28
       }
