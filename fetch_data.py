@@ -445,12 +445,29 @@ def main():
         groups_out = FALLBACK_GROUPS
     bracket = build_bracket(groups_out)
     total_live = sum(len(g["live"]) for g in groups_out)
+    # Compute best 3rd places for display
+    thirds_ranked, best_8_grps = compute_best_thirds(groups_out)
+    thirds_display = [
+        {
+            "name":    t["name"],
+            "group":   t["group"],
+            "played":  t["played"],
+            "points":  t["points"],
+            "gd":      t.get("gd", t["gf"]-t["ga"]),
+            "gf":      t["gf"],
+            "in_best8": t["group"] in best_8_grps,
+            "qualify_prob": qualify_prob(t["name"], 3, t["played"], t["points"]),
+        }
+        for t in thirds_ranked
+    ]
+
     output = {
         "updated_at": now,
         "source": source,
         "live_count": total_live,
         "groups": groups_out,
         "bracket": bracket,
+        "best_thirds": thirds_display,
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
