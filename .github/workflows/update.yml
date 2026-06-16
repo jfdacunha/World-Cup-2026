@@ -2,8 +2,6 @@ name: Update World Cup Data
 
 on:
   schedule:
-    # Run every 30 minutes — GitHub Actions can delay cron jobs,
-    # so running twice per hour ensures at least one fires per hour
     - cron: '0 * * * *'
     - cron: '30 * * * *'
   workflow_dispatch:
@@ -11,10 +9,14 @@ on:
     branches:
       - main
 
+# Prevent simultaneous runs — cancel the older one if two fire at once
+concurrency:
+  group: update-data
+  cancel-in-progress: true
+
 jobs:
   update-data:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
