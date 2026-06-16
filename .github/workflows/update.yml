@@ -9,7 +9,6 @@ on:
     branches:
       - main
 
-# Prevent simultaneous runs — cancel the older one if two fire at once
 concurrency:
   group: update-data
   cancel-in-progress: true
@@ -28,6 +27,33 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Test API connection
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+        run: |
+          python3 -c "
+import urllib.request, json, os, sys
+
+key = os.environ.get('FOOTBALL_API_KEY','')
+print(f'API key present: {bool(key)} (length: {len(key)})')
+
+# Test basic connection
+try:
+    req = urllib.request.Request(
+        'https://api.football-data.org/v4/competitions/',
+        headers={'X-Auth-Token': key}
+    )
+    with urllib.request.urlopen(req, timeout=10) as r:
+        data = json.loads(r.read())
+        comps = data.get('competitions', [])
+        print(f'Available competitions: {len(comps)}')
+        for c in comps:
+            print(f'  {c[\"code\"]} - {c[\"name\"]} ({c[\"area\"][\"name\"]})')
+except Exception as e:
+    print(f'API error: {e}')
+    sys.exit(1)
+"
 
       - name: Fetch live World Cup data
         env:
