@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-17T18:02:57.642389+00:00",
+  "updated_at": "2026-06-17T18:07:00.730197+00:00",
   "source": "live",
-  "live_count": 2,
+  "live_count": 1,
   "groups": [
     {
       "letter": "A",
@@ -171,6 +171,12 @@
       ],
       "results": [
         {
+          "home": "Canada",
+          "away": "Bosnia and Herzegovina",
+          "score": "1-1",
+          "date": "2026-06-12"
+        },
+        {
           "home": "Qatar",
           "away": "Switzerland",
           "score": "1-1",
@@ -199,14 +205,7 @@
           "date": "2026-06-24"
         }
       ],
-      "live": [
-        {
-          "home": "Canada",
-          "away": "Bosnia and Herzegovina",
-          "home_goals": 0,
-          "away_goals": 0
-        }
-      ]
+      "live": []
     },
     {
       "letter": "C",
