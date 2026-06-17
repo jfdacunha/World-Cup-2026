@@ -550,17 +550,24 @@ def main():
 
     groups_out = None
     source = "fallback"
+    diag = {}
     if API_KEY:
         print("Fetching from football-data.org...")
         standings = fetch_standings()
         matches   = fetch_matches()
-        print(f"DIAG: standings groups={len(standings) if standings else 0}, matches={len(matches) if matches is not None else 'None'}")
+        diag["standings_groups"] = len(standings) if standings else 0
+        diag["matches_count"] = len(matches) if matches is not None else None
         if matches:
-            sample = matches[:3]
-            for s in sample:
-                print(f"DIAG match sample: group='{s['group']}' home={s['home']} away={s['away']} status={s['status']} finished={s['finished']}")
-            grp_letters = set(m['group'] for m in matches)
-            print(f"DIAG: unique group values in matches: {grp_letters}")
+            diag["sample_matches"] = [
+                {"group":m["group"],"home":m["home"],"away":m["away"],
+                 "status":m["status"],"finished":m["finished"],"date":m["date"]}
+                for m in matches[:5]
+            ]
+            diag["unique_groups"] = sorted(set(m["group"] for m in matches))
+            diag["finished_count"] = sum(1 for m in matches if m["finished"])
+            diag["group_match_counts"] = {}
+            for letter in "ABCDEFGHIJKL":
+                diag["group_match_counts"][letter] = sum(1 for m in matches if m["group"]==letter)
         if standings and matches is not None:
             groups_out = build_groups(standings, matches)
             live_c = sum(len(g["live"]) for g in groups_out)
