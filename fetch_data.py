@@ -554,6 +554,13 @@ def main():
         print("Fetching from football-data.org...")
         standings = fetch_standings()
         matches   = fetch_matches()
+        print(f"DIAG: standings groups={len(standings) if standings else 0}, matches={len(matches) if matches is not None else 'None'}")
+        if matches:
+            sample = matches[:3]
+            for s in sample:
+                print(f"DIAG match sample: group='{s['group']}' home={s['home']} away={s['away']} status={s['status']} finished={s['finished']}")
+            grp_letters = set(m['group'] for m in matches)
+            print(f"DIAG: unique group values in matches: {grp_letters}")
         if standings and matches is not None:
             groups_out = build_groups(standings, matches)
             live_c = sum(len(g["live"]) for g in groups_out)
