@@ -247,14 +247,36 @@ def fetch_matches():
             _et_date = (_utc_dt - datetime.timedelta(hours=4)).strftime("%Y-%m-%d")
         except Exception:
             _et_date = _utc_str[:10]
+        # Sanity check: only trust an "IN_PLAY"/"PAUSED"/"HALFTIME" status if
+        # the match actually kicked off recently. football-data.org has been
+        # observed returning stale "IN_PLAY" statuses for matches that
+        # finished days ago (e.g. a match status that never updated to
+        # FINISHED). A real World Cup match (with stoppage time, ET, etc.)
+        # never runs longer than ~3.5 hours from kickoff.
+        is_status_live = status in ("IN_PLAY", "PAUSED", "HALFTIME")
+        hours_since_kickoff = None
+        if is_status_live:
+            try:
+                _now_utc = datetime.datetime.now(datetime.timezone.utc)
+                hours_since_kickoff = (_now_utc - _utc_dt).total_seconds() / 3600
+            except Exception:
+                hours_since_kickoff = None
+        # Only treat as genuinely live if kickoff was 0-3.5 hours ago
+        # (negative means it hasn't started yet — also not "live" in our UI)
+        really_live = (
+            is_status_live and
+            hours_since_kickoff is not None and
+            0 <= hours_since_kickoff <= 3.5
+        )
+
         out.append({
             "date":_et_date,"group":letter,
             "stage":m.get("stage",""),"status":status,
             "home":normalize(m.get("homeTeam",{}).get("name","")),
             "away":normalize(m.get("awayTeam",{}).get("name","")),
             "home_goals":ft.get("home"),"away_goals":ft.get("away"),
-            "finished":status=="FINISHED",
-            "live":status in ("IN_PLAY","PAUSED","HALFTIME"),
+            "finished":status=="FINISHED" or (is_status_live and not really_live and ft.get("home") is not None),
+            "live":really_live,
         })
     return out
 
