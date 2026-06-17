@@ -994,7 +994,7 @@ function populateTrendDropdowns() {
   });
 }
 
-function waitForChartJs(maxWaitMs = 8000) {
+function waitForChartJs(maxWaitMs = 15000) {
   return new Promise((resolve, reject) => {
     const start = Date.now();
     (function check() {
@@ -1038,9 +1038,9 @@ async function loadTrends() {
     };
   } catch (e) {
     console.error('Failed to load trends:', e);
-    note.textContent = 'Trends unavailable right now — retrying...';
-    // Auto-retry once after a short delay (handles slow CDN loads)
-    setTimeout(() => { loadTrends(); }, 3000);
+    note.textContent = `Trends error: ${e.message} — retrying in 5s...`;
+    // Auto-retry after a short delay (handles slow CDN loads)
+    setTimeout(() => { loadTrends(); }, 5000);
   }
 }
 
