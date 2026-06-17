@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T20:37:52.192552+00:00",
+  "updated_at": "2026-06-17T21:24:53.932513+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -1125,15 +1125,30 @@
         {
           "name": "England",
           "played": 1,
-          "win": 1,
-          "draw": 0,
+          "win": 0,
+          "draw": 1,
           "lose": 0,
-          "gf": 1,
-          "ga": 0,
-          "gd": 1,
-          "points": 3,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 1,
           "rank": 1,
-          "qualify_prob": 90,
+          "qualify_prob": 70,
+          "eliminated": null,
+          "live_match": true
+        },
+        {
+          "name": "Croatia",
+          "played": 1,
+          "win": 0,
+          "draw": 1,
+          "lose": 0,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 1,
+          "rank": 2,
+          "qualify_prob": 64,
           "eliminated": null,
           "live_match": true
         },
@@ -1147,7 +1162,7 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 2,
+          "rank": 3,
           "qualify_prob": 22,
           "eliminated": null,
           "live_match": false
@@ -1162,25 +1177,10 @@
           "ga": 0,
           "gd": 0,
           "points": 0,
-          "rank": 3,
+          "rank": 4,
           "qualify_prob": 12,
           "eliminated": null,
           "live_match": false
-        },
-        {
-          "name": "Croatia",
-          "played": 1,
-          "win": 0,
-          "draw": 0,
-          "lose": 1,
-          "gf": 0,
-          "ga": 1,
-          "gd": -1,
-          "points": 0,
-          "rank": 4,
-          "qualify_prob": 6,
-          "eliminated": null,
-          "live_match": true
         }
       ],
       "results": [],
@@ -1210,8 +1210,8 @@
         {
           "home": "England",
           "away": "Croatia",
-          "home_goals": 1,
-          "away_goals": 0
+          "home_goals": 3,
+          "away_goals": 2
         }
       ]
     }
@@ -1360,7 +1360,7 @@
         "name": "England",
         "label": "1L",
         "status": "confirmed",
-        "prob": 90
+        "prob": 70
       },
       "t2": {
         "name": "Spain",
@@ -1420,10 +1420,10 @@
         "prob": 48
       },
       "t2": {
-        "name": "Ghana",
+        "name": "Croatia",
         "label": "2L",
-        "status": "likely",
-        "prob": 22
+        "status": "confirmed",
+        "prob": 50
       }
     },
     {
@@ -1634,14 +1634,14 @@
       "qualify_prob": 50
     },
     {
-      "name": "Panama",
+      "name": "Ghana",
       "group": "L",
       "played": 0,
       "points": 0,
       "gd": 0,
       "gf": 0,
       "in_best8": false,
-      "qualify_prob": 12
+      "qualify_prob": 22
     }
   ]
 }
