@@ -263,6 +263,13 @@ def build_groups(standings, matches):
     for letter in GROUPS_ORDER:
         static = STATIC_TEAMS[letter]
         lmap = {t["name"]:t for t in (standings or {}).get(letter,[])}
+
+        # Compute which teams in this group are in a currently-LIVE match
+        # BEFORE building teams_out, since that loop references this set.
+        _gm_for_live = [m for m in matches if m["group"]==letter]
+        live_team_names = {m["home"] for m in _gm_for_live if m["live"]} | \
+                           {m["away"] for m in _gm_for_live if m["live"]}
+
         teams_out = []
         for i,name in enumerate(static):
             lt = lmap.get(name,{})
@@ -306,18 +313,7 @@ def build_groups(standings, matches):
         live_now = [m for m in gm if m["live"] or (m["finished"] and not has_valid_score(m))]
         upcoming = [m for m in gm if not m["finished"] and not m["live"]]
 
-        # ── CONSISTENCY FIX ──────────────────────────────────────────
-        # standings (from /standings endpoint) and matches (from /matches
-        # endpoint) are two separate API calls made moments apart. If a
-        # goal is scored between the two calls, the standings can reflect
-        # an older score than the live match score, causing a mismatch
-        # (e.g. standings show Portugal already won 1-0, but live shows 1-1).
-        #
-        # Fix: for any team currently playing a LIVE match, zero out their
-        # contribution from that specific match in the standings snapshot,
-        # since the live score (not yet final) shouldn't count toward
-        # official points/GF/GA until the match actually finishes.
-        live_team_names = {lv["home"] for lv in live_now} | {lv["away"] for lv in live_now}
+
         groups_out.append({
             "letter":letter,"teams":teams_out,
             "results":[{"home":r["home"],"away":r["away"],
