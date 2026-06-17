@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T06:19:59.648211+00:00",
+  "updated_at": "2026-06-17T06:22:37.082844+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -63,8 +63,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "score": "2-0",
+          "date": "2026-06-11"
+        },
+        {
+          "home": "South Korea",
+          "away": "Czechia",
+          "score": "2-1",
+          "date": "2026-06-11"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Czechia",
+          "away": "South Africa",
+          "date": "2026-06-18"
+        },
+        {
+          "home": "Mexico",
+          "away": "South Korea",
+          "date": "2026-06-18"
+        },
+        {
+          "home": "Czechia",
+          "away": "Mexico",
+          "date": "2026-06-24"
+        },
+        {
+          "home": "South Africa",
+          "away": "South Korea",
+          "date": "2026-06-24"
+        }
+      ],
       "live": []
     },
     {
@@ -127,8 +161,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Canada",
+          "away": "Bosnia and Herzegovina",
+          "score": "1-1",
+          "date": "2026-06-12"
+        },
+        {
+          "home": "Qatar",
+          "away": "Switzerland",
+          "score": "1-1",
+          "date": "2026-06-13"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Switzerland",
+          "away": "Bosnia and Herzegovina",
+          "date": "2026-06-18"
+        },
+        {
+          "home": "Canada",
+          "away": "Qatar",
+          "date": "2026-06-18"
+        },
+        {
+          "home": "Switzerland",
+          "away": "Canada",
+          "date": "2026-06-24"
+        },
+        {
+          "home": "Bosnia and Herzegovina",
+          "away": "Qatar",
+          "date": "2026-06-24"
+        }
+      ],
       "live": []
     },
     {
@@ -191,8 +259,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Brazil",
+          "away": "Morocco",
+          "score": "1-1",
+          "date": "2026-06-13"
+        },
+        {
+          "home": "Haiti",
+          "away": "Scotland",
+          "score": "0-1",
+          "date": "2026-06-13"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Scotland",
+          "away": "Morocco",
+          "date": "2026-06-19"
+        },
+        {
+          "home": "Brazil",
+          "away": "Haiti",
+          "date": "2026-06-19"
+        },
+        {
+          "home": "Morocco",
+          "away": "Haiti",
+          "date": "2026-06-24"
+        },
+        {
+          "home": "Scotland",
+          "away": "Brazil",
+          "date": "2026-06-24"
+        }
+      ],
       "live": []
     },
     {
@@ -255,8 +357,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "United States",
+          "away": "Paraguay",
+          "score": "4-1",
+          "date": "2026-06-12"
+        },
+        {
+          "home": "Australia",
+          "away": "Türkiye",
+          "score": "2-0",
+          "date": "2026-06-14"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "United States",
+          "away": "Australia",
+          "date": "2026-06-19"
+        },
+        {
+          "home": "Türkiye",
+          "away": "Paraguay",
+          "date": "2026-06-19"
+        },
+        {
+          "home": "Türkiye",
+          "away": "United States",
+          "date": "2026-06-25"
+        },
+        {
+          "home": "Paraguay",
+          "away": "Australia",
+          "date": "2026-06-25"
+        }
+      ],
       "live": []
     },
     {
@@ -319,8 +455,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Germany",
+          "away": "Curaçao",
+          "score": "7-1",
+          "date": "2026-06-14"
+        },
+        {
+          "home": "Ivory Coast",
+          "away": "Ecuador",
+          "score": "1-0",
+          "date": "2026-06-14"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Germany",
+          "away": "Ivory Coast",
+          "date": "2026-06-20"
+        },
+        {
+          "home": "Ecuador",
+          "away": "Curaçao",
+          "date": "2026-06-20"
+        },
+        {
+          "home": "Ecuador",
+          "away": "Germany",
+          "date": "2026-06-25"
+        },
+        {
+          "home": "Curaçao",
+          "away": "Ivory Coast",
+          "date": "2026-06-25"
+        }
+      ],
       "live": []
     },
     {
@@ -383,8 +553,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Netherlands",
+          "away": "Japan",
+          "score": "2-2",
+          "date": "2026-06-14"
+        },
+        {
+          "home": "Sweden",
+          "away": "Tunisia",
+          "score": "5-1",
+          "date": "2026-06-14"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Netherlands",
+          "away": "Sweden",
+          "date": "2026-06-20"
+        },
+        {
+          "home": "Tunisia",
+          "away": "Japan",
+          "date": "2026-06-21"
+        },
+        {
+          "home": "Tunisia",
+          "away": "Netherlands",
+          "date": "2026-06-25"
+        },
+        {
+          "home": "Japan",
+          "away": "Sweden",
+          "date": "2026-06-25"
+        }
+      ],
       "live": []
     },
     {
@@ -447,8 +651,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Belgium",
+          "away": "Egypt",
+          "score": "1-1",
+          "date": "2026-06-15"
+        },
+        {
+          "home": "Iran",
+          "away": "New Zealand",
+          "score": "2-2",
+          "date": "2026-06-15"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Belgium",
+          "away": "Iran",
+          "date": "2026-06-21"
+        },
+        {
+          "home": "New Zealand",
+          "away": "Egypt",
+          "date": "2026-06-21"
+        },
+        {
+          "home": "New Zealand",
+          "away": "Belgium",
+          "date": "2026-06-26"
+        },
+        {
+          "home": "Egypt",
+          "away": "Iran",
+          "date": "2026-06-26"
+        }
+      ],
       "live": []
     },
     {
@@ -511,8 +749,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Spain",
+          "away": "Cape Verde",
+          "score": "0-0",
+          "date": "2026-06-15"
+        },
+        {
+          "home": "Saudi Arabia",
+          "away": "Uruguay",
+          "score": "1-1",
+          "date": "2026-06-15"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Spain",
+          "away": "Saudi Arabia",
+          "date": "2026-06-21"
+        },
+        {
+          "home": "Uruguay",
+          "away": "Cape Verde",
+          "date": "2026-06-21"
+        },
+        {
+          "home": "Uruguay",
+          "away": "Spain",
+          "date": "2026-06-26"
+        },
+        {
+          "home": "Cape Verde",
+          "away": "Saudi Arabia",
+          "date": "2026-06-26"
+        }
+      ],
       "live": []
     },
     {
@@ -575,8 +847,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "France",
+          "away": "Senegal",
+          "score": "3-1",
+          "date": "2026-06-16"
+        },
+        {
+          "home": "Iraq",
+          "away": "Norway",
+          "score": "1-4",
+          "date": "2026-06-16"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "France",
+          "away": "Iraq",
+          "date": "2026-06-22"
+        },
+        {
+          "home": "Norway",
+          "away": "Senegal",
+          "date": "2026-06-22"
+        },
+        {
+          "home": "Norway",
+          "away": "France",
+          "date": "2026-06-26"
+        },
+        {
+          "home": "Senegal",
+          "away": "Iraq",
+          "date": "2026-06-26"
+        }
+      ],
       "live": []
     },
     {
@@ -639,8 +945,42 @@
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [],
+      "results": [
+        {
+          "home": "Argentina",
+          "away": "Algeria",
+          "score": "3-0",
+          "date": "2026-06-16"
+        },
+        {
+          "home": "Austria",
+          "away": "Jordan",
+          "score": "3-1",
+          "date": "2026-06-17"
+        }
+      ],
+      "upcoming": [
+        {
+          "home": "Argentina",
+          "away": "Austria",
+          "date": "2026-06-22"
+        },
+        {
+          "home": "Jordan",
+          "away": "Algeria",
+          "date": "2026-06-22"
+        },
+        {
+          "home": "Jordan",
+          "away": "Argentina",
+          "date": "2026-06-27"
+        },
+        {
+          "home": "Algeria",
+          "away": "Austria",
+          "date": "2026-06-27"
+        }
+      ],
       "live": []
     },
     {
@@ -704,7 +1044,28 @@
         }
       ],
       "results": [],
-      "upcoming": [],
+      "upcoming": [
+        {
+          "home": "Portugal",
+          "away": "DR Congo",
+          "date": "2026-06-17"
+        },
+        {
+          "home": "Uzbekistan",
+          "away": "Colombia",
+          "date": "2026-06-17"
+        },
+        {
+          "home": "Portugal",
+          "away": "Uzbekistan",
+          "date": "2026-06-23"
+        },
+        {
+          "home": "Colombia",
+          "away": "DR Congo",
+          "date": "2026-06-23"
+        }
+      ],
       "live": []
     },
     {
@@ -768,7 +1129,28 @@
         }
       ],
       "results": [],
-      "upcoming": [],
+      "upcoming": [
+        {
+          "home": "England",
+          "away": "Croatia",
+          "date": "2026-06-17"
+        },
+        {
+          "home": "Ghana",
+          "away": "Panama",
+          "date": "2026-06-17"
+        },
+        {
+          "home": "England",
+          "away": "Ghana",
+          "date": "2026-06-23"
+        },
+        {
+          "home": "Panama",
+          "away": "Croatia",
+          "date": "2026-06-23"
+        }
+      ],
       "live": []
     }
   ],
