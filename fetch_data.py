@@ -550,32 +550,29 @@ def main():
 
     groups_out = None
     source = "fallback"
-    diag = {}
     if API_KEY:
         print("Fetching from football-data.org...")
         standings = fetch_standings()
         matches   = fetch_matches()
-        diag["standings_groups"] = len(standings) if standings else 0
-        diag["matches_count"] = len(matches) if matches is not None else None
-        if matches:
-            diag["sample_matches"] = [
-                {"group":m["group"],"home":m["home"],"away":m["away"],
-                 "status":m["status"],"finished":m["finished"],"date":m["date"]}
-                for m in matches[:5]
-            ]
-            diag["unique_groups"] = sorted(set(m["group"] for m in matches))
-            diag["finished_count"] = sum(1 for m in matches if m["finished"])
-            diag["group_match_counts"] = {}
-            for letter in "ABCDEFGHIJKL":
-                diag["group_match_counts"][letter] = sum(1 for m in matches if m["group"]==letter)
-        if standings and matches is not None:
-            groups_out = build_groups(standings, matches)
-            live_c = sum(len(g["live"]) for g in groups_out)
-            done_c = sum(len(g["results"]) for g in groups_out)
-            print(f"Live API OK: {done_c} results, {live_c} live")
-            source = "live"
+        # Safety check: only trust the API response if we got BOTH standings
+        # AND a reasonable number of matches (avoid partial/corrupt API responses
+        # silently wiping out results and upcoming fixtures)
+        if standings and matches and len(matches) >= 50:
+            candidate = build_groups(standings, matches)
+            total_results = sum(len(g["results"]) for g in candidate)
+            # Sanity check: we should have at least as many results as last known good state.
+            # If somehow we get 0 results across all groups while matches exist, something
+            # is wrong with parsing — don't let it wipe out a previously working page.
+            if total_results > 0 or all(t["played"] == 0 for g in candidate for t in g["teams"]):
+                groups_out = candidate
+                live_c = sum(len(g["live"]) for g in groups_out)
+                done_c = sum(len(g["results"]) for g in groups_out)
+                print(f"Live API OK: {done_c} results, {live_c} live")
+                source = "live"
+            else:
+                print("API data looked inconsistent (0 results despite matches) - using fallback", file=sys.stderr)
         else:
-            print("API returned nothing - using fallback", file=sys.stderr)
+            print(f"API returned insufficient data (standings={bool(standings)}, matches={len(matches) if matches else 0}) - using fallback", file=sys.stderr)
     else:
         print("No API key - using fallback", file=sys.stderr)
     if not groups_out:
@@ -605,7 +602,6 @@ def main():
         "groups": groups_out,
         "bracket": bracket,
         "best_thirds": thirds_display,
-        "_diag": diag,
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
