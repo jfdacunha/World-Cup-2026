@@ -659,5 +659,63 @@ def main():
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"Written data.json ({source}) - {total_live} live")
 
+    # ── APPEND HISTORY SNAPSHOT ───────────────────────────────────────
+    append_history_snapshot(now, groups_out)
+
+
+def append_history_snapshot(timestamp, groups_out):
+    """
+    Maintain a rolling history of each team's qualify_prob and win_prob
+    over time, so the frontend can chart how probabilities evolved.
+    Stored in history.json as: { "TeamName": [ {"t": iso_timestamp, "q": int, "w": float}, ... ] }
+    Snapshots are de-duplicated: only appended if probabilities actually
+    changed since the last snapshot, and trimmed to the most recent 500
+    points per team to keep the file size reasonable over a long tournament.
+    """
+    hist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "history.json")
+    try:
+        if os.path.exists(hist_path):
+            with open(hist_path, "r", encoding="utf-8") as f:
+                history = json.load(f)
+        else:
+            history = {}
+    except Exception:
+        history = {}
+
+    # Compute win_prob the same way the frontend power rankings does:
+    # normalise each team's raw strength-adjusted score across the full 48-team field.
+    all_teams = []
+    for g in groups_out:
+        for t in g["teams"]:
+            base = WIN_PROBS.get(t["name"], 0.3)
+            mult = 1.0
+            if t["played"] > 0:
+                ppg = t["points"] / t["played"]
+                rank = t["rank"]
+                if rank == 1:   mult = 1.0 + ppg * 0.18
+                elif rank == 2: mult = 1.0 + ppg * 0.08
+                elif rank == 3: mult = 1.0 - 0.15
+                else:           mult = 1.0 - 0.35
+            raw = max(0.05, base * mult)
+            all_teams.append((t["name"], raw, t["qualify_prob"]))
+
+    total_raw = sum(r for _, r, _ in all_teams) or 1.0
+
+    for name, raw, qp in all_teams:
+        win_pct = round((raw / total_raw) * 100, 3)
+        entry = {"t": timestamp, "q": qp, "w": win_pct}
+
+        team_hist = history.setdefault(name, [])
+        if not team_hist or (team_hist[-1]["q"] != qp or team_hist[-1]["w"] != win_pct):
+            team_hist.append(entry)
+            if len(team_hist) > 500:
+                history[name] = team_hist[-500:]
+
+    with open(hist_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False)
+
+    print(f"History snapshot appended for {len(all_teams)} teams")
+
+
 if __name__ == "__main__":
     main()
