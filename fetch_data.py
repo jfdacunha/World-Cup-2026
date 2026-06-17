@@ -550,15 +550,10 @@ def main():
 
     groups_out = None
     source = "fallback"
-    diag = {}
     if API_KEY:
         print("Fetching from football-data.org...")
         standings = fetch_standings()
         matches   = fetch_matches()
-        diag["standings_count"] = len(standings) if standings else 0
-        diag["matches_count"] = len(matches) if matches is not None else None
-        diag["matches_is_none"] = matches is None
-        diag["standings_is_none"] = standings is None
         # Safety check: only trust the API response if we got BOTH standings
         # AND a reasonable number of matches (avoid partial/corrupt API responses
         # silently wiping out results and upcoming fixtures)
@@ -607,7 +602,6 @@ def main():
         "groups": groups_out,
         "bracket": bracket,
         "best_thirds": thirds_display,
-        "_diag": diag if API_KEY else {"no_api_key": True},
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
