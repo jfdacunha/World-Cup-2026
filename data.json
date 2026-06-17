@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-16T23:29:27.928230+00:00",
+  "updated_at": "2026-06-17T06:18:39.517636+00:00",
   "source": "live",
-  "live_count": 1,
+  "live_count": 0,
   "groups": [
     {
       "letter": "A",
@@ -791,6 +791,20 @@
       "letter": "I",
       "teams": [
         {
+          "name": "Norway",
+          "played": 1,
+          "win": 1,
+          "draw": 0,
+          "lose": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "points": 3,
+          "rank": 1,
+          "qualify_prob": 84,
+          "eliminated": null
+        },
+        {
           "name": "France",
           "played": 1,
           "win": 1,
@@ -800,36 +814,8 @@
           "ga": 1,
           "gd": 2,
           "points": 3,
-          "rank": 1,
-          "qualify_prob": 90,
-          "eliminated": null
-        },
-        {
-          "name": "Norway",
-          "played": 1,
-          "win": 1,
-          "draw": 0,
-          "lose": 0,
-          "gf": 2,
-          "ga": 1,
-          "gd": 1,
-          "points": 3,
           "rank": 2,
-          "qualify_prob": 74,
-          "eliminated": null
-        },
-        {
-          "name": "Iraq",
-          "played": 1,
-          "win": 0,
-          "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 2,
-          "gd": -1,
-          "points": 0,
-          "rank": 3,
-          "qualify_prob": 15,
+          "qualify_prob": 80,
           "eliminated": null
         },
         {
@@ -842,8 +828,22 @@
           "ga": 3,
           "gd": -2,
           "points": 0,
+          "rank": 3,
+          "qualify_prob": 16,
+          "eliminated": null
+        },
+        {
+          "name": "Iraq",
+          "played": 1,
+          "win": 0,
+          "draw": 0,
+          "lose": 1,
+          "gf": 1,
+          "ga": 4,
+          "gd": -3,
+          "points": 0,
           "rank": 4,
-          "qualify_prob": 5,
+          "qualify_prob": 4,
           "eliminated": null
         }
       ],
@@ -852,6 +852,12 @@
           "home": "France",
           "away": "Senegal",
           "score": "3-1",
+          "date": "2026-06-16"
+        },
+        {
+          "home": "Iraq",
+          "away": "Norway",
+          "score": "1-4",
           "date": "2026-06-16"
         }
       ],
@@ -877,87 +883,83 @@
           "date": "2026-06-26"
         }
       ],
-      "live": [
-        {
-          "home": "Iraq",
-          "away": "Norway",
-          "home_goals": 1,
-          "away_goals": 2
-        }
-      ]
+      "live": []
     },
     {
       "letter": "J",
       "teams": [
         {
           "name": "Argentina",
-          "played": 0,
-          "win": 0,
+          "played": 1,
+          "win": 1,
           "draw": 0,
           "lose": 0,
-          "gf": 0,
+          "gf": 3,
           "ga": 0,
-          "gd": 0,
-          "points": 0,
+          "gd": 3,
+          "points": 3,
           "rank": 1,
-          "qualify_prob": 80,
-          "eliminated": null
-        },
-        {
-          "name": "Algeria",
-          "played": 0,
-          "win": 0,
-          "draw": 0,
-          "lose": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
-          "rank": 2,
-          "qualify_prob": 35,
+          "qualify_prob": 90,
           "eliminated": null
         },
         {
           "name": "Austria",
-          "played": 0,
-          "win": 0,
+          "played": 1,
+          "win": 1,
           "draw": 0,
           "lose": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
-          "rank": 3,
-          "qualify_prob": 35,
+          "gf": 2,
+          "ga": 1,
+          "gd": 1,
+          "points": 3,
+          "rank": 2,
+          "qualify_prob": 73,
           "eliminated": null
         },
         {
           "name": "Jordan",
-          "played": 0,
+          "played": 1,
           "win": 0,
           "draw": 0,
-          "lose": 0,
+          "lose": 1,
+          "gf": 1,
+          "ga": 2,
+          "gd": -1,
+          "points": 0,
+          "rank": 3,
+          "qualify_prob": 15,
+          "eliminated": null
+        },
+        {
+          "name": "Algeria",
+          "played": 1,
+          "win": 0,
+          "draw": 0,
+          "lose": 1,
           "gf": 0,
-          "ga": 0,
-          "gd": 0,
+          "ga": 3,
+          "gd": -3,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 12,
+          "qualify_prob": 5,
           "eliminated": null
         }
       ],
-      "results": [],
-      "upcoming": [
+      "results": [
         {
           "home": "Argentina",
           "away": "Algeria",
+          "score": "3-0",
           "date": "2026-06-16"
         },
         {
           "home": "Austria",
           "away": "Jordan",
+          "score": "3-1",
           "date": "2026-06-17"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Argentina",
           "away": "Austria",
@@ -967,6 +969,16 @@
           "home": "Jordan",
           "away": "Algeria",
           "date": "2026-06-22"
+        },
+        {
+          "home": "Jordan",
+          "away": "Argentina",
+          "date": "2026-06-27"
+        },
+        {
+          "home": "Algeria",
+          "away": "Austria",
+          "date": "2026-06-27"
         }
       ],
       "live": []
@@ -1226,10 +1238,10 @@
       "s1": "1I",
       "s2": "3rd-CDFGH",
       "t1": {
-        "name": "France",
+        "name": "Norway",
         "label": "1I",
         "status": "confirmed",
-        "prob": 90
+        "prob": 84
       },
       "t2": {
         "name": "Japan",
@@ -1251,10 +1263,10 @@
         "prob": 73
       },
       "t2": {
-        "name": "Norway",
+        "name": "France",
         "label": "2I",
         "status": "confirmed",
-        "prob": 74
+        "prob": 80
       }
     },
     {
@@ -1365,10 +1377,10 @@
         "prob": 63
       },
       "t2": {
-        "name": "Algeria",
+        "name": "Austria",
         "label": "2J",
-        "status": "likely",
-        "prob": 35
+        "status": "confirmed",
+        "prob": 73
       }
     },
     {
@@ -1399,8 +1411,8 @@
       "t1": {
         "name": "Argentina",
         "label": "1J",
-        "status": "likely",
-        "prob": 80
+        "status": "confirmed",
+        "prob": 90
       },
       "t2": {
         "name": "Uruguay",
@@ -1422,7 +1434,7 @@
         "prob": 70
       },
       "t2": {
-        "name": "Iraq",
+        "name": "Jordan",
         "label": "Best 3rd D/E/I/J/L",
         "status": "likely",
         "prob": 15
@@ -1510,8 +1522,8 @@
       "qualify_prob": 16
     },
     {
-      "name": "Iraq",
-      "group": "I",
+      "name": "Jordan",
+      "group": "J",
       "played": 1,
       "points": 0,
       "gd": -1,
@@ -1530,6 +1542,16 @@
       "qualify_prob": 16
     },
     {
+      "name": "Senegal",
+      "group": "I",
+      "played": 1,
+      "points": 0,
+      "gd": -2,
+      "gf": 1,
+      "in_best8": false,
+      "qualify_prob": 16
+    },
+    {
       "name": "Türkiye",
       "group": "D",
       "played": 1,
@@ -1538,16 +1560,6 @@
       "gf": 0,
       "in_best8": false,
       "qualify_prob": 16
-    },
-    {
-      "name": "Austria",
-      "group": "J",
-      "played": 0,
-      "points": 0,
-      "gd": 0,
-      "gf": 0,
-      "in_best8": false,
-      "qualify_prob": 35
     },
     {
       "name": "DR Congo",
