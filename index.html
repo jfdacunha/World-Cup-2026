@@ -850,6 +850,164 @@ function renderBestThirds(thirds) {
   tbody.innerHTML = html;
 }
 
+// ── PROBABILITY TRENDS ───────────────────────────────────────────────
+let qualifyChartInst = null;
+let winChartInst = null;
+let historyData = null;
+let groupLetterByTeam = {};
+
+// Distinct, accessible colour palette cycling across teams (works on dark bg)
+const TREND_COLORS = [
+  '#d4a843','#22c55e','#3b82f6','#ef4444','#a855f7','#06b6d4',
+  '#f97316','#84cc16','#ec4899','#14b8a6','#eab308','#6366f1',
+  '#f43f5e','#10b981','#8b5cf6','#0ea5e9','#facc15','#fb7185',
+];
+
+function colorForTeam(name, allNames) {
+  const idx = allNames.indexOf(name);
+  return TREND_COLORS[idx % TREND_COLORS.length];
+}
+
+function fmtTrendDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' ' +
+         d.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+}
+
+function buildChartDatasets(metricKey, selectedTeam) {
+  const names = Object.keys(historyData).sort();
+  const datasets = [];
+
+  if (selectedTeam) {
+    // Single team: one bold line
+    const points = (historyData[selectedTeam] || []).map(p => ({x: p.t, y: p[metricKey]}));
+    datasets.push({
+      label: selectedTeam,
+      data: points,
+      borderColor: '#d4a843',
+      backgroundColor: 'rgba(212,168,67,0.08)',
+      borderWidth: 2.5,
+      pointRadius: points.length < 30 ? 3 : 0,
+      pointHoverRadius: 5,
+      tension: 0.25,
+      fill: true,
+    });
+  } else {
+    // All teams: thin multi-coloured lines, no fill, no points (keeps it readable)
+    names.forEach(name => {
+      const points = (historyData[name] || []).map(p => ({x: p.t, y: p[metricKey]}));
+      if (points.length === 0) return;
+      datasets.push({
+        label: name,
+        data: points,
+        borderColor: colorForTeam(name, names),
+        backgroundColor: 'transparent',
+        borderWidth: 1.25,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        tension: 0.25,
+        fill: false,
+      });
+    });
+  }
+  return datasets;
+}
+
+function renderTrendChart(canvasId, metricKey, selectedTeam, existingInst, yLabel) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return existingInst;
+  if (existingInst) existingInst.destroy();
+
+  const datasets = buildChartDatasets(metricKey, selectedTeam);
+
+  const inst = new Chart(ctx, {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'nearest', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0d1425',
+          borderColor: 'rgba(255,255,255,.1)',
+          borderWidth: 1,
+          titleFont: { family: "'DM Mono', monospace", size: 11 },
+          bodyFont: { family: "'DM Mono', monospace", size: 11 },
+          callbacks: {
+            title: (items) => items.length ? fmtTrendDate(items[0].raw.x) : '',
+            label: (item) => `${item.dataset.label}: ${item.raw.y}${metricKey==='q'?'%':'%'}`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: { tooltipFormat: 'MMM d, HH:mm' },
+          grid: { color: 'rgba(255,255,255,.05)' },
+          ticks: { color: '#8a93a8', font: { family: "'DM Mono', monospace", size: 9 }, maxRotation: 0 },
+        },
+        y: {
+          min: 0,
+          suggestedMax: metricKey==='q' ? 100 : undefined,
+          grid: { color: 'rgba(255,255,255,.05)' },
+          ticks: {
+            color: '#8a93a8', font: { family: "'DM Mono', monospace", size: 9 },
+            callback: (v) => v + '%',
+          },
+        },
+      },
+    },
+  });
+  return inst;
+}
+
+function populateTrendDropdowns() {
+  const names = Object.keys(historyData).sort();
+  ['qualifySelect','winSelect'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (!sel) return;
+    const current = sel.value;
+    sel.innerHTML = '<option value="">All teams</option>' +
+      names.map(n => `<option value="${n}">${f(n)} ${n}</option>`).join('');
+    sel.value = current;
+  });
+}
+
+async function loadTrends() {
+  const note = document.getElementById('trendsNote');
+  try {
+    const res = await fetch('history.json?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    historyData = await res.json();
+
+    const teamCount = Object.keys(historyData).length;
+    const totalPoints = Object.values(historyData).reduce((s, arr) => s + arr.length, 0);
+
+    if (teamCount === 0) {
+      note.textContent = 'No trend data yet — check back after the next update.';
+      return;
+    }
+
+    populateTrendDropdowns();
+    qualifyChartInst = renderTrendChart('qualifyChart', 'q', document.getElementById('qualifySelect').value, qualifyChartInst);
+    winChartInst     = renderTrendChart('winChart',     'w', document.getElementById('winSelect').value, winChartInst);
+
+    note.textContent = `Tracking ${teamCount} teams · ${totalPoints} data points · updates every time the tournament data refreshes`;
+
+    document.getElementById('qualifySelect').onchange = (e) => {
+      qualifyChartInst = renderTrendChart('qualifyChart', 'q', e.target.value, qualifyChartInst);
+    };
+    document.getElementById('winSelect').onchange = (e) => {
+      winChartInst = renderTrendChart('winChart', 'w', e.target.value, winChartInst);
+    };
+  } catch (e) {
+    console.error('Failed to load history.json:', e);
+    note.textContent = 'Could not load trend history — will retry on next refresh.';
+  }
+}
+
 // ── DATA LOADER ───────────────────────────────────────────────────────
 let refreshTimer = null;
 
