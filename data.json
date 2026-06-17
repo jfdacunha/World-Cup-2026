@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T06:23:57.530612+00:00",
+  "updated_at": "2026-06-17T06:25:40.558299+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1581,5 +1581,81 @@
       "in_best8": false,
       "qualify_prob": 22
     }
-  ]
+  ],
+  "_diag": {
+    "standings_groups": 12,
+    "matches_count": 104,
+    "sample_matches": [
+      {
+        "group": "A",
+        "home": "Mexico",
+        "away": "South Africa",
+        "status": "FINISHED",
+        "finished": true,
+        "date": "2026-06-11"
+      },
+      {
+        "group": "A",
+        "home": "South Korea",
+        "away": "Czechia",
+        "status": "FINISHED",
+        "finished": true,
+        "date": "2026-06-11"
+      },
+      {
+        "group": "B",
+        "home": "Canada",
+        "away": "Bosnia and Herzegovina",
+        "status": "FINISHED",
+        "finished": true,
+        "date": "2026-06-12"
+      },
+      {
+        "group": "D",
+        "home": "United States",
+        "away": "Paraguay",
+        "status": "FINISHED",
+        "finished": true,
+        "date": "2026-06-12"
+      },
+      {
+        "group": "B",
+        "home": "Qatar",
+        "away": "Switzerland",
+        "status": "FINISHED",
+        "finished": true,
+        "date": "2026-06-13"
+      }
+    ],
+    "unique_groups": [
+      "",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L"
+    ],
+    "finished_count": 20,
+    "group_match_counts": {
+      "A": 6,
+      "B": 6,
+      "C": 6,
+      "D": 6,
+      "E": 6,
+      "F": 6,
+      "G": 6,
+      "H": 6,
+      "I": 6,
+      "J": 6,
+      "K": 6,
+      "L": 6
+    }
+  }
 }
