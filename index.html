@@ -281,6 +281,7 @@ tr.q4 .tc{color:var(--muted)}
     <a href="#bracket" class="active" id="nav-b">Bracket</a>
     <a href="#groups"  id="nav-g">Group Stage</a>
     <a href="#power"   id="nav-p">Win Odds</a>
+    <a href="#trends"  id="nav-t">Trends</a>
   </nav>
   <div class="hd-r">
     <span class="live-pill" id="livePill"><span class="dot"></span>Live</span>
@@ -367,6 +368,38 @@ tr.q4 .tc{color:var(--muted)}
   <div class="sec-title">World Cup Win Probability</div>
   <div class="sec-sub">All 48 teams ranked · Based on current group standing + pre-tournament strength · Updates every hour</div>
   <div id="powerEl"><div class="loading"><div class="spin"></div>Loading...</div></div>
+</section>
+
+<hr class="div">
+
+<!-- PROBABILITY TRENDS OVER TIME -->
+<section class="section" id="trends">
+  <div class="sec-title">Probability Trends</div>
+  <div class="sec-sub">How each team's chances have evolved · Pick a team or compare all 48</div>
+
+  <div class="trends-grid">
+    <div class="trend-panel">
+      <div class="trend-head">
+        <span class="trend-label">Qualify %</span>
+        <select class="trend-select" id="qualifySelect">
+          <option value="">All teams</option>
+        </select>
+      </div>
+      <div class="trend-chart-wrap"><canvas id="qualifyChart"></canvas></div>
+    </div>
+
+    <div class="trend-panel">
+      <div class="trend-head">
+        <span class="trend-label">Win Cup %</span>
+        <select class="trend-select" id="winSelect">
+          <option value="">All teams</option>
+        </select>
+      </div>
+      <div class="trend-chart-wrap"><canvas id="winChart"></canvas></div>
+    </div>
+  </div>
+
+  <p class="trends-note" id="trendsNote">Loading history...</p>
 </section>
 
 <!-- Ad Unit 3 — Above Footer -->
