@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T17:54:41.345076+00:00",
+  "updated_at": "2026-06-17T17:58:43.832662+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -1071,7 +1071,7 @@
           "home": "Portugal",
           "away": "DR Congo",
           "home_goals": 1,
-          "away_goals": 0
+          "away_goals": 1
         }
       ]
     },
