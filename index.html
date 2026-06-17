@@ -71,10 +71,14 @@ nav a.active{color:var(--gold);border-bottom-color:var(--gold)}
   font-size:.55rem;font-family:'DM Mono',monospace;color:var(--faint);
   cursor:pointer;padding:3px 7px;
   border:1px solid var(--border);border-radius:4px;
-  transition:border-color .15s;
+  transition:border-color .15s, background .15s;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  max-width:140px;
+  max-width:160px;
+  background:transparent;
+  -webkit-appearance:none;appearance:none;
 }
+.update-badge:active{background:var(--s3)}
+.update-badge:disabled{opacity:.5;cursor:wait}
 .update-badge:hover{border-color:var(--border2);color:var(--muted)}
 
 /* ── Desktop: put nav back inline ── */
@@ -280,7 +284,7 @@ tr.q4 .tc{color:var(--muted)}
   </nav>
   <div class="hd-r">
     <span class="live-pill" id="livePill"><span class="dot"></span>Live</span>
-    <span class="update-badge" id="updateBadge" onclick="loadData()" title="Click to refresh now">⟳ Loading...</span>
+    <button class="update-badge" id="updateBadge" onclick="manualRefresh()" title="Check for the latest published scores">⟳ Loading...</button>
   </div>
 </header>
 
@@ -796,7 +800,14 @@ function renderBestThirds(thirds) {
 // ── DATA LOADER ───────────────────────────────────────────────────────
 let refreshTimer = null;
 
-async function loadData(attempt = 1){
+function manualRefresh(){
+  const badge = document.getElementById('updateBadge');
+  badge.disabled = true;
+  badge.textContent = '⟳ Checking for latest...';
+  loadData(1, true);
+}
+
+async function loadData(attempt = 1, isManual = false){
   const badge = document.getElementById('updateBadge');
   if(attempt === 1) badge.textContent = '⟳ Updating...';
 
@@ -821,7 +832,14 @@ async function loadData(attempt = 1){
     const dt  = new Date(data.updated_at);
     const ago = Math.round((Date.now()-dt)/60000);
     const src = data.source==='live' ? '🟢 live' : '🟡 cached';
-    badge.textContent = `${src} · updated ${ago===0?'just now':ago+'m ago'} · click to refresh`;
+    badge.disabled = false;
+    if(isManual){
+      badge.textContent = ago < 2
+        ? `✅ ${src} · up to date`
+        : `${src} · updated ${ago}m ago · check again`;
+    } else {
+      badge.textContent = `${src} · updated ${ago===0?'just now':ago+'m ago'} · check again`;
+    }
 
     // Smart refresh interval:
     // - If there's a live match right now: poll every 90 seconds
@@ -842,6 +860,7 @@ async function loadData(attempt = 1){
 
   } catch(e) {
     console.error(`Load attempt ${attempt} failed:`, e.message);
+    document.getElementById('updateBadge').disabled = false;
     
     if(attempt < 4) {
       // Retry with exponential backoff: 5s, 15s, 45s
