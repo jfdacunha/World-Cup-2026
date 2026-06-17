@@ -295,22 +295,6 @@ tr.q4 .tc{color:var(--muted)}
 </style>
 </head>
 <body>
-<div id="debugBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:#7a1d1d;color:#fff;font-family:monospace;font-size:11px;padding:8px;max-height:40vh;overflow:auto;white-space:pre-wrap"></div>
-<script>
-  window.__debugLog = [];
-  function __dbg(msg) {
-    window.__debugLog.push(msg);
-    const b = document.getElementById('debugBanner');
-    if (b) { b.style.display = 'block'; b.textContent = window.__debugLog.join('\n'); }
-  }
-  window.addEventListener('error', (e) => {
-    __dbg('JS ERROR: ' + e.message + ' at ' + e.filename + ':' + e.lineno + ':' + e.colno);
-  });
-  window.addEventListener('unhandledrejection', (e) => {
-    __dbg('UNHANDLED PROMISE REJECTION: ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
-  });
-</script>
-
 <header>
   <div class="logo">WC<span>2026</span></div>
   <nav>
@@ -950,7 +934,11 @@ function buildChartDatasets(metricKey, selectedTeam) {
 function renderTrendChart(canvasId, metricKey, selectedTeam, existingInst, yLabel) {
   const ctx = document.getElementById(canvasId);
   if (!ctx) return existingInst;
-  if (existingInst) existingInst.destroy();
+  // Destroy both our tracked instance AND any chart Chart.js itself still has
+  // registered on this canvas (covers races between overlapping loadTrends() calls).
+  if (existingInst) { try { existingInst.destroy(); } catch(e) {} }
+  const stale = (typeof Chart !== 'undefined' && Chart.getChart) ? Chart.getChart(ctx) : null;
+  if (stale) { try { stale.destroy(); } catch(e) {} }
 
   const datasets = buildChartDatasets(metricKey, selectedTeam);
 
@@ -1020,7 +1008,11 @@ function waitForChartJs(maxWaitMs = 15000) {
   });
 }
 
+let __trendsLoading = false;
+
 async function loadTrends() {
+  if (__trendsLoading) return;  // prevent overlapping concurrent calls
+  __trendsLoading = true;
   const note = document.getElementById('trendsNote');
   try {
     await waitForChartJs();
@@ -1053,9 +1045,11 @@ async function loadTrends() {
     };
   } catch (e) {
     console.error('Failed to load trends:', e);
-    note.textContent = `Trends error: ${e.message} — retrying in 5s...`;
+    note.textContent = 'Trends unavailable right now — retrying...';
     // Auto-retry after a short delay (handles slow CDN loads)
     setTimeout(() => { loadTrends(); }, 5000);
+  } finally {
+    __trendsLoading = false;
   }
 }
 
