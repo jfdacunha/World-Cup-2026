@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T17:45:31.417694+00:00",
+  "updated_at": "2026-06-17T17:47:05.328240+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -1588,11 +1588,5 @@
       "in_best8": false,
       "qualify_prob": 22
     }
-  ],
-  "_diag": {
-    "standings_count": 12,
-    "matches_count": 104,
-    "matches_is_none": false,
-    "standings_is_none": false
-  }
+  ]
 }
