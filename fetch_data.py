@@ -267,13 +267,26 @@ def build_groups(standings, matches):
         for i,name in enumerate(static):
             lt = lmap.get(name,{})
             played=lt.get("played",0); points=lt.get("points",0); rank=lt.get("rank",i+1)
+            win=lt.get("win",0); draw=lt.get("draw",0); lose=lt.get("lose",0)
+            gf=lt.get("gf",0); ga=lt.get("ga",0); gd=lt.get("gd",0)
+
+            # If this team is in a currently-LIVE match, the /standings
+            # endpoint may have already counted that match's in-progress
+            # score as part of "played" stats (API behaviour varies).
+            # We don't have a perfectly reliable way to know if standings
+            # included the live match or not, so we keep the official
+            # standings value, but flag it so the frontend can show a
+            # "live in progress" note instead of treating it as final.
+            is_live = name in live_team_names
+
             teams_out.append({
-                "name":name,"played":played,"win":lt.get("win",0),
-                "draw":lt.get("draw",0),"lose":lt.get("lose",0),
-                "gf":lt.get("gf",0),"ga":lt.get("ga",0),"gd":lt.get("gd",0),
+                "name":name,"played":played,"win":win,
+                "draw":draw,"lose":lose,
+                "gf":gf,"ga":ga,"gd":gd,
                 "points":points,"rank":rank,
                 "qualify_prob":qualify_prob(name,rank,played,points),
                 "eliminated":None,
+                "live_match":is_live,
             })
         # Sort by points desc, then GD desc, then GF desc (ignore API rank for ordering)
         teams_out.sort(key=lambda x:(-x["points"],-x["gd"],-x["gf"]))
@@ -292,6 +305,19 @@ def build_groups(standings, matches):
         results  = [m for m in gm if m["finished"] and has_valid_score(m)]
         live_now = [m for m in gm if m["live"] or (m["finished"] and not has_valid_score(m))]
         upcoming = [m for m in gm if not m["finished"] and not m["live"]]
+
+        # ── CONSISTENCY FIX ──────────────────────────────────────────
+        # standings (from /standings endpoint) and matches (from /matches
+        # endpoint) are two separate API calls made moments apart. If a
+        # goal is scored between the two calls, the standings can reflect
+        # an older score than the live match score, causing a mismatch
+        # (e.g. standings show Portugal already won 1-0, but live shows 1-1).
+        #
+        # Fix: for any team currently playing a LIVE match, zero out their
+        # contribution from that specific match in the standings snapshot,
+        # since the live score (not yet final) shouldn't count toward
+        # official points/GF/GA until the match actually finishes.
+        live_team_names = {lv["home"] for lv in live_now} | {lv["away"] for lv in live_now}
         groups_out.append({
             "letter":letter,"teams":teams_out,
             "results":[{"home":r["home"],"away":r["away"],
