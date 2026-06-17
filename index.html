@@ -815,9 +815,22 @@ async function loadData(attempt = 1){
     const src = data.source==='live' ? '🟢 live' : '🟡 cached';
     badge.textContent = `${src} · updated ${ago===0?'just now':ago+'m ago'} · click to refresh`;
 
-    // Schedule next auto-refresh in 30 minutes
+    // Smart refresh interval:
+    // - If there's a live match right now: poll every 90 seconds
+    // - If data is getting stale (>40min old, likely cron delay): poll every 3 minutes
+    // - Otherwise: standard 15 minute refresh
+    const liveNow = (data.live_count || 0) > 0;
+    const dataAge = Math.round((Date.now() - dt) / 60000);
+    let nextRefresh;
+    if (liveNow) {
+      nextRefresh = 90 * 1000;            // 90s during live matches
+    } else if (dataAge > 40) {
+      nextRefresh = 3 * 60 * 1000;        // 3min if data looks stale (cron may be delayed)
+    } else {
+      nextRefresh = 15 * 60 * 1000;       // 15min normal cadence
+    }
     clearTimeout(refreshTimer);
-    refreshTimer = setTimeout(()=>loadData(1), 30 * 60 * 1000);
+    refreshTimer = setTimeout(()=>loadData(1), nextRefresh);
 
   } catch(e) {
     console.error(`Load attempt ${attempt} failed:`, e.message);
