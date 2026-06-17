@@ -282,8 +282,15 @@ def build_groups(standings, matches):
             _t["rank"] = _i + 1
         teams_out = check_eliminated(teams_out)
         gm = [m for m in matches if m["group"]==letter]
-        results  = [m for m in gm if m["finished"]]
-        live_now = [m for m in gm if m["live"]]
+        # Only treat as "finished" if it actually has valid numeric scores.
+        # football-data.org occasionally flips status to FINISHED a moment
+        # before the score fields are populated — treat those as still live
+        # rather than showing a broken "None-None" result.
+        def has_valid_score(m):
+            return m["home_goals"] is not None and m["away_goals"] is not None
+
+        results  = [m for m in gm if m["finished"] and has_valid_score(m)]
+        live_now = [m for m in gm if m["live"] or (m["finished"] and not has_valid_score(m))]
         upcoming = [m for m in gm if not m["finished"] and not m["live"]]
         groups_out.append({
             "letter":letter,"teams":teams_out,
