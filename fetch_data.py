@@ -706,7 +706,21 @@ def append_history_snapshot(timestamp, groups_out):
         entry = {"t": timestamp, "q": qp, "w": win_pct}
 
         team_hist = history.setdefault(name, [])
-        if not team_hist or (team_hist[-1]["q"] != qp or team_hist[-1]["w"] != win_pct):
+        values_changed = bool(team_hist) and (team_hist[-1]["q"] != qp or team_hist[-1]["w"] != win_pct)
+
+        # Always record the FIRST point for a team. After that, record either:
+        #  (a) whenever the probability actually changes, for precise trend tracking, or
+        #  (b) at least once every ~2 hours even if unchanged, so the line chart has a
+        #      real timeline to draw instead of a single dot during quiet stretches
+        #      between matches (the most common state for most of a 5-week tournament).
+        should_record = (not team_hist) or values_changed
+        if not should_record and team_hist:
+            last_t = datetime.datetime.fromisoformat(team_hist[-1]["t"])
+            now_t  = datetime.datetime.fromisoformat(timestamp)
+            hours_since_last = (now_t - last_t).total_seconds() / 3600
+            should_record = hours_since_last >= 2
+
+        if should_record:
             team_hist.append(entry)
             if len(team_hist) > 500:
                 history[name] = team_hist[-500:]
