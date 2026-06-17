@@ -12,6 +12,7 @@
   gtag('js', new Date());
   gtag('config', 'G-MZRXXDKCNJ');
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8492938652850303" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,6 +152,25 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .mteam.tbd .team-name{color:var(--faint);font-style:italic;font-weight:400;font-size:.64rem}
 .prob{font-family:'DM Mono',monospace;font-size:.54rem;padding:1px 5px;border-radius:20px;flex-shrink:0;font-weight:500;line-height:1.65}
 .prob-sm{font-family:'DM Mono',monospace;font-size:.6rem;padding:1px 6px;border-radius:20px;font-weight:500}
+
+/* ── PROBABILITY TRENDS ── */
+.trends-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:1100px}
+@media(min-width:900px){.trends-grid{grid-template-columns:1fr 1fr}}
+.trend-panel{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:1rem 1rem 0.5rem}
+.trend-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.85rem;flex-wrap:wrap}
+.trend-label{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.04em;color:var(--text)}
+.trend-select{
+  background:var(--s3);color:var(--text);border:1px solid var(--border2);
+  border-radius:6px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:.7rem;
+  cursor:pointer;flex:1;min-width:140px;max-width:220px;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a93a8' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;background-position:right 8px center;background-size:14px;
+  padding-right:28px;
+}
+.trend-select:focus{outline:none;border-color:var(--gold)}
+.trend-chart-wrap{position:relative;height:280px;width:100%}
+.trends-note{font-size:.6rem;color:var(--faint);font-family:'DM Mono',monospace;margin-top:1rem;max-width:1100px;line-height:1.7}
 .p-hi{background:rgba(34,197,94,.22);color:#4ade80}
 .p-mid{background:rgba(245,158,11,.22);color:#fbbf24}
 .p-lo{background:rgba(239,68,68,.2);color:#f87171}
