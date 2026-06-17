@@ -295,6 +295,21 @@ tr.q4 .tc{color:var(--muted)}
 </style>
 </head>
 <body>
+<div id="debugBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:#7a1d1d;color:#fff;font-family:monospace;font-size:11px;padding:8px;max-height:40vh;overflow:auto;white-space:pre-wrap"></div>
+<script>
+  window.__debugLog = [];
+  function __dbg(msg) {
+    window.__debugLog.push(msg);
+    const b = document.getElementById('debugBanner');
+    if (b) { b.style.display = 'block'; b.textContent = window.__debugLog.join('\n'); }
+  }
+  window.addEventListener('error', (e) => {
+    __dbg('JS ERROR: ' + e.message + ' at ' + e.filename + ':' + e.lineno + ':' + e.colno);
+  });
+  window.addEventListener('unhandledrejection', (e) => {
+    __dbg('UNHANDLED PROMISE REJECTION: ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
+  });
+</script>
 
 <header>
   <div class="logo">WC<span>2026</span></div>
