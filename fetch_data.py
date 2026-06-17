@@ -605,6 +605,7 @@ def main():
         "groups": groups_out,
         "bracket": bracket,
         "best_thirds": thirds_display,
+        "_diag": diag,
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
