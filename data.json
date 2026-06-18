@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-18T15:20:23.741142+00:00",
+  "updated_at": "2026-06-18T20:21:38.927452+00:00",
   "source": "live",
-  "live_count": 0,
+  "live_count": 1,
   "groups": [
     {
       "letter": "A",
@@ -38,31 +38,31 @@
         },
         {
           "name": "Czechia",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
-          "gf": 1,
-          "ga": 2,
+          "gf": 2,
+          "ga": 3,
           "gd": -1,
-          "points": 0,
+          "points": 1,
           "rank": 3,
-          "qualify_prob": 16,
+          "qualify_prob": 19,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "South Africa",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
-          "gf": 0,
-          "ga": 2,
+          "gf": 1,
+          "ga": 3,
           "gd": -2,
-          "points": 0,
+          "points": 1,
           "rank": 4,
-          "qualify_prob": 4,
+          "qualify_prob": 5,
           "eliminated": null,
           "live_match": false
         }
@@ -79,14 +79,15 @@
           "away": "Czechia",
           "score": "2-1",
           "date": "2026-06-11"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Czechia",
           "away": "South Africa",
+          "score": "1-1",
           "date": "2026-06-18"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Mexico",
           "away": "South Korea",
@@ -110,18 +111,33 @@
       "teams": [
         {
           "name": "Switzerland",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 1,
+          "draw": 2,
           "lose": 0,
           "gf": 1,
           "ga": 1,
           "gd": 0,
-          "points": 1,
+          "points": 2,
           "rank": 1,
-          "qualify_prob": 64,
+          "qualify_prob": 52,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "played": 2,
+          "win": 0,
+          "draw": 2,
+          "lose": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 2,
+          "rank": 2,
+          "qualify_prob": 42,
+          "eliminated": null,
+          "live_match": true
         },
         {
           "name": "Canada",
@@ -133,28 +149,13 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
-          "rank": 2,
-          "qualify_prob": 49,
+          "rank": 3,
+          "qualify_prob": 29,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Qatar",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
-          "rank": 3,
-          "qualify_prob": 28,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Bosnia and Herzegovina",
           "played": 1,
           "win": 0,
           "draw": 1,
@@ -185,11 +186,6 @@
       ],
       "upcoming": [
         {
-          "home": "Switzerland",
-          "away": "Bosnia and Herzegovina",
-          "date": "2026-06-18"
-        },
-        {
           "home": "Canada",
           "away": "Qatar",
           "date": "2026-06-18"
@@ -205,7 +201,14 @@
           "date": "2026-06-24"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Switzerland",
+          "away": "Bosnia and Herzegovina",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "C",
@@ -1230,25 +1233,6 @@
   ],
   "bracket": [
     {
-      "id": "M73",
-      "venue": "Los Angeles - Jun 28",
-      "side": "left",
-      "s1": "2A",
-      "s2": "2B",
-      "t1": {
-        "name": "South Korea",
-        "label": "2A",
-        "status": "confirmed",
-        "prob": 73
-      },
-      "t2": {
-        "name": "Canada",
-        "label": "2B",
-        "status": "confirmed",
-        "prob": 49
-      }
-    },
-    {
       "id": "M74",
       "venue": "Boston - Jun 29",
       "side": "left",
@@ -1265,6 +1249,44 @@
         "label": "Best 3rd A/B/C/D/F",
         "status": "likely",
         "prob": 29
+      }
+    },
+    {
+      "id": "M77",
+      "venue": "New York - Jun 30",
+      "side": "left",
+      "s1": "1I",
+      "s2": "3rd-CDFGH",
+      "t1": {
+        "name": "Norway",
+        "label": "1I",
+        "status": "confirmed",
+        "prob": 84
+      },
+      "t2": {
+        "name": "Japan",
+        "label": "Best 3rd C/D/F/G/H",
+        "status": "likely",
+        "prob": 29
+      }
+    },
+    {
+      "id": "M73",
+      "venue": "Los Angeles - Jun 28",
+      "side": "left",
+      "s1": "2A",
+      "s2": "2B",
+      "t1": {
+        "name": "South Korea",
+        "label": "2A",
+        "status": "confirmed",
+        "prob": 73
+      },
+      "t2": {
+        "name": "Bosnia and Herzegovina",
+        "label": "2B",
+        "status": "confirmed",
+        "prob": 42
       }
     },
     {
@@ -1303,25 +1325,6 @@
         "label": "2F",
         "status": "confirmed",
         "prob": 53
-      }
-    },
-    {
-      "id": "M77",
-      "venue": "New York - Jun 30",
-      "side": "left",
-      "s1": "1I",
-      "s2": "3rd-CDFGH",
-      "t1": {
-        "name": "Norway",
-        "label": "1I",
-        "status": "confirmed",
-        "prob": 84
-      },
-      "t2": {
-        "name": "Japan",
-        "label": "Best 3rd C/D/F/G/H",
-        "status": "likely",
-        "prob": 29
       }
     },
     {
@@ -1467,32 +1470,13 @@
         "name": "Switzerland",
         "label": "1B",
         "status": "confirmed",
-        "prob": 64
+        "prob": 52
       },
       "t2": {
         "name": "Japan",
         "label": "Best 3rd E/F/G/I/J",
         "status": "likely",
         "prob": 29
-      }
-    },
-    {
-      "id": "M86",
-      "venue": "Miami - Jul 3",
-      "side": "right",
-      "s1": "1J",
-      "s2": "2H",
-      "t1": {
-        "name": "Argentina",
-        "label": "1J",
-        "status": "confirmed",
-        "prob": 90
-      },
-      "t2": {
-        "name": "Uruguay",
-        "label": "2H",
-        "status": "confirmed",
-        "prob": 50
       }
     },
     {
@@ -1512,6 +1496,25 @@
         "label": "Best 3rd D/E/I/J/L",
         "status": "likely",
         "prob": 16
+      }
+    },
+    {
+      "id": "M86",
+      "venue": "Miami - Jul 3",
+      "side": "right",
+      "s1": "1J",
+      "s2": "2H",
+      "t1": {
+        "name": "Argentina",
+        "label": "1J",
+        "status": "confirmed",
+        "prob": 90
+      },
+      "t2": {
+        "name": "Uruguay",
+        "label": "2H",
+        "status": "confirmed",
+        "prob": 50
       }
     },
     {
@@ -1546,14 +1549,14 @@
       "qualify_prob": 29
     },
     {
-      "name": "Qatar",
+      "name": "Canada",
       "group": "B",
       "played": 1,
       "points": 1,
       "gd": 0,
       "gf": 1,
       "in_best8": true,
-      "qualify_prob": 28
+      "qualify_prob": 29
     },
     {
       "name": "Morocco",
@@ -1598,12 +1601,12 @@
     {
       "name": "Czechia",
       "group": "A",
-      "played": 1,
-      "points": 0,
+      "played": 2,
+      "points": 1,
       "gd": -1,
-      "gf": 1,
+      "gf": 2,
       "in_best8": true,
-      "qualify_prob": 16
+      "qualify_prob": 19
     },
     {
       "name": "Ecuador",
