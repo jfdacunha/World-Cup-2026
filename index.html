@@ -866,17 +866,15 @@ function renderBestThirds(thirds) {
   tbody.innerHTML = html;
 }
 
-// ── PROBABILITY TRENDS ───────────────────────────────────────────────
-let qualifyChartInst = null;
-let winChartInst = null;
+// ── PROBABILITY TRENDS (pure SVG, zero dependencies) ─────────────────
 let historyData = null;
-let groupLetterByTeam = {};
+let __trendsLoaded = false;
 
-// Distinct, accessible colour palette cycling across teams (works on dark bg)
 const TREND_COLORS = [
   '#d4a843','#22c55e','#3b82f6','#ef4444','#a855f7','#06b6d4',
   '#f97316','#84cc16','#ec4899','#14b8a6','#eab308','#6366f1',
   '#f43f5e','#10b981','#8b5cf6','#0ea5e9','#facc15','#fb7185',
+  '#fbbf24','#34d399','#60a5fa','#f87171','#c084fc','#22d3ee',
 ];
 
 function colorForTeam(name, allNames) {
@@ -884,103 +882,84 @@ function colorForTeam(name, allNames) {
   return TREND_COLORS[idx % TREND_COLORS.length];
 }
 
-function fmtTrendDate(iso) {
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' ' +
-         d.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+function fmtAxisDate(ts) {
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
-function buildChartDatasets(metricKey, selectedTeam) {
+function buildSvgChart(containerId, metricKey, selectedTeam) {
+  const container = document.getElementById(containerId);
+  if (!container || !historyData) return;
+
   const names = Object.keys(historyData).sort();
-  const datasets = [];
+
+  let allTimes = [];
+  names.forEach(n => (historyData[n] || []).forEach(p => allTimes.push(new Date(p.t).getTime())));
+  if (allTimes.length === 0) { container.innerHTML = ''; return; }
+  const minT = Math.min.apply(null, allTimes);
+  const maxT = Math.max.apply(null, allTimes);
+  const tRange = (maxT - minT) || 1;
+
+  let yMax = 0;
+  names.forEach(n => (historyData[n] || []).forEach(p => { if (p[metricKey] > yMax) yMax = p[metricKey]; }));
+  yMax = metricKey === 'q' ? 100 : Math.max(5, Math.ceil(yMax / 2) * 2);
+
+  const W = 600, H = 280;
+  const padL = 34, padR = 12, padT = 14, padB = 26;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+
+  const xPix = (t) => padL + ((new Date(t).getTime() - minT) / tRange) * plotW;
+  const yPix = (v) => padT + (1 - (v / yMax)) * plotH;
+
+  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" style="width:100%;height:100%;display:block">';
+
+  const ySteps = metricKey === 'q' ? [0,20,40,60,80,100] : [0, yMax/2, yMax];
+  ySteps.forEach(v => {
+    const y = yPix(v);
+    svg += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W-padR) + '" y2="' + y + '" stroke="rgba(255,255,255,.06)" stroke-width="1"/>';
+    svg += '<text x="' + (padL-4) + '" y="' + (y+3) + '" fill="#8a93a8" font-size="9" font-family="monospace" text-anchor="end">' + Math.round(v) + '%</text>';
+  });
+
+  [minT, minT + tRange/2, maxT].forEach(t => {
+    const x = xPix(t);
+    svg += '<text x="' + x + '" y="' + (H-8) + '" fill="#8a93a8" font-size="9" font-family="monospace" text-anchor="middle">' + fmtAxisDate(t) + '</text>';
+  });
+
+  const linePath = (pts) => {
+    if (pts.length === 0) return '';
+    if (pts.length === 1) {
+      // single point: draw a short horizontal segment so it is visible
+      const x = xPix(pts[0].t), y = yPix(pts[0][metricKey]);
+      return 'M' + (x-3).toFixed(1) + ',' + y.toFixed(1) + ' L' + (x+3).toFixed(1) + ',' + y.toFixed(1);
+    }
+    return pts.map((p, i) => {
+      const x = xPix(p.t).toFixed(1);
+      const y = yPix(p[metricKey]).toFixed(1);
+      return (i === 0 ? 'M' : 'L') + x + ',' + y;
+    }).join(' ');
+  };
 
   if (selectedTeam) {
-    // Single team: one bold line
-    const points = (historyData[selectedTeam] || []).map(p => ({x: p.t, y: p[metricKey]}));
-    datasets.push({
-      label: selectedTeam,
-      data: points,
-      borderColor: '#d4a843',
-      backgroundColor: 'rgba(212,168,67,0.08)',
-      borderWidth: 2.5,
-      pointRadius: points.length < 30 ? 3 : 0,
-      pointHoverRadius: 5,
-      tension: 0.25,
-      fill: true,
+    const pts = historyData[selectedTeam] || [];
+    svg += '<path d="' + linePath(pts) + '" fill="none" stroke="#d4a843" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+    pts.forEach(p => {
+      svg += '<circle cx="' + xPix(p.t).toFixed(1) + '" cy="' + yPix(p[metricKey]).toFixed(1) + '" r="3" fill="#d4a843"/>';
     });
+    if (pts.length) {
+      const last = pts[pts.length-1];
+      svg += '<text x="' + (xPix(last.t)-6).toFixed(1) + '" y="' + (yPix(last[metricKey])-6).toFixed(1) + '" fill="#d4a843" font-size="12" font-family="monospace" font-weight="bold" text-anchor="end">' + last[metricKey] + '%</text>';
+    }
   } else {
-    // All teams: thin multi-coloured lines, no fill, no points (keeps it readable)
     names.forEach(name => {
-      const points = (historyData[name] || []).map(p => ({x: p.t, y: p[metricKey]}));
-      if (points.length === 0) return;
-      datasets.push({
-        label: name,
-        data: points,
-        borderColor: colorForTeam(name, names),
-        backgroundColor: 'transparent',
-        borderWidth: 1.25,
-        pointRadius: 0,
-        pointHoverRadius: 4,
-        tension: 0.25,
-        fill: false,
-      });
+      const pts = historyData[name] || [];
+      if (pts.length === 0) return;
+      svg += '<path d="' + linePath(pts) + '" fill="none" stroke="' + colorForTeam(name, names) + '" stroke-width="1.1" stroke-linejoin="round" opacity="0.85"/>';
     });
   }
-  return datasets;
-}
 
-function renderTrendChart(canvasId, metricKey, selectedTeam, existingInst, yLabel) {
-  const ctx = document.getElementById(canvasId);
-  if (!ctx) return existingInst;
-  // Destroy both our tracked instance AND any chart Chart.js itself still has
-  // registered on this canvas (covers races between overlapping loadTrends() calls).
-  if (existingInst) { try { existingInst.destroy(); } catch(e) {} }
-  const stale = (typeof Chart !== 'undefined' && Chart.getChart) ? Chart.getChart(ctx) : null;
-  if (stale) { try { stale.destroy(); } catch(e) {} }
-
-  const datasets = buildChartDatasets(metricKey, selectedTeam);
-
-  const inst = new Chart(ctx, {
-    type: 'line',
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'nearest', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: '#0d1425',
-          borderColor: 'rgba(255,255,255,.1)',
-          borderWidth: 1,
-          titleFont: { family: "'DM Mono', monospace", size: 11 },
-          bodyFont: { family: "'DM Mono', monospace", size: 11 },
-          callbacks: {
-            title: (items) => items.length ? fmtTrendDate(items[0].raw.x) : '',
-            label: (item) => `${item.dataset.label}: ${item.raw.y}${metricKey==='q'?'%':'%'}`,
-          },
-        },
-      },
-      scales: {
-        x: {
-          type: 'time',
-          time: { tooltipFormat: 'MMM d, HH:mm' },
-          grid: { color: 'rgba(255,255,255,.05)' },
-          ticks: { color: '#8a93a8', font: { family: "'DM Mono', monospace", size: 9 }, maxRotation: 0 },
-        },
-        y: {
-          min: 0,
-          suggestedMax: metricKey==='q' ? 100 : undefined,
-          grid: { color: 'rgba(255,255,255,.05)' },
-          ticks: {
-            color: '#8a93a8', font: { family: "'DM Mono', monospace", size: 9 },
-            callback: (v) => v + '%',
-          },
-        },
-      },
-    },
-  });
-  return inst;
+  svg += '</svg>';
+  container.innerHTML = svg;
 }
 
 function populateTrendDropdowns() {
@@ -990,64 +969,37 @@ function populateTrendDropdowns() {
     if (!sel) return;
     const current = sel.value;
     sel.innerHTML = '<option value="">All teams</option>' +
-      names.map(n => `<option value="${n}">${f(n)} ${n}</option>`).join('');
+      names.map(n => '<option value="' + n + '">' + f(n) + ' ' + n + '</option>').join('');
     sel.value = current;
   });
 }
 
-function waitForChartJs(maxWaitMs = 15000) {
-  return new Promise((resolve, reject) => {
-    const start = Date.now();
-    (function check() {
-      if (typeof Chart !== 'undefined') return resolve();
-      if (Date.now() - start > maxWaitMs) return reject(new Error('Chart.js failed to load'));
-      setTimeout(check, 100);
-    })();
-  });
-}
-
-let __trendsLoading = false;
-
 async function loadTrends() {
-  if (__trendsLoading) return;  // prevent overlapping concurrent calls
-  __trendsLoading = true;
   const note = document.getElementById('trendsNote');
   try {
-    await waitForChartJs();
-
     const res = await fetch('history.json?v=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const text = await res.text();
-    if (!text || text.trim().length < 2) throw new Error('Empty history.json response');
+    if (!text || text.trim().length < 2) throw new Error('Empty response');
     historyData = JSON.parse(text);
 
     const teamCount = Object.keys(historyData).length;
     const totalPoints = Object.values(historyData).reduce((s, arr) => s + arr.length, 0);
-
-    if (teamCount === 0) {
-      note.textContent = 'No trend data yet — check back after the next update.';
-      return;
-    }
+    if (teamCount === 0) { note.textContent = 'No trend data yet.'; return; }
 
     populateTrendDropdowns();
-    qualifyChartInst = renderTrendChart('qualifyChart', 'q', document.getElementById('qualifySelect').value, qualifyChartInst);
-    winChartInst     = renderTrendChart('winChart',     'w', document.getElementById('winSelect').value, winChartInst);
+    buildSvgChart('qualifyChart', 'q', document.getElementById('qualifySelect').value);
+    buildSvgChart('winChart', 'w', document.getElementById('winSelect').value);
 
-    note.textContent = `Tracking ${teamCount} teams · ${totalPoints} data points · updates every time the tournament data refreshes`;
+    note.textContent = 'Tracking ' + teamCount + ' teams \u00b7 ' + totalPoints + ' data points \u00b7 updates as the tournament progresses';
 
-    document.getElementById('qualifySelect').onchange = (e) => {
-      qualifyChartInst = renderTrendChart('qualifyChart', 'q', e.target.value, qualifyChartInst);
-    };
-    document.getElementById('winSelect').onchange = (e) => {
-      winChartInst = renderTrendChart('winChart', 'w', e.target.value, winChartInst);
-    };
+    document.getElementById('qualifySelect').onchange = (e) => buildSvgChart('qualifyChart', 'q', e.target.value);
+    document.getElementById('winSelect').onchange = (e) => buildSvgChart('winChart', 'w', e.target.value);
+    __trendsLoaded = true;
   } catch (e) {
     console.error('Failed to load trends:', e);
     note.textContent = 'Trends unavailable right now — retrying...';
-    // Auto-retry after a short delay (handles slow CDN loads)
-    setTimeout(() => { loadTrends(); }, 5000);
-  } finally {
-    __trendsLoading = false;
+    if (!__trendsLoaded) setTimeout(loadTrends, 4000);
   }
 }
 
