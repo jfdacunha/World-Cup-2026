@@ -24,22 +24,26 @@ WIN_PROBS = {
 }
 
 R32_MATCHES = [
-    {"id":"M73","venue":"Los Angeles - Jun 28","side":"left", "s1":"2A","s2":"2B"},
-    {"id":"M74","venue":"Boston - Jun 29",     "side":"left", "s1":"1E","s2":"3rd-ABCDF"},
-    {"id":"M75","venue":"Monterrey - Jun 29",  "side":"left", "s1":"1F","s2":"2C"},
-    {"id":"M76","venue":"Houston - Jun 29",    "side":"left", "s1":"1C","s2":"2F"},
-    {"id":"M77","venue":"New York - Jun 30",   "side":"left", "s1":"1I","s2":"3rd-CDFGH"},
-    {"id":"M78","venue":"Dallas - Jun 30",     "side":"left", "s1":"2E","s2":"2I"},
-    {"id":"M79","venue":"Mexico City - Jun 30","side":"left", "s1":"1A","s2":"3rd-CEFHI"},
-    {"id":"M80","venue":"Atlanta - Jul 1",     "side":"left", "s1":"1L","s2":"3rd-EHIJK"},
+    # LEFT SIDE — ordered so adjacent pairs converge in R16
+    # M74+M77 → R16 M89 · M73+M75 → R16 M90 · M76+M78 → R16 M91 · M79+M80 → R16 M92
+    {"id":"M74","venue":"Boston - Jun 29",      "side":"left", "s1":"1E","s2":"3rd-ABCDF"},
+    {"id":"M77","venue":"New York - Jun 30",    "side":"left", "s1":"1I","s2":"3rd-CDFGH"},
+    {"id":"M73","venue":"Los Angeles - Jun 28", "side":"left", "s1":"2A","s2":"2B"},
+    {"id":"M75","venue":"Monterrey - Jun 29",   "side":"left", "s1":"1F","s2":"2C"},
+    {"id":"M76","venue":"Houston - Jun 29",     "side":"left", "s1":"1C","s2":"2F"},
+    {"id":"M78","venue":"Dallas - Jun 30",      "side":"left", "s1":"2E","s2":"2I"},
+    {"id":"M79","venue":"Mexico City - Jun 30", "side":"left", "s1":"1A","s2":"3rd-CEFHI"},
+    {"id":"M80","venue":"Atlanta - Jul 1",      "side":"left", "s1":"1L","s2":"3rd-EHIJK"},
+    # RIGHT SIDE — ordered so adjacent pairs converge in R16
+    # M81+M82 → R16 M94 · M83+M84 → R16 M93 · M85+M87 → R16 M96 · M86+M88 → R16 M95
     {"id":"M81","venue":"San Francisco - Jul 1","side":"right","s1":"1D","s2":"3rd-BEFIJ"},
-    {"id":"M82","venue":"Seattle - Jul 1",     "side":"right","s1":"1G","s2":"3rd-AEHIJ"},
-    {"id":"M83","venue":"Toronto - Jul 2",     "side":"right","s1":"2K","s2":"2L"},
-    {"id":"M84","venue":"Los Angeles - Jul 2", "side":"right","s1":"1H","s2":"2J"},
-    {"id":"M85","venue":"Vancouver - Jul 2",   "side":"right","s1":"1B","s2":"3rd-EFGIJ"},
-    {"id":"M86","venue":"Miami - Jul 3",       "side":"right","s1":"1J","s2":"2H"},
-    {"id":"M87","venue":"Kansas City - Jul 3", "side":"right","s1":"1K","s2":"3rd-DEIJL"},
-    {"id":"M88","venue":"Dallas - Jul 3",      "side":"right","s1":"2D","s2":"2G"},
+    {"id":"M82","venue":"Seattle - Jul 1",      "side":"right","s1":"1G","s2":"3rd-AEHIJ"},
+    {"id":"M83","venue":"Toronto - Jul 2",      "side":"right","s1":"2K","s2":"2L"},
+    {"id":"M84","venue":"Los Angeles - Jul 2",  "side":"right","s1":"1H","s2":"2J"},
+    {"id":"M85","venue":"Vancouver - Jul 2",    "side":"right","s1":"1B","s2":"3rd-EFGIJ"},
+    {"id":"M87","venue":"Kansas City - Jul 3",  "side":"right","s1":"1K","s2":"3rd-DEIJL"},
+    {"id":"M86","venue":"Miami - Jul 3",        "side":"right","s1":"1J","s2":"2H"},
+    {"id":"M88","venue":"Dallas - Jul 3",       "side":"right","s1":"2D","s2":"2G"},
 ]
 
 SLOT_MAP = {
