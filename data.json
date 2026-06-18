@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-18T20:43:28.098839+00:00",
+  "updated_at": "2026-06-18T21:26:37.643901+00:00",
   "source": "live",
-  "live_count": 1,
+  "live_count": 0,
   "groups": [
     {
       "letter": "A",
@@ -112,32 +112,17 @@
         {
           "name": "Switzerland",
           "played": 2,
-          "win": 0,
-          "draw": 2,
+          "win": 1,
+          "draw": 1,
           "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 2,
+          "gf": 5,
+          "ga": 2,
+          "gd": 3,
+          "points": 4,
           "rank": 1,
           "qualify_prob": 52,
           "eliminated": null,
-          "live_match": true
-        },
-        {
-          "name": "Bosnia and Herzegovina",
-          "played": 2,
-          "win": 0,
-          "draw": 2,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 2,
-          "rank": 2,
-          "qualify_prob": 42,
-          "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Canada",
@@ -149,8 +134,8 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
-          "rank": 3,
-          "qualify_prob": 29,
+          "rank": 2,
+          "qualify_prob": 49,
           "eliminated": null,
           "live_match": false
         },
@@ -164,8 +149,23 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
-          "rank": 4,
+          "rank": 3,
           "qualify_prob": 12,
+          "eliminated": null,
+          "live_match": false
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "played": 2,
+          "win": 0,
+          "draw": 1,
+          "lose": 1,
+          "gf": 2,
+          "ga": 5,
+          "gd": -3,
+          "points": 1,
+          "rank": 4,
+          "qualify_prob": 18,
           "eliminated": null,
           "live_match": false
         }
@@ -182,6 +182,12 @@
           "away": "Switzerland",
           "score": "1-1",
           "date": "2026-06-13"
+        },
+        {
+          "home": "Switzerland",
+          "away": "Bosnia and Herzegovina",
+          "score": "4-1",
+          "date": "2026-06-18"
         }
       ],
       "upcoming": [
@@ -201,14 +207,7 @@
           "date": "2026-06-24"
         }
       ],
-      "live": [
-        {
-          "home": "Switzerland",
-          "away": "Bosnia and Herzegovina",
-          "home_goals": 1,
-          "away_goals": 0
-        }
-      ]
+      "live": []
     },
     {
       "letter": "C",
@@ -1283,10 +1282,10 @@
         "prob": 73
       },
       "t2": {
-        "name": "Bosnia and Herzegovina",
+        "name": "Canada",
         "label": "2B",
         "status": "confirmed",
-        "prob": 42
+        "prob": 49
       }
     },
     {
@@ -1549,14 +1548,14 @@
       "qualify_prob": 29
     },
     {
-      "name": "Canada",
+      "name": "Qatar",
       "group": "B",
       "played": 1,
       "points": 1,
       "gd": 0,
       "gf": 1,
       "in_best8": true,
-      "qualify_prob": 29
+      "qualify_prob": 28
     },
     {
       "name": "Morocco",
