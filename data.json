@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-19T12:53:28.502142+00:00",
+  "updated_at": "2026-06-19T19:16:11.184058+00:00",
   "source": "live",
-  "live_count": 0,
+  "live_count": 2,
   "groups": [
     {
       "letter": "A",
@@ -173,12 +173,6 @@
       ],
       "results": [
         {
-          "home": "Canada",
-          "away": "Bosnia and Herzegovina",
-          "score": "1-1",
-          "date": "2026-06-12"
-        },
-        {
           "home": "Qatar",
           "away": "Switzerland",
           "score": "1-1",
@@ -209,7 +203,14 @@
           "date": "2026-06-24"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Canada",
+          "away": "Bosnia and Herzegovina",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "C",
@@ -318,33 +319,33 @@
       "teams": [
         {
           "name": "United States",
-          "played": 1,
+          "played": 2,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 0,
           "gf": 4,
           "ga": 1,
           "gd": 3,
-          "points": 3,
+          "points": 4,
           "rank": 1,
-          "qualify_prob": 85,
+          "qualify_prob": 53,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Australia",
-          "played": 1,
+          "played": 2,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 0,
           "gf": 2,
           "ga": 0,
           "gd": 2,
-          "points": 3,
+          "points": 4,
           "rank": 2,
-          "qualify_prob": 73,
+          "qualify_prob": 43,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Türkiye",
@@ -393,11 +394,6 @@
       ],
       "upcoming": [
         {
-          "home": "United States",
-          "away": "Australia",
-          "date": "2026-06-19"
-        },
-        {
           "home": "Türkiye",
           "away": "Paraguay",
           "date": "2026-06-19"
@@ -413,7 +409,14 @@
           "date": "2026-06-25"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "United States",
+          "away": "Australia",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "E",
@@ -1357,7 +1360,7 @@
         "name": "United States",
         "label": "1D",
         "status": "confirmed",
-        "prob": 85
+        "prob": 53
       },
       "t2": {
         "name": "Japan",
@@ -1490,7 +1493,7 @@
         "name": "Australia",
         "label": "2D",
         "status": "confirmed",
-        "prob": 73
+        "prob": 43
       },
       "t2": {
         "name": "New Zealand",
