@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T06:54:48.117444+00:00",
+  "updated_at": "2026-06-19T10:28:44.281245+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1310,123 +1310,9 @@
       }
     },
     {
-      "id": "M76",
-      "venue": "Houston - Jun 29",
-      "side": "left",
-      "s1": "1C",
-      "s2": "2F",
-      "t1": {
-        "name": "Scotland",
-        "label": "1C",
-        "status": "confirmed",
-        "prob": 83
-      },
-      "t2": {
-        "name": "Netherlands",
-        "label": "2F",
-        "status": "confirmed",
-        "prob": 53
-      }
-    },
-    {
-      "id": "M78",
-      "venue": "Dallas - Jun 30",
-      "side": "left",
-      "s1": "2E",
-      "s2": "2I",
-      "t1": {
-        "name": "Ivory Coast",
-        "label": "2E",
-        "status": "confirmed",
-        "prob": 73
-      },
-      "t2": {
-        "name": "France",
-        "label": "2I",
-        "status": "confirmed",
-        "prob": 80
-      }
-    },
-    {
-      "id": "M79",
-      "venue": "Mexico City - Jun 30",
-      "side": "left",
-      "s1": "1A",
-      "s2": "3rd-CEFHI",
-      "t1": {
-        "name": "Mexico",
-        "label": "1A",
-        "status": "confirmed",
-        "prob": 99
-      },
-      "t2": {
-        "name": "Japan",
-        "label": "Best 3rd C/E/F/H/I",
-        "status": "likely",
-        "prob": 29
-      }
-    },
-    {
-      "id": "M80",
-      "venue": "Atlanta - Jul 1",
-      "side": "left",
-      "s1": "1L",
-      "s2": "3rd-EHIJK",
-      "t1": {
-        "name": "England",
-        "label": "1L",
-        "status": "confirmed",
-        "prob": 90
-      },
-      "t2": {
-        "name": "DR Congo",
-        "label": "Best 3rd E/H/I/J/K",
-        "status": "likely",
-        "prob": 28
-      }
-    },
-    {
-      "id": "M81",
-      "venue": "San Francisco - Jul 1",
-      "side": "right",
-      "s1": "1D",
-      "s2": "3rd-BEFIJ",
-      "t1": {
-        "name": "United States",
-        "label": "1D",
-        "status": "confirmed",
-        "prob": 85
-      },
-      "t2": {
-        "name": "Japan",
-        "label": "Best 3rd B/E/F/I/J",
-        "status": "likely",
-        "prob": 29
-      }
-    },
-    {
-      "id": "M82",
-      "venue": "Seattle - Jul 1",
-      "side": "right",
-      "s1": "1G",
-      "s2": "3rd-AEHIJ",
-      "t1": {
-        "name": "Iran",
-        "label": "1G",
-        "status": "confirmed",
-        "prob": 63
-      },
-      "t2": {
-        "name": "Spain",
-        "label": "Best 3rd A/E/H/I/J",
-        "status": "likely",
-        "prob": 35
-      }
-    },
-    {
       "id": "M83",
       "venue": "Toronto - Jul 2",
-      "side": "right",
+      "side": "left",
       "s1": "2K",
       "s2": "2L",
       "t1": {
@@ -1445,7 +1331,7 @@
     {
       "id": "M84",
       "venue": "Los Angeles - Jul 2",
-      "side": "right",
+      "side": "left",
       "s1": "1H",
       "s2": "2J",
       "t1": {
@@ -1462,41 +1348,117 @@
       }
     },
     {
-      "id": "M85",
-      "venue": "Vancouver - Jul 2",
-      "side": "right",
-      "s1": "1B",
-      "s2": "3rd-EFGIJ",
+      "id": "M81",
+      "venue": "San Francisco - Jul 1",
+      "side": "left",
+      "s1": "1D",
+      "s2": "3rd-BEFIJ",
       "t1": {
-        "name": "Canada",
-        "label": "1B",
+        "name": "United States",
+        "label": "1D",
         "status": "confirmed",
-        "prob": 51
+        "prob": 85
       },
       "t2": {
         "name": "Japan",
-        "label": "Best 3rd E/F/G/I/J",
+        "label": "Best 3rd B/E/F/I/J",
         "status": "likely",
         "prob": 29
       }
     },
     {
-      "id": "M87",
-      "venue": "Kansas City - Jul 3",
-      "side": "right",
-      "s1": "1K",
-      "s2": "3rd-DEIJL",
+      "id": "M82",
+      "venue": "Seattle - Jul 1",
+      "side": "left",
+      "s1": "1G",
+      "s2": "3rd-AEHIJ",
       "t1": {
-        "name": "Colombia",
-        "label": "1K",
+        "name": "Iran",
+        "label": "1G",
         "status": "confirmed",
-        "prob": 84
+        "prob": 63
       },
       "t2": {
-        "name": "Ecuador",
-        "label": "Best 3rd D/E/I/J/L",
+        "name": "Spain",
+        "label": "Best 3rd A/E/H/I/J",
         "status": "likely",
-        "prob": 16
+        "prob": 35
+      }
+    },
+    {
+      "id": "M76",
+      "venue": "Houston - Jun 29",
+      "side": "right",
+      "s1": "1C",
+      "s2": "2F",
+      "t1": {
+        "name": "Scotland",
+        "label": "1C",
+        "status": "confirmed",
+        "prob": 83
+      },
+      "t2": {
+        "name": "Netherlands",
+        "label": "2F",
+        "status": "confirmed",
+        "prob": 53
+      }
+    },
+    {
+      "id": "M78",
+      "venue": "Dallas - Jun 30",
+      "side": "right",
+      "s1": "2E",
+      "s2": "2I",
+      "t1": {
+        "name": "Ivory Coast",
+        "label": "2E",
+        "status": "confirmed",
+        "prob": 73
+      },
+      "t2": {
+        "name": "France",
+        "label": "2I",
+        "status": "confirmed",
+        "prob": 80
+      }
+    },
+    {
+      "id": "M79",
+      "venue": "Mexico City - Jun 30",
+      "side": "right",
+      "s1": "1A",
+      "s2": "3rd-CEFHI",
+      "t1": {
+        "name": "Mexico",
+        "label": "1A",
+        "status": "confirmed",
+        "prob": 99
+      },
+      "t2": {
+        "name": "Japan",
+        "label": "Best 3rd C/E/F/H/I",
+        "status": "likely",
+        "prob": 29
+      }
+    },
+    {
+      "id": "M80",
+      "venue": "Atlanta - Jul 1",
+      "side": "right",
+      "s1": "1L",
+      "s2": "3rd-EHIJK",
+      "t1": {
+        "name": "England",
+        "label": "1L",
+        "status": "confirmed",
+        "prob": 90
+      },
+      "t2": {
+        "name": "DR Congo",
+        "label": "Best 3rd E/H/I/J/K",
+        "status": "likely",
+        "prob": 28
       }
     },
     {
@@ -1535,6 +1497,44 @@
         "label": "2G",
         "status": "confirmed",
         "prob": 48
+      }
+    },
+    {
+      "id": "M85",
+      "venue": "Vancouver - Jul 2",
+      "side": "right",
+      "s1": "1B",
+      "s2": "3rd-EFGIJ",
+      "t1": {
+        "name": "Canada",
+        "label": "1B",
+        "status": "confirmed",
+        "prob": 51
+      },
+      "t2": {
+        "name": "Japan",
+        "label": "Best 3rd E/F/G/I/J",
+        "status": "likely",
+        "prob": 29
+      }
+    },
+    {
+      "id": "M87",
+      "venue": "Kansas City - Jul 3",
+      "side": "right",
+      "s1": "1K",
+      "s2": "3rd-DEIJL",
+      "t1": {
+        "name": "Colombia",
+        "label": "1K",
+        "status": "confirmed",
+        "prob": 84
+      },
+      "t2": {
+        "name": "Ecuador",
+        "label": "Best 3rd D/E/I/J/L",
+        "status": "likely",
+        "prob": 16
       }
     }
   ],
