@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T19:18:11.076265+00:00",
+  "updated_at": "2026-06-19T22:38:59.979402+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -215,19 +215,34 @@
       "letter": "C",
       "teams": [
         {
+          "name": "Morocco",
+          "played": 2,
+          "win": 1,
+          "draw": 1,
+          "lose": 0,
+          "gf": 2,
+          "ga": 1,
+          "gd": 1,
+          "points": 4,
+          "rank": 1,
+          "qualify_prob": 51,
+          "eliminated": null,
+          "live_match": true
+        },
+        {
           "name": "Scotland",
-          "played": 1,
+          "played": 2,
           "win": 1,
           "draw": 0,
-          "lose": 0,
+          "lose": 1,
           "gf": 1,
-          "ga": 0,
-          "gd": 1,
+          "ga": 1,
+          "gd": 0,
           "points": 3,
-          "rank": 1,
-          "qualify_prob": 83,
+          "rank": 2,
+          "qualify_prob": 81,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Brazil",
@@ -239,23 +254,8 @@
           "ga": 1,
           "gd": 0,
           "points": 1,
-          "rank": 2,
-          "qualify_prob": 35,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Morocco",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
           "rank": 3,
-          "qualify_prob": 49,
+          "qualify_prob": 35,
           "eliminated": null,
           "live_match": false
         },
@@ -291,11 +291,6 @@
       ],
       "upcoming": [
         {
-          "home": "Scotland",
-          "away": "Morocco",
-          "date": "2026-06-19"
-        },
-        {
           "home": "Brazil",
           "away": "Haiti",
           "date": "2026-06-19"
@@ -311,7 +306,14 @@
           "date": "2026-06-24"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Scotland",
+          "away": "Morocco",
+          "home_goals": 0,
+          "away_goals": 1
+        }
+      ]
     },
     {
       "letter": "D",
@@ -319,32 +321,32 @@
         {
           "name": "United States",
           "played": 2,
-          "win": 1,
-          "draw": 1,
+          "win": 2,
+          "draw": 0,
           "lose": 0,
-          "gf": 4,
+          "gf": 6,
           "ga": 1,
-          "gd": 3,
-          "points": 4,
+          "gd": 5,
+          "points": 6,
           "rank": 1,
-          "qualify_prob": 53,
+          "qualify_prob": 99,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Australia",
           "played": 2,
           "win": 1,
-          "draw": 1,
-          "lose": 0,
+          "draw": 0,
+          "lose": 1,
           "gf": 2,
-          "ga": 0,
-          "gd": 2,
-          "points": 4,
+          "ga": 2,
+          "gd": 0,
+          "points": 3,
           "rank": 2,
-          "qualify_prob": 43,
+          "qualify_prob": 81,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Türkiye",
@@ -389,6 +391,12 @@
           "away": "Türkiye",
           "score": "2-0",
           "date": "2026-06-14"
+        },
+        {
+          "home": "United States",
+          "away": "Australia",
+          "score": "2-0",
+          "date": "2026-06-19"
         }
       ],
       "upcoming": [
@@ -408,14 +416,7 @@
           "date": "2026-06-25"
         }
       ],
-      "live": [
-        {
-          "home": "United States",
-          "away": "Australia",
-          "home_goals": 1,
-          "away_goals": 0
-        }
-      ]
+      "live": []
     },
     {
       "letter": "E",
@@ -1305,10 +1306,10 @@
         "prob": 83
       },
       "t2": {
-        "name": "Brazil",
+        "name": "Scotland",
         "label": "2C",
         "status": "confirmed",
-        "prob": 55
+        "prob": 81
       }
     },
     {
@@ -1359,7 +1360,7 @@
         "name": "United States",
         "label": "1D",
         "status": "confirmed",
-        "prob": 53
+        "prob": 99
       },
       "t2": {
         "name": "Japan",
@@ -1394,10 +1395,10 @@
       "s1": "1C",
       "s2": "2F",
       "t1": {
-        "name": "Scotland",
+        "name": "Morocco",
         "label": "1C",
         "status": "confirmed",
-        "prob": 83
+        "prob": 51
       },
       "t2": {
         "name": "Netherlands",
@@ -1492,7 +1493,7 @@
         "name": "Australia",
         "label": "2D",
         "status": "confirmed",
-        "prob": 43
+        "prob": 81
       },
       "t2": {
         "name": "New Zealand",
@@ -1552,14 +1553,14 @@
       "qualify_prob": 29
     },
     {
-      "name": "Morocco",
+      "name": "Brazil",
       "group": "C",
       "played": 1,
       "points": 1,
       "gd": 0,
       "gf": 1,
       "in_best8": true,
-      "qualify_prob": 29
+      "qualify_prob": 35
     },
     {
       "name": "Belgium",
