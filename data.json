@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-20T20:57:46.784541+00:00",
+  "updated_at": "2026-06-20T21:50:12.227964+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -423,32 +423,32 @@
       "letter": "E",
       "teams": [
         {
-          "name": "Germany",
+          "name": "Ivory Coast",
           "played": 2,
-          "win": 1,
-          "draw": 1,
+          "win": 2,
+          "draw": 0,
           "lose": 0,
-          "gf": 7,
-          "ga": 1,
-          "gd": 6,
-          "points": 4,
+          "gf": 2,
+          "ga": 0,
+          "gd": 2,
+          "points": 6,
           "rank": 1,
-          "qualify_prob": 56,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": true
         },
         {
-          "name": "Ivory Coast",
+          "name": "Germany",
           "played": 2,
           "win": 1,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 0,
-          "gd": 1,
-          "points": 4,
+          "draw": 0,
+          "lose": 1,
+          "gf": 7,
+          "ga": 2,
+          "gd": 5,
+          "points": 3,
           "rank": 2,
-          "qualify_prob": 43,
+          "qualify_prob": 86,
           "eliminated": null,
           "live_match": true
         },
@@ -518,7 +518,7 @@
         {
           "home": "Germany",
           "away": "Ivory Coast",
-          "home_goals": 0,
+          "home_goals": 1,
           "away_goals": 1
         }
       ]
@@ -1247,10 +1247,10 @@
       "s1": "1E",
       "s2": "3rd-ABCDF",
       "t1": {
-        "name": "Germany",
+        "name": "Ivory Coast",
         "label": "1E",
         "status": "confirmed",
-        "prob": 56
+        "prob": 99
       },
       "t2": {
         "name": "Scotland",
@@ -1418,10 +1418,10 @@
       "s1": "2E",
       "s2": "2I",
       "t1": {
-        "name": "Ivory Coast",
+        "name": "Germany",
         "label": "2E",
         "status": "confirmed",
-        "prob": 43
+        "prob": 86
       },
       "t2": {
         "name": "France",
