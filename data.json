@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-20T00:19:21.542556+00:00",
+  "updated_at": "2026-06-20T10:14:41.798144+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -215,6 +215,21 @@
       "letter": "C",
       "teams": [
         {
+          "name": "Brazil",
+          "played": 2,
+          "win": 1,
+          "draw": 1,
+          "lose": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "points": 4,
+          "rank": 1,
+          "qualify_prob": 57,
+          "eliminated": null,
+          "live_match": false
+        },
+        {
           "name": "Morocco",
           "played": 2,
           "win": 1,
@@ -224,8 +239,8 @@
           "ga": 1,
           "gd": 1,
           "points": 4,
-          "rank": 1,
-          "qualify_prob": 51,
+          "rank": 2,
+          "qualify_prob": 43,
           "eliminated": null,
           "live_match": false
         },
@@ -239,39 +254,24 @@
           "ga": 1,
           "gd": 0,
           "points": 3,
-          "rank": 2,
-          "qualify_prob": 81,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Brazil",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
           "rank": 3,
-          "qualify_prob": 35,
+          "qualify_prob": 43,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Haiti",
-          "played": 1,
+          "played": 2,
           "win": 0,
           "draw": 0,
-          "lose": 1,
+          "lose": 2,
           "gf": 0,
-          "ga": 1,
-          "gd": -1,
+          "ga": 4,
+          "gd": -4,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 4,
-          "eliminated": null,
+          "qualify_prob": 2,
+          "eliminated": "group",
           "live_match": false
         }
       ],
@@ -293,14 +293,15 @@
           "away": "Morocco",
           "score": "0-1",
           "date": "2026-06-19"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Brazil",
           "away": "Haiti",
+          "score": "3-0",
           "date": "2026-06-19"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Morocco",
           "away": "Haiti",
@@ -348,33 +349,33 @@
           "live_match": false
         },
         {
-          "name": "Türkiye",
-          "played": 1,
-          "win": 0,
+          "name": "Paraguay",
+          "played": 2,
+          "win": 1,
           "draw": 0,
           "lose": 1,
-          "gf": 0,
-          "ga": 2,
+          "gf": 2,
+          "ga": 4,
           "gd": -2,
-          "points": 0,
+          "points": 3,
           "rank": 3,
-          "qualify_prob": 16,
+          "qualify_prob": 42,
           "eliminated": null,
           "live_match": false
         },
         {
-          "name": "Paraguay",
-          "played": 1,
+          "name": "Türkiye",
+          "played": 2,
           "win": 0,
           "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 4,
+          "lose": 2,
+          "gf": 0,
+          "ga": 3,
           "gd": -3,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 4,
-          "eliminated": null,
+          "qualify_prob": 2,
+          "eliminated": "group",
           "live_match": false
         }
       ],
@@ -396,14 +397,15 @@
           "away": "Australia",
           "score": "2-0",
           "date": "2026-06-19"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Türkiye",
           "away": "Paraguay",
+          "score": "0-1",
           "date": "2026-06-19"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Türkiye",
           "away": "United States",
@@ -1248,10 +1250,10 @@
         "prob": 88
       },
       "t2": {
-        "name": "Japan",
+        "name": "Scotland",
         "label": "Best 3rd A/B/C/D/F",
         "status": "likely",
-        "prob": 29
+        "prob": 43
       }
     },
     {
@@ -1267,10 +1269,10 @@
         "prob": 84
       },
       "t2": {
-        "name": "Japan",
+        "name": "Scotland",
         "label": "Best 3rd C/D/F/G/H",
         "status": "likely",
-        "prob": 29
+        "prob": 43
       }
     },
     {
@@ -1305,10 +1307,10 @@
         "prob": 83
       },
       "t2": {
-        "name": "Scotland",
+        "name": "Morocco",
         "label": "2C",
         "status": "confirmed",
-        "prob": 81
+        "prob": 43
       }
     },
     {
@@ -1394,10 +1396,10 @@
       "s1": "1C",
       "s2": "2F",
       "t1": {
-        "name": "Morocco",
+        "name": "Brazil",
         "label": "1C",
         "status": "confirmed",
-        "prob": 51
+        "prob": 57
       },
       "t2": {
         "name": "Netherlands",
@@ -1438,10 +1440,10 @@
         "prob": 99
       },
       "t2": {
-        "name": "Japan",
+        "name": "Scotland",
         "label": "Best 3rd C/E/F/H/I",
         "status": "likely",
-        "prob": 29
+        "prob": 43
       }
     },
     {
@@ -1533,14 +1535,34 @@
         "prob": 84
       },
       "t2": {
-        "name": "Ecuador",
+        "name": "Paraguay",
         "label": "Best 3rd D/E/I/J/L",
         "status": "likely",
-        "prob": 16
+        "prob": 42
       }
     }
   ],
   "best_thirds": [
+    {
+      "name": "Scotland",
+      "group": "C",
+      "played": 2,
+      "points": 3,
+      "gd": 0,
+      "gf": 1,
+      "in_best8": true,
+      "qualify_prob": 43
+    },
+    {
+      "name": "Paraguay",
+      "group": "D",
+      "played": 2,
+      "points": 3,
+      "gd": -2,
+      "gf": 2,
+      "in_best8": true,
+      "qualify_prob": 42
+    },
     {
       "name": "Japan",
       "group": "F",
@@ -1550,16 +1572,6 @@
       "gf": 2,
       "in_best8": true,
       "qualify_prob": 29
-    },
-    {
-      "name": "Brazil",
-      "group": "C",
-      "played": 1,
-      "points": 1,
-      "gd": 0,
-      "gf": 1,
-      "in_best8": true,
-      "qualify_prob": 35
     },
     {
       "name": "Belgium",
@@ -1618,7 +1630,7 @@
       "points": 0,
       "gd": -1,
       "gf": 0,
-      "in_best8": true,
+      "in_best8": false,
       "qualify_prob": 16
     },
     {
@@ -1650,16 +1662,6 @@
       "gf": 1,
       "in_best8": false,
       "qualify_prob": 15
-    },
-    {
-      "name": "Türkiye",
-      "group": "D",
-      "played": 1,
-      "points": 0,
-      "gd": -2,
-      "gf": 0,
-      "in_best8": false,
-      "qualify_prob": 16
     }
   ]
 }
