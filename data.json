@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-21T17:11:02.752698+00:00",
+  "updated_at": "2026-06-21T21:47:26.421872+00:00",
   "source": "live",
-  "live_count": 1,
+  "live_count": 0,
   "groups": [
     {
       "letter": "A",
@@ -632,16 +632,31 @@
       "teams": [
         {
           "name": "Iran",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 1,
+          "draw": 2,
           "lose": 0,
           "gf": 2,
           "ga": 2,
           "gd": 0,
-          "points": 1,
+          "points": 2,
           "rank": 1,
-          "qualify_prob": 49,
+          "qualify_prob": 51,
+          "eliminated": null,
+          "live_match": false
+        },
+        {
+          "name": "Belgium",
+          "played": 2,
+          "win": 0,
+          "draw": 2,
+          "lose": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 2,
+          "rank": 2,
+          "qualify_prob": 45,
           "eliminated": null,
           "live_match": false
         },
@@ -655,23 +670,8 @@
           "ga": 2,
           "gd": 0,
           "points": 1,
-          "rank": 2,
-          "qualify_prob": 62,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Belgium",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
           "rank": 3,
-          "qualify_prob": 31,
+          "qualify_prob": 28,
           "eliminated": null,
           "live_match": false
         },
@@ -703,14 +703,15 @@
           "away": "New Zealand",
           "score": "2-2",
           "date": "2026-06-15"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Belgium",
           "away": "Iran",
+          "score": "0-0",
           "date": "2026-06-21"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "New Zealand",
           "away": "Egypt",
@@ -738,14 +739,14 @@
           "win": 1,
           "draw": 1,
           "lose": 0,
-          "gf": 3,
+          "gf": 4,
           "ga": 0,
-          "gd": 3,
+          "gd": 4,
           "points": 4,
           "rank": 1,
           "qualify_prob": 57,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Uruguay",
@@ -784,13 +785,13 @@
           "draw": 1,
           "lose": 1,
           "gf": 1,
-          "ga": 4,
-          "gd": -3,
+          "ga": 5,
+          "gd": -4,
           "points": 1,
           "rank": 4,
           "qualify_prob": 19,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         }
       ],
       "results": [
@@ -805,6 +806,12 @@
           "away": "Uruguay",
           "score": "1-1",
           "date": "2026-06-15"
+        },
+        {
+          "home": "Spain",
+          "away": "Saudi Arabia",
+          "score": "4-0",
+          "date": "2026-06-21"
         }
       ],
       "upcoming": [
@@ -824,14 +831,7 @@
           "date": "2026-06-26"
         }
       ],
-      "live": [
-        {
-          "home": "Spain",
-          "away": "Saudi Arabia",
-          "home_goals": 3,
-          "away_goals": 0
-        }
-      ]
+      "live": []
     },
     {
       "letter": "I",
@@ -1386,7 +1386,7 @@
         "name": "Iran",
         "label": "1G",
         "status": "confirmed",
-        "prob": 63
+        "prob": 51
       },
       "t2": {
         "name": "Czechia",
@@ -1503,10 +1503,10 @@
         "prob": 81
       },
       "t2": {
-        "name": "New Zealand",
+        "name": "Belgium",
         "label": "2G",
         "status": "confirmed",
-        "prob": 48
+        "prob": 45
       }
     },
     {
@@ -1522,10 +1522,10 @@
         "prob": 51
       },
       "t2": {
-        "name": "Belgium",
+        "name": "New Zealand",
         "label": "3rd GrpG (1pts)",
         "status": "likely",
-        "prob": 31
+        "prob": 28
       }
     },
     {
@@ -1580,14 +1580,14 @@
       "qualify_prob": 42
     },
     {
-      "name": "Belgium",
+      "name": "New Zealand",
       "group": "G",
       "played": 1,
       "points": 1,
       "gd": 0,
-      "gf": 1,
+      "gf": 2,
       "in_best8": true,
-      "qualify_prob": 31
+      "qualify_prob": 28
     },
     {
       "name": "DR Congo",
