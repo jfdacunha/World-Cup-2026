@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-21T10:54:56.485329+00:00",
+  "updated_at": "2026-06-21T11:00:05.583857+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -270,7 +270,7 @@
           "gd": -4,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 2,
+          "qualify_prob": 0,
           "eliminated": "group",
           "live_match": false
         }
@@ -374,7 +374,7 @@
           "gd": -3,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 2,
+          "qualify_prob": 0,
           "eliminated": "group",
           "live_match": false
         }
@@ -582,7 +582,7 @@
           "gd": -8,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 2,
+          "qualify_prob": 0,
           "eliminated": "group",
           "live_match": false
         }
@@ -1255,7 +1255,7 @@
       },
       "t2": {
         "name": "Sweden",
-        "label": "Best 3rd A/B/C/D/F",
+        "label": "3rd GrpF (3pts)",
         "status": "likely",
         "prob": 43
       }
@@ -1273,8 +1273,8 @@
         "prob": 84
       },
       "t2": {
-        "name": "Sweden",
-        "label": "Best 3rd C/D/F/G/H",
+        "name": "Scotland",
+        "label": "3rd GrpC (3pts)",
         "status": "likely",
         "prob": 43
       }
@@ -1368,10 +1368,10 @@
         "prob": 99
       },
       "t2": {
-        "name": "Sweden",
-        "label": "Best 3rd B/E/F/I/J",
+        "name": "Ecuador",
+        "label": "3rd GrpE (1pts)",
         "status": "likely",
-        "prob": 43
+        "prob": 19
       }
     },
     {
@@ -1387,10 +1387,10 @@
         "prob": 63
       },
       "t2": {
-        "name": "Spain",
-        "label": "Best 3rd A/E/H/I/J",
+        "name": "Czechia",
+        "label": "3rd GrpA (1pts)",
         "status": "likely",
-        "prob": 35
+        "prob": 19
       }
     },
     {
@@ -1444,10 +1444,10 @@
         "prob": 99
       },
       "t2": {
-        "name": "Sweden",
-        "label": "Best 3rd C/E/F/H/I",
+        "name": "Spain",
+        "label": "3rd GrpH (1pts)",
         "status": "likely",
-        "prob": 43
+        "prob": 35
       }
     },
     {
@@ -1464,7 +1464,7 @@
       },
       "t2": {
         "name": "DR Congo",
-        "label": "Best 3rd E/H/I/J/K",
+        "label": "3rd GrpK (1pts)",
         "status": "likely",
         "prob": 28
       }
@@ -1520,10 +1520,10 @@
         "prob": 51
       },
       "t2": {
-        "name": "Sweden",
-        "label": "Best 3rd E/F/G/I/J",
+        "name": "Belgium",
+        "label": "3rd GrpG (1pts)",
         "status": "likely",
-        "prob": 43
+        "prob": 31
       }
     },
     {
@@ -1540,7 +1540,7 @@
       },
       "t2": {
         "name": "Paraguay",
-        "label": "Best 3rd D/E/I/J/L",
+        "label": "3rd GrpD (3pts)",
         "status": "likely",
         "prob": 42
       }
