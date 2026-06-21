@@ -290,6 +290,73 @@ tr.q4 .tc{color:var(--muted)}
 
 .podium-row td{background:rgba(212,168,67,.04)}
 .podium-row td .pt-name{color:var(--gold)}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE FORMATTING  (max-width: 600px)
+   ══════════════════════════════════════════════════════════════ */
+@media(max-width:600px){
+
+  /* NAV — prevent "Group Stage" wrapping to 2 lines */
+  nav a{font-size:.58rem;padding:0 .4rem;letter-spacing:0}
+
+  /* SECTIONS — tighter padding */
+  .section{padding:1.4rem .7rem}
+  .sec-title{font-size:1.35rem}
+  .sec-sub{font-size:.56rem}
+
+  /* BRACKET — allow horizontal scroll instead of squishing */
+  #bracket .section{padding:1.4rem 0}
+  .bracket-shell{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:0 .7rem .75rem;
+  }
+  .bracket-wrap{min-width:700px}
+  .bmatch{min-width:130px;max-width:150px}
+  .bmatch .team-name{font-size:.6rem}
+  .prob-badge{font-size:.5rem;padding:1px 3px}
+  .blbl{font-size:.48rem}
+  .bracket-legend{flex-wrap:wrap;gap:.3rem .5rem;font-size:.55rem;padding:.5rem .7rem}
+  .li{font-size:.55rem}
+  .bracket-how{font-size:.58rem;padding:.6rem .7rem;margin:0 .7rem .7rem}
+  .bracket-subtitle{font-size:.5rem}
+
+  /* GROUP STAGE — tighter table */
+  .group-card{padding:.75rem .6rem}
+  .st-table{font-size:.62rem}
+  .st-table td,.st-table th{padding:3px 3px}
+  .st-table th:nth-child(n+4){display:none}   /* hide W D L on very small */
+  .group-title{font-size:.9rem}
+
+  /* BEST 3RD PLACE — fix long names overflowing */
+  .thirds-section{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .thirds-table{font-size:.58rem;min-width:420px}
+  .thirds-table td,.thirds-table th{padding:3px 4px}
+  .qual-badge,.out-badge{font-size:.45rem;padding:1px 3px;white-space:nowrap}
+
+  /* POWER RANKINGS — fix "South Korea", "Saudi Arabia", "Ivory Coast" wrapping */
+  .power-table{font-size:.62rem}
+  .power-table td,.power-table th{padding:3px 4px}
+  .pt-team{flex-wrap:nowrap;gap:.25rem;min-width:0}
+  .pt-name{
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    max-width:72px;display:block;
+  }
+  .pt-group{font-size:.48rem;white-space:nowrap;flex-shrink:0}
+  .pt-flag{font-size:.9rem;flex-shrink:0}
+  .qualify-pct{font-size:.5rem;padding:1px 3px}
+  .win-bar-wrap{min-width:36px}
+  .win-pct-label{font-size:.6rem}
+
+  /* TRENDS — tighter spacing, shorter chart height */
+  .trend-panel{padding:.7rem .6rem .4rem}
+  .trend-label{font-size:.85rem}
+  .trend-select{font-size:.6rem;padding:5px 8px;max-width:180px}
+  .trend-chart-wrap{height:230px}
+  .trends-note{font-size:.54rem}
+  .trends-grid{gap:1rem}
+}
+
 </style>
 </head>
 <body>
