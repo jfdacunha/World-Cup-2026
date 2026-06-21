@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-21T21:47:26.421872+00:00",
+  "updated_at": "2026-06-21T22:00:50.080784+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -750,31 +750,31 @@
         },
         {
           "name": "Uruguay",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 1,
+          "draw": 2,
           "lose": 0,
           "gf": 1,
           "ga": 1,
           "gd": 0,
-          "points": 1,
+          "points": 2,
           "rank": 2,
-          "qualify_prob": 50,
+          "qualify_prob": 44,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Cape Verde",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 1,
+          "draw": 2,
           "lose": 0,
           "gf": 0,
           "ga": 0,
           "gd": 0,
-          "points": 1,
+          "points": 2,
           "rank": 3,
-          "qualify_prob": 12,
+          "qualify_prob": 35,
           "eliminated": null,
           "live_match": false
         },
@@ -789,7 +789,7 @@
           "gd": -4,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 19,
+          "qualify_prob": 6,
           "eliminated": null,
           "live_match": false
         }
@@ -1447,9 +1447,9 @@
       },
       "t2": {
         "name": "Cape Verde",
-        "label": "3rd GrpH (1pts)",
+        "label": "3rd GrpH (2pts)",
         "status": "likely",
-        "prob": 28
+        "prob": 35
       }
     },
     {
@@ -1487,7 +1487,7 @@
         "name": "Uruguay",
         "label": "2H",
         "status": "confirmed",
-        "prob": 50
+        "prob": 44
       }
     },
     {
@@ -1580,6 +1580,16 @@
       "qualify_prob": 42
     },
     {
+      "name": "Cape Verde",
+      "group": "H",
+      "played": 2,
+      "points": 2,
+      "gd": 0,
+      "gf": 0,
+      "in_best8": true,
+      "qualify_prob": 35
+    },
+    {
       "name": "New Zealand",
       "group": "G",
       "played": 1,
@@ -1596,16 +1606,6 @@
       "points": 1,
       "gd": 0,
       "gf": 1,
-      "in_best8": true,
-      "qualify_prob": 28
-    },
-    {
-      "name": "Cape Verde",
-      "group": "H",
-      "played": 1,
-      "points": 1,
-      "gd": 0,
-      "gf": 0,
       "in_best8": true,
       "qualify_prob": 28
     },
