@@ -713,10 +713,13 @@ function calcWinProb(teamName, rank, played, points) {
 function renderPowerRankings(groups) {
   const el = document.getElementById('powerEl');
 
-  // Build flat list of all teams with win probability
+  // Build flat list — EXCLUDE eliminated teams (qualify_prob===0)
+  // They cannot win the cup, so they don't belong in this ranking at all.
   const allTeams = [];
   groups.forEach(g => {
     g.teams.forEach((t, i) => {
+      // Skip eliminated teams entirely from the win-cup standings
+      if (t.qualify_prob === 0) return;
       const rawProb = calcWinProb(t.name, t.rank || i+1, t.played, t.points);
       allTeams.push({
         name:        t.name,
@@ -724,14 +727,14 @@ function renderPowerRankings(groups) {
         rank:        t.rank || i+1,
         played:      t.played,
         points:      t.points,
-        qualifyProb: t.qualify_prob || 50,
+        qualifyProb: t.qualify_prob != null ? t.qualify_prob : 50,
         rawProb,
       });
     });
   });
 
-  // Normalise so all win probs sum to 100%
-  const total = allTeams.reduce((s, t) => s + t.rawProb, 0);
+  // Normalise over ONLY non-eliminated teams so probs sum to 100%
+  const total = allTeams.reduce((s, t) => s + t.rawProb, 0) || 1;
   allTeams.forEach(t => { t.winProb = (t.rawProb / total * 100); });
 
   // Sort descending by win probability
