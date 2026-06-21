@@ -327,6 +327,10 @@ def build_groups(standings, matches):
         for _i,_t in enumerate(teams_out):
             _t["rank"] = _i + 1
         teams_out = check_eliminated(teams_out)
+        # Eliminated teams cannot qualify — zero out their probability
+        for _t in teams_out:
+            if _t.get("eliminated"):
+                _t["qualify_prob"] = 0
         gm = [m for m in matches if m["group"]==letter]
         # Only treat as "finished" if it actually has valid numeric scores.
         # football-data.org occasionally flips status to FINISHED a moment
@@ -441,33 +445,32 @@ def build_bracket(groups_out):
                     "name": None, "label": "3rd TBD", "status": "tbd", "prob": None
                 }
     else:
-        # ── LIVE PREVIEW: show current best from each slot's eligible groups ─
-        # No deduplication here — slots overlap by design until groups complete.
-        # We show the current leader of each slot's pool, clearly labelled as provisional.
+        # ── LIVE PREVIEW: greedy dedup assignment (no team appears twice) ──
+        # Even during the group stage we deduplicate — each 3rd-place team
+        # can only fill one slot. We use the same greedy algorithm as the
+        # final assignment but without requiring groups to be complete.
         slot_assignments = {}
+        used_groups_live = set()
         for slot_code, eligible_groups in THIRD_PLACE_SLOTS.items():
-            # Get best played 3rd-place team from eligible groups
-            candidates = [t for t in thirds if t["group"] in eligible_groups and t["played"] > 0]
-            pending    = [t for t in thirds if t["group"] in eligible_groups and t["played"] == 0]
-            if candidates:
-                best = candidates[0]  # already sorted best-to-worst
+            # Best available 3rd-place team from eligible groups not yet assigned
+            candidates = [t for t in thirds
+                          if t["group"] in eligible_groups
+                          and t["group"] not in used_groups_live]
+            played_candidates = [t for t in candidates if t["played"] > 0]
+
+            if played_candidates:
+                best = played_candidates[0]  # already sorted best-to-worst
+                used_groups_live.add(best["group"])
                 slot_assignments[slot_code] = {
                     "name":   best["name"],
-                    "label":  f"Best 3rd {'/'.join(eligible_groups)}",
+                    "label":  f"3rd Grp{best['group']} ({best['points']}pts)",
                     "status": "likely",
                     "prob":   qualify_prob(best["name"], 3, best["played"], best["points"]),
-                }
-            elif pending:
-                slot_assignments[slot_code] = {
-                    "name":   None,
-                    "label":  f"3rd {'/'.join(eligible_groups)} (TBD)",
-                    "status": "tbd",
-                    "prob":   None,
                 }
             else:
                 slot_assignments[slot_code] = {
                     "name":   None,
-                    "label":  "3rd " + slot_code[4:].replace("-", "/"),
+                    "label":  "3rd " + "/".join(eligible_groups),
                     "status": "tbd",
                     "prob":   None,
                 }
@@ -688,9 +691,14 @@ def append_history_snapshot(timestamp, groups_out):
 
     # Compute win_prob the same way the frontend power rankings does:
     # normalise each team's raw strength-adjusted score across the full 48-team field.
+    # Eliminated teams get raw=0 (no chance of winning the cup).
     all_teams = []
     for g in groups_out:
         for t in g["teams"]:
+            if t.get("eliminated") or t.get("qualify_prob", 1) == 0:
+                # Eliminated — cannot win the cup
+                all_teams.append((t["name"], 0.0, 0))
+                continue
             base = WIN_PROBS.get(t["name"], 0.3)
             mult = 1.0
             if t["played"] > 0:
@@ -703,10 +711,15 @@ def append_history_snapshot(timestamp, groups_out):
             raw = max(0.05, base * mult)
             all_teams.append((t["name"], raw, t["qualify_prob"]))
 
-    total_raw = sum(r for _, r, _ in all_teams) or 1.0
+    # Only normalise over non-eliminated teams
+    total_raw = sum(r for _, r, _ in all_teams if r > 0) or 1.0
 
     for name, raw, qp in all_teams:
-        win_pct = round((raw / total_raw) * 100, 3)
+        # Eliminated teams have 0 chance of winning the cup
+        if qp == 0:
+            win_pct = 0.0
+        else:
+            win_pct = round((raw / total_raw) * 100, 3)
         entry = {"t": timestamp, "q": qp, "w": win_pct}
 
         team_hist = history.setdefault(name, [])
