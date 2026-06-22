@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-21T22:21:27.036175+00:00",
+  "updated_at": "2026-06-22T00:07:34.765571+00:00",
   "source": "live",
   "live_count": 1,
   "groups": [
@@ -754,8 +754,8 @@
           "win": 0,
           "draw": 2,
           "lose": 0,
-          "gf": 1,
-          "ga": 1,
+          "gf": 3,
+          "ga": 3,
           "gd": 0,
           "points": 2,
           "rank": 2,
@@ -769,8 +769,8 @@
           "win": 0,
           "draw": 2,
           "lose": 0,
-          "gf": 0,
-          "ga": 0,
+          "gf": 2,
+          "ga": 2,
           "gd": 0,
           "points": 2,
           "rank": 3,
@@ -830,8 +830,8 @@
         {
           "home": "Uruguay",
           "away": "Cape Verde",
-          "home_goals": 0,
-          "away_goals": 0
+          "home_goals": 2,
+          "away_goals": 2
         }
       ]
     },
@@ -1587,7 +1587,7 @@
       "played": 2,
       "points": 2,
       "gd": 0,
-      "gf": 0,
+      "gf": 2,
       "in_best8": true,
       "qualify_prob": 35
     },
