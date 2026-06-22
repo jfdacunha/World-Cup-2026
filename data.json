@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-22T00:10:35.469481+00:00",
+  "updated_at": "2026-06-22T00:12:18.754617+00:00",
   "source": "live",
-  "live_count": 2,
+  "live_count": 1,
   "groups": [
     {
       "letter": "A",
@@ -762,7 +762,7 @@
           "rank": 2,
           "qualify_prob": 44,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Cape Verde",
@@ -777,7 +777,7 @@
           "rank": 3,
           "qualify_prob": 35,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Saudi Arabia",
@@ -813,6 +813,12 @@
           "away": "Saudi Arabia",
           "score": "4-0",
           "date": "2026-06-21"
+        },
+        {
+          "home": "Uruguay",
+          "away": "Cape Verde",
+          "score": "2-2",
+          "date": "2026-06-21"
         }
       ],
       "upcoming": [
@@ -827,14 +833,7 @@
           "date": "2026-06-26"
         }
       ],
-      "live": [
-        {
-          "home": "Uruguay",
-          "away": "Cape Verde",
-          "home_goals": 2,
-          "away_goals": 2
-        }
-      ]
+      "live": []
     },
     {
       "letter": "I",
