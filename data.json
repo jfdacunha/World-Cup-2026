@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-23T11:43:56.276768+00:00",
+  "updated_at": "2026-06-23T17:32:50.295162+00:00",
   "source": "live",
-  "live_count": 0,
+  "live_count": 1,
   "groups": [
     {
       "letter": "A",
@@ -1047,6 +1047,21 @@
       "letter": "K",
       "teams": [
         {
+          "name": "Portugal",
+          "played": 2,
+          "win": 1,
+          "draw": 1,
+          "lose": 0,
+          "gf": 3,
+          "ga": 2,
+          "gd": 1,
+          "points": 4,
+          "rank": 1,
+          "qualify_prob": 55,
+          "eliminated": null,
+          "live_match": true
+        },
+        {
           "name": "Colombia",
           "played": 1,
           "win": 1,
@@ -1056,23 +1071,8 @@
           "ga": 1,
           "gd": 2,
           "points": 3,
-          "rank": 1,
-          "qualify_prob": 84,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Portugal",
-          "played": 1,
-          "win": 0,
-          "draw": 1,
-          "lose": 0,
-          "gf": 1,
-          "ga": 1,
-          "gd": 0,
-          "points": 1,
           "rank": 2,
-          "qualify_prob": 53,
+          "qualify_prob": 74,
           "eliminated": null,
           "live_match": false
         },
@@ -1087,24 +1087,24 @@
           "gd": 0,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 48,
+          "qualify_prob": 28,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Uzbekistan",
-          "played": 1,
+          "played": 2,
           "win": 0,
           "draw": 0,
-          "lose": 1,
-          "gf": 1,
-          "ga": 3,
-          "gd": -2,
+          "lose": 2,
+          "gf": 2,
+          "ga": 5,
+          "gd": -3,
           "points": 0,
           "rank": 4,
-          "qualify_prob": 4,
-          "eliminated": null,
-          "live_match": false
+          "qualify_prob": 0,
+          "eliminated": "group",
+          "live_match": true
         }
       ],
       "results": [
@@ -1123,11 +1123,6 @@
       ],
       "upcoming": [
         {
-          "home": "Portugal",
-          "away": "Uzbekistan",
-          "date": "2026-06-23"
-        },
-        {
           "home": "Colombia",
           "away": "DR Congo",
           "date": "2026-06-23"
@@ -1143,7 +1138,14 @@
           "date": "2026-06-27"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Portugal",
+          "away": "Uzbekistan",
+          "home_goals": 2,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "L",
@@ -1332,10 +1334,10 @@
       "s1": "2K",
       "s2": "2L",
       "t1": {
-        "name": "Portugal",
+        "name": "Colombia",
         "label": "2K",
         "status": "confirmed",
-        "prob": 53
+        "prob": 74
       },
       "t2": {
         "name": "Ghana",
@@ -1541,10 +1543,10 @@
       "s1": "1K",
       "s2": "3rd-DEIJL",
       "t1": {
-        "name": "Colombia",
+        "name": "Portugal",
         "label": "1K",
         "status": "confirmed",
-        "prob": 84
+        "prob": 55
       },
       "t2": {
         "name": "Paraguay",
