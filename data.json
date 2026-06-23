@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T22:50:39.069189+00:00",
+  "updated_at": "2026-06-23T23:37:46.610098+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1181,31 +1181,31 @@
         },
         {
           "name": "Panama",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
           "gf": 0,
           "ga": 1,
           "gd": -1,
-          "points": 0,
+          "points": 1,
           "rank": 3,
-          "qualify_prob": 15,
+          "qualify_prob": 18,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Croatia",
-          "played": 1,
+          "played": 2,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
           "gf": 2,
           "ga": 4,
           "gd": -2,
-          "points": 0,
+          "points": 1,
           "rank": 4,
-          "qualify_prob": 6,
+          "qualify_prob": 7,
           "eliminated": null,
           "live_match": false
         }
@@ -1648,6 +1648,16 @@
       "qualify_prob": 19
     },
     {
+      "name": "Panama",
+      "group": "L",
+      "played": 2,
+      "points": 1,
+      "gd": -1,
+      "gf": 0,
+      "in_best8": false,
+      "qualify_prob": 18
+    },
+    {
       "name": "Bosnia and Herzegovina",
       "group": "B",
       "played": 2,
@@ -1656,16 +1666,6 @@
       "gf": 2,
       "in_best8": false,
       "qualify_prob": 18
-    },
-    {
-      "name": "Panama",
-      "group": "L",
-      "played": 1,
-      "points": 0,
-      "gd": -1,
-      "gf": 0,
-      "in_best8": false,
-      "qualify_prob": 15
     },
     {
       "name": "Senegal",
