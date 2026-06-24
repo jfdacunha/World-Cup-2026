@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-24T22:50:11.542437+00:00",
+  "updated_at": "2026-06-24T22:56:16.120556+00:00",
   "source": "live",
-  "live_count": 0,
+  "live_count": 2,
   "groups": [
     {
       "letter": "A",
@@ -173,12 +173,6 @@
       ],
       "results": [
         {
-          "home": "Canada",
-          "away": "Bosnia and Herzegovina",
-          "score": "1-1",
-          "date": "2026-06-12"
-        },
-        {
           "home": "Qatar",
           "away": "Switzerland",
           "score": "1-1",
@@ -210,7 +204,14 @@
         }
       ],
       "upcoming": [],
-      "live": []
+      "live": [
+        {
+          "home": "Canada",
+          "away": "Bosnia and Herzegovina",
+          "home_goals": 0,
+          "away_goals": 0
+        }
+      ]
     },
     {
       "letter": "C",
@@ -243,7 +244,7 @@
           "rank": 2,
           "qualify_prob": 97,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Scotland",
@@ -273,7 +274,7 @@
           "rank": 4,
           "qualify_prob": 0,
           "eliminated": "group",
-          "live_match": false
+          "live_match": true
         }
       ],
       "results": [
@@ -304,17 +305,19 @@
       ],
       "upcoming": [
         {
-          "home": "Morocco",
-          "away": "Haiti",
-          "date": "2026-06-24"
-        },
-        {
           "home": "Scotland",
           "away": "Brazil",
           "date": "2026-06-24"
         }
       ],
-      "live": []
+      "live": [
+        {
+          "home": "Morocco",
+          "away": "Haiti",
+          "home_goals": 2,
+          "away_goals": 2
+        }
+      ]
     },
     {
       "letter": "D",
