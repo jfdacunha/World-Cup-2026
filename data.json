@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T23:38:44.998355+00:00",
+  "updated_at": "2026-06-24T08:31:52.471768+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1047,6 +1047,21 @@
       "letter": "K",
       "teams": [
         {
+          "name": "Colombia",
+          "played": 2,
+          "win": 2,
+          "draw": 0,
+          "lose": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "points": 6,
+          "rank": 1,
+          "qualify_prob": 99,
+          "eliminated": null,
+          "live_match": false
+        },
+        {
           "name": "Portugal",
           "played": 2,
           "win": 1,
@@ -1056,38 +1071,23 @@
           "ga": 1,
           "gd": 5,
           "points": 4,
-          "rank": 1,
-          "qualify_prob": 55,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Colombia",
-          "played": 1,
-          "win": 1,
-          "draw": 0,
-          "lose": 0,
-          "gf": 3,
-          "ga": 1,
-          "gd": 2,
-          "points": 3,
           "rank": 2,
-          "qualify_prob": 74,
+          "qualify_prob": 47,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "DR Congo",
-          "played": 1,
+          "played": 2,
           "win": 0,
           "draw": 1,
-          "lose": 0,
+          "lose": 1,
           "gf": 1,
-          "ga": 1,
-          "gd": 0,
+          "ga": 2,
+          "gd": -1,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 28,
+          "qualify_prob": 18,
           "eliminated": null,
           "live_match": false
         },
@@ -1125,14 +1125,15 @@
           "away": "Uzbekistan",
           "score": "5-0",
           "date": "2026-06-23"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Colombia",
           "away": "DR Congo",
+          "score": "1-0",
           "date": "2026-06-23"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Colombia",
           "away": "Portugal",
@@ -1180,33 +1181,33 @@
           "live_match": false
         },
         {
-          "name": "Panama",
+          "name": "Croatia",
           "played": 2,
-          "win": 0,
-          "draw": 1,
+          "win": 1,
+          "draw": 0,
           "lose": 1,
-          "gf": 0,
-          "ga": 1,
+          "gf": 3,
+          "ga": 4,
           "gd": -1,
-          "points": 1,
+          "points": 3,
           "rank": 3,
-          "qualify_prob": 18,
+          "qualify_prob": 44,
           "eliminated": null,
           "live_match": false
         },
         {
-          "name": "Croatia",
+          "name": "Panama",
           "played": 2,
           "win": 0,
-          "draw": 1,
-          "lose": 1,
-          "gf": 2,
-          "ga": 4,
+          "draw": 0,
+          "lose": 2,
+          "gf": 0,
+          "ga": 2,
           "gd": -2,
-          "points": 1,
+          "points": 0,
           "rank": 4,
-          "qualify_prob": 7,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": "group",
           "live_match": false
         }
       ],
@@ -1228,14 +1229,15 @@
           "away": "Ghana",
           "score": "0-0",
           "date": "2026-06-23"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Panama",
           "away": "Croatia",
+          "score": "0-1",
           "date": "2026-06-23"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Panama",
           "away": "England",
@@ -1334,10 +1336,10 @@
       "s1": "2K",
       "s2": "2L",
       "t1": {
-        "name": "Colombia",
+        "name": "Portugal",
         "label": "2K",
         "status": "confirmed",
-        "prob": 74
+        "prob": 47
       },
       "t2": {
         "name": "Ghana",
@@ -1543,16 +1545,16 @@
       "s1": "1K",
       "s2": "3rd-DEIJL",
       "t1": {
-        "name": "Portugal",
+        "name": "Colombia",
         "label": "1K",
         "status": "confirmed",
-        "prob": 55
+        "prob": 99
       },
       "t2": {
-        "name": "Paraguay",
-        "label": "3rd GrpD (3pts)",
+        "name": "Croatia",
+        "label": "3rd GrpL (3pts)",
         "status": "likely",
-        "prob": 42
+        "prob": 44
       }
     }
   ],
@@ -1576,6 +1578,16 @@
       "gf": 1,
       "in_best8": true,
       "qualify_prob": 43
+    },
+    {
+      "name": "Croatia",
+      "group": "L",
+      "played": 2,
+      "points": 3,
+      "gd": -1,
+      "gf": 3,
+      "in_best8": true,
+      "qualify_prob": 44
     },
     {
       "name": "Paraguay",
@@ -1618,16 +1630,6 @@
       "qualify_prob": 38
     },
     {
-      "name": "DR Congo",
-      "group": "K",
-      "played": 1,
-      "points": 1,
-      "gd": 0,
-      "gf": 1,
-      "in_best8": true,
-      "qualify_prob": 28
-    },
-    {
       "name": "Czechia",
       "group": "A",
       "played": 2,
@@ -1638,6 +1640,16 @@
       "qualify_prob": 19
     },
     {
+      "name": "DR Congo",
+      "group": "K",
+      "played": 2,
+      "points": 1,
+      "gd": -1,
+      "gf": 1,
+      "in_best8": false,
+      "qualify_prob": 18
+    },
+    {
       "name": "Ecuador",
       "group": "E",
       "played": 2,
@@ -1646,16 +1658,6 @@
       "gf": 0,
       "in_best8": false,
       "qualify_prob": 19
-    },
-    {
-      "name": "Panama",
-      "group": "L",
-      "played": 2,
-      "points": 1,
-      "gd": -1,
-      "gf": 0,
-      "in_best8": false,
-      "qualify_prob": 18
     },
     {
       "name": "Bosnia and Herzegovina",
