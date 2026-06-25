@@ -120,84 +120,47 @@ def api_get(path):
 
 def qualify_prob(name, rank, played, points):
     """
-    Estimate % probability of qualifying from group stage (top 2 auto + best 8 third places).
-    Based purely on current standing + remaining matches + team strength modifier.
+    Fallback for rank-3 only (rank-1/2 are handled by gap_qualify_prob).
     """
-    remaining = 3 - played
-    max_pts = points + remaining * 3
+    if points == 0 and played >= 2: return 5
+    if points <= 1: return 10
+    if points <= 3: return 30
+    return 50
 
-    # Base qualification probability from current standing
-    if played == 0:
-        # Pre-tournament: use FIFA ranking tier as guide
-        strength = WIN_PROBS.get(name, 0.5)
-        total = 100.0  # will normalise across group later
-        # Rough tiers: top 5 teams 70-85%, mid 45-65%, minnows 15-35%
-        if strength >= 8.0:   return 80
-        elif strength >= 5.0: return 70
-        elif strength >= 3.0: return 60
-        elif strength >= 1.5: return 50
-        elif strength >= 0.8: return 35
-        elif strength >= 0.4: return 22
-        else:                 return 12
 
-    # After games played — model based on points trajectory
-    # Max possible points and current points determine fate
+def gap_qualify_prob(rank, pts, rank3_pts, games_remaining):
+    """
+    Gap-aware qualify probability for rank-1 or rank-2 teams.
+    Takes the actual points gap to rank-3 into account — the old function
+    ignored this, producing absurd values like Portugal=47% with a 3-pt lead.
 
-    if played == 3:
-        # Group stage complete — definitive
-        if rank == 1:   return 99  # top 2 auto qualify
-        elif rank == 2: return 97
-        elif rank == 3: return 25  # best 8 third-places out of 12 groups
-        else:           return 1   # eliminated
+    With 1 game remaining:
+      gap > max_catch : mathematically safe → 99%
+      gap = max_catch : tied only if we lose all AND rank3 wins all → 96/93%
+      gap 1 below mc  : rank3 can surpass with one game swing → 89/82%
+      gap = 0         : equal points — genuine 50/50 battle → 80/68%
+      gap < 0         : we are currently BEHIND rank-3 → 65/45%
+    """
+    if games_remaining == 0:
+        return 99
+    max_catch = games_remaining * 3
+    gap = pts - rank3_pts
 
-    # Mid-group: simulate remaining outcomes
-    # Use points as primary indicator, strength as tiebreaker
-    strength = WIN_PROBS.get(name, 0.5)
-    str_bonus = min(8, round(strength * 0.8))  # max +8 bonus from strength
+    if gap > max_catch:
+        return 99
 
     if rank == 1:
-        if points == 3:
-            if remaining == 2: return min(95, 82 + str_bonus)
-            else:              return min(97, 88 + str_bonus)
-        elif points == 6:      return 99
-        elif points == 1:
-            if remaining == 1: return min(75, 58 + str_bonus)
-            else:              return min(80, 62 + str_bonus)
-        else: # 0 pts, somehow rank 1 (all drew)
-            return min(70, 50 + str_bonus)
-
-    elif rank == 2:
-        if points == 3:
-            if remaining == 2: return min(88, 72 + str_bonus)
-            else:              return min(92, 80 + str_bonus)
-        elif points == 6:      return 98
-        elif points == 1:
-            if remaining == 1: return min(55, 40 + str_bonus)
-            else:              return min(65, 48 + str_bonus)
-        else: # 0 pts rank 2
-            return min(60, 42 + str_bonus)
-
-    elif rank == 3:
-        if points == 3:        return min(60, 42 + str_bonus)
-        elif points == 1:
-            if remaining == 2: return min(42, 28 + str_bonus)
-            else:              return min(30, 18 + str_bonus)
-        elif points == 0:
-            if max_pts >= 9:   return min(38, 22 + str_bonus)
-            elif max_pts >= 6: return min(28, 15 + str_bonus)
-            else:              return min(15, 8 + str_bonus)
-        else: return min(50, 35 + str_bonus)
-
-    else:  # rank 4
-        if points == 3:        return min(45, 30 + str_bonus)  # weird but possible
-        elif points == 1:
-            if max_pts >= 7:   return min(22, 12 + str_bonus)
-            else:              return min(12, 5 + str_bonus)
-        elif points == 0:
-            if max_pts >= 9:   return min(18, 8 + str_bonus)
-            elif max_pts >= 6: return min(10, 4 + str_bonus)
-            else:              return 2  # basically eliminated
-        else: return min(18, 8 + str_bonus)
+        if gap >= max_catch:     return 96
+        if gap >= max_catch - 3: return 89
+        if gap >= max_catch - 6: return 82
+        if gap >= 0:             return max(68, 68 + int(gap / max(max_catch,1) * 20))
+        return                         max(50, 50 + int(gap / max(max_catch,1) * 20))
+    else:  # rank 2
+        if gap >= max_catch:     return 93
+        if gap >= max_catch - 3: return 82
+        if gap >= max_catch - 6: return 70
+        if gap >= 0:             return max(58, 58 + int(gap / max(max_catch,1) * 25))
+        return                         max(35, 35 + int(gap / max(max_catch,1) * 30))
 
 def check_eliminated(teams):
     BEST3 = 4
@@ -331,6 +294,17 @@ def build_groups(standings, matches):
         for _t in teams_out:
             if _t.get("eliminated"):
                 _t["qualify_prob"] = 0
+
+        # Override rank-1 and rank-2 qualify_prob with the gap-aware formula.
+        # Now that teams_out is sorted and ranked we can see ALL 4 teams,
+        # so we know the exact point gap between rank-2 and rank-3.
+        _rank3_pts = next((t["points"] for t in teams_out if t["rank"]==3), 0)
+        _games_rem = max(0, 3 - teams_out[0]["played"]) if teams_out else 0
+        for _t in teams_out:
+            if _t["rank"] in (1, 2) and not _t.get("eliminated"):
+                _t["qualify_prob"] = gap_qualify_prob(
+                    _t["rank"], _t["points"], _rank3_pts, _games_rem
+                )
 
         # Lock confirmed qualifiers at 99% when group is fully complete
         _results_count = len([m for m in matches if m.get("score") and "None" not in str(m.get("score",""))])
