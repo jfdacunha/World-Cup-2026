@@ -644,6 +644,18 @@ def main():
         groups_out = FALLBACK_GROUPS
     bracket = build_bracket(groups_out)
     total_live = sum(len(g["live"]) for g in groups_out)
+
+    # ── LOCK PROBABILITIES FOR FULLY FINISHED GROUPS ─────────────────
+    for _g in groups_out:
+        _res_done = len([_r for _r in _g.get("results", [])
+                         if _r.get("score") and "None" not in str(_r.get("score", ""))]) >= 6
+        if _res_done:
+            for _t in _g["teams"]:
+                if _t["rank"] <= 2 and not _t.get("eliminated"):
+                    _t["qualify_prob"] = 99   # confirmed through
+                elif _t["rank"] == 4 and not _t.get("eliminated"):
+                    _t["qualify_prob"] = 1    # cannot qualify
+
     # Compute best 3rd places for display
     thirds_ranked, best_8_grps = compute_best_thirds(groups_out)
     # Compute accurate qualify_prob for each 3rd-place team based on their
