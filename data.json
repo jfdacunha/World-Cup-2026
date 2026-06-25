@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T10:26:08.029426+00:00",
+  "updated_at": "2026-06-25T14:21:35.041915+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -47,7 +47,7 @@
           "gd": -1,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 25,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
@@ -152,7 +152,7 @@
           "gd": -1,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 25,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
@@ -257,7 +257,7 @@
           "gd": -3,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 25,
+          "qualify_prob": 45,
           "eliminated": null,
           "live_match": false
         },
@@ -362,7 +362,7 @@
           "gd": -2,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 42,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
@@ -466,7 +466,7 @@
           "gd": -1,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 19,
+          "qualify_prob": 5,
           "eliminated": null,
           "live_match": false
         },
@@ -570,7 +570,7 @@
           "gd": 0,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 43,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
@@ -674,7 +674,7 @@
           "gd": 0,
           "points": 2,
           "rank": 3,
-          "qualify_prob": 38,
+          "qualify_prob": 15,
           "eliminated": null,
           "live_match": false
         },
@@ -778,7 +778,7 @@
           "gd": 0,
           "points": 2,
           "rank": 3,
-          "qualify_prob": 35,
+          "qualify_prob": 45,
           "eliminated": null,
           "live_match": false
         },
@@ -882,7 +882,7 @@
           "gd": -3,
           "points": 0,
           "rank": 3,
-          "qualify_prob": 9,
+          "qualify_prob": 5,
           "eliminated": null,
           "live_match": false
         },
@@ -986,7 +986,7 @@
           "gd": -2,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 43,
+          "qualify_prob": 45,
           "eliminated": null,
           "live_match": false
         },
@@ -1090,7 +1090,7 @@
           "gd": -1,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 18,
+          "qualify_prob": 15,
           "eliminated": null,
           "live_match": false
         },
@@ -1194,7 +1194,7 @@
           "gd": -1,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 44,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
@@ -1570,7 +1570,7 @@
       "gd": -1,
       "gf": 5,
       "in_best8": true,
-      "qualify_prob": 25
+      "qualify_prob": 80
     },
     {
       "name": "Sweden",
@@ -1580,7 +1580,7 @@
       "gd": 0,
       "gf": 6,
       "in_best8": true,
-      "qualify_prob": 43
+      "qualify_prob": 80
     },
     {
       "name": "Croatia",
@@ -1590,7 +1590,7 @@
       "gd": -1,
       "gf": 3,
       "in_best8": true,
-      "qualify_prob": 44
+      "qualify_prob": 80
     },
     {
       "name": "South Korea",
@@ -1600,7 +1600,7 @@
       "gd": -1,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 25
+      "qualify_prob": 80
     },
     {
       "name": "Paraguay",
@@ -1610,7 +1610,7 @@
       "gd": -2,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 42
+      "qualify_prob": 80
     },
     {
       "name": "Algeria",
@@ -1620,7 +1620,7 @@
       "gd": -2,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 43
+      "qualify_prob": 45
     },
     {
       "name": "Scotland",
@@ -1630,7 +1630,7 @@
       "gd": -3,
       "gf": 1,
       "in_best8": true,
-      "qualify_prob": 25
+      "qualify_prob": 45
     },
     {
       "name": "Cape Verde",
@@ -1640,7 +1640,7 @@
       "gd": 0,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 35
+      "qualify_prob": 45
     },
     {
       "name": "Belgium",
@@ -1650,7 +1650,7 @@
       "gd": 0,
       "gf": 1,
       "in_best8": false,
-      "qualify_prob": 38
+      "qualify_prob": 15
     },
     {
       "name": "DR Congo",
@@ -1660,7 +1660,7 @@
       "gd": -1,
       "gf": 1,
       "in_best8": false,
-      "qualify_prob": 18
+      "qualify_prob": 15
     },
     {
       "name": "Ecuador",
@@ -1670,7 +1670,7 @@
       "gd": -1,
       "gf": 0,
       "in_best8": false,
-      "qualify_prob": 19
+      "qualify_prob": 5
     },
     {
       "name": "Senegal",
@@ -1680,7 +1680,7 @@
       "gd": -3,
       "gf": 3,
       "in_best8": false,
-      "qualify_prob": 9
+      "qualify_prob": 5
     }
   ]
 }
