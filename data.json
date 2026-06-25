@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T18:37:16.646922+00:00",
+  "updated_at": "2026-06-25T23:03:17.231741+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -362,7 +362,7 @@
           "gd": -2,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 45,
           "eliminated": null,
           "live_match": false
         },
@@ -427,13 +427,13 @@
       "teams": [
         {
           "name": "Germany",
-          "played": 2,
+          "played": 3,
           "win": 2,
           "draw": 0,
-          "lose": 0,
-          "gf": 9,
-          "ga": 2,
-          "gd": 7,
+          "lose": 1,
+          "gf": 10,
+          "ga": 4,
+          "gd": 6,
           "points": 6,
           "rank": 1,
           "qualify_prob": 99,
@@ -442,47 +442,47 @@
         },
         {
           "name": "Ivory Coast",
-          "played": 2,
-          "win": 1,
+          "played": 3,
+          "win": 2,
           "draw": 0,
           "lose": 1,
-          "gf": 2,
+          "gf": 4,
           "ga": 2,
-          "gd": 0,
-          "points": 3,
+          "gd": 2,
+          "points": 6,
           "rank": 2,
-          "qualify_prob": 82,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Ecuador",
-          "played": 2,
-          "win": 0,
+          "played": 3,
+          "win": 1,
           "draw": 1,
           "lose": 1,
-          "gf": 0,
-          "ga": 1,
-          "gd": -1,
-          "points": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 4,
           "rank": 3,
-          "qualify_prob": 5,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Curaçao",
-          "played": 2,
+          "played": 3,
           "win": 0,
           "draw": 1,
-          "lose": 1,
+          "lose": 2,
           "gf": 1,
-          "ga": 7,
-          "gd": -6,
+          "ga": 9,
+          "gd": -8,
           "points": 1,
           "rank": 4,
-          "qualify_prob": 10,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": "group",
           "live_match": false
         }
       ],
@@ -510,20 +510,21 @@
           "away": "Curaçao",
           "score": "0-0",
           "date": "2026-06-20"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Ecuador",
           "away": "Germany",
+          "score": "2-1",
           "date": "2026-06-25"
         },
         {
           "home": "Curaçao",
           "away": "Ivory Coast",
+          "score": "0-2",
           "date": "2026-06-25"
         }
       ],
+      "upcoming": [],
       "live": []
     },
     {
@@ -531,44 +532,44 @@
       "teams": [
         {
           "name": "Netherlands",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 1,
+          "draw": 2,
           "lose": 0,
           "gf": 7,
           "ga": 3,
           "gd": 4,
-          "points": 4,
+          "points": 5,
           "rank": 1,
-          "qualify_prob": 89,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Japan",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 1,
+          "draw": 2,
           "lose": 0,
           "gf": 6,
           "ga": 2,
           "gd": 4,
-          "points": 4,
+          "points": 5,
           "rank": 2,
-          "qualify_prob": 82,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Sweden",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
           "gf": 6,
           "ga": 6,
           "gd": 0,
-          "points": 3,
+          "points": 4,
           "rank": 3,
           "qualify_prob": 80,
           "eliminated": null,
@@ -576,14 +577,14 @@
         },
         {
           "name": "Tunisia",
-          "played": 2,
+          "played": 3,
           "win": 0,
-          "draw": 0,
+          "draw": 1,
           "lose": 2,
           "gf": 1,
           "ga": 9,
           "gd": -8,
-          "points": 0,
+          "points": 1,
           "rank": 4,
           "qualify_prob": 0,
           "eliminated": "group",
@@ -778,7 +779,7 @@
           "gd": 0,
           "points": 2,
           "rank": 3,
-          "qualify_prob": 45,
+          "qualify_prob": 15,
           "eliminated": null,
           "live_match": false
         },
@@ -1090,7 +1091,7 @@
           "gd": -1,
           "points": 1,
           "rank": 3,
-          "qualify_prob": 15,
+          "qualify_prob": 5,
           "eliminated": null,
           "live_match": false
         },
@@ -1269,8 +1270,8 @@
         "prob": 50
       },
       "t2": {
-        "name": "Bosnia and Herzegovina",
-        "label": "3rd GrpB (4pts)",
+        "name": "Sweden",
+        "label": "3rd GrpF (4pts)",
         "status": "likely",
         "prob": 50
       }
@@ -1288,8 +1289,8 @@
         "prob": 50
       },
       "t2": {
-        "name": "Sweden",
-        "label": "3rd GrpF (3pts)",
+        "name": "Paraguay",
+        "label": "3rd GrpD (3pts)",
         "status": "likely",
         "prob": 30
       }
@@ -1383,10 +1384,10 @@
         "prob": 50
       },
       "t2": {
-        "name": "Ecuador",
-        "label": "3rd GrpE (1pts)",
+        "name": "Bosnia and Herzegovina",
+        "label": "3rd GrpB (4pts)",
         "status": "likely",
-        "prob": 10
+        "prob": 50
       }
     },
     {
@@ -1437,7 +1438,7 @@
         "name": "Ivory Coast",
         "label": "2E",
         "status": "confirmed",
-        "prob": 30
+        "prob": 50
       },
       "t2": {
         "name": "Norway",
@@ -1459,10 +1460,10 @@
         "prob": 50
       },
       "t2": {
-        "name": "Scotland",
-        "label": "3rd GrpC (3pts)",
+        "name": "Ecuador",
+        "label": "3rd GrpE (4pts)",
         "status": "likely",
-        "prob": 30
+        "prob": 50
       }
     },
     {
@@ -1563,22 +1564,32 @@
   ],
   "best_thirds": [
     {
+      "name": "Sweden",
+      "group": "F",
+      "played": 3,
+      "points": 4,
+      "gd": 0,
+      "gf": 6,
+      "in_best8": true,
+      "qualify_prob": 80
+    },
+    {
+      "name": "Ecuador",
+      "group": "E",
+      "played": 3,
+      "points": 4,
+      "gd": 0,
+      "gf": 2,
+      "in_best8": true,
+      "qualify_prob": 80
+    },
+    {
       "name": "Bosnia and Herzegovina",
       "group": "B",
       "played": 3,
       "points": 4,
       "gd": -1,
       "gf": 5,
-      "in_best8": true,
-      "qualify_prob": 80
-    },
-    {
-      "name": "Sweden",
-      "group": "F",
-      "played": 2,
-      "points": 3,
-      "gd": 0,
-      "gf": 6,
       "in_best8": true,
       "qualify_prob": 80
     },
@@ -1610,7 +1621,7 @@
       "gd": -2,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 80
+      "qualify_prob": 45
     },
     {
       "name": "Algeria",
@@ -1639,8 +1650,8 @@
       "points": 2,
       "gd": 0,
       "gf": 2,
-      "in_best8": true,
-      "qualify_prob": 45
+      "in_best8": false,
+      "qualify_prob": 15
     },
     {
       "name": "Belgium",
@@ -1659,16 +1670,6 @@
       "points": 1,
       "gd": -1,
       "gf": 1,
-      "in_best8": false,
-      "qualify_prob": 15
-    },
-    {
-      "name": "Ecuador",
-      "group": "E",
-      "played": 2,
-      "points": 1,
-      "gd": -1,
-      "gf": 0,
       "in_best8": false,
       "qualify_prob": 5
     },
