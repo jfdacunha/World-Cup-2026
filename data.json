@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-25T14:22:01.904701+00:00",
+  "updated_at": "2026-06-25T14:24:59.647392+00:00",
   "source": "live",
-  "live_count": 1,
+  "live_count": 0,
   "groups": [
     {
       "letter": "A",
@@ -32,7 +32,7 @@
           "gd": -1,
           "points": 4,
           "rank": 2,
-          "qualify_prob": 97,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -137,7 +137,7 @@
           "gd": 5,
           "points": 4,
           "rank": 2,
-          "qualify_prob": 97,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -174,6 +174,12 @@
       ],
       "results": [
         {
+          "home": "Canada",
+          "away": "Bosnia and Herzegovina",
+          "score": "1-1",
+          "date": "2026-06-12"
+        },
+        {
           "home": "Qatar",
           "away": "Switzerland",
           "score": "1-1",
@@ -205,14 +211,7 @@
         }
       ],
       "upcoming": [],
-      "live": [
-        {
-          "home": "Canada",
-          "away": "Bosnia and Herzegovina",
-          "home_goals": 0,
-          "away_goals": 0
-        }
-      ]
+      "live": []
     },
     {
       "letter": "C",
@@ -243,7 +242,7 @@
           "gd": 3,
           "points": 7,
           "rank": 2,
-          "qualify_prob": 97,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
