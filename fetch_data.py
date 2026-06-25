@@ -331,6 +331,13 @@ def build_groups(standings, matches):
         for _t in teams_out:
             if _t.get("eliminated"):
                 _t["qualify_prob"] = 0
+
+        # Lock confirmed qualifiers at 99% when group is fully complete
+        _results_count = len([m for m in matches if m.get("score") and "None" not in str(m.get("score",""))])
+        if _results_count >= 6:
+            for _t in teams_out:
+                if _t["rank"] <= 2 and not _t.get("eliminated"):
+                    _t["qualify_prob"] = 99
         gm = [m for m in matches if m["group"]==letter]
         # Only treat as "finished" if it actually has valid numeric scores.
         # football-data.org occasionally flips status to FINISHED a moment
@@ -639,6 +646,31 @@ def main():
     total_live = sum(len(g["live"]) for g in groups_out)
     # Compute best 3rd places for display
     thirds_ranked, best_8_grps = compute_best_thirds(groups_out)
+    # Compute accurate qualify_prob for each 3rd-place team based on their
+    # actual ranking position (top 8 of 12 qualify).
+    # Position 1-5 → safely in → 80%, 6-8 → on the bubble → 45%,
+    # 9-10 → likely out → 15%, 11-12 → out → 5%
+    # Once all groups finish the best_8_grps is exact → 99% or 0%.
+    _all_grps_done = all(
+        len([m for m in g.get("results",[]) if m.get("score") and "None" not in str(m.get("score",""))]) >= 6
+        for g in groups_out
+    )
+    thirds_prob = {}
+    for _i, _t in enumerate(thirds_ranked):
+        _pos = _i + 1
+        if _all_grps_done:
+            thirds_prob[_t["name"]] = 99 if _t["group"] in best_8_grps else 0
+        elif _t["played"] == 0:
+            thirds_prob[_t["name"]] = qualify_prob(_t["name"], 3, 0, 0)
+        elif _pos <= 5:
+            thirds_prob[_t["name"]] = 80
+        elif _pos <= 8:
+            thirds_prob[_t["name"]] = 45
+        elif _pos <= 10:
+            thirds_prob[_t["name"]] = 15
+        else:
+            thirds_prob[_t["name"]] = 5
+
     thirds_display = [
         {
             "name":    t["name"],
@@ -648,10 +680,18 @@ def main():
             "gd":      t.get("gd", t["gf"]-t["ga"]),
             "gf":      t["gf"],
             "in_best8": t["group"] in best_8_grps,
-            "qualify_prob": qualify_prob(t["name"], 3, t["played"], t["points"]),
+            "qualify_prob": thirds_prob.get(t["name"],
+                            qualify_prob(t["name"], 3, t["played"], t["points"])),
         }
         for t in thirds_ranked
     ]
+
+    # Sync the accurate 3rd-place qualify_prob back into groups_out so the
+    # group standings table shows the same number as the best-3rd table
+    for _g in groups_out:
+        for _t in _g["teams"]:
+            if _t["rank"] == 3 and _t["name"] in thirds_prob:
+                _t["qualify_prob"] = thirds_prob[_t["name"]]
 
     output = {
         "updated_at": now,
