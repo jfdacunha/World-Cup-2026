@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-25T23:03:17.231741+00:00",
+  "updated_at": "2026-06-25T23:54:32.237965+00:00",
   "source": "live",
-  "live_count": 0,
+  "live_count": 2,
   "groups": [
     {
       "letter": "A",
@@ -533,17 +533,17 @@
         {
           "name": "Netherlands",
           "played": 3,
-          "win": 1,
-          "draw": 2,
+          "win": 2,
+          "draw": 1,
           "lose": 0,
-          "gf": 7,
+          "gf": 9,
           "ga": 3,
-          "gd": 4,
-          "points": 5,
+          "gd": 6,
+          "points": 7,
           "rank": 1,
           "qualify_prob": 99,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Japan",
@@ -558,7 +558,7 @@
           "rank": 2,
           "qualify_prob": 99,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Sweden",
@@ -573,22 +573,22 @@
           "rank": 3,
           "qualify_prob": 80,
           "eliminated": null,
-          "live_match": false
+          "live_match": true
         },
         {
           "name": "Tunisia",
           "played": 3,
           "win": 0,
-          "draw": 1,
-          "lose": 2,
+          "draw": 0,
+          "lose": 3,
           "gf": 1,
-          "ga": 9,
-          "gd": -8,
-          "points": 1,
+          "ga": 11,
+          "gd": -10,
+          "points": 0,
           "rank": 4,
           "qualify_prob": 0,
           "eliminated": "group",
-          "live_match": false
+          "live_match": true
         }
       ],
       "results": [
@@ -617,19 +617,21 @@
           "date": "2026-06-21"
         }
       ],
-      "upcoming": [
+      "upcoming": [],
+      "live": [
         {
           "home": "Tunisia",
           "away": "Netherlands",
-          "date": "2026-06-25"
+          "home_goals": 0,
+          "away_goals": 2
         },
         {
           "home": "Japan",
           "away": "Sweden",
-          "date": "2026-06-25"
+          "home_goals": 0,
+          "away_goals": 0
         }
-      ],
-      "live": []
+      ]
     },
     {
       "letter": "G",
