@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-25T23:57:03.502101+00:00",
+  "updated_at": "2026-06-26T10:32:06.921885+00:00",
   "source": "live",
-  "live_count": 2,
+  "live_count": 0,
   "groups": [
     {
       "letter": "A",
@@ -47,7 +47,7 @@
           "gd": -1,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 45,
           "eliminated": null,
           "live_match": false
         },
@@ -323,59 +323,59 @@
       "teams": [
         {
           "name": "United States",
-          "played": 2,
+          "played": 3,
           "win": 2,
           "draw": 0,
-          "lose": 0,
-          "gf": 6,
-          "ga": 1,
-          "gd": 5,
+          "lose": 1,
+          "gf": 8,
+          "ga": 4,
+          "gd": 4,
           "points": 6,
           "rank": 1,
-          "qualify_prob": 96,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Australia",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
           "gf": 2,
           "ga": 2,
           "gd": 0,
-          "points": 3,
+          "points": 4,
           "rank": 2,
-          "qualify_prob": 82,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Paraguay",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
           "gf": 2,
           "ga": 4,
           "gd": -2,
-          "points": 3,
+          "points": 4,
           "rank": 3,
-          "qualify_prob": 45,
+          "qualify_prob": 80,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Türkiye",
-          "played": 2,
-          "win": 0,
+          "played": 3,
+          "win": 1,
           "draw": 0,
           "lose": 2,
-          "gf": 0,
-          "ga": 3,
-          "gd": -3,
-          "points": 0,
+          "gf": 3,
+          "ga": 5,
+          "gd": -2,
+          "points": 3,
           "rank": 4,
           "qualify_prob": 0,
           "eliminated": "group",
@@ -406,20 +406,21 @@
           "away": "Paraguay",
           "score": "0-1",
           "date": "2026-06-19"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Türkiye",
           "away": "United States",
+          "score": "3-2",
           "date": "2026-06-25"
         },
         {
           "home": "Paraguay",
           "away": "Australia",
+          "score": "0-0",
           "date": "2026-06-25"
         }
       ],
+      "upcoming": [],
       "live": []
     },
     {
@@ -536,14 +537,14 @@
           "win": 2,
           "draw": 1,
           "lose": 0,
-          "gf": 9,
-          "ga": 3,
+          "gf": 10,
+          "ga": 4,
           "gd": 6,
           "points": 7,
           "rank": 1,
           "qualify_prob": 99,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Japan",
@@ -551,14 +552,14 @@
           "win": 1,
           "draw": 2,
           "lose": 0,
-          "gf": 6,
-          "ga": 2,
+          "gf": 7,
+          "ga": 3,
           "gd": 4,
           "points": 5,
           "rank": 2,
           "qualify_prob": 99,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Sweden",
@@ -566,14 +567,14 @@
           "win": 1,
           "draw": 1,
           "lose": 1,
-          "gf": 6,
-          "ga": 6,
+          "gf": 7,
+          "ga": 7,
           "gd": 0,
           "points": 4,
           "rank": 3,
           "qualify_prob": 80,
           "eliminated": null,
-          "live_match": true
+          "live_match": false
         },
         {
           "name": "Tunisia",
@@ -581,14 +582,14 @@
           "win": 0,
           "draw": 0,
           "lose": 3,
-          "gf": 1,
-          "ga": 11,
+          "gf": 2,
+          "ga": 12,
           "gd": -10,
           "points": 0,
           "rank": 4,
           "qualify_prob": 0,
           "eliminated": "group",
-          "live_match": true
+          "live_match": false
         }
       ],
       "results": [
@@ -615,23 +616,22 @@
           "away": "Japan",
           "score": "0-4",
           "date": "2026-06-21"
-        }
-      ],
-      "upcoming": [],
-      "live": [
+        },
         {
           "home": "Tunisia",
           "away": "Netherlands",
-          "home_goals": 0,
-          "away_goals": 2
+          "score": "1-3",
+          "date": "2026-06-25"
         },
         {
           "home": "Japan",
           "away": "Sweden",
-          "home_goals": 0,
-          "away_goals": 0
+          "score": "1-1",
+          "date": "2026-06-25"
         }
-      ]
+      ],
+      "upcoming": [],
+      "live": []
     },
     {
       "letter": "G",
@@ -1292,9 +1292,9 @@
       },
       "t2": {
         "name": "Paraguay",
-        "label": "3rd GrpD (3pts)",
+        "label": "3rd GrpD (4pts)",
         "status": "likely",
-        "prob": 30
+        "prob": 50
       }
     },
     {
@@ -1516,7 +1516,7 @@
         "name": "Australia",
         "label": "2D",
         "status": "confirmed",
-        "prob": 30
+        "prob": 50
       },
       "t2": {
         "name": "Iran",
@@ -1571,7 +1571,7 @@
       "played": 3,
       "points": 4,
       "gd": 0,
-      "gf": 6,
+      "gf": 7,
       "in_best8": true,
       "qualify_prob": 80
     },
@@ -1596,6 +1596,16 @@
       "qualify_prob": 80
     },
     {
+      "name": "Paraguay",
+      "group": "D",
+      "played": 3,
+      "points": 4,
+      "gd": -2,
+      "gf": 2,
+      "in_best8": true,
+      "qualify_prob": 80
+    },
+    {
       "name": "Croatia",
       "group": "L",
       "played": 2,
@@ -1611,16 +1621,6 @@
       "played": 3,
       "points": 3,
       "gd": -1,
-      "gf": 2,
-      "in_best8": true,
-      "qualify_prob": 80
-    },
-    {
-      "name": "Paraguay",
-      "group": "D",
-      "played": 2,
-      "points": 3,
-      "gd": -2,
       "gf": 2,
       "in_best8": true,
       "qualify_prob": 45
