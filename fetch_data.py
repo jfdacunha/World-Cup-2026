@@ -446,7 +446,7 @@ def build_bracket(groups_out):
                     "name":   best["name"],
                     "label":  f"3rd Grp{best['group']} ({best['points']}pts)",
                     "status": "likely",
-                    "prob":   qualify_prob(best["name"], 3, best["played"], best["points"]),
+                    "prob":   best.get("qualify_prob", 30),
                 }
             else:
                 slot_assignments[slot_code] = {
@@ -470,8 +470,10 @@ def build_bracket(groups_out):
         if idx >= len(teams): return {"name": None, "label": slot, "status": "tbd", "prob": None}
         t = teams[idx]
         status = "confirmed" if t["played"] > 0 else "likely"
+        # Use the gap-aware qualify_prob already computed on the team dict,
+        # NOT the old flat-value fallback function (which gives 50% for everyone)
         return {"name": t["name"], "label": slot, "status": status,
-                "prob": qualify_prob(t["name"], idx+1, t["played"], t["points"])}
+                "prob": t.get("qualify_prob", 50)}
 
     return [{**m, "t1": resolve(m["s1"]), "t2": resolve(m["s2"])} for m in R32_MATCHES]
 
