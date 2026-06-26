@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T10:32:06.921885+00:00",
+  "updated_at": "2026-06-26T10:34:45.644971+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1269,7 +1269,7 @@
         "name": "Germany",
         "label": "1E",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Sweden",
@@ -1288,7 +1288,7 @@
         "name": "France",
         "label": "1I",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Paraguay",
@@ -1307,13 +1307,13 @@
         "name": "South Africa",
         "label": "2A",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Canada",
         "label": "2B",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       }
     },
     {
@@ -1326,13 +1326,13 @@
         "name": "Netherlands",
         "label": "1F",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Morocco",
         "label": "2C",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       }
     },
     {
@@ -1345,13 +1345,13 @@
         "name": "Portugal",
         "label": "2K",
         "status": "confirmed",
-        "prob": 50
+        "prob": 93
       },
       "t2": {
         "name": "Ghana",
         "label": "2L",
         "status": "confirmed",
-        "prob": 50
+        "prob": 82
       }
     },
     {
@@ -1364,13 +1364,13 @@
         "name": "Spain",
         "label": "1H",
         "status": "confirmed",
-        "prob": 50
+        "prob": 89
       },
       "t2": {
         "name": "Austria",
         "label": "2J",
         "status": "confirmed",
-        "prob": 30
+        "prob": 82
       }
     },
     {
@@ -1383,7 +1383,7 @@
         "name": "United States",
         "label": "1D",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Bosnia and Herzegovina",
@@ -1402,7 +1402,7 @@
         "name": "Egypt",
         "label": "1G",
         "status": "confirmed",
-        "prob": 50
+        "prob": 89
       },
       "t2": {
         "name": "South Korea",
@@ -1421,13 +1421,13 @@
         "name": "Brazil",
         "label": "1C",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Japan",
         "label": "2F",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       }
     },
     {
@@ -1440,13 +1440,13 @@
         "name": "Ivory Coast",
         "label": "2E",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Norway",
         "label": "2I",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       }
     },
     {
@@ -1459,7 +1459,7 @@
         "name": "Mexico",
         "label": "1A",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Ecuador",
@@ -1478,7 +1478,7 @@
         "name": "England",
         "label": "1L",
         "status": "confirmed",
-        "prob": 50
+        "prob": 89
       },
       "t2": {
         "name": "Algeria",
@@ -1497,13 +1497,13 @@
         "name": "Argentina",
         "label": "1J",
         "status": "confirmed",
-        "prob": 50
+        "prob": 96
       },
       "t2": {
         "name": "Uruguay",
         "label": "2H",
         "status": "confirmed",
-        "prob": 30
+        "prob": 82
       }
     },
     {
@@ -1516,13 +1516,13 @@
         "name": "Australia",
         "label": "2D",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Iran",
         "label": "2G",
         "status": "confirmed",
-        "prob": 30
+        "prob": 82
       }
     },
     {
@@ -1535,7 +1535,7 @@
         "name": "Switzerland",
         "label": "1B",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Belgium",
@@ -1554,7 +1554,7 @@
         "name": "Colombia",
         "label": "1K",
         "status": "confirmed",
-        "prob": 50
+        "prob": 99
       },
       "t2": {
         "name": "Croatia",
