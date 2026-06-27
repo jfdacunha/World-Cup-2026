@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T22:55:44.785446+00:00",
+  "updated_at": "2026-06-27T02:18:50.702861+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -677,7 +677,7 @@
           "gd": 0,
           "points": 2,
           "rank": 3,
-          "qualify_prob": 5,
+          "qualify_prob": 15,
           "eliminated": null,
           "live_match": false
         },
@@ -742,62 +742,62 @@
       "teams": [
         {
           "name": "Spain",
-          "played": 2,
-          "win": 1,
+          "played": 3,
+          "win": 2,
           "draw": 1,
           "lose": 0,
-          "gf": 4,
+          "gf": 5,
           "ga": 0,
-          "gd": 4,
-          "points": 4,
+          "gd": 5,
+          "points": 7,
           "rank": 1,
-          "qualify_prob": 89,
-          "eliminated": null,
-          "live_match": false
-        },
-        {
-          "name": "Uruguay",
-          "played": 2,
-          "win": 0,
-          "draw": 2,
-          "lose": 0,
-          "gf": 3,
-          "ga": 3,
-          "gd": 0,
-          "points": 2,
-          "rank": 2,
-          "qualify_prob": 82,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Cape Verde",
-          "played": 2,
+          "played": 3,
           "win": 0,
-          "draw": 2,
+          "draw": 3,
           "lose": 0,
           "gf": 2,
           "ga": 2,
           "gd": 0,
+          "points": 3,
+          "rank": 2,
+          "qualify_prob": 99,
+          "eliminated": null,
+          "live_match": false
+        },
+        {
+          "name": "Uruguay",
+          "played": 3,
+          "win": 0,
+          "draw": 2,
+          "lose": 1,
+          "gf": 3,
+          "ga": 4,
+          "gd": -1,
           "points": 2,
           "rank": 3,
-          "qualify_prob": 15,
+          "qualify_prob": 5,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Saudi Arabia",
-          "played": 2,
+          "played": 3,
           "win": 0,
-          "draw": 1,
+          "draw": 2,
           "lose": 1,
           "gf": 1,
           "ga": 5,
           "gd": -4,
-          "points": 1,
+          "points": 2,
           "rank": 4,
-          "qualify_prob": 10,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": "group",
           "live_match": false
         }
       ],
@@ -825,20 +825,21 @@
           "away": "Cape Verde",
           "score": "2-2",
           "date": "2026-06-21"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Uruguay",
           "away": "Spain",
+          "score": "0-1",
           "date": "2026-06-26"
         },
         {
           "home": "Cape Verde",
           "away": "Saudi Arabia",
+          "score": "0-0",
           "date": "2026-06-26"
         }
       ],
+      "upcoming": [],
       "live": []
     },
     {
@@ -929,21 +930,20 @@
           "away": "Senegal",
           "score": "3-2",
           "date": "2026-06-22"
-        },
+        }
+      ],
+      "upcoming": [
         {
           "home": "Norway",
           "away": "France",
-          "score": "1-4",
           "date": "2026-06-26"
         },
         {
           "home": "Senegal",
           "away": "Iraq",
-          "score": "5-0",
           "date": "2026-06-26"
         }
       ],
-      "upcoming": [],
       "live": []
     },
     {
@@ -1365,7 +1365,7 @@
         "name": "Spain",
         "label": "1H",
         "status": "confirmed",
-        "prob": 89
+        "prob": 99
       },
       "t2": {
         "name": "Austria",
@@ -1501,10 +1501,10 @@
         "prob": 96
       },
       "t2": {
-        "name": "Uruguay",
+        "name": "Cape Verde",
         "label": "2H",
         "status": "confirmed",
-        "prob": 82
+        "prob": 99
       }
     },
     {
@@ -1657,22 +1657,22 @@
       "qualify_prob": 15
     },
     {
-      "name": "Cape Verde",
-      "group": "H",
-      "played": 2,
-      "points": 2,
-      "gd": 0,
-      "gf": 2,
-      "in_best8": false,
-      "qualify_prob": 15
-    },
-    {
       "name": "Belgium",
       "group": "G",
       "played": 2,
       "points": 2,
       "gd": 0,
       "gf": 1,
+      "in_best8": false,
+      "qualify_prob": 15
+    },
+    {
+      "name": "Uruguay",
+      "group": "H",
+      "played": 3,
+      "points": 2,
+      "gd": -1,
+      "gf": 3,
       "in_best8": false,
       "qualify_prob": 5
     },
