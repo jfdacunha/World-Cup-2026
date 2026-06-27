@@ -674,12 +674,40 @@ def main():
         for t in thirds_ranked
     ]
 
-    # Sync the accurate 3rd-place qualify_prob back into groups_out so the
-    # group standings table shows the same number as the best-3rd table
+    # ── MATHEMATICAL ELIMINATION for 3rd-place teams ────────────────────
+    # If a 3rd-place team from a DONE group already has 8+ teams guaranteed
+    # to finish above them, they are mathematically eliminated from the top-8.
+    for _t3 in thirds_ranked:
+        if _t3["played"] < 3:
+            continue  # group not done yet — can't eliminate mathematically
+        _certain_better = 0
+        for _other in thirds_ranked:
+            if _other["name"] == _t3["name"]:
+                continue
+            _o_pts = _other["points"]; _o_gd = _other["gf"] - _other["ga"]; _o_gf = _other["gf"]
+            _t_pts = _t3["points"];  _t_gd = _t3["gf"] - _t3["ga"];  _t_gf = _t3["gf"]
+            if _other["played"] == 3:
+                # Both done — direct final comparison
+                if (_o_pts > _t_pts or
+                    (_o_pts == _t_pts and _o_gd > _t_gd) or
+                    (_o_pts == _t_pts and _o_gd == _t_gd and _o_gf > _t_gf)):
+                    _certain_better += 1
+            else:
+                # Other group not done but already has MORE current points
+                # — they can only stay same or go higher
+                if _other["points"] > _t3["points"]:
+                    _certain_better += 1
+        if _certain_better >= 8:
+            thirds_prob[_t3["name"]] = 0   # locked out of top-8
+
+    # Sync the accurate 3rd-place qualify_prob back into groups_out
     for _g in groups_out:
         for _t in _g["teams"]:
             if _t["rank"] == 3 and _t["name"] in thirds_prob:
                 _t["qualify_prob"] = thirds_prob[_t["name"]]
+            # If a 3rd-place team has qualify_prob=0, mark them eliminated too
+            if _t["rank"] == 3 and _t.get("qualify_prob") == 0 and not _t.get("eliminated"):
+                _t["eliminated"] = True
 
     output = {
         "updated_at": now,
