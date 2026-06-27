@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-27T02:18:50.702861+00:00",
+  "updated_at": "2026-06-27T02:26:07.854867+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -781,8 +781,8 @@
           "gd": -1,
           "points": 2,
           "rank": 3,
-          "qualify_prob": 5,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -930,20 +930,21 @@
           "away": "Senegal",
           "score": "3-2",
           "date": "2026-06-22"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Norway",
           "away": "France",
+          "score": "1-4",
           "date": "2026-06-26"
         },
         {
           "home": "Senegal",
           "away": "Iraq",
+          "score": "5-0",
           "date": "2026-06-26"
         }
       ],
+      "upcoming": [],
       "live": []
     },
     {
