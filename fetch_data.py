@@ -40,24 +40,24 @@ def team_raw_strength(t):
 R32_MATCHES = [
     # LEFT SIDE (per official FIFA bracket image)
     # M74+M77 → R16 M89 · M73+M75 → R16 M90 · M83+M84 → R16 M93 · M81+M82 → R16 M94
-    {"id":"M74","venue":"Boston - Jun 29",      "side":"left", "s1":"1E","s2":"3rd-ABCDF"},
-    {"id":"M77","venue":"New York - Jun 30",    "side":"left", "s1":"1I","s2":"3rd-CDFGH"},
-    {"id":"M73","venue":"Los Angeles - Jun 28", "side":"left", "s1":"2A","s2":"2B"},
-    {"id":"M75","venue":"Monterrey - Jun 29",   "side":"left", "s1":"1F","s2":"2C"},
-    {"id":"M83","venue":"Toronto - Jul 2",      "side":"left", "s1":"2K","s2":"2L"},
-    {"id":"M84","venue":"Los Angeles - Jul 2",  "side":"left", "s1":"1H","s2":"2J"},
-    {"id":"M81","venue":"San Francisco - Jul 1","side":"left", "s1":"1D","s2":"3rd-BEFIJ"},
-    {"id":"M82","venue":"Seattle - Jul 1",      "side":"left", "s1":"1G","s2":"3rd-AEHIJ"},
+    {"id":"M74","venue":"Boston - Jun 29",      "side":"left", "s1":"1E","s2":"3rd-ABCDF","kickoff":"2026-06-29T20:30:00Z"},
+    {"id":"M77","venue":"New York - Jun 30",    "side":"left", "s1":"1I","s2":"3rd-CDFGH","kickoff":"2026-06-30T21:00:00Z"},
+    {"id":"M73","venue":"Los Angeles - Jun 28", "side":"left", "s1":"2A","s2":"2B","kickoff":"2026-06-28T19:00:00Z"},
+    {"id":"M75","venue":"Monterrey - Jun 29",   "side":"left", "s1":"1F","s2":"2C","kickoff":"2026-06-30T01:00:00Z"},
+    {"id":"M83","venue":"Toronto - Jul 2",      "side":"left", "s1":"2K","s2":"2L","kickoff":"2026-07-02T23:00:00Z"},
+    {"id":"M84","venue":"Los Angeles - Jul 2",  "side":"left", "s1":"1H","s2":"2J","kickoff":"2026-07-02T19:00:00Z"},
+    {"id":"M81","venue":"San Francisco - Jul 1","side":"left", "s1":"1D","s2":"3rd-BEFIJ","kickoff":"2026-07-02T00:00:00Z"},
+    {"id":"M82","venue":"Seattle - Jul 1",      "side":"left", "s1":"1G","s2":"3rd-AEHIJ","kickoff":"2026-07-01T20:00:00Z"},
     # RIGHT SIDE (per official FIFA bracket image)
     # M76+M78 → R16 M91 · M79+M80 → R16 M92 · M86+M88 → R16 M95 · M85+M87 → R16 M96
-    {"id":"M76","venue":"Houston - Jun 29",     "side":"right","s1":"1C","s2":"2F"},
-    {"id":"M78","venue":"Dallas - Jun 30",      "side":"right","s1":"2E","s2":"2I"},
-    {"id":"M79","venue":"Mexico City - Jun 30", "side":"right","s1":"1A","s2":"3rd-CEFHI"},
-    {"id":"M80","venue":"Atlanta - Jul 1",      "side":"right","s1":"1L","s2":"3rd-EHIJK"},
-    {"id":"M86","venue":"Miami - Jul 3",        "side":"right","s1":"1J","s2":"2H"},
-    {"id":"M88","venue":"Dallas - Jul 3",       "side":"right","s1":"2D","s2":"2G"},
-    {"id":"M85","venue":"Vancouver - Jul 2",    "side":"right","s1":"1B","s2":"3rd-EFGIJ"},
-    {"id":"M87","venue":"Kansas City - Jul 3",  "side":"right","s1":"1K","s2":"3rd-DEIJL"},
+    {"id":"M76","venue":"Houston - Jun 29",     "side":"right","s1":"1C","s2":"2F","kickoff":"2026-06-29T17:00:00Z"},
+    {"id":"M78","venue":"Dallas - Jun 30",      "side":"right","s1":"2E","s2":"2I","kickoff":"2026-06-30T17:00:00Z"},
+    {"id":"M79","venue":"Mexico City - Jun 30", "side":"right","s1":"1A","s2":"3rd-CEFHI","kickoff":"2026-07-01T01:00:00Z"},
+    {"id":"M80","venue":"Atlanta - Jul 1",      "side":"right","s1":"1L","s2":"3rd-EHIJK","kickoff":"2026-07-01T16:00:00Z"},
+    {"id":"M86","venue":"Miami - Jul 3",        "side":"right","s1":"1J","s2":"2H","kickoff":"2026-07-03T22:00:00Z"},
+    {"id":"M88","venue":"Dallas - Jul 3",       "side":"right","s1":"2D","s2":"2G","kickoff":"2026-07-03T18:00:00Z"},
+    {"id":"M85","venue":"Vancouver - Jul 2",    "side":"right","s1":"1B","s2":"3rd-EFGIJ","kickoff":"2026-07-03T03:00:00Z"},
+    {"id":"M87","venue":"Kansas City - Jul 3",  "side":"right","s1":"1K","s2":"3rd-DEIJL","kickoff":"2026-07-04T01:30:00Z"},
 ]
 
 SLOT_MAP = {
@@ -506,7 +506,21 @@ def build_bracket(groups_out):
             total = s1 + s2 or 1
             t1["prob"] = max(3, min(97, round(s1 / total * 100)))
             t2["prob"] = 100 - t1["prob"]
-        bracket_result.append({**m, "t1": t1, "t2": t2})
+        for td in [t1, t2]:
+            tname = td.get("name")
+            if tname:
+                form = []
+                for g in groups_out:
+                    for res in g.get("results", []):
+                        if res["home"] == tname:
+                            h,a = map(int, res["score"].split("-"))
+                            form.append("W" if h>a else ("D" if h==a else "L"))
+                        elif res["away"] == tname:
+                            h,a = map(int, res["score"].split("-"))
+                            form.append("W" if a>h else ("D" if h==a else "L"))
+                td["form"] = form[-3:]
+        bracket_result.append({**m, "t1": t1, "t2": t2,
+                                "kickoff": m.get("kickoff","")})
     return bracket_result
 
 # ── FALLBACK DATA (updated with real scores) ──────────────────────────
@@ -741,13 +755,34 @@ def main():
             if _t["rank"] == 3 and _t.get("qualify_prob") == 0 and not _t.get("eliminated"):
                 _t["eliminated"] = True
 
+    # Top scorers from API
+    scorers_out = []
+    if API_KEY:
+        try:
+            req_sc = urllib.request.Request(
+                "https://api.football-data.org/v4/competitions/WC/scorers?limit=20",
+                headers={"X-Auth-Token": API_KEY})
+            with urllib.request.urlopen(req_sc, timeout=8) as resp_sc:
+                sc_data = json.loads(resp_sc.read())
+                for sc in sc_data.get("scorers", []):
+                    scorers_out.append({
+                        "name":  sc["player"]["name"],
+                        "team":  sc["team"]["name"],
+                        "goals": sc.get("numberOfGoals", sc.get("goals", 0)),
+                    })
+            print(f"Scorers: {len(scorers_out)} fetched")
+        except Exception as e:
+            print(f"Scorers fetch failed: {e}")
+
     output = {
-        "updated_at": now,
-        "source": source,
-        "live_count": total_live,
-        "groups": groups_out,
-        "bracket": bracket,
+        "updated_at":  now,
+        "source":      source,
+        "live_count":  total_live,
+        "groups":      groups_out,
+        "bracket":     bracket,
         "best_thirds": thirds_display,
+        "scorers":     scorers_out,
+        "win_probs":   WIN_PROBS,
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
