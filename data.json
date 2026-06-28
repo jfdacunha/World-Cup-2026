@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T21:06:09.605100+00:00",
+  "updated_at": "2026-06-28T21:09:59.775762+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1293,7 +1293,9 @@
           "L",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M77",
@@ -1323,7 +1325,9 @@
           "W",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M73",
@@ -1353,7 +1357,9 @@
           "W",
           "L"
         ]
-      }
+      },
+      "score": "0-1",
+      "winner": null
     },
     {
       "id": "M75",
@@ -1383,7 +1389,9 @@
           "W",
           "W"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M83",
@@ -1413,7 +1421,9 @@
           "W",
           "W"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M84",
@@ -1443,7 +1453,9 @@
           "L",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M81",
@@ -1473,7 +1485,9 @@
           "L",
           "W"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M82",
@@ -1503,7 +1517,9 @@
           "W",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M76",
@@ -1533,7 +1549,9 @@
           "W",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M78",
@@ -1563,7 +1581,9 @@
           "W",
           "L"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M79",
@@ -1593,7 +1613,9 @@
           "D",
           "W"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M80",
@@ -1623,7 +1645,9 @@
           "L",
           "W"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M86",
@@ -1653,7 +1677,9 @@
           "D",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M88",
@@ -1683,7 +1709,9 @@
           "W",
           "D"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M85",
@@ -1713,7 +1741,9 @@
           "L",
           "W"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     },
     {
       "id": "M87",
@@ -1743,7 +1773,9 @@
           "D",
           "L"
         ]
-      }
+      },
+      "score": null,
+      "winner": null
     }
   ],
   "best_thirds": [
