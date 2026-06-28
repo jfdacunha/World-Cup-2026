@@ -524,8 +524,11 @@ def build_bracket(groups_out, ko_results=None):
         score   = None; winner = None; loser = None
         n1 = t1.get("name",""); n2 = t2.get("name","")
         if n1 and n2:
-            res = (ko_results.get((n1,n2)) or ko_results.get((n2,n1))
-                   or FALLBACK_KNOCKOUT.get(m["id"]))
+            res = ko_results.get((n1,n2)) or ko_results.get((n2,n1))
+            # Merge fallback if API result missing winner/loser
+            fb = FALLBACK_KNOCKOUT.get(m["id"])
+            if fb and (not res or not res.get("winner")):
+                res = {**(res or {}), **{k:v for k,v in fb.items() if v is not None}}
             if res:
                 score  = res.get("score")
                 winner = res.get("winner")
@@ -562,9 +565,10 @@ def fetch_knockout_results(api_key):
             ft = m.get("score",{}).get("fullTime",{})
             hg, ag = ft.get("home"), ft.get("away")
             if hg is None or ag is None: continue
-            win = m.get("winner","")
-            winner = ht if win == "HOME_TEAM" else (at if win == "AWAY_TEAM" else None)
-            loser  = at if win == "HOME_TEAM" else (ht if win == "AWAY_TEAM" else None)
+            # Compute winner from goals — more reliable than API winner field
+            if hg > ag:   winner, loser = ht, at
+            elif ag > hg: winner, loser = at, ht
+            else:         winner, loser = None, None
             # Store by team pair key so we can look up by bracket slot
             results[(ht, at)] = {
                 "score": f"{hg}-{ag}", "winner": winner, "loser": loser
