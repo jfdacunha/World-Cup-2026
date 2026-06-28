@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-27T23:41:51.459174+00:00",
+  "updated_at": "2026-06-28T00:17:50.058210+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1086,29 +1086,29 @@
           "live_match": false
         },
         {
-          "name": "DR Congo",
+          "name": "Uzbekistan",
           "played": 3,
-          "win": 0,
-          "draw": 2,
-          "lose": 1,
-          "gf": 1,
-          "ga": 2,
-          "gd": -1,
-          "points": 2,
+          "win": 1,
+          "draw": 0,
+          "lose": 2,
+          "gf": 2,
+          "ga": 8,
+          "gd": -6,
+          "points": 3,
           "rank": 3,
           "qualify_prob": 0,
           "eliminated": true,
           "live_match": false
         },
         {
-          "name": "Uzbekistan",
+          "name": "DR Congo",
           "played": 3,
           "win": 0,
           "draw": 1,
           "lose": 2,
           "gf": 1,
-          "ga": 8,
-          "gd": -7,
+          "ga": 3,
+          "gd": -2,
           "points": 1,
           "rank": 4,
           "qualify_prob": 0,
@@ -1670,22 +1670,22 @@
       "qualify_prob": 15
     },
     {
+      "name": "Uzbekistan",
+      "group": "K",
+      "played": 3,
+      "points": 3,
+      "gd": -6,
+      "gf": 2,
+      "in_best8": false,
+      "qualify_prob": 5
+    },
+    {
       "name": "Uruguay",
       "group": "H",
       "played": 3,
       "points": 2,
       "gd": -1,
       "gf": 3,
-      "in_best8": false,
-      "qualify_prob": 5
-    },
-    {
-      "name": "DR Congo",
-      "group": "K",
-      "played": 3,
-      "points": 2,
-      "gd": -1,
-      "gf": 1,
       "in_best8": false,
       "qualify_prob": 5
     }
