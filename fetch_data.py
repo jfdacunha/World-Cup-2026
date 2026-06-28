@@ -23,6 +23,20 @@ WIN_PROBS = {
     'New Zealand':0.28,'Cape Verde':0.28,'South Africa':0.38,'Curaçao':0.08,
 }
 
+def team_raw_strength(t):
+    """Raw knockout strength = pre-tournament odds base × group-stage multiplier."""
+    base = WIN_PROBS.get(t.get("name", ""), 0.3)
+    mult = 1.0
+    if t.get("played", 0) > 0:
+        ppg = t["points"] / t["played"]
+        rank = t.get("rank", 2)
+        if rank == 1:   mult = 1.0 + ppg * 0.18
+        elif rank == 2: mult = 1.0 + ppg * 0.08
+        elif rank == 3: mult = 1.0 - 0.10
+        else:           mult = 1.0 - 0.30
+    return max(0.05, base * mult)
+
+
 R32_MATCHES = [
     # LEFT SIDE (per official FIFA bracket image)
     # M74+M77 → R16 M89 · M73+M75 → R16 M90 · M83+M84 → R16 M93 · M81+M82 → R16 M94
@@ -475,7 +489,25 @@ def build_bracket(groups_out):
         return {"name": t["name"], "label": slot, "status": status,
                 "prob": t.get("qualify_prob", 50)}
 
-    return [{**m, "t1": resolve(m["s1"]), "t2": resolve(m["s2"])} for m in R32_MATCHES]
+    # Build bracket with head-to-head R32 win probabilities
+    all_teams_map = {t["name"]: t for g in groups_out for t in g["teams"]}
+    bracket_result = []
+    for m in R32_MATCHES:
+        t1 = resolve(m["s1"])
+        t2 = resolve(m["s2"])
+        # Compute head-to-head win probability when both teams are known
+        if t1.get("name") and t2.get("name"):
+            d1 = all_teams_map.get(t1["name"], {"points": 0, "played": 0, "rank": 2})
+            d2 = all_teams_map.get(t2["name"], {"points": 0, "played": 0, "rank": 2})
+            d1["name"] = t1["name"]
+            d2["name"] = t2["name"]
+            s1 = team_raw_strength(d1)
+            s2 = team_raw_strength(d2)
+            total = s1 + s2 or 1
+            t1["prob"] = max(3, min(97, round(s1 / total * 100)))
+            t2["prob"] = 100 - t1["prob"]
+        bracket_result.append({**m, "t1": t1, "t2": t2})
+    return bracket_result
 
 # ── FALLBACK DATA (updated with real scores) ──────────────────────────
 FALLBACK_GROUPS = [
