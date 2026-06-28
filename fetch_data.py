@@ -402,7 +402,8 @@ def compute_best_thirds(groups_out):
     return all_thirds, best_8
 
 
-def build_bracket(groups_out):
+def build_bracket(groups_out, ko_results=None):
+    if ko_results is None: ko_results = {}
     gmap = {g["letter"]: g["teams"] for g in groups_out}
     thirds, best_8 = compute_best_thirds(groups_out)
 
@@ -519,9 +520,59 @@ def build_bracket(groups_out):
                             h,a = map(int, res["score"].split("-"))
                             form.append("W" if a>h else ("D" if h==a else "L"))
                 td["form"] = form[-3:]
+        # Look up knockout result by team pair
+        score   = None; winner = None; loser = None
+        n1 = t1.get("name",""); n2 = t2.get("name","")
+        if n1 and n2:
+            res = (ko_results.get((n1,n2)) or ko_results.get((n2,n1))
+                   or FALLBACK_KNOCKOUT.get(m["id"]))
+            if res:
+                score  = res.get("score")
+                winner = res.get("winner")
+                loser  = res.get("loser")
+                # Mark winner/loser status on the slots
+                if winner: 
+                    if n1==winner: t1["status"]="winner"; t2["status"]="loser"
+                    else:          t2["status"]="winner"; t1["status"]="loser"
         bracket_result.append({**m, "t1": t1, "t2": t2,
-                                "kickoff": m.get("kickoff","")})
+                                "kickoff": m.get("kickoff",""),
+                                "score": score, "winner": winner})
     return bracket_result
+
+# ── KNOCKOUT RESULTS FALLBACK ──────────────────────────────────────
+# Updated manually after each match as backup when API fails.
+# Format: match_id → {score, winner, loser}
+FALLBACK_KNOCKOUT = {
+    "M73": {"score":"0-1","winner":"Canada","loser":"South Africa"},
+}
+
+def fetch_knockout_results(api_key):
+    """Fetch R32/R16/QF/SF/Final results from API."""
+    results = {}
+    try:
+        url = "https://api.football-data.org/v4/competitions/WC/matches"
+        req = urllib.request.Request(url, headers={"X-Auth-Token": api_key})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+        for m in data.get("matches", []):
+            if m.get("stage","").startswith("GROUP"): continue
+            if m["status"] != "FINISHED": continue
+            ht = NAME_MAP.get(m["homeTeam"]["name"], m["homeTeam"]["name"])
+            at = NAME_MAP.get(m["awayTeam"]["name"], m["awayTeam"]["name"])
+            ft = m.get("score",{}).get("fullTime",{})
+            hg, ag = ft.get("home"), ft.get("away")
+            if hg is None or ag is None: continue
+            win = m.get("winner","")
+            winner = ht if win == "HOME_TEAM" else (at if win == "AWAY_TEAM" else None)
+            loser  = at if win == "HOME_TEAM" else (ht if win == "AWAY_TEAM" else None)
+            # Store by team pair key so we can look up by bracket slot
+            results[(ht, at)] = {
+                "score": f"{hg}-{ag}", "winner": winner, "loser": loser
+            }
+        print(f"Knockout API: {len(results)} finished matches")
+    except Exception as e:
+        print(f"Knockout API failed: {e} — using fallback")
+    return results
 
 # ── FALLBACK DATA (updated with real scores) ──────────────────────────
 FALLBACK_GROUPS = [
@@ -664,7 +715,8 @@ def main():
         print("No API key - using fallback", file=sys.stderr)
     if not groups_out:
         groups_out = FALLBACK_GROUPS
-    bracket = build_bracket(groups_out)
+    ko_results = fetch_knockout_results(API_KEY) if API_KEY else {}
+    bracket = build_bracket(groups_out, ko_results)
     total_live = sum(len(g["live"]) for g in groups_out)
 
     # ── LOCK PROBABILITIES FOR FULLY FINISHED GROUPS ─────────────────
