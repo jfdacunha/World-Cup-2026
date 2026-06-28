@@ -688,8 +688,13 @@ function matchCard(m, isRight, isFinal){
   }
   const isLive = m.live || false;
   const cardCls = isLive ? 'match live-card' : 'match';
+  const _mp=p=>p!=null?p:100;
+  const minP=Math.min(_mp(m.t1&&m.t1.prob),_mp(m.t2&&m.t2.prob));
+  const upsetBadge=(!isLive&&minP>=30)?'<span class="upset-badge">⚡ Alert</span>':'';
+  const cd=m.kickoff?`<div class="match-countdown" data-kickoff="${m.kickoff}">${fmtCountdown(m.kickoff)}</div>`:'';
   return `<div class="${cardCls}">
-    <div class="match-lbl">${m.venue||''}</div>
+    <div class="match-lbl">${m.venue||''}${upsetBadge}</div>
+    ${cd}
     ${teamRow(m.t1, isRight)}
     ${teamRow(m.t2, isRight)}
   </div>`;
@@ -977,6 +982,9 @@ function renderPowerRankings(groups) {
 // ── BEST 3RD PLACE TABLE ─────────────────────────────────────────────
 function renderBestThirds(thirds) {
   const tbody = document.getElementById('thirdsBody');
+    renderScorers(data);
+    renderForecast(data);
+    renderR16Projections(data);
   if (!thirds || thirds.length === 0) {
     tbody.innerHTML = '<tr><td colspan="9" style="color:var(--faint);font-style:italic;padding:1rem;text-align:center">Group stage in progress — standings will appear here</td></tr>';
     return;
@@ -1176,6 +1184,119 @@ async function loadTrends() {
   }
 }
 
+
+function fmtCountdown(iso){
+  if(!iso) return '';
+  const diff = new Date(iso) - Date.now();
+  if(diff <= 0) return 'LIVE / FINISHED';
+  const h = Math.floor(diff/3600000);
+  const m2 = Math.floor((diff%3600000)/60000);
+  if(h > 48){ const d=Math.floor(h/24); return `in ${d}d ${h%24}h`; }
+  if(h > 0)  return `in ${h}h ${m2}m`;
+  return `in ${m2}m`;
+}
+function updateCountdowns(){
+  document.querySelectorAll('[data-kickoff]').forEach(el=>{
+    el.textContent = fmtCountdown(el.dataset.kickoff);
+  });
+}
+const _R16P=[["M74","M77"],["M73","M75"],["M83","M84"],["M81","M82"],
+             ["M76","M78"],["M79","M80"],["M86","M88"],["M85","M87"]];
+const _QFP=[[0,1],[2,3],[4,5],[6,7]];
+const _SFP=[[0,1],[2,3]];
+function _str(nm,wp,rk,pts,pl){
+  const b=(wp||{})[nm]||0.3; let m=1;
+  if(pl>0){const p=pts/pl; m=rk===1?1+p*.18:rk===2?1+p*.08:rk===3?.9:.7;}
+  return Math.max(.05,b*m);
+}
+function _pick(a,b,wp,td){
+  const da=td[a]||{rank:2,points:3,played:3},db=td[b]||{rank:2,points:3,played:3};
+  const sa=_str(a,wp,da.rank,da.points,da.played),sb=_str(b,wp,db.rank,db.points,db.played);
+  return Math.random()<sa/(sa+sb)?a:b;
+}
+function runMonteCarlo(bracket,wp,td,N=50000){
+  const c={};
+  bracket.forEach(m=>{[m.t1.name,m.t2.name].forEach(n=>{if(n)c[n]={r16:0,qf:0,sf:0,fn:0,win:0};});});
+  for(let i=0;i<N;i++){
+    const r32={};
+    bracket.forEach(m=>{if(m.t1.name&&m.t2.name)r32[m.id]=_pick(m.t1.name,m.t2.name,wp,td);});
+    const r16=_R16P.map(([a,b])=>{const ta=r32[a],tb=r32[b];if(!ta||!tb)return null;
+      if(c[ta])c[ta].r16++;if(c[tb])c[tb].r16++;return _pick(ta,tb,wp,td);});
+    const qf=_QFP.map(([a,b])=>{const ta=r16[a],tb=r16[b];if(!ta||!tb)return null;
+      if(c[ta])c[ta].qf++;if(c[tb])c[tb].qf++;return _pick(ta,tb,wp,td);});
+    const sf=_SFP.map(([a,b])=>{const ta=qf[a],tb=qf[b];if(!ta||!tb)return null;
+      if(c[ta])c[ta].sf++;if(c[tb])c[tb].sf++;return _pick(ta,tb,wp,td);});
+    const[f0,f1]=[sf[0],sf[1]];
+    if(f0&&f1){if(c[f0])c[f0].fn++;if(c[f1])c[f1].fn++;const ch=_pick(f0,f1,wp,td);if(c[ch])c[ch].win++;}
+  }
+  return c;
+}
+function renderForecast(data){
+  const body=document.getElementById('forecastBody');
+  if(!body||!data.bracket) return;
+  const wp=data.win_probs||{}, td={};
+  (data.groups||[]).forEach(g=>g.teams.forEach(t=>{td[t.name]={rank:t.rank,points:t.points,played:t.played};}));
+  const C=runMonteCarlo(data.bracket,wp,td), N=50000;
+  const rows=Object.entries(C).map(([nm,c])=>({nm,
+    r16:Math.round(c.r16/N*100),qf:Math.round(c.qf/N*100),
+    sf:Math.round(c.sf/N*100),fn:Math.round(c.fn/N*100),win:Math.round(c.win/N*100)
+  })).sort((a,b)=>b.win-a.win||b.fn-a.fn);
+  const pC=p=>p>=50?'high':p>=20?'mid':'low';
+  const bar=p=>`<div class="fc-bar" style="width:${Math.max(2,p*1.5)}px"></div>`;
+  const cel=(p,ex='')=>`<td><div style="display:flex;align-items:center;gap:4px">${bar(p)}<span class="fc-pct ${ex||pC(p)}">${p}%</span></div></td>`;
+  body.innerHTML=rows.map((row,i)=>`<tr>
+    <td style="color:var(--faint);font-family:'DM Mono',monospace;font-size:.6rem">${i+1}</td>
+    <td><div class="fc-team"><span class="fc-flag">${f(row.nm)}</span><span class="fc-name">${row.nm}</span></div></td>
+    ${cel(row.r16)}${cel(row.qf)}${cel(row.sf)}${cel(row.fn)}
+    <td><div style="display:flex;align-items:center;gap:4px">${bar(row.win)}<span class="fc-pct ${row.win>0?'trophy':''}">${row.win}%</span></div></td>
+  </tr>`).join('');
+}
+function renderR16Projections(data){
+  const el=document.getElementById('r16ProjEl');
+  if(!el||!data.bracket) return;
+  const wp=data.win_probs||{}, td={};
+  (data.groups||[]).forEach(g=>g.teams.forEach(t=>{td[t.name]={rank:t.rank,points:t.points,played:t.played};}));
+  const bmap={};
+  data.bracket.forEach(m=>bmap[m.id]=m);
+  const projW=mid=>{const m=bmap[mid];if(!m)return null;
+    const n1=m.t1.name,n2=m.t2.name;if(!n1||!n2)return n1||n2||null;
+    return m.t1.prob>=m.t2.prob?n1:n2;};
+  const LABS=["R16-M89","R16-M90","R16-M93","R16-M94","R16-M91","R16-M92","R16-M95","R16-M96"];
+  el.innerHTML=_R16P.map(([a,b],i)=>{
+    const ta=projW(a),tb=projW(b);if(!ta||!tb)return '';
+    const da=td[ta]||{rank:2,points:3,played:3},db=td[tb]||{rank:2,points:3,played:3};
+    const sa=_str(ta,wp,da.rank,da.points,da.played),sb=_str(tb,wp,db.rank,db.points,db.played);
+    const tot=sa+sb||1,pa=Math.round(sa/tot*100),pb=100-pa;
+    const mA=bmap[a],mB=bmap[b];
+    const fa=mA?(ta===mA.t1.name?mA.t1.prob:mA.t2.prob):null;
+    const fb=mB?(tb===mB.t1.name?mB.t1.prob:mB.t2.prob):null;
+    return `<div class="r16-card">
+      <div class="r16-label">${LABS[i]} · if W(${a}) & W(${b}) advance</div>
+      <div class="r16-matchup">
+        <div class="r16-team"><span>${f(ta)}</span><span class="r16-team-name">${ta}</span></div>
+        <span class="r16-pct">${pa}%</span><span class="r16-vs">vs</span><span class="r16-pct">${pb}%</span>
+        <div class="r16-team" style="justify-content:flex-end"><span class="r16-team-name">${tb}</span><span>${f(tb)}</span></div>
+      </div>
+      <div style="font-size:.5rem;color:var(--faint);margin-top:4px;font-family:'DM Mono',monospace">R32 advance: ${ta} ${fa!=null?fa+'%':'?'} · ${tb} ${fb!=null?fb+'%':'?'}</div>
+    </div>`;
+  }).join('');
+}
+function renderScorers(data){
+  const el=document.getElementById('scorersEl');
+  if(!el) return;
+  const sc=data.scorers||[];
+  if(!sc.length){el.innerHTML='<p style="color:var(--faint);font-size:.7rem">Scorer data loading…</p>';return;}
+  const medals=['🥇','🥈','🥉'];
+  el.innerHTML=sc.slice(0,15).map((s,i)=>`
+    <div class="scorer-card">
+      <span class="scorer-rank">${medals[i]||(i+1)}</span>
+      <div class="scorer-info">
+        <div class="scorer-name">${f(s.team)} ${s.name}</div>
+        <div class="scorer-team">${s.team}</div>
+      </div>
+      <div class="scorer-goals">${s.goals}</div>
+    </div>`).join('');
+}
 // ── DATA LOADER ───────────────────────────────────────────────────────
 let refreshTimer = null;
 
@@ -1293,6 +1414,7 @@ loadData();
 loadTrends();
 tick();
 setInterval(tick, 60000);
+  setInterval(updateCountdowns, 30000);
 </script>
 </body>
 </html>
