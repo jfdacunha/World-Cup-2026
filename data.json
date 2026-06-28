@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T21:11:18.536441+00:00",
+  "updated_at": "2026-06-28T21:15:37.202756+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1339,7 +1339,7 @@
       "t1": {
         "name": "South Africa",
         "label": "2A",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 21,
         "form": [
           "L",
@@ -1350,7 +1350,7 @@
       "t2": {
         "name": "Canada",
         "label": "2B",
-        "status": "confirmed",
+        "status": "winner",
         "prob": 79,
         "form": [
           "D",
@@ -1359,7 +1359,7 @@
         ]
       },
       "score": "0-1",
-      "winner": null
+      "winner": "Canada"
     },
     {
       "id": "M75",
