@@ -357,6 +357,70 @@ tr.q4 .tc{color:var(--muted)}
   .trends-grid{gap:1rem}
 }
 
+
+/* ── FORM STRIP ── */
+.form-strip{display:flex;gap:2px;margin-top:3px}
+.form-dot{width:10px;height:10px;border-radius:50%;font-size:0;flex-shrink:0}
+.form-dot.W{background:#22c55e}
+.form-dot.D{background:#eab308}
+.form-dot.L{background:#ef4444}
+
+/* ── UPSET BADGE ── */
+.upset-badge{display:inline-block;background:#f97316;color:#fff;font-size:.45rem;
+  font-family:'DM Mono',monospace;font-weight:700;letter-spacing:.06em;
+  padding:1px 5px;border-radius:3px;text-transform:uppercase;margin-left:4px;vertical-align:middle}
+
+/* ── COUNTDOWN TIMER ── */
+.match-countdown{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--gold);
+  text-align:center;padding:2px 0 4px;letter-spacing:.04em;font-weight:500}
+
+/* ── TOURNAMENT FORECAST ── */
+.forecast-table{width:100%;border-collapse:collapse;font-size:.7rem;max-width:1100px}
+.forecast-table th{padding:5px 8px;font-size:.55rem;font-family:'DM Mono',monospace;
+  color:var(--faint);font-weight:400;text-transform:uppercase;letter-spacing:.06em;
+  border-bottom:1px solid var(--border)}
+.forecast-table td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.04)}
+.forecast-table tbody tr:hover{background:rgba(255,255,255,.03)}
+.fc-team{display:flex;align-items:center;gap:6px}
+.fc-flag{font-size:1rem}
+.fc-name{font-weight:500;font-size:.78rem}
+.fc-bar{height:6px;border-radius:3px;background:var(--gold);opacity:.8;min-width:2px;transition:width .3s}
+.fc-pct{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--text)}
+.fc-pct.trophy{color:#d4a843;font-weight:700}
+.fc-pct.high{color:#22c55e}
+.fc-pct.mid{color:#eab308}
+.fc-pct.low{color:var(--faint)}
+
+/* ── TOP SCORERS ── */
+.scorers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem;max-width:1100px}
+.scorer-card{background:var(--s2);border:1px solid var(--border);border-radius:8px;
+  padding:.6rem .75rem;display:flex;align-items:center;gap:.65rem}
+.scorer-rank{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--faint);
+  min-width:16px;text-align:right}
+.scorer-info{flex:1;min-width:0}
+.scorer-name{font-weight:500;font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scorer-team{font-size:.58rem;color:var(--muted);font-family:'DM Mono',monospace}
+.scorer-goals{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--gold);line-height:1}
+
+/* ── PROJECTED R16 ── */
+.r16-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;max-width:1100px}
+.r16-card{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem}
+.r16-label{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--faint);
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:.45rem}
+.r16-matchup{display:flex;align-items:center;justify-content:space-between;gap:.4rem}
+.r16-team{display:flex;align-items:center;gap:.35rem;min-width:0;flex:1}
+.r16-team-name{font-size:.72rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.r16-pct{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--faint)}
+.r16-vs{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--faint);flex-shrink:0}
+
+@media(max-width:600px){
+  .forecast-table{font-size:.6rem}
+  .forecast-table td,.forecast-table th{padding:4px 5px}
+  .fc-name{font-size:.68rem}
+  .scorers-grid{grid-template-columns:1fr 1fr}
+  .r16-grid{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -367,6 +431,8 @@ tr.q4 .tc{color:var(--muted)}
     <a href="#groups"  id="nav-g">Group Stage</a>
     <a href="#power"   id="nav-p">Win Odds</a>
     <a href="#trends"  id="nav-t">Trends</a>
+    <a href="#scorers" id="nav-sc">Scorers</a>
+    <a href="#forecast" id="nav-fc">Forecast</a>
   </nav>
   <div class="hd-r">
     <span class="live-pill" id="livePill"><span class="dot"></span>Live</span>
@@ -471,6 +537,43 @@ tr.q4 .tc{color:var(--muted)}
   <div class="sec-title">World Cup Win Probability</div>
   <div class="sec-sub">All 48 teams ranked · Based on current group standing + pre-tournament strength · Updates every hour</div>
   <div id="powerEl"><div class="loading"><div class="spin"></div>Loading...</div></div>
+</section>
+
+<hr class="div">
+
+<!-- TOP SCORERS -->
+<section class="section" id="scorers">
+  <div class="sec-title">Top Scorers</div>
+  <div class="sec-sub">Goals scored in the tournament · Updates in real time</div>
+  <div class="scorers-grid" id="scorersEl">
+    <div class="loading"><div class="spin"></div>Loading...</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- TOURNAMENT FORECAST -->
+<section class="section" id="forecast">
+  <div class="sec-title">Tournament Forecast</div>
+  <div class="sec-sub">Monte Carlo simulation · 50,000 runs · Based on head-to-head win probabilities through the full bracket</div>
+  <table class="forecast-table" id="forecastTable">
+    <thead><tr>
+      <th>#</th><th>Team</th>
+      <th>R16</th><th>QF</th><th>SF</th><th>Final</th><th>🏆 Win</th>
+    </tr></thead>
+    <tbody id="forecastBody"><tr><td colspan="7" style="text-align:center;padding:1rem;color:var(--faint)">Running simulation...</td></tr></tbody>
+  </table>
+</section>
+
+<hr class="div">
+
+<!-- PROJECTED R16 MATCHUPS -->
+<section class="section" id="r16proj">
+  <div class="sec-title">Projected Round of 16</div>
+  <div class="sec-sub">Expected matchups if current R32 favourites advance · Updates after each match</div>
+  <div class="r16-grid" id="r16ProjEl">
+    <div class="loading"><div class="spin"></div>Loading...</div>
+  </div>
 </section>
 
 <hr class="div">
