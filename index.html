@@ -669,7 +669,9 @@ function teamRow(t, isRight){
   const inner = isRight
     ? `${ph}${nm}${icon}`
     : `${icon}${nm}${ph}`;
-  return `<div class="mteam ${sCls}">${bg}<div class="mteam-inner">${inner}</div></div>`;
+  const formDots = (t.form||[]).map(r=>`<span class="form-dot ${r}" title="${r}"></span>`).join('');
+  const formHtml = formDots ? `<div class="form-strip">${formDots}</div>` : '';
+  return `<div class="mteam ${sCls}">${bg}<div class="mteam-inner">${inner}${formHtml}</div></div>`;
 }
 
 function matchCard(m, isRight, isFinal){
