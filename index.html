@@ -982,9 +982,6 @@ function renderPowerRankings(groups) {
 // ── BEST 3RD PLACE TABLE ─────────────────────────────────────────────
 function renderBestThirds(thirds) {
   const tbody = document.getElementById('thirdsBody');
-    renderScorers(data);
-    renderForecast(data);
-    renderR16Projections(data);
   if (!thirds || thirds.length === 0) {
     tbody.innerHTML = '<tr><td colspan="9" style="color:var(--faint);font-style:italic;padding:1rem;text-align:center">Group stage in progress — standings will appear here</td></tr>';
     return;
@@ -1326,6 +1323,9 @@ async function loadData(attempt = 1, isManual = false){
     renderGroups(data.groups   || []);
     renderPowerRankings(data.groups || []);
     renderBestThirds(data.best_thirds || []);
+    renderScorers(data);
+    renderForecast(data);
+    renderR16Projections(data);
     updateLivePill(data.live_count || 0);
 
     // Format timestamp
