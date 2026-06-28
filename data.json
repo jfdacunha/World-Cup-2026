@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T11:10:38.448526+00:00",
+  "updated_at": "2026-06-28T11:16:36.409772+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1271,17 +1271,28 @@
       "side": "left",
       "s1": "1E",
       "s2": "3rd-ABCDF",
+      "kickoff": "2026-06-29T20:30:00Z",
       "t1": {
         "name": "Germany",
         "label": "1E",
         "status": "confirmed",
-        "prob": 88
+        "prob": 88,
+        "form": [
+          "W",
+          "W",
+          "L"
+        ]
       },
       "t2": {
         "name": "Sweden",
         "label": "3rd GrpF",
         "status": "confirmed",
-        "prob": 12
+        "prob": 12,
+        "form": [
+          "W",
+          "L",
+          "D"
+        ]
       }
     },
     {
@@ -1290,17 +1301,28 @@
       "side": "left",
       "s1": "1I",
       "s2": "3rd-CDFGH",
+      "kickoff": "2026-06-30T21:00:00Z",
       "t1": {
         "name": "France",
         "label": "1I",
         "status": "confirmed",
-        "prob": 97
+        "prob": 97,
+        "form": [
+          "W",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Paraguay",
         "label": "3rd GrpD",
         "status": "confirmed",
-        "prob": 3
+        "prob": 3,
+        "form": [
+          "L",
+          "W",
+          "D"
+        ]
       }
     },
     {
@@ -1309,17 +1331,28 @@
       "side": "left",
       "s1": "2A",
       "s2": "2B",
+      "kickoff": "2026-06-28T19:00:00Z",
       "t1": {
         "name": "South Africa",
         "label": "2A",
         "status": "confirmed",
-        "prob": 21
+        "prob": 21,
+        "form": [
+          "L",
+          "D",
+          "W"
+        ]
       },
       "t2": {
         "name": "Canada",
         "label": "2B",
         "status": "confirmed",
-        "prob": 79
+        "prob": 79,
+        "form": [
+          "D",
+          "W",
+          "L"
+        ]
       }
     },
     {
@@ -1328,17 +1361,28 @@
       "side": "left",
       "s1": "1F",
       "s2": "2C",
+      "kickoff": "2026-06-30T01:00:00Z",
       "t1": {
         "name": "Netherlands",
         "label": "1F",
         "status": "confirmed",
-        "prob": 81
+        "prob": 81,
+        "form": [
+          "D",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Morocco",
         "label": "2C",
         "status": "confirmed",
-        "prob": 19
+        "prob": 19,
+        "form": [
+          "D",
+          "W",
+          "W"
+        ]
       }
     },
     {
@@ -1347,17 +1391,28 @@
       "side": "left",
       "s1": "2K",
       "s2": "2L",
+      "kickoff": "2026-07-02T23:00:00Z",
       "t1": {
         "name": "Portugal",
         "label": "2K",
         "status": "confirmed",
-        "prob": 73
+        "prob": 73,
+        "form": [
+          "D",
+          "W",
+          "D"
+        ]
       },
       "t2": {
         "name": "Croatia",
         "label": "2L",
         "status": "confirmed",
-        "prob": 27
+        "prob": 27,
+        "form": [
+          "L",
+          "W",
+          "W"
+        ]
       }
     },
     {
@@ -1366,17 +1421,28 @@
       "side": "left",
       "s1": "1H",
       "s2": "2J",
+      "kickoff": "2026-07-02T19:00:00Z",
       "t1": {
         "name": "Spain",
         "label": "1H",
         "status": "confirmed",
-        "prob": 92
+        "prob": 92,
+        "form": [
+          "D",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Austria",
         "label": "2J",
         "status": "confirmed",
-        "prob": 8
+        "prob": 8,
+        "form": [
+          "W",
+          "L",
+          "D"
+        ]
       }
     },
     {
@@ -1385,17 +1451,28 @@
       "side": "left",
       "s1": "1D",
       "s2": "3rd-BEFIJ",
+      "kickoff": "2026-07-02T00:00:00Z",
       "t1": {
         "name": "United States",
         "label": "1D",
         "status": "confirmed",
-        "prob": 92
+        "prob": 92,
+        "form": [
+          "W",
+          "W",
+          "L"
+        ]
       },
       "t2": {
         "name": "Bosnia and Herzegovina",
         "label": "3rd GrpB",
         "status": "confirmed",
-        "prob": 8
+        "prob": 8,
+        "form": [
+          "D",
+          "L",
+          "W"
+        ]
       }
     },
     {
@@ -1404,17 +1481,28 @@
       "side": "left",
       "s1": "1G",
       "s2": "3rd-AEHIJ",
+      "kickoff": "2026-07-01T20:00:00Z",
       "t1": {
         "name": "Belgium",
         "label": "1G",
         "status": "confirmed",
-        "prob": 83
+        "prob": 83,
+        "form": [
+          "D",
+          "D",
+          "W"
+        ]
       },
       "t2": {
         "name": "Algeria",
         "label": "3rd GrpJ",
         "status": "confirmed",
-        "prob": 17
+        "prob": 17,
+        "form": [
+          "L",
+          "W",
+          "D"
+        ]
       }
     },
     {
@@ -1423,17 +1511,28 @@
       "side": "right",
       "s1": "1C",
       "s2": "2F",
+      "kickoff": "2026-06-29T17:00:00Z",
       "t1": {
         "name": "Brazil",
         "label": "1C",
         "status": "confirmed",
-        "prob": 89
+        "prob": 89,
+        "form": [
+          "D",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Japan",
         "label": "2F",
         "status": "confirmed",
-        "prob": 11
+        "prob": 11,
+        "form": [
+          "D",
+          "W",
+          "D"
+        ]
       }
     },
     {
@@ -1442,17 +1541,28 @@
       "side": "right",
       "s1": "2E",
       "s2": "2I",
+      "kickoff": "2026-06-30T17:00:00Z",
       "t1": {
         "name": "Ivory Coast",
         "label": "2E",
         "status": "confirmed",
-        "prob": 25
+        "prob": 25,
+        "form": [
+          "W",
+          "L",
+          "W"
+        ]
       },
       "t2": {
         "name": "Norway",
         "label": "2I",
         "status": "confirmed",
-        "prob": 75
+        "prob": 75,
+        "form": [
+          "W",
+          "W",
+          "L"
+        ]
       }
     },
     {
@@ -1461,17 +1571,28 @@
       "side": "right",
       "s1": "1A",
       "s2": "3rd-CEFHI",
+      "kickoff": "2026-07-01T01:00:00Z",
       "t1": {
         "name": "Mexico",
         "label": "1A",
         "status": "confirmed",
-        "prob": 74
+        "prob": 74,
+        "form": [
+          "W",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Ecuador",
         "label": "3rd GrpE",
         "status": "confirmed",
-        "prob": 26
+        "prob": 26,
+        "form": [
+          "L",
+          "D",
+          "W"
+        ]
       }
     },
     {
@@ -1480,17 +1601,28 @@
       "side": "right",
       "s1": "1L",
       "s2": "3rd-EHIJK",
+      "kickoff": "2026-07-01T16:00:00Z",
       "t1": {
         "name": "England",
         "label": "1L",
         "status": "confirmed",
-        "prob": 97
+        "prob": 97,
+        "form": [
+          "W",
+          "D",
+          "W"
+        ]
       },
       "t2": {
         "name": "DR Congo",
         "label": "3rd GrpK",
         "status": "confirmed",
-        "prob": 3
+        "prob": 3,
+        "form": [
+          "D",
+          "L",
+          "W"
+        ]
       }
     },
     {
@@ -1499,17 +1631,28 @@
       "side": "right",
       "s1": "1J",
       "s2": "2H",
+      "kickoff": "2026-07-03T22:00:00Z",
       "t1": {
         "name": "Argentina",
         "label": "1J",
         "status": "confirmed",
-        "prob": 97
+        "prob": 97,
+        "form": [
+          "W",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Cape Verde",
         "label": "2H",
         "status": "confirmed",
-        "prob": 3
+        "prob": 3,
+        "form": [
+          "D",
+          "D",
+          "D"
+        ]
       }
     },
     {
@@ -1518,17 +1661,28 @@
       "side": "right",
       "s1": "2D",
       "s2": "2G",
+      "kickoff": "2026-07-03T18:00:00Z",
       "t1": {
         "name": "Australia",
         "label": "2D",
         "status": "confirmed",
-        "prob": 65
+        "prob": 65,
+        "form": [
+          "W",
+          "L",
+          "D"
+        ]
       },
       "t2": {
         "name": "Egypt",
         "label": "2G",
         "status": "confirmed",
-        "prob": 35
+        "prob": 35,
+        "form": [
+          "D",
+          "W",
+          "D"
+        ]
       }
     },
     {
@@ -1537,17 +1691,28 @@
       "side": "right",
       "s1": "1B",
       "s2": "3rd-EFGIJ",
+      "kickoff": "2026-07-03T03:00:00Z",
       "t1": {
         "name": "Switzerland",
         "label": "1B",
         "status": "confirmed",
-        "prob": 68
+        "prob": 68,
+        "form": [
+          "D",
+          "W",
+          "W"
+        ]
       },
       "t2": {
         "name": "Senegal",
         "label": "3rd GrpI",
         "status": "confirmed",
-        "prob": 32
+        "prob": 32,
+        "form": [
+          "L",
+          "L",
+          "W"
+        ]
       }
     },
     {
@@ -1556,17 +1721,28 @@
       "side": "right",
       "s1": "1K",
       "s2": "3rd-DEIJL",
+      "kickoff": "2026-07-04T01:30:00Z",
       "t1": {
         "name": "Colombia",
         "label": "1K",
         "status": "confirmed",
-        "prob": 91
+        "prob": 91,
+        "form": [
+          "W",
+          "W",
+          "D"
+        ]
       },
       "t2": {
         "name": "Ghana",
         "label": "3rd GrpL",
         "status": "confirmed",
-        "prob": 9
+        "prob": 9,
+        "form": [
+          "W",
+          "D",
+          "L"
+        ]
       }
     }
   ],
@@ -1691,5 +1867,157 @@
       "in_best8": false,
       "qualify_prob": 0
     }
-  ]
+  ],
+  "scorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 6
+    },
+    {
+      "name": "Vinicius Junior",
+      "team": "Brazil",
+      "goals": 4
+    },
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 4
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Norway",
+      "goals": 4
+    },
+    {
+      "name": "Ousmane Dembélé",
+      "team": "France",
+      "goals": 4
+    },
+    {
+      "name": "Ismael Saibari",
+      "team": "Morocco",
+      "goals": 3
+    },
+    {
+      "name": "Deniz Undav",
+      "team": "Germany",
+      "goals": 3
+    },
+    {
+      "name": "Elijah Just",
+      "team": "New Zealand",
+      "goals": 3
+    },
+    {
+      "name": "Yoane Wissa",
+      "team": "Congo DR",
+      "goals": 3
+    },
+    {
+      "name": "Harry Kane",
+      "team": "England",
+      "goals": 3
+    },
+    {
+      "name": "Johan Manzambi",
+      "team": "Switzerland",
+      "goals": 3
+    },
+    {
+      "name": "Jonathan David",
+      "team": "Canada",
+      "goals": 3
+    },
+    {
+      "name": "Matheus Cunha",
+      "team": "Brazil",
+      "goals": 3
+    },
+    {
+      "name": "Brian Brobbey",
+      "team": "Netherlands",
+      "goals": 3
+    },
+    {
+      "name": "Ismaïla Sarr",
+      "team": "Senegal",
+      "goals": 3
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 2
+    },
+    {
+      "name": "Cyle Larin",
+      "team": "Canada",
+      "goals": 2
+    },
+    {
+      "name": "Folarin Balogun",
+      "team": "United States",
+      "goals": 2
+    },
+    {
+      "name": "Kai Havertz",
+      "team": "Germany",
+      "goals": 2
+    },
+    {
+      "name": "Crysencio Summerville",
+      "team": "Netherlands",
+      "goals": 2
+    }
+  ],
+  "win_probs": {
+    "France": 11.5,
+    "Argentina": 11.0,
+    "England": 10.0,
+    "Brazil": 9.0,
+    "Spain": 8.5,
+    "Germany": 8.0,
+    "Portugal": 6.5,
+    "Netherlands": 6.0,
+    "United States": 4.0,
+    "Belgium": 3.2,
+    "Uruguay": 2.8,
+    "Colombia": 2.8,
+    "Croatia": 2.4,
+    "Mexico": 2.3,
+    "Norway": 2.3,
+    "Switzerland": 1.9,
+    "Sweden": 1.7,
+    "Australia": 1.4,
+    "Ecuador": 1.4,
+    "Canada": 1.4,
+    "Japan": 1.4,
+    "Senegal": 1.4,
+    "Morocco": 1.7,
+    "Scotland": 1.1,
+    "Algeria": 0.95,
+    "Austria": 0.95,
+    "South Korea": 1.1,
+    "Egypt": 0.75,
+    "Czechia": 0.75,
+    "Iran": 0.65,
+    "Saudi Arabia": 0.65,
+    "Bosnia and Herzegovina": 0.55,
+    "Qatar": 0.45,
+    "Tunisia": 0.45,
+    "Ghana": 0.45,
+    "Panama": 0.35,
+    "Paraguay": 0.55,
+    "Türkiye": 1.1,
+    "DR Congo": 0.35,
+    "Uzbekistan": 0.28,
+    "Jordan": 0.28,
+    "Iraq": 0.38,
+    "Ivory Coast": 0.75,
+    "Haiti": 0.18,
+    "New Zealand": 0.28,
+    "Cape Verde": 0.28,
+    "South Africa": 0.38,
+    "Curaçao": 0.08
+  }
 }
