@@ -723,6 +723,21 @@ def main():
     bracket = build_bracket(groups_out, ko_results)
     total_live = sum(len(g["live"]) for g in groups_out)
 
+    # ── ZERO OUT KNOCKOUT STAGE LOSERS ──────────────────────────────────
+    # Any team marked as loser in a bracket match is out of the tournament.
+    # Their qualify_prob and win_cup_% must be 0 regardless of group finish.
+    ko_losers = set()
+    for _bm in bracket:
+        if _bm.get("winner"):   # match has a result
+            for _slot in [_bm["t1"], _bm["t2"]]:
+                if _slot.get("status") == "loser" and _slot.get("name"):
+                    ko_losers.add(_slot["name"])
+    for _g in groups_out:
+        for _t in _g["teams"]:
+            if _t["name"] in ko_losers:
+                _t["qualify_prob"] = 0
+                _t["eliminated"]   = True
+
     # ── LOCK PROBABILITIES FOR FULLY FINISHED GROUPS ─────────────────
     for _g in groups_out:
         _res_done = len([_r for _r in _g.get("results", [])
