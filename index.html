@@ -422,6 +422,14 @@ tr.q4 .tc{color:var(--muted)}
 }
 
 .match.finished-card{border:1px solid rgba(34,197,94,.2);background:rgba(34,197,94,.04)}
+
+/* ── KNOCKOUT WINNER / LOSER ── */
+.mteam.winner{border-left:3px solid #22c55e}
+.mteam.loser{opacity:.35;filter:grayscale(60%)}
+.mteam.loser .team-name{text-decoration:line-through;text-decoration-color:rgba(255,255,255,.35)}
+.match.finished-card{border:1px solid rgba(34,197,94,.2);background:rgba(34,197,94,.03)}
+.match-score{text-align:center;font-family:'DM Mono',monospace;font-size:.8rem;font-weight:700;color:var(--gold);padding:3px 0;letter-spacing:.06em}
+
 </style>
 </head>
 <body>
@@ -662,7 +670,7 @@ function teamRow(t, isRight){
     return `<div class="mteam tbd"><div class="mteam-inner"><span class="team-name">${lbl}</span></div></div>`;
   }
   const em   = f(t.name);
-  const sCls = t.status==='confirmed'?'confirmed':t.status==='likely'?'likely':'';
+  const sCls = t.status==='winner'?'confirmed winner':t.status==='loser'?'loser':t.status==='confirmed'?'confirmed':t.status==='likely'?'likely':'';
   const ph   = pHtml(t.prob, false);
   const bg   = `<span class="flag-bg" aria-hidden="true">${em}</span>`;
   const icon = `<span class="flag-icon">${em}</span>`;
