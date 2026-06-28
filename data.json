@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T21:18:07.389897+00:00",
+  "updated_at": "2026-06-28T21:53:09.304093+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -32,8 +32,8 @@
           "gd": -1,
           "points": 4,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
