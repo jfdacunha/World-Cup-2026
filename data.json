@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T00:17:50.058210+00:00",
+  "updated_at": "2026-06-28T08:33:56.236025+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -47,8 +47,8 @@
           "gd": -1,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 45,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -152,7 +152,7 @@
           "gd": -1,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -362,7 +362,7 @@
           "gd": -2,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -467,7 +467,7 @@
           "gd": 0,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -572,7 +572,7 @@
           "gd": 0,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -677,8 +677,8 @@
           "gd": 0,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 45,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -887,7 +887,7 @@
           "gd": 2,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 45,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -953,58 +953,58 @@
       "teams": [
         {
           "name": "Argentina",
-          "played": 2,
-          "win": 2,
+          "played": 3,
+          "win": 3,
           "draw": 0,
           "lose": 0,
-          "gf": 5,
-          "ga": 0,
-          "gd": 5,
-          "points": 6,
+          "gf": 8,
+          "ga": 1,
+          "gd": 7,
+          "points": 9,
           "rank": 1,
-          "qualify_prob": 96,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Austria",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
-          "gf": 3,
-          "ga": 3,
+          "gf": 6,
+          "ga": 6,
           "gd": 0,
-          "points": 3,
+          "points": 4,
           "rank": 2,
-          "qualify_prob": 82,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Algeria",
-          "played": 2,
+          "played": 3,
           "win": 1,
-          "draw": 0,
+          "draw": 1,
           "lose": 1,
-          "gf": 2,
-          "ga": 4,
+          "gf": 5,
+          "ga": 7,
           "gd": -2,
-          "points": 3,
+          "points": 4,
           "rank": 3,
-          "qualify_prob": 15,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
         {
           "name": "Jordan",
-          "played": 2,
+          "played": 3,
           "win": 0,
           "draw": 0,
-          "lose": 2,
-          "gf": 2,
-          "ga": 5,
-          "gd": -3,
+          "lose": 3,
+          "gf": 3,
+          "ga": 8,
+          "gd": -5,
           "points": 0,
           "rank": 4,
           "qualify_prob": 0,
@@ -1036,20 +1036,21 @@
           "away": "Algeria",
           "score": "1-2",
           "date": "2026-06-22"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Jordan",
           "away": "Argentina",
+          "score": "1-3",
           "date": "2026-06-27"
         },
         {
           "home": "Algeria",
           "away": "Austria",
+          "score": "3-3",
           "date": "2026-06-27"
         }
       ],
+      "upcoming": [],
       "live": []
     },
     {
@@ -1086,30 +1087,30 @@
           "live_match": false
         },
         {
-          "name": "Uzbekistan",
+          "name": "DR Congo",
           "played": 3,
           "win": 1,
-          "draw": 0,
-          "lose": 2,
-          "gf": 2,
-          "ga": 8,
-          "gd": -6,
-          "points": 3,
+          "draw": 1,
+          "lose": 1,
+          "gf": 4,
+          "ga": 3,
+          "gd": 1,
+          "points": 4,
           "rank": 3,
-          "qualify_prob": 0,
-          "eliminated": true,
+          "qualify_prob": 99,
+          "eliminated": null,
           "live_match": false
         },
         {
-          "name": "DR Congo",
+          "name": "Uzbekistan",
           "played": 3,
           "win": 0,
-          "draw": 1,
-          "lose": 2,
-          "gf": 1,
-          "ga": 3,
-          "gd": -2,
-          "points": 1,
+          "draw": 0,
+          "lose": 3,
+          "gf": 2,
+          "ga": 11,
+          "gd": -9,
+          "points": 0,
           "rank": 4,
           "qualify_prob": 0,
           "eliminated": "group",
@@ -1140,20 +1141,21 @@
           "away": "DR Congo",
           "score": "1-0",
           "date": "2026-06-23"
-        }
-      ],
-      "upcoming": [
+        },
         {
           "home": "Colombia",
           "away": "Portugal",
+          "score": "0-0",
           "date": "2026-06-27"
         },
         {
           "home": "DR Congo",
           "away": "Uzbekistan",
+          "score": "3-1",
           "date": "2026-06-27"
         }
       ],
+      "upcoming": [],
       "live": []
     },
     {
@@ -1200,7 +1202,7 @@
           "gd": 0,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 80,
+          "qualify_prob": 99,
           "eliminated": null,
           "live_match": false
         },
@@ -1277,8 +1279,8 @@
       },
       "t2": {
         "name": "Sweden",
-        "label": "3rd GrpF (4pts)",
-        "status": "likely",
+        "label": "3rd GrpF",
+        "status": "confirmed",
         "prob": 50
       }
     },
@@ -1296,8 +1298,8 @@
       },
       "t2": {
         "name": "Paraguay",
-        "label": "3rd GrpD (4pts)",
-        "status": "likely",
+        "label": "3rd GrpD",
+        "status": "confirmed",
         "prob": 50
       }
     },
@@ -1374,7 +1376,7 @@
         "name": "Austria",
         "label": "2J",
         "status": "confirmed",
-        "prob": 82
+        "prob": 99
       }
     },
     {
@@ -1391,8 +1393,8 @@
       },
       "t2": {
         "name": "Bosnia and Herzegovina",
-        "label": "3rd GrpB (4pts)",
-        "status": "likely",
+        "label": "3rd GrpB",
+        "status": "confirmed",
         "prob": 50
       }
     },
@@ -1409,10 +1411,10 @@
         "prob": 99
       },
       "t2": {
-        "name": "South Korea",
-        "label": "3rd GrpA (3pts)",
-        "status": "likely",
-        "prob": 30
+        "name": "Algeria",
+        "label": "3rd GrpJ",
+        "status": "confirmed",
+        "prob": 50
       }
     },
     {
@@ -1467,8 +1469,8 @@
       },
       "t2": {
         "name": "Ecuador",
-        "label": "3rd GrpE (4pts)",
-        "status": "likely",
+        "label": "3rd GrpE",
+        "status": "confirmed",
         "prob": 50
       }
     },
@@ -1485,10 +1487,10 @@
         "prob": 99
       },
       "t2": {
-        "name": "Senegal",
-        "label": "3rd GrpI (3pts)",
-        "status": "likely",
-        "prob": 30
+        "name": "DR Congo",
+        "label": "3rd GrpK",
+        "status": "confirmed",
+        "prob": 50
       }
     },
     {
@@ -1501,7 +1503,7 @@
         "name": "Argentina",
         "label": "1J",
         "status": "confirmed",
-        "prob": 96
+        "prob": 99
       },
       "t2": {
         "name": "Cape Verde",
@@ -1542,9 +1544,9 @@
         "prob": 99
       },
       "t2": {
-        "name": "Iran",
-        "label": "3rd GrpG (3pts)",
-        "status": "likely",
+        "name": "Senegal",
+        "label": "3rd GrpI",
+        "status": "confirmed",
         "prob": 30
       }
     },
@@ -1562,13 +1564,23 @@
       },
       "t2": {
         "name": "Ghana",
-        "label": "3rd GrpL (4pts)",
-        "status": "likely",
+        "label": "3rd GrpL",
+        "status": "confirmed",
         "prob": 50
       }
     }
   ],
   "best_thirds": [
+    {
+      "name": "DR Congo",
+      "group": "K",
+      "played": 3,
+      "points": 4,
+      "gd": 1,
+      "gf": 4,
+      "in_best8": true,
+      "qualify_prob": 99
+    },
     {
       "name": "Sweden",
       "group": "F",
@@ -1577,7 +1589,7 @@
       "gd": 0,
       "gf": 7,
       "in_best8": true,
-      "qualify_prob": 80
+      "qualify_prob": 99
     },
     {
       "name": "Ecuador",
@@ -1587,7 +1599,7 @@
       "gd": 0,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 80
+      "qualify_prob": 99
     },
     {
       "name": "Ghana",
@@ -1597,7 +1609,7 @@
       "gd": 0,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 80
+      "qualify_prob": 99
     },
     {
       "name": "Bosnia and Herzegovina",
@@ -1607,7 +1619,17 @@
       "gd": -1,
       "gf": 5,
       "in_best8": true,
-      "qualify_prob": 80
+      "qualify_prob": 99
+    },
+    {
+      "name": "Algeria",
+      "group": "J",
+      "played": 3,
+      "points": 4,
+      "gd": -2,
+      "gf": 5,
+      "in_best8": true,
+      "qualify_prob": 99
     },
     {
       "name": "Paraguay",
@@ -1617,7 +1639,7 @@
       "gd": -2,
       "gf": 2,
       "in_best8": true,
-      "qualify_prob": 80
+      "qualify_prob": 99
     },
     {
       "name": "Senegal",
@@ -1627,7 +1649,7 @@
       "gd": 2,
       "gf": 8,
       "in_best8": true,
-      "qualify_prob": 45
+      "qualify_prob": 99
     },
     {
       "name": "Iran",
@@ -1636,8 +1658,8 @@
       "points": 3,
       "gd": 0,
       "gf": 3,
-      "in_best8": true,
-      "qualify_prob": 45
+      "in_best8": false,
+      "qualify_prob": 0
     },
     {
       "name": "South Korea",
@@ -1646,18 +1668,8 @@
       "points": 3,
       "gd": -1,
       "gf": 2,
-      "in_best8": true,
-      "qualify_prob": 45
-    },
-    {
-      "name": "Algeria",
-      "group": "J",
-      "played": 2,
-      "points": 3,
-      "gd": -2,
-      "gf": 2,
       "in_best8": false,
-      "qualify_prob": 15
+      "qualify_prob": 0
     },
     {
       "name": "Scotland",
@@ -1667,17 +1679,7 @@
       "gd": -3,
       "gf": 1,
       "in_best8": false,
-      "qualify_prob": 15
-    },
-    {
-      "name": "Uzbekistan",
-      "group": "K",
-      "played": 3,
-      "points": 3,
-      "gd": -6,
-      "gf": 2,
-      "in_best8": false,
-      "qualify_prob": 5
+      "qualify_prob": 0
     },
     {
       "name": "Uruguay",
@@ -1687,7 +1689,7 @@
       "gd": -1,
       "gf": 3,
       "in_best8": false,
-      "qualify_prob": 5
+      "qualify_prob": 0
     }
   ]
 }
