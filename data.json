@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T21:10:51.399204+00:00",
+  "updated_at": "2026-06-29T22:42:22.125432+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1932,6 +1932,11 @@
       "goals": 3
     },
     {
+      "name": "Kai Havertz",
+      "team": "Germany",
+      "goals": 3
+    },
+    {
       "name": "Deniz Undav",
       "team": "Germany",
       "goals": 3
@@ -1989,11 +1994,6 @@
     {
       "name": "Folarin Balogun",
       "team": "United States",
-      "goals": 2
-    },
-    {
-      "name": "Kai Havertz",
-      "team": "Germany",
       "goals": 2
     },
     {
