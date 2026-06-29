@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T14:37:14.108269+00:00",
+  "updated_at": "2026-06-29T19:26:30.918320+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -557,8 +557,8 @@
           "gd": 4,
           "points": 5,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1531,7 +1531,7 @@
       "t1": {
         "name": "Brazil",
         "label": "1C",
-        "status": "confirmed",
+        "status": "winner",
         "prob": 89,
         "form": [
           "D",
@@ -1542,7 +1542,7 @@
       "t2": {
         "name": "Japan",
         "label": "2F",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 11,
         "form": [
           "D",
@@ -1550,8 +1550,8 @@
           "D"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "2-1",
+      "winner": "Brazil"
     },
     {
       "id": "M78",
