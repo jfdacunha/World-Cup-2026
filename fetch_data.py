@@ -771,8 +771,8 @@ def main():
         "M86":"M88","M88":"M86",  # M95
         "M85":"M87","M87":"M85",  # M96
     }
-    bmap = {m["id"]: m for m in bracket}
-    for bm in bracket:
+    bmap = {m["id"]: m for m in bracket_result}
+    for bm in bracket_result:
         if not bm.get("winner"):
             continue  # R32 not yet played
         for slot in ["t1", "t2"]:
