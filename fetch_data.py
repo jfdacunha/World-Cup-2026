@@ -533,8 +533,12 @@ def build_bracket(groups_out, ko_results=None):
             res = ko_results.get((n1,n2)) or ko_results.get((n2,n1))
             # Merge fallback if API result missing winner/loser
             fb = FALLBACK_KNOCKOUT.get(m["id"])
-            if fb and (not res or not res.get("winner")):
-                res = {**(res or {}), **{k:v for k,v in fb.items() if v is not None}}
+            if fb:
+                # Fallback takes priority for score display (e.g. "1-1 (p)" not raw API)
+                # but only fills winner/loser if API didn't find them
+                base = res or {}
+                res = {**base, **{k:v for k,v in fb.items() if v is not None and
+                       (k == "score" or not base.get(k))}}
             if res:
                 score  = res.get("score")
                 winner = res.get("winner")
