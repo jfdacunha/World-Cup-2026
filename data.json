@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T00:18:04.615964+00:00",
+  "updated_at": "2026-06-30T00:19:56.290120+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1276,7 +1276,7 @@
         "name": "Germany",
         "label": "1E",
         "status": "loser",
-        "prob": 88,
+        "prob": 96,
         "form": [
           "W",
           "W",
@@ -1284,17 +1284,17 @@
         ]
       },
       "t2": {
-        "name": "Sweden",
-        "label": "3rd GrpF",
+        "name": "Paraguay",
+        "label": "3rd GrpD",
         "status": "winner",
-        "prob": 12,
+        "prob": 4,
         "form": [
-          "W",
           "L",
+          "W",
           "D"
         ]
       },
-      "score": "1-1 (p)",
+      "score": "5-6",
       "winner": "Paraguay"
     },
     {
@@ -1308,7 +1308,7 @@
         "name": "France",
         "label": "1I",
         "status": "confirmed",
-        "prob": 97,
+        "prob": 92,
         "form": [
           "W",
           "W",
@@ -1316,13 +1316,13 @@
         ]
       },
       "t2": {
-        "name": "Paraguay",
-        "label": "3rd GrpD",
+        "name": "Sweden",
+        "label": "3rd GrpF",
         "status": "confirmed",
-        "prob": 3,
+        "prob": 8,
         "form": [
-          "L",
           "W",
+          "L",
           "D"
         ]
       },
@@ -1500,7 +1500,7 @@
         "name": "Belgium",
         "label": "1G",
         "status": "confirmed",
-        "prob": 83,
+        "prob": 77,
         "form": [
           "D",
           "D",
@@ -1508,14 +1508,14 @@
         ]
       },
       "t2": {
-        "name": "Algeria",
-        "label": "3rd GrpJ",
+        "name": "Senegal",
+        "label": "3rd GrpI",
         "status": "confirmed",
-        "prob": 17,
+        "prob": 23,
         "form": [
           "L",
-          "W",
-          "D"
+          "L",
+          "W"
         ]
       },
       "score": null,
@@ -1724,7 +1724,7 @@
         "name": "Switzerland",
         "label": "1B",
         "status": "confirmed",
-        "prob": 68,
+        "prob": 76,
         "form": [
           "D",
           "W",
@@ -1732,14 +1732,14 @@
         ]
       },
       "t2": {
-        "name": "Senegal",
-        "label": "3rd GrpI",
+        "name": "Algeria",
+        "label": "3rd GrpJ",
         "status": "confirmed",
-        "prob": 32,
+        "prob": 24,
         "form": [
           "L",
-          "L",
-          "W"
+          "W",
+          "D"
         ]
       },
       "score": null,
