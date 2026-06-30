@@ -736,76 +736,57 @@ def main():
     ko_results = fetch_knockout_results(API_KEY) if API_KEY else {}
     bracket = build_bracket(groups_out, ko_results)
 
-    # ── GUARANTEED FALLBACK APPLY ────────────────────────────────────────
-    # If build_bracket didn't set score/winner (API silent or mismatched),
-    # force-apply FALLBACK_KNOCKOUT entries now so nothing is ever missed.
-    for _bm in bracket:
-        if _bm.get("score") is not None:
-            continue   # already resolved
-        _fb = FALLBACK_KNOCKOUT.get(_bm["id"])
-        if not _fb:
-            continue
-        _bm["score"]  = _fb.get("score")
-        _bm["winner"] = _fb.get("winner")
-        _win = _fb.get("winner")
-        _los = _fb.get("loser")
-        for _slot in ["t1", "t2"]:
-            _t = _bm[_slot]
-            if _t.get("name") == _win:
-                _t["status"] = "winner"
-            elif _t.get("name") == _los:
-                _t["status"] = "loser"
-        print(f"Fallback applied: {_bm['id']} → {_win} wins")
-    total_live = sum(len(g["live"]) for g in groups_out)
+    # ── POST-PROCESS: FALLBACK + R16 PROBABILITIES ──────────────────────
+    _all_map = {t["name"]: t for g in groups_out for t in g["teams"]}
+    _R16P = {"M74":"M77","M77":"M74","M73":"M75","M75":"M73",
+             "M83":"M84","M84":"M83","M81":"M82","M82":"M81",
+             "M76":"M78","M78":"M76","M79":"M80","M80":"M79",
+             "M86":"M88","M88":"M86","M85":"M87","M87":"M85"}
+    _bmap = {m["id"]: m for m in bracket}
 
-    # ── R16 WIN PROBABILITIES FOR R32 WINNERS ───────────────────────────
-    # For teams that have already passed Round of 32, replace their
-    # bracket prob with the probability of advancing FROM Round of 16.
-    R16_PAIRS_BY_R32 = {
-        "M74":"M77","M77":"M74",  # M89
-        "M73":"M75","M75":"M73",  # M90
-        "M83":"M84","M84":"M83",  # M93
-        "M81":"M82","M82":"M81",  # M94
-        "M76":"M78","M78":"M76",  # M91
-        "M79":"M80","M80":"M79",  # M92
-        "M86":"M88","M88":"M86",  # M95
-        "M85":"M87","M87":"M85",  # M96
-    }
-    bmap = {m["id"]: m for m in bracket_result}
-    for bm in bracket_result:
-        if not bm.get("winner"):
-            continue  # R32 not yet played
-        for slot in ["t1", "t2"]:
-            t = bm[slot]
-            if t.get("status") != "winner" or not t.get("name"):
+    for _bm in bracket:
+        # Step 1: Apply fallback if score not yet set
+        if _bm.get("score") is None:
+            _fb = FALLBACK_KNOCKOUT.get(_bm["id"])
+            if _fb:
+                _bm["score"]  = _fb.get("score")
+                _bm["winner"] = _fb.get("winner")
+                _win = _fb.get("winner")
+                _los = _fb.get("loser")
+                for _sl in ["t1", "t2"]:
+                    _tn = _bm[_sl].get("name")
+                    if _tn == _win:   _bm[_sl]["status"] = "winner"
+                    elif _tn == _los: _bm[_sl]["status"] = "loser"
+
+        # Step 2: R16 win probability for teams that already advanced
+        if not _bm.get("winner"):
+            continue
+        for _sl in ["t1", "t2"]:
+            _t = _bm[_sl]
+            if _t.get("status") != "winner" or not _t.get("name"):
                 continue
-            opp_mid = R16_PAIRS_BY_R32.get(bm["id"])
-            opp_m   = bmap.get(opp_mid)
-            if not opp_m:
+            _opp_mid = _R16P.get(_bm["id"])
+            _opp_m   = _bmap.get(_opp_mid)
+            if not _opp_m:
                 continue
-            td_this = {**all_teams_map.get(t["name"], {}), "name": t["name"]}
-            s_this  = team_raw_strength(td_this)
-            if opp_m.get("winner"):
-                # Opponent known — exact H2H R16 win probability
-                opp_nm = opp_m["winner"]
-                td_opp = {**all_teams_map.get(opp_nm, {}), "name": opp_nm}
-                s_opp  = team_raw_strength(td_opp)
-                total  = s_this + s_opp or 1
-                t["prob"] = max(3, min(97, round(s_this / total * 100)))
-                t["r16_opp"] = opp_nm
+            _s_this = team_raw_strength({**_all_map.get(_t["name"],{}), "name":_t["name"]})
+            if _opp_m.get("winner"):
+                _opp_nm = _opp_m["winner"]
+                _s_opp  = team_raw_strength({**_all_map.get(_opp_nm,{}), "name":_opp_nm})
+                _tot    = _s_this + _s_opp or 1
+                _t["prob"]     = max(3, min(97, round(_s_this / _tot * 100)))
+                _t["r16_opp"]  = _opp_nm
             else:
-                # Opponent not yet known — weighted expectation over two candidates
-                ot1 = opp_m["t1"]; ot2 = opp_m["t2"]
-                p1  = (ot1.get("prob") or 50) / 100.0
-                p2  = 1.0 - p1
-                ev  = 0.0
-                for opp_nm, opp_p in [(ot1.get("name"), p1), (ot2.get("name"), p2)]:
-                    if not opp_nm: continue
-                    td_o = {**all_teams_map.get(opp_nm, {}), "name": opp_nm}
-                    s_o  = team_raw_strength(td_o)
-                    ev  += opp_p * (s_this / (s_this + s_o)) if (s_this + s_o) > 0 else 0
-                t["prob"] = max(3, min(97, round(ev * 100)))
-                t["r16_opp"] = f"W({opp_mid})"
+                _ot1 = _opp_m["t1"]; _ot2 = _opp_m["t2"]
+                _p1  = (_ot1.get("prob") or 50) / 100.0
+                _ev  = 0.0
+                for _on, _op in [(_ot1.get("name"), _p1), (_ot2.get("name"), 1.0-_p1)]:
+                    if not _on: continue
+                    _so = team_raw_strength({**_all_map.get(_on,{}), "name":_on})
+                    _ev += _op * (_s_this / (_s_this + _so)) if (_s_this + _so) > 0 else 0
+                _t["prob"]    = max(3, min(97, round(_ev * 100)))
+                _t["r16_opp"] = f"W({_opp_mid})"
+    total_live = sum(len(g["live"]) for g in groups_out)
 
     # ── ZERO OUT KNOCKOUT STAGE LOSERS ──────────────────────────────────
     # Any team marked as loser in a bracket match is out of the tournament.
