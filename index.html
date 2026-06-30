@@ -442,6 +442,10 @@ tr.q4 .tc{color:var(--muted)}
 #groupsDetails>summary::before{content:'▶ ';color:var(--gold);font-size:.7rem;transition:transform .2s;display:inline-block}
 #groupsDetails[open]>summary::before{transform:rotate(90deg)}
 
+
+#thirdsDetails summary::-webkit-details-marker{display:none}
+#thirdsDetails>summary::before{content:"▶ ";color:var(--gold);font-size:.7rem;transition:transform .2s;display:inline-block}
+#thirdsDetails[open]>summary::before{transform:rotate(90deg)}
 </style>
 </head>
 <body>
@@ -543,9 +547,13 @@ tr.q4 .tc{color:var(--muted)}
 <hr class="div">
 
 <!-- BEST 3rd PLACE LIVE STANDINGS -->
-<section class="section" id="thirds">
-  <div class="sec-title">Best 3rd Place — Live Race</div>
-  <div class="sec-sub">Top 8 of 12 third-place teams advance to Round of 32 · Ranked by pts → goal diff → goals scored</div>
+<section class="section" id="thirds" style="padding:.75rem 1.5rem">
+  <details id="thirdsDetails">
+  <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.75rem">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em">Best 3rd Place</span>
+    <span style="font-size:.6rem;color:var(--muted);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em">· tap to expand</span>
+  </summary>
+  <div style="margin-top:.75rem">
   <div class="thirds-section" id="thirdsSection">
     <table class="thirds-table">
       <thead><tr>
@@ -565,6 +573,8 @@ tr.q4 .tc{color:var(--muted)}
   <div class="sec-title">World Cup Win Probability</div>
   <div class="sec-sub">All 48 teams ranked · Based on current group standing + pre-tournament strength · Updates every hour</div>
   <div id="powerEl"><div class="loading"><div class="spin"></div>Loading...</div></div>
+  </div>
+  </details>
 </section>
 
 <hr class="div">
@@ -612,15 +622,7 @@ tr.q4 .tc{color:var(--muted)}
   <div class="sec-sub">How each team's chances have evolved · Pick a team or compare all 48</div>
 
   <div class="trends-grid">
-    <div class="trend-panel">
-      <div class="trend-head">
-        <span class="trend-label">Qualify %</span>
-        <select class="trend-select" id="qualifySelect">
-          <option value="">All teams</option>
-        </select>
-      </div>
-      <div class="trend-chart-wrap" id="qualifyChart"></div>
-    </div>
+    
 
     <div class="trend-panel">
       <div class="trend-head">
