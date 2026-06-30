@@ -437,6 +437,11 @@ tr.q4 .tc{color:var(--muted)}
 #groupsDetails[open] summary::before{transform:rotate(90deg)}
 #groupsDetails summary:hover .sec-title{color:var(--gold)}
 
+
+#groupsDetails summary::-webkit-details-marker{display:none}
+#groupsDetails>summary::before{content:'▶ ';color:var(--gold);font-size:.7rem;transition:transform .2s;display:inline-block}
+#groupsDetails[open]>summary::before{transform:rotate(90deg)}
+
 </style>
 </head>
 <body>
@@ -515,9 +520,14 @@ tr.q4 .tc{color:var(--muted)}
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<section class="section" id="groups">
-  <div class="sec-title">Group Stage</div>
-  <div class="sec-sub">Live standings · Results · Upcoming fixtures</div>
+<section class="section" id="groups" style="padding:.75rem 1.5rem">
+  <details id="groupsDetails">
+  <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:.75rem">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.06em">Group Stage</span>
+    <span style="font-size:.6rem;color:var(--muted);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em">· tap to expand results &amp; standings</span>
+  </summary>
+  <div style="margin-top:1rem">
+  <div class="sec-sub" style="margin-bottom:.75rem">Live standings · Results · Upcoming fixtures</div>
   <div class="legend">
     <div class="li"><div class="ld" style="background:var(--green)"></div>Auto-qualify (top 2)</div>
     <div class="li"><div class="ld" style="background:var(--amber)"></div>Potential best 3rd-place</div>
@@ -526,11 +536,13 @@ tr.q4 .tc{color:var(--muted)}
   <div class="groups-grid" id="groupsEl">
     <div class="loading"><div class="spin"></div>Loading group data...</div>
   </div>
+  </div><!-- end details inner -->
+  </details>
 </section>
 
 <hr class="div">
 
-<!-- BEST 3RD PLACE LIVE STANDINGS -->
+<!-- BEST 3rd PLACE LIVE STANDINGS -->
 <section class="section" id="thirds">
   <div class="sec-title">Best 3rd Place — Live Race</div>
   <div class="sec-sub">Top 8 of 12 third-place teams advance to Round of 32 · Ranked by pts → goal diff → goals scored</div>
