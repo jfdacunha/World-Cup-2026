@@ -685,14 +685,14 @@ function pHtml(p,sm){
 }
 
 // ── RENDER BRACKET ─────────────────────────────────────────────────────
-function teamRow(t, isRight){
+function teamRow(t, isRight, hideProb){
   if(!t || t.status==='tbd'){
     const lbl = (t&&t.label) ? t.label : 'TBD';
     return `<div class="mteam tbd"><div class="mteam-inner"><span class="team-name">${lbl}</span></div></div>`;
   }
   const em   = f(t.name);
   const sCls = t.status==='winner'?'confirmed winner':t.status==='loser'?'loser':t.status==='confirmed'?'confirmed':t.status==='likely'?'likely':'';
-  const ph   = pHtml(t.prob, false);
+  const ph   = (hideProb || t.prob == null) ? '' : pHtml(t.prob, false);
   const bg   = `<span class="flag-bg" aria-hidden="true">${em}</span>`;
   const icon = `<span class="flag-icon">${em}</span>`;
   const nm   = `<span class="team-name">${t.name}</span>`;
@@ -1216,12 +1216,10 @@ async function loadTrends() {
     if (teamCount === 0) { note.textContent = 'No trend data yet.'; return; }
 
     populateTrendDropdowns();
-    buildSvgChart('qualifyChart', 'q', document.getElementById('qualifySelect').value);
     buildSvgChart('winChart', 'w', document.getElementById('winSelect').value);
 
     note.textContent = 'Tracking ' + teamCount + ' teams \u00b7 ' + totalPoints + ' data points \u00b7 updates as the tournament progresses';
 
-    document.getElementById('qualifySelect').onchange = (e) => buildSvgChart('qualifyChart', 'q', e.target.value);
     document.getElementById('winSelect').onchange = (e) => buildSvgChart('winChart', 'w', e.target.value);
     __trendsLoaded = true;
   } catch (e) {
@@ -1316,7 +1314,9 @@ function renderR16Projections(data){
   (data.groups||[]).forEach(g=>g.teams.forEach(t=>{td[t.name]={rank:t.rank,points:t.points,played:t.played};}));
   const bmap={};
   data.bracket.forEach(m=>bmap[m.id]=m);
-  const projW=mid=>{const m=bmap[mid];if(!m)return null;
+  const projW=mid=>{
+    const m=bmap[mid];if(!m)return null;
+    if(m.winner) return m.winner;
     const n1=m.t1.name,n2=m.t2.name;if(!n1||!n2)return n1||n2||null;
     return m.t1.prob>=m.t2.prob?n1:n2;};
   const LABS=["R16-M89","R16-M90","R16-M93","R16-M94","R16-M91","R16-M92","R16-M95","R16-M96"];
@@ -1335,7 +1335,7 @@ function renderR16Projections(data){
         <span class="r16-pct">${pa}%</span><span class="r16-vs">vs</span><span class="r16-pct">${pb}%</span>
         <div class="r16-team" style="justify-content:flex-end"><span class="r16-team-name">${tb}</span><span>${f(tb)}</span></div>
       </div>
-      <div style="font-size:.5rem;color:var(--faint);margin-top:4px;font-family:'DM Mono',monospace">R32 advance: ${ta} ${fa!=null?fa+'%':'?'} · ${tb} ${fb!=null?fb+'%':'?'}</div>
+      <div style="font-size:.5rem;color:var(--faint);margin-top:4px;font-family:'DM Mono',monospace">${bmap[a]&&bmap[a].winner&&bmap[b]&&bmap[b].winner?'Both teams already advanced ✅':`R32: ${ta} ${fa!=null?fa+'%':'?'} · ${tb} ${fb!=null?fb+'%':'?'}`}</div>
     </div>`;
   }).join('');
 }
