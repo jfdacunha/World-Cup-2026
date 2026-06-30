@@ -429,27 +429,19 @@ def build_bracket(groups_out, ko_results=None):
 
     if all_groups_done:
         # ── FINAL ASSIGNMENT: use greedy best-fit, no duplicates ──────────
+        # Use official FIFA slot assignment (not greedy dedup) so
+        # e.g. Paraguay→M74, Sweden→M77 match the actual draw.
         slot_assignments = {}
-        used_groups = set()
-        for slot_code, eligible_groups in THIRD_PLACE_SLOTS.items():
-            for t in thirds:
-                if t["group"] in eligible_groups and t["group"] not in used_groups:
-                    if t["group"] in best_8:
-                        used_groups.add(t["group"])
-                        slot_assignments[slot_code] = {
-                            "name":   t["name"],
-                            "label":  f"3rd Grp{t['group']}",
-                            "status": "confirmed",
-                            "prob":   qualify_prob(t["name"], 3, t["played"], t["points"]),
-                        }
-                    else:
-                        slot_assignments[slot_code] = {
-                            "name":   None,
-                            "label":  "3rd TBD",
-                            "status": "tbd",
-                            "prob":   None,
-                        }
-                    break
+        for slot_code in THIRD_PLACE_SLOTS:
+            grp_letter = OFFICIAL_SLOT_ASSIGNMENT.get(slot_code)
+            t = next((x for x in thirds if x["group"] == grp_letter), None) if grp_letter else None
+            if t and t["group"] in best_8:
+                slot_assignments[slot_code] = {
+                    "name":   t["name"],
+                    "label":  f"3rd Grp{grp_letter}",
+                    "status": "confirmed",
+                    "prob":   t.get("qualify_prob", 99),
+                }
             else:
                 slot_assignments[slot_code] = {
                     "name": None, "label": "3rd TBD", "status": "tbd", "prob": None
