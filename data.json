@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T00:24:03.035887+00:00",
+  "updated_at": "2026-06-30T08:00:16.157361+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -542,8 +542,8 @@
           "gd": 6,
           "points": 7,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1292,7 +1292,8 @@
           "L",
           "W",
           "D"
-        ]
+        ],
+        "r16_opp": "W(M77)"
       },
       "score": "1-1 (p)",
       "winner": "Paraguay"
@@ -1351,12 +1352,13 @@
         "name": "Canada",
         "label": "2B",
         "status": "winner",
-        "prob": 79,
+        "prob": 43,
         "form": [
           "D",
           "W",
           "L"
-        ]
+        ],
+        "r16_opp": "Morocco"
       },
       "score": "0-1",
       "winner": "Canada"
@@ -1371,7 +1373,7 @@
       "t1": {
         "name": "Netherlands",
         "label": "1F",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 81,
         "form": [
           "D",
@@ -1382,16 +1384,17 @@
       "t2": {
         "name": "Morocco",
         "label": "2C",
-        "status": "confirmed",
-        "prob": 19,
+        "status": "winner",
+        "prob": 57,
         "form": [
           "D",
           "W",
           "W"
-        ]
+        ],
+        "r16_opp": "Canada"
       },
-      "score": null,
-      "winner": null
+      "score": "1-1 (p)",
+      "winner": "Morocco"
     },
     {
       "id": "M83",
@@ -1532,12 +1535,13 @@
         "name": "Brazil",
         "label": "1C",
         "status": "winner",
-        "prob": 89,
+        "prob": 85,
         "form": [
           "D",
           "W",
           "W"
-        ]
+        ],
+        "r16_opp": "W(M78)"
       },
       "t2": {
         "name": "Japan",
@@ -1977,6 +1981,11 @@
       "goals": 3
     },
     {
+      "name": "Cody Gakpo",
+      "team": "Netherlands",
+      "goals": 3
+    },
+    {
       "name": "Ismaïla Sarr",
       "team": "Senegal",
       "goals": 3
@@ -1994,11 +2003,6 @@
     {
       "name": "Folarin Balogun",
       "team": "United States",
-      "goals": 2
-    },
-    {
-      "name": "Crysencio Summerville",
-      "team": "Netherlands",
       "goals": 2
     }
   ],
