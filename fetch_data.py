@@ -527,18 +527,17 @@ def build_bracket(groups_out, ko_results=None):
                             form.append("W" if a>h else ("D" if h==a else "L"))
                 td["form"] = form[-3:]
         # Look up knockout result by team pair
-        score   = None; winner = None; loser = None
+        score   = None; winner = None; loser = None; res = None
         n1 = t1.get("name",""); n2 = t2.get("name","")
         if n1 and n2:
             res = ko_results.get((n1,n2)) or ko_results.get((n2,n1))
             # Merge fallback if API result missing winner/loser
             fb = FALLBACK_KNOCKOUT.get(m["id"])
             if fb:
-                # Fallback takes priority for score display (e.g. "1-1 (p)" not raw API)
-                # but only fills winner/loser if API didn't find them
+                # Fallback always overrides score and fills missing winner/loser
                 base = res or {}
-                res = {**base, **{k:v for k,v in fb.items() if v is not None and
-                       (k == "score" or not base.get(k))}}
+                overrides = {k: v for k, v in fb.items() if v is not None}
+                res = {**base, **overrides}   # fallback wins for all keys present
             if res:
                 score  = res.get("score")
                 winner = res.get("winner")
