@@ -556,9 +556,10 @@ def build_bracket(groups_out, ko_results=None):
 # Updated manually after each match as backup when API fails.
 # Format: match_id → {score, winner, loser}
 FALLBACK_KNOCKOUT = {
-    "M73": {"score":"0-1",    "winner":"Canada",  "loser":"South Africa"},
-    "M74": {"score":"1-1 (p)","winner":"Paraguay","loser":"Germany"},     # AET + penalties
-    "M76": {"score":"2-1",    "winner":"Brazil",  "loser":"Japan"},
+    "M73": {"score":"0-1",    "winner":"Canada",     "loser":"South Africa"},
+    "M74": {"score":"1-1 (p)","winner":"Paraguay",   "loser":"Germany"},       # AET + pens
+    "M75": {"score":"1-1 (p)","winner":"Morocco",    "loser":"Netherlands"},   # AET + pens
+    "M76": {"score":"2-1",    "winner":"Brazil",     "loser":"Japan"},
     # M74 slot: Paraguay (3rd Group D) — official FIFA assignment confirmed
     # M77 slot: Sweden (3rd Group F) — France vs Sweden Jun 30
 }
@@ -736,6 +737,55 @@ def main():
     ko_results = fetch_knockout_results(API_KEY) if API_KEY else {}
     bracket = build_bracket(groups_out, ko_results)
     total_live = sum(len(g["live"]) for g in groups_out)
+
+    # ── R16 WIN PROBABILITIES FOR R32 WINNERS ───────────────────────────
+    # For teams that have already passed Round of 32, replace their
+    # bracket prob with the probability of advancing FROM Round of 16.
+    R16_PAIRS_BY_R32 = {
+        "M74":"M77","M77":"M74",  # M89
+        "M73":"M75","M75":"M73",  # M90
+        "M83":"M84","M84":"M83",  # M93
+        "M81":"M82","M82":"M81",  # M94
+        "M76":"M78","M78":"M76",  # M91
+        "M79":"M80","M80":"M79",  # M92
+        "M86":"M88","M88":"M86",  # M95
+        "M85":"M87","M87":"M85",  # M96
+    }
+    bmap = {m["id"]: m for m in bracket}
+    for bm in bracket:
+        if not bm.get("winner"):
+            continue  # R32 not yet played
+        for slot in ["t1", "t2"]:
+            t = bm[slot]
+            if t.get("status") != "winner" or not t.get("name"):
+                continue
+            opp_mid = R16_PAIRS_BY_R32.get(bm["id"])
+            opp_m   = bmap.get(opp_mid)
+            if not opp_m:
+                continue
+            td_this = {**all_teams_map.get(t["name"], {}), "name": t["name"]}
+            s_this  = team_raw_strength(td_this)
+            if opp_m.get("winner"):
+                # Opponent known — exact H2H R16 win probability
+                opp_nm = opp_m["winner"]
+                td_opp = {**all_teams_map.get(opp_nm, {}), "name": opp_nm}
+                s_opp  = team_raw_strength(td_opp)
+                total  = s_this + s_opp or 1
+                t["prob"] = max(3, min(97, round(s_this / total * 100)))
+                t["r16_opp"] = opp_nm
+            else:
+                # Opponent not yet known — weighted expectation over two candidates
+                ot1 = opp_m["t1"]; ot2 = opp_m["t2"]
+                p1  = (ot1.get("prob") or 50) / 100.0
+                p2  = 1.0 - p1
+                ev  = 0.0
+                for opp_nm, opp_p in [(ot1.get("name"), p1), (ot2.get("name"), p2)]:
+                    if not opp_nm: continue
+                    td_o = {**all_teams_map.get(opp_nm, {}), "name": opp_nm}
+                    s_o  = team_raw_strength(td_o)
+                    ev  += opp_p * (s_this / (s_this + s_o)) if (s_this + s_o) > 0 else 0
+                t["prob"] = max(3, min(97, round(ev * 100)))
+                t["r16_opp"] = f"W({opp_mid})"
 
     # ── ZERO OUT KNOCKOUT STAGE LOSERS ──────────────────────────────────
     # Any team marked as loser in a bracket match is out of the tournament.
