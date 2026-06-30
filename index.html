@@ -430,6 +430,13 @@ tr.q4 .tc{color:var(--muted)}
 .match.finished-card{border:1px solid rgba(34,197,94,.2);background:rgba(34,197,94,.03)}
 .match-score{text-align:center;font-family:'DM Mono',monospace;font-size:.8rem;font-weight:700;color:var(--gold);padding:3px 0;letter-spacing:.06em}
 
+
+/* ── COLLAPSIBLE GROUPS ── */
+#groupsDetails summary::-webkit-details-marker{display:none}
+#groupsDetails summary::before{content:'▶';font-size:.7rem;color:var(--gold);transition:transform .2s;flex-shrink:0}
+#groupsDetails[open] summary::before{transform:rotate(90deg)}
+#groupsDetails summary:hover .sec-title{color:var(--gold)}
+
 </style>
 </head>
 <body>
@@ -678,9 +685,7 @@ function teamRow(t, isRight){
   const inner = isRight
     ? `${ph}${nm}${icon}`
     : `${icon}${nm}${ph}`;
-  const formDots = (t.form||[]).map(r=>`<span class="form-dot ${r}" title="${r}"></span>`).join('');
-  const formHtml = formDots ? `<div class="form-strip">${formDots}</div>` : '';
-  return `<div class="mteam ${sCls}">${bg}<div class="mteam-inner">${inner}${formHtml}</div></div>`;
+  return `<div class="mteam ${sCls}">${bg}<div class="mteam-inner">${inner}</div></div>`;
 }
 
 function _resolvePlaceholder(label) {
