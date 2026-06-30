@@ -354,6 +354,20 @@ def build_groups(standings, matches):
 
 # ── 3RD PLACE RULES ─────────────────────────────────────────────────
 # Fixed FIFA slot → eligible group combos for 3rd-place teams
+# Official FIFA 2026 slot assignment: maps slot_code → group_letter
+# Determined by which 8 groups qualify as best 3rd-place teams.
+# For this tournament (qualifying groups: B,D,E,F,I,J,K,L):
+OFFICIAL_SLOT_ASSIGNMENT = {
+    "3rd-ABCDF": "D",  # Paraguay  — confirmed ESPN/Fox/CBS/Sky
+    "3rd-CDFGH": "F",  # Sweden
+    "3rd-CEFHI": "E",  # Ecuador
+    "3rd-EHIJK": "K",  # DR Congo
+    "3rd-BEFIJ": "B",  # Bosnia and Herzegovina
+    "3rd-AEHIJ": "I",  # Senegal
+    "3rd-EFGIJ": "J",  # Algeria
+    "3rd-DEIJL": "L",  # Ghana
+}
+
 THIRD_PLACE_SLOTS = {
     "3rd-ABCDF": ["A","B","C","D","F"],
     "3rd-CDFGH": ["C","D","F","G","H"],
@@ -546,9 +560,11 @@ def build_bracket(groups_out, ko_results=None):
 # Updated manually after each match as backup when API fails.
 # Format: match_id → {score, winner, loser}
 FALLBACK_KNOCKOUT = {
-    "M73": {"score":"0-1","winner":"Canada",    "loser":"South Africa"},
-    "M74": {"score":"1-1 (p)","winner":"Paraguay","loser":"Germany"},   # AET + pens
-    "M76": {"score":"2-1","winner":"Brazil",    "loser":"Japan"},
+    "M73": {"score":"0-1",    "winner":"Canada",  "loser":"South Africa"},
+    "M74": {"score":"1-1 (p)","winner":"Paraguay","loser":"Germany"},     # AET + penalties
+    "M76": {"score":"2-1",    "winner":"Brazil",  "loser":"Japan"},
+    # M74 slot: Paraguay (3rd Group D) — official FIFA assignment confirmed
+    # M77 slot: Sweden (3rd Group F) — France vs Sweden Jun 30
 }
 
 def fetch_knockout_results(api_key):
