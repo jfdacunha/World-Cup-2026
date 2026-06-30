@@ -491,7 +491,7 @@ tr.q4 .tc{color:var(--muted)}
 
 <section class="section" id="bracket">
   <div class="sec-title">Tournament Bracket</div>
-  <div class="sec-sub">Both halves converge to the Final · % = estimated probability of advancing to the next round · Auto-updates every hour</div>
+  <div class="sec-sub">Both halves converge to the Final · % = probability of advancing to the <em>next</em> round (R32 win prob before playing, R16 win prob after) · Auto-updates every hour</div>
   <div class="r32-note">
     <strong style="color:var(--gold)">How this works:</strong> A GitHub Actions script fetches live scores every hour and writes <code>data.json</code>. This page loads that file on every visit and refreshes automatically — no manual updates needed. Flags are shown as large background glows per team. % badge = qualification probability based on current standing + pre-tournament strength.
   </div>
