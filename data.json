@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T23:41:43.548457+00:00",
+  "updated_at": "2026-06-30T00:05:21.352399+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -437,8 +437,8 @@
           "gd": 6,
           "points": 6,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1275,7 +1275,7 @@
       "t1": {
         "name": "Germany",
         "label": "1E",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 88,
         "form": [
           "W",
@@ -1286,7 +1286,7 @@
       "t2": {
         "name": "Sweden",
         "label": "3rd GrpF",
-        "status": "confirmed",
+        "status": "winner",
         "prob": 12,
         "form": [
           "W",
@@ -1294,8 +1294,8 @@
           "D"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "1-1 (p)",
+      "winner": "Paraguay"
     },
     {
       "id": "M77",
