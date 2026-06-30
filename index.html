@@ -739,8 +739,8 @@ function matchCard(m, isRight, isFinal){
   return `<div class="${cardCls}">
     <div class="match-lbl">${m.venue||''}${upsetBadge}</div>
     ${timeDisp}
-    ${teamRow(m.t1, isRight)}
-    ${teamRow(m.t2, isRight)}
+    ${teamRow(m.t1, isRight, !!m.score)}
+    ${teamRow(m.t2, isRight, !!m.score)}
   </div>`;
 }
 
