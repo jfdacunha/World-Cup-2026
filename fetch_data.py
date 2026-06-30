@@ -735,6 +735,27 @@ def main():
         groups_out = FALLBACK_GROUPS
     ko_results = fetch_knockout_results(API_KEY) if API_KEY else {}
     bracket = build_bracket(groups_out, ko_results)
+
+    # ── GUARANTEED FALLBACK APPLY ────────────────────────────────────────
+    # If build_bracket didn't set score/winner (API silent or mismatched),
+    # force-apply FALLBACK_KNOCKOUT entries now so nothing is ever missed.
+    for _bm in bracket:
+        if _bm.get("score") is not None:
+            continue   # already resolved
+        _fb = FALLBACK_KNOCKOUT.get(_bm["id"])
+        if not _fb:
+            continue
+        _bm["score"]  = _fb.get("score")
+        _bm["winner"] = _fb.get("winner")
+        _win = _fb.get("winner")
+        _los = _fb.get("loser")
+        for _slot in ["t1", "t2"]:
+            _t = _bm[_slot]
+            if _t.get("name") == _win:
+                _t["status"] = "winner"
+            elif _t.get("name") == _los:
+                _t["status"] = "loser"
+        print(f"Fallback applied: {_bm['id']} → {_win} wins")
     total_live = sum(len(g["live"]) for g in groups_out)
 
     # ── R16 WIN PROBABILITIES FOR R32 WINNERS ───────────────────────────
