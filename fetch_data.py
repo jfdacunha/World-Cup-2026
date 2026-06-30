@@ -546,7 +546,9 @@ def build_bracket(groups_out, ko_results=None):
 # Updated manually after each match as backup when API fails.
 # Format: match_id → {score, winner, loser}
 FALLBACK_KNOCKOUT = {
-    "M73": {"score":"0-1","winner":"Canada","loser":"South Africa"},
+    "M73": {"score":"0-1","winner":"Canada",    "loser":"South Africa"},
+    "M74": {"score":"1-1 (p)","winner":"Paraguay","loser":"Germany"},   # AET + pens
+    "M76": {"score":"2-1","winner":"Brazil",    "loser":"Japan"},
 }
 
 def fetch_knockout_results(api_key):
