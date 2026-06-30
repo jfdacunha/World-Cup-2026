@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T00:06:11.423203+00:00",
+  "updated_at": "2026-06-30T00:06:31.934387+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1900,7 +1900,108 @@
       "qualify_prob": 0
     }
   ],
-  "scorers": [],
+  "scorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 6
+    },
+    {
+      "name": "Vinicius Junior",
+      "team": "Brazil",
+      "goals": 4
+    },
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 4
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Norway",
+      "goals": 4
+    },
+    {
+      "name": "Ousmane Dembélé",
+      "team": "France",
+      "goals": 4
+    },
+    {
+      "name": "Ismael Saibari",
+      "team": "Morocco",
+      "goals": 3
+    },
+    {
+      "name": "Kai Havertz",
+      "team": "Germany",
+      "goals": 3
+    },
+    {
+      "name": "Deniz Undav",
+      "team": "Germany",
+      "goals": 3
+    },
+    {
+      "name": "Elijah Just",
+      "team": "New Zealand",
+      "goals": 3
+    },
+    {
+      "name": "Yoane Wissa",
+      "team": "Congo DR",
+      "goals": 3
+    },
+    {
+      "name": "Harry Kane",
+      "team": "England",
+      "goals": 3
+    },
+    {
+      "name": "Johan Manzambi",
+      "team": "Switzerland",
+      "goals": 3
+    },
+    {
+      "name": "Jonathan David",
+      "team": "Canada",
+      "goals": 3
+    },
+    {
+      "name": "Matheus Cunha",
+      "team": "Brazil",
+      "goals": 3
+    },
+    {
+      "name": "Brian Brobbey",
+      "team": "Netherlands",
+      "goals": 3
+    },
+    {
+      "name": "Ismaïla Sarr",
+      "team": "Senegal",
+      "goals": 3
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 2
+    },
+    {
+      "name": "Cyle Larin",
+      "team": "Canada",
+      "goals": 2
+    },
+    {
+      "name": "Folarin Balogun",
+      "team": "United States",
+      "goals": 2
+    },
+    {
+      "name": "Crysencio Summerville",
+      "team": "Netherlands",
+      "goals": 2
+    }
+  ],
   "win_probs": {
     "France": 11.5,
     "Argentina": 11.0,
