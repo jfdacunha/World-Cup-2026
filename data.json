@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T18:25:10.588834+00:00",
+  "updated_at": "2026-06-30T22:02:45.974505+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -452,8 +452,8 @@
           "gd": 2,
           "points": 6,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1535,13 +1535,13 @@
         "name": "Brazil",
         "label": "1C",
         "status": "winner",
-        "prob": 85,
+        "prob": 83,
         "form": [
           "D",
           "W",
           "W"
         ],
-        "r16_opp": "W(M78)"
+        "r16_opp": "Norway"
       },
       "t2": {
         "name": "Japan",
@@ -1567,7 +1567,7 @@
       "t1": {
         "name": "Ivory Coast",
         "label": "2E",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 25,
         "form": [
           "W",
@@ -1578,16 +1578,17 @@
       "t2": {
         "name": "Norway",
         "label": "2I",
-        "status": "confirmed",
-        "prob": 75,
+        "status": "winner",
+        "prob": 17,
         "form": [
           "W",
           "W",
           "L"
-        ]
+        ],
+        "r16_opp": "Brazil"
       },
-      "score": null,
-      "winner": null
+      "score": "1-2",
+      "winner": "Norway"
     },
     {
       "id": "M79",
@@ -1911,18 +1912,18 @@
       "goals": 6
     },
     {
-      "name": "Vinicius Junior",
-      "team": "Brazil",
-      "goals": 4
-    },
-    {
       "name": "Kylian Mbappé",
       "team": "France",
-      "goals": 4
+      "goals": 5
     },
     {
       "name": "Erling Haaland",
       "team": "Norway",
+      "goals": 5
+    },
+    {
+      "name": "Vinicius Junior",
+      "team": "Brazil",
       "goals": 4
     },
     {
