@@ -1282,10 +1282,21 @@ function renderForecast(data){
   const wp=data.win_probs||{}, td={};
   (data.groups||[]).forEach(g=>g.teams.forEach(t=>{td[t.name]={rank:t.rank,points:t.points,played:t.played};}));
   const C=runMonteCarlo(data.bracket,wp,td), N=50000;
-  const rows=Object.entries(C).map(([nm,c])=>({nm,
-    r16:Math.round(c.r16/N*100),qf:Math.round(c.qf/N*100),
-    sf:Math.round(c.sf/N*100),fn:Math.round(c.fn/N*100),win:Math.round(c.win/N*100)
-  })).sort((a,b)=>b.win-a.win||b.fn-a.fn);
+  // Build set of already-eliminated teams (lost in any bracket match)
+  const koLosers=new Set();
+  (data.bracket||[]).forEach(m=>{
+    if(m.winner){[m.t1,m.t2].forEach(t=>{if(t&&t.status==='loser'&&t.name)koLosers.add(t.name);});}
+  });
+  // Also exclude by qualify_prob===0 from groups
+  const elim0=new Set();
+  (data.groups||[]).forEach(g=>g.teams.forEach(t=>{if(t.qualify_prob===0)elim0.add(t.name);}));
+
+  const rows=Object.entries(C)
+    .filter(([nm])=>!koLosers.has(nm)&&!elim0.has(nm))
+    .map(([nm,c])=>({nm,
+      r16:Math.round(c.r16/N*100),qf:Math.round(c.qf/N*100),
+      sf:Math.round(c.sf/N*100),fn:Math.round(c.fn/N*100),win:Math.round(c.win/N*100)
+    })).sort((a,b)=>b.win-a.win||b.fn-a.fn);
   const pC=p=>p>=50?'high':p>=20?'mid':'low';
   const bar=p=>`<div class="fc-bar" style="width:${Math.max(2,p*1.5)}px"></div>`;
   const cel=(p,ex='')=>`<td><div style="display:flex;align-items:center;gap:4px">${bar(p)}<span class="fc-pct ${ex||pC(p)}">${p}%</span></div></td>`;
