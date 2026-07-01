@@ -556,9 +556,13 @@ def build_bracket(groups_out, ko_results=None):
 # Format: match_id → {score, winner, loser}
 FALLBACK_KNOCKOUT = {
     "M73": {"score":"0-1",    "winner":"Canada",     "loser":"South Africa"},
-    "M74": {"score":"1-1 (p)","winner":"Paraguay",   "loser":"Germany"},       # AET + pens
-    "M75": {"score":"1-1 (p)","winner":"Morocco",    "loser":"Netherlands"},   # AET + pens
+    "M74": {"score":"1-1 (p)","winner":"Paraguay",   "loser":"Germany"},    # pens
+    "M75": {"score":"1-1 (p)","winner":"Morocco",    "loser":"Netherlands"},# pens
     "M76": {"score":"2-1",    "winner":"Brazil",     "loser":"Japan"},
+    "M77": {"score":"3-0",    "winner":"France",     "loser":"Sweden"},
+    "M78": {"score":"2-1",    "winner":"Norway",     "loser":"Ivory Coast"},
+    "M79": {"score":"2-0",    "winner":"Mexico",     "loser":"Ecuador"},
+    "M80": {"score":"2-1",    "winner":"England",    "loser":"DR Congo"},
     # M74 slot: Paraguay (3rd Group D) — official FIFA assignment confirmed
     # M77 slot: Sweden (3rd Group F) — France vs Sweden Jun 30
 }
