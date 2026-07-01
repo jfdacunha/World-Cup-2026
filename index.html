@@ -935,15 +935,24 @@ function calcWinProb(teamName, rank, played, points) {
   return Math.max(0.05, base * mult);
 }
 
-function renderPowerRankings(groups) {
+function renderPowerRankings(groups, bracket) {
   const el = document.getElementById('powerEl');
 
+  // Build bracket prob lookup: team → next-round advancement probability
+  // (R32 win prob for teams yet to play, R16 win prob for R32 winners)
+  const bracketProb = {};
+  (bracket||[]).forEach(m => {
+    [m.t1, m.t2].forEach(t => {
+      if (t.name && t.prob != null && t.status !== 'loser') {
+        bracketProb[t.name] = t.prob;
+      }
+    });
+  });
+
   // Build flat list — EXCLUDE eliminated teams (qualify_prob===0)
-  // They cannot win the cup, so they don't belong in this ranking at all.
   const allTeams = [];
   groups.forEach(g => {
     g.teams.forEach((t, i) => {
-      // Skip eliminated teams entirely from the win-cup standings
       if (t.qualify_prob === 0) return;
       const rawProb = calcWinProb(t.name, t.rank || i+1, t.played, t.points);
       allTeams.push({
@@ -952,7 +961,7 @@ function renderPowerRankings(groups) {
         rank:        t.rank || i+1,
         played:      t.played,
         points:      t.points,
-        qualifyProb: t.qualify_prob != null ? t.qualify_prob : 50,
+        nextProb:    bracketProb[t.name] ?? null,  // next-round advancement %
         rawProb,
       });
     });
@@ -988,7 +997,7 @@ function renderPowerRankings(groups) {
       <tr>
         <th>#</th>
         <th>Team</th>
-        <th>Qualify %</th>
+        <th>Next Round %</th>
         <th>Win Cup %</th>
       </tr>
     </thead>
@@ -1001,7 +1010,9 @@ function renderPowerRankings(groups) {
     const winDisplay = t.winProb >= 1
       ? t.winProb.toFixed(1) + '%'
       : t.winProb.toFixed(2) + '%';
-    const qpCls = t.qualifyProb >= 70 ? 'p-hi' : t.qualifyProb >= 45 ? 'p-mid' : 'p-lo';
+    const np = t.nextProb;
+    const npCls = np == null ? '' : np >= 70 ? 'p-hi' : np >= 40 ? 'p-mid' : 'p-lo';
+    const npDisp = np != null ? `${np}%` : '—';
     const em = f(t.name);
 
     html += `<tr class="${isPodium?'podium-row':''}">
@@ -1013,7 +1024,7 @@ function renderPowerRankings(groups) {
           <span class="pt-group">Grp ${t.group}</span>
         </div>
       </td>
-      <td><span class="qualify-pct prob-sm ${qpCls}">${t.qualifyProb}%</span></td>
+      <td><span class="qualify-pct prob-sm ${npCls}">${npDisp}</span></td>
       <td>
         <span class="win-bar-wrap"><span class="win-bar" style="width:${barW}%;background:${barColor(i)}"></span></span>
         <span class="win-pct" style="color:${barColor(i)}">${winDisplay}</span>
@@ -1382,7 +1393,7 @@ async function loadData(attempt = 1, isManual = false){
 
     renderBracket(data.bracket || []);
     renderGroups(data.groups   || []);
-    renderPowerRankings(data.groups || []);
+    renderPowerRankings(data.groups || [], data.bracket || []);
     renderBestThirds(data.best_thirds || []);
     renderScorers(data);
     renderForecast(data);
