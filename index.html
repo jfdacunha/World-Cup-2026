@@ -953,7 +953,7 @@ function renderPowerRankings(groups, bracket) {
   const allTeams = [];
   groups.forEach(g => {
     g.teams.forEach((t, i) => {
-      if (t.qualify_prob === 0) return;
+      if (t.qualify_prob === 0 || t.eliminated) return;
       const rawProb = calcWinProb(t.name, t.rank || i+1, t.played, t.points);
       allTeams.push({
         name:        t.name,
@@ -1300,7 +1300,7 @@ function renderForecast(data){
   });
   // Also exclude by qualify_prob===0 from groups
   const elim0=new Set();
-  (data.groups||[]).forEach(g=>g.teams.forEach(t=>{if(t.qualify_prob===0)elim0.add(t.name);}));
+  (data.groups||[]).forEach(g=>g.teams.forEach(t=>{if(t.qualify_prob===0||t.eliminated)elim0.add(t.name);}));
 
   const rows=Object.entries(C)
     .filter(([nm])=>!koLosers.has(nm)&&!elim0.has(nm))
