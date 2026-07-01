@@ -814,9 +814,11 @@ def main():
                          if _r.get("score") and "None" not in str(_r.get("score", ""))]) >= 6
         if _res_done:
             for _t in _g["teams"]:
-                if _t["rank"] <= 2 and not _t.get("eliminated"):
+                if _t.get("eliminated"):
+                    continue  # already KO-eliminated — don't overwrite qualify_prob
+                if _t["rank"] <= 2:
                     _t["qualify_prob"] = 99   # confirmed through
-                elif _t["rank"] == 4 and not _t.get("eliminated"):
+                elif _t["rank"] == 4:
                     _t["qualify_prob"] = 1    # cannot qualify
 
     # Compute best 3rd places for display
@@ -890,6 +892,9 @@ def main():
     # Sync the accurate 3rd-place qualify_prob back into groups_out
     for _g in groups_out:
         for _t in _g["teams"]:
+            # Skip teams already eliminated by knockout stage — don't overwrite qualify_prob=0
+            if _t.get("eliminated"):
+                continue
             if _t["rank"] == 3 and _t["name"] in thirds_prob:
                 _t["qualify_prob"] = thirds_prob[_t["name"]]
             # If a 3rd-place team has qualify_prob=0, mark them eliminated too
