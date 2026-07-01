@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01T11:46:08.500126+00:00",
+  "updated_at": "2026-07-01T18:07:42.983854+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1098,7 +1098,7 @@
           "points": 4,
           "rank": 3,
           "qualify_prob": 99,
-          "eliminated": null,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1588,7 +1588,7 @@
         ],
         "r16_opp": "Brazil"
       },
-      "score": "1-2",
+      "score": "2-1",
       "winner": "Norway"
     },
     {
@@ -1602,13 +1602,13 @@
         "name": "Mexico",
         "label": "1A",
         "status": "winner",
-        "prob": 22,
+        "prob": 20,
         "form": [
           "W",
           "W",
           "W"
         ],
-        "r16_opp": "W(M80)"
+        "r16_opp": "England"
       },
       "t2": {
         "name": "Ecuador",
@@ -1634,18 +1634,19 @@
       "t1": {
         "name": "England",
         "label": "1L",
-        "status": "confirmed",
-        "prob": 97,
+        "status": "winner",
+        "prob": 80,
         "form": [
           "W",
           "D",
           "W"
-        ]
+        ],
+        "r16_opp": "Mexico"
       },
       "t2": {
         "name": "DR Congo",
         "label": "3rd GrpK",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 3,
         "form": [
           "D",
@@ -1653,8 +1654,8 @@
           "W"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "2-1",
+      "winner": "England"
     },
     {
       "id": "M86",
@@ -1924,6 +1925,11 @@
       "goals": 5
     },
     {
+      "name": "Harry Kane",
+      "team": "England",
+      "goals": 5
+    },
+    {
       "name": "Vinicius Junior",
       "team": "Brazil",
       "goals": 4
@@ -1961,11 +1967,6 @@
     {
       "name": "Yoane Wissa",
       "team": "Congo DR",
-      "goals": 3
-    },
-    {
-      "name": "Harry Kane",
-      "team": "England",
       "goals": 3
     },
     {
