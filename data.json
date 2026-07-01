@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01T19:18:33.450748+00:00",
+  "updated_at": "2026-07-01T22:55:21.430461+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -887,8 +887,8 @@
           "gd": 2,
           "points": 3,
           "rank": 3,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1503,18 +1503,19 @@
       "t1": {
         "name": "Belgium",
         "label": "1G",
-        "status": "confirmed",
-        "prob": 77,
+        "status": "winner",
+        "prob": 47,
         "form": [
           "D",
           "D",
           "W"
-        ]
+        ],
+        "r16_opp": "W(M81)"
       },
       "t2": {
         "name": "Senegal",
         "label": "3rd GrpI",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 23,
         "form": [
           "L",
@@ -1522,8 +1523,8 @@
           "W"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "3-2",
+      "winner": "Belgium"
     },
     {
       "id": "M76",
@@ -1940,6 +1941,11 @@
       "goals": 4
     },
     {
+      "name": "Ismaïla Sarr",
+      "team": "Senegal",
+      "goals": 4
+    },
+    {
       "name": "Julián Quiñones",
       "team": "Mexico",
       "goals": 3
@@ -1992,11 +1998,6 @@
     {
       "name": "Cody Gakpo",
       "team": "Netherlands",
-      "goals": 3
-    },
-    {
-      "name": "Ismaïla Sarr",
-      "team": "Senegal",
       "goals": 3
     },
     {
