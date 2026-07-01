@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T23:45:52.900489+00:00",
+  "updated_at": "2026-07-01T10:58:05.810129+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -468,7 +468,7 @@
           "points": 4,
           "rank": 3,
           "qualify_prob": 99,
-          "eliminated": null,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1601,18 +1601,19 @@
       "t1": {
         "name": "Mexico",
         "label": "1A",
-        "status": "confirmed",
-        "prob": 74,
+        "status": "winner",
+        "prob": 22,
         "form": [
           "W",
           "W",
           "W"
-        ]
+        ],
+        "r16_opp": "W(M80)"
       },
       "t2": {
         "name": "Ecuador",
         "label": "3rd GrpE",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 26,
         "form": [
           "L",
@@ -1620,8 +1621,8 @@
           "W"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "2-0",
+      "winner": "Mexico"
     },
     {
       "id": "M80",
@@ -1933,6 +1934,11 @@
       "goals": 4
     },
     {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 3
+    },
+    {
       "name": "Ismael Saibari",
       "team": "Morocco",
       "goals": 3
@@ -1993,18 +1999,13 @@
       "goals": 3
     },
     {
-      "name": "Julián Quiñones",
+      "name": "Raúl Jiménez",
       "team": "Mexico",
       "goals": 2
     },
     {
       "name": "Cyle Larin",
       "team": "Canada",
-      "goals": 2
-    },
-    {
-      "name": "Folarin Balogun",
-      "team": "United States",
       "goals": 2
     }
   ],
