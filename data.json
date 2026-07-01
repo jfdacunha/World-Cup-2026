@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01T18:14:07.621905+00:00",
+  "updated_at": "2026-07-01T18:18:27.017614+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -467,7 +467,7 @@
           "gd": 0,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 99,
+          "qualify_prob": 0,
           "eliminated": true,
           "live_match": false
         },
@@ -572,7 +572,7 @@
           "gd": 0,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 99,
+          "qualify_prob": 0,
           "eliminated": true,
           "live_match": false
         },
@@ -1097,7 +1097,7 @@
           "gd": 1,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 99,
+          "qualify_prob": 0,
           "eliminated": true,
           "live_match": false
         },
