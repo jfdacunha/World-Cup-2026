@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T20:46:45.173642+00:00",
+  "updated_at": "2026-07-02T21:49:02.966847+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -977,8 +977,8 @@
           "gd": 0,
           "points": 4,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1439,18 +1439,19 @@
       "t1": {
         "name": "Spain",
         "label": "1H",
-        "status": "confirmed",
-        "prob": 92,
+        "status": "winner",
+        "prob": 67,
         "form": [
           "D",
           "W",
           "W"
-        ]
+        ],
+        "r16_opp": "W(M83)"
       },
       "t2": {
         "name": "Austria",
         "label": "2J",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 8,
         "form": [
           "W",
@@ -1458,8 +1459,8 @@
           "D"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "3-0",
+      "winner": "Spain"
     },
     {
       "id": "M81",
@@ -1937,6 +1938,11 @@
       "goals": 4
     },
     {
+      "name": "Mikel Oyarzabal",
+      "team": "Spain",
+      "goals": 4
+    },
+    {
       "name": "Ousmane Dembélé",
       "team": "France",
       "goals": 4
@@ -2004,11 +2010,6 @@
     {
       "name": "Cody Gakpo",
       "team": "Netherlands",
-      "goals": 3
-    },
-    {
-      "name": "Mikel Oyarzabal",
-      "team": "Spain",
       "goals": 3
     }
   ],
