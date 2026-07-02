@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T00:20:54.830074+00:00",
+  "updated_at": "2026-07-02T10:16:31.865908+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -152,8 +152,8 @@
           "gd": -1,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1471,18 +1471,19 @@
       "t1": {
         "name": "United States",
         "label": "1D",
-        "status": "confirmed",
-        "prob": 92,
+        "status": "winner",
+        "prob": 57,
         "form": [
           "W",
           "W",
           "L"
-        ]
+        ],
+        "r16_opp": "Belgium"
       },
       "t2": {
         "name": "Bosnia and Herzegovina",
         "label": "3rd GrpB",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 8,
         "form": [
           "D",
@@ -1490,8 +1491,8 @@
           "W"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "2-0",
+      "winner": "United States"
     },
     {
       "id": "M82",
@@ -1504,13 +1505,13 @@
         "name": "Belgium",
         "label": "1G",
         "status": "winner",
-        "prob": 47,
+        "prob": 43,
         "form": [
           "D",
           "D",
           "W"
         ],
-        "r16_opp": "W(M81)"
+        "r16_opp": "United States"
       },
       "t2": {
         "name": "Senegal",
@@ -1951,6 +1952,11 @@
       "goals": 3
     },
     {
+      "name": "Folarin Balogun",
+      "team": "United States",
+      "goals": 3
+    },
+    {
       "name": "Ismael Saibari",
       "team": "Morocco",
       "goals": 3
@@ -2003,11 +2009,6 @@
     {
       "name": "Raúl Jiménez",
       "team": "Mexico",
-      "goals": 2
-    },
-    {
-      "name": "Cyle Larin",
-      "team": "Canada",
       "goals": 2
     }
   ],
