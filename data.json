@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T18:19:09.996230+00:00",
+  "updated_at": "2026-07-02T20:46:45.173642+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -2007,9 +2007,9 @@
       "goals": 3
     },
     {
-      "name": "Raúl Jiménez",
-      "team": "Mexico",
-      "goals": 2
+      "name": "Mikel Oyarzabal",
+      "team": "Spain",
+      "goals": 3
     }
   ],
   "win_probs": {
