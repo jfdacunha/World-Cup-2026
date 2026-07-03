@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T22:08:49.044793+00:00",
+  "updated_at": "2026-07-03T23:18:01.471820+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1916,13 +1916,13 @@
   ],
   "scorers": [
     {
-      "name": "Kylian Mbappé",
-      "team": "France",
-      "goals": 6
-    },
-    {
       "name": "Lionel Messi",
       "team": "Argentina",
+      "goals": 7
+    },
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
       "goals": 6
     },
     {
