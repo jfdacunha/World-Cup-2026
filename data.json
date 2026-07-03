@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T20:17:27.978844+00:00",
+  "updated_at": "2026-07-03T21:31:14.716675+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -347,8 +347,8 @@
           "gd": 0,
           "points": 4,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1703,7 +1703,7 @@
       "t1": {
         "name": "Australia",
         "label": "2D",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 65,
         "form": [
           "W",
@@ -1714,16 +1714,17 @@
       "t2": {
         "name": "Egypt",
         "label": "2G",
-        "status": "confirmed",
-        "prob": 35,
+        "status": "winner",
+        "prob": 7,
         "form": [
           "D",
           "W",
           "D"
-        ]
+        ],
+        "r16_opp": "W(M86)"
       },
-      "score": null,
-      "winner": null
+      "score": "3-5",
+      "winner": "Egypt"
     },
     {
       "id": "M85",
