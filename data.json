@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T22:49:37.236842+00:00",
+  "updated_at": "2026-07-03T08:39:51.029896+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -992,8 +992,8 @@
           "gd": -2,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1187,8 +1187,8 @@
           "gd": 0,
           "points": 6,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1407,18 +1407,19 @@
       "t1": {
         "name": "Portugal",
         "label": "2K",
-        "status": "confirmed",
-        "prob": 73,
+        "status": "winner",
+        "prob": 38,
         "form": [
           "D",
           "W",
           "D"
-        ]
+        ],
+        "r16_opp": "Spain"
       },
       "t2": {
         "name": "Croatia",
         "label": "2L",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 27,
         "form": [
           "L",
@@ -1426,8 +1427,8 @@
           "W"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "2-1",
+      "winner": "Portugal"
     },
     {
       "id": "M84",
@@ -1440,13 +1441,13 @@
         "name": "Spain",
         "label": "1H",
         "status": "winner",
-        "prob": 67,
+        "prob": 62,
         "form": [
           "D",
           "W",
           "W"
         ],
-        "r16_opp": "W(M83)"
+        "r16_opp": "Portugal"
       },
       "t2": {
         "name": "Austria",
@@ -1734,18 +1735,19 @@
       "t1": {
         "name": "Switzerland",
         "label": "1B",
-        "status": "confirmed",
-        "prob": 76,
+        "status": "winner",
+        "prob": 45,
         "form": [
           "D",
           "W",
           "W"
-        ]
+        ],
+        "r16_opp": "W(M87)"
       },
       "t2": {
         "name": "Algeria",
         "label": "3rd GrpJ",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 24,
         "form": [
           "L",
@@ -1753,8 +1755,8 @@
           "D"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "2-0",
+      "winner": "Switzerland"
     },
     {
       "id": "M87",
