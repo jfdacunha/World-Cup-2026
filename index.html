@@ -936,13 +936,13 @@ function col(matches, isRight, rnd){
          {t1:'W M83',t2:'W M84',venue:'Dallas · Jul 6',     kickoff:'2026-07-06T19:00:00Z'},
          {t1:'W M81',t2:'W M82',venue:'Seattle · Jul 6',    kickoff:'2026-07-07T00:00:00Z'}]),
     'QF': (isRight
-      ? [{t1:'QF-R1',t2:'QF-R2',venue:'Miami · Jul 11',     kickoff:'2026-07-11T21:00:00Z'},
-         {t1:'QF-R3',t2:'QF-R4',venue:'Kansas City · Jul 11',kickoff:'2026-07-12T01:00:00Z'}]
-      : [{t1:'QF-L1',t2:'QF-L2',venue:'Boston · Jul 9',     kickoff:'2026-07-09T20:00:00Z'},
-         {t1:'QF-L3',t2:'QF-L4',venue:'Los Angeles · Jul 10',kickoff:'2026-07-11T00:00:00Z'}]),
+      ? [{t1:'Winner R16-5',t2:'Winner R16-6',venue:'Miami · Jul 11',     kickoff:'2026-07-11T21:00:00Z'},
+         {t1:'Winner R16-7',t2:'Winner R16-8',venue:'Kansas City · Jul 11',kickoff:'2026-07-12T01:00:00Z'}]
+      : [{t1:'Winner R16-1',t2:'Winner R16-2',venue:'Boston · Jul 9',     kickoff:'2026-07-09T20:00:00Z'},
+         {t1:'Winner R16-3',t2:'Winner R16-4',venue:'Los Angeles · Jul 10',kickoff:'2026-07-11T00:00:00Z'}]),
     'SF': (isRight
-      ? [{t1:'SF-R1',t2:'SF-R2',venue:'Dallas · Jul 15',    kickoff:'2026-07-15T23:00:00Z'}]
-      : [{t1:'SF-L1',t2:'SF-L2',venue:'Atlanta · Jul 14',   kickoff:'2026-07-14T23:00:00Z'}]),
+      ? [{t1:'Winner QF-R1',t2:'Winner QF-R2',venue:'Dallas · Jul 15',    kickoff:'2026-07-15T23:00:00Z'}]
+      : [{t1:'Winner QF-L1',t2:'Winner QF-L2',venue:'Atlanta · Jul 14',   kickoff:'2026-07-14T23:00:00Z'}]),
   };
   const data = matches || placeholders[rnd] || [];
   return `<div class="bcol ${side}">${data.map(m=>matchCard(m,isRight,false)).join('')}</div>`;
