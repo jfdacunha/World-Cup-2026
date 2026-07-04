@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-04T00:09:16.242700+00:00",
+  "updated_at": "2026-07-04T01:21:11.532342+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -767,8 +767,8 @@
           "gd": 0,
           "points": 3,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1671,18 +1671,19 @@
       "t1": {
         "name": "Argentina",
         "label": "1J",
-        "status": "confirmed",
-        "prob": 97,
+        "status": "winner",
+        "prob": 95,
         "form": [
           "W",
           "W",
           "W"
-        ]
+        ],
+        "r16_opp": "Egypt"
       },
       "t2": {
         "name": "Cape Verde",
         "label": "2H",
-        "status": "confirmed",
+        "status": "loser",
         "prob": 3,
         "form": [
           "D",
@@ -1690,8 +1691,8 @@
           "D"
         ]
       },
-      "score": null,
-      "winner": null
+      "score": "3-2",
+      "winner": "Argentina"
     },
     {
       "id": "M88",
@@ -1715,13 +1716,13 @@
         "name": "Egypt",
         "label": "2G",
         "status": "winner",
-        "prob": 7,
+        "prob": 5,
         "form": [
           "D",
           "W",
           "D"
         ],
-        "r16_opp": "W(M86)"
+        "r16_opp": "Argentina"
       },
       "score": "3-5",
       "winner": "Egypt"
