@@ -562,7 +562,15 @@ FALLBACK_KNOCKOUT = {
     "M77": {"score":"3-0",    "winner":"France",     "loser":"Sweden"},
     "M78": {"score":"2-1",    "winner":"Norway",     "loser":"Ivory Coast"},
     "M79": {"score":"2-0",    "winner":"Mexico",     "loser":"Ecuador"},
-    "M80": {"score":"2-1",    "winner":"England",    "loser":"DR Congo"},
+    "M80": {"score":"2-1",    "winner":"England",            "loser":"DR Congo"},
+    "M81": {"score":"2-0",    "winner":"United States",      "loser":"Bosnia and Herzegovina"},
+    "M82": {"score":"3-2 (a)","winner":"Belgium",            "loser":"Senegal"},        # AET
+    "M83": {"score":"2-1",    "winner":"Portugal",           "loser":"Croatia"},
+    "M84": {"score":"3-0",    "winner":"Spain",              "loser":"Austria"},
+    "M85": {"score":"2-0",    "winner":"Switzerland",        "loser":"Algeria"},
+    "M86": {"score":"3-2 (a)","winner":"Argentina",          "loser":"Cape Verde"},     # AET
+    "M87": {"score":"1-0",    "winner":"Colombia",           "loser":"Ghana"},
+    "M88": {"score":"1-1 (p)","winner":"Egypt",              "loser":"Australia"},      # pens
     # M74 slot: Paraguay (3rd Group D) — official FIFA assignment confirmed
     # M77 slot: Sweden (3rd Group F) — France vs Sweden Jun 30
 }
