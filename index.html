@@ -576,6 +576,15 @@ tr.q4 .tc{color:var(--muted)}
 .r32-toggle-btn{font-family:'DM Mono',monospace;font-size:.55rem;background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:block;}
 .r32-toggle-btn:hover{background:rgba(255,255,255,.14);color:var(--gold);}
 gold);}
+
+/* ── BRACKET CONNECTORS ── */
+.bcol{position:relative}
+.bcol.left-side::after{content:'';position:absolute;right:-2px;top:10%;height:80%;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.07) 25%,rgba(255,255,255,.07) 75%,transparent);pointer-events:none}
+.bcol.right-side::before{content:'';position:absolute;left:-2px;top:10%;height:80%;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.07) 25%,rgba(255,255,255,.07) 75%,transparent);pointer-events:none}
+.final-col{position:relative}
+.final-col::before{content:'';position:absolute;left:-2px;top:10%;height:80%;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,168,67,.15) 40%,rgba(212,168,67,.15) 60%,transparent);pointer-events:none}
+.final-col::after{content:'';position:absolute;right:-2px;top:10%;height:80%;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,168,67,.15) 40%,rgba(212,168,67,.15) 60%,transparent);pointer-events:none}
+
 </style>
 </head>
 <body>
@@ -620,8 +629,7 @@ gold);}
 </div>
 
 <section class="section" id="bracket">
-  <div class="sec-title">Tournament Bracket</div>
-  <button class="r32-toggle-btn" onclick="
+  <div style="display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.25rem"><div class="sec-title" style="margin:0">Tournament Bracket</div><button class="r32-toggle-btn" style="margin:0" onclick="
   const open=this.textContent.includes('Show');
   document.querySelectorAll('.r32-col-wrap').forEach(w=>w.classList.toggle('r32-visible'));
   document.getElementById('bShell').classList.toggle('r32-open');
@@ -629,22 +637,10 @@ gold);}
   if(lbl){lbl.classList.toggle('r32-open');
     lbl.querySelectorAll('.blbl').forEach((b,i)=>{if(i===0||i===8)b.style.display=open?'':'none';});}
   this.textContent=open?'◀ Hide R32 results':'▶ Show R32 results';
-">▶ Show R32 results</button>
-  <div class="sec-sub">Both halves converge to the Final · % = probability of advancing to the <em>next</em> round (R32 win prob before playing, R16 win prob after) · Auto-updates every hour</div>
+">▶ Show R32 results</button></div>
+  <div class="sec-sub">% = probability of advancing to the next round · Auto-updates every hour</div>
   
-  <div class="legend">
-    <div class="li"><div class="ld" style="background:rgba(212,168,67,.7)"></div>Leading after current matchday</div>
-    <div class="li"><div class="ld" style="background:rgba(34,197,94,.5)"></div>Pre-tournament favorite (not yet played)</div>
-    <div class="li"><div class="ld" style="background:var(--s3);border:1px solid var(--border2)"></div>TBD</div>
-    <span class="prob p-hi">90%</span><span>High confidence</span>
-    <span class="prob p-mid">60%</span><span>Contested</span>
-    <span class="prob p-lo">30%</span><span>Uncertain</span>
-  </div>
-  <div class="bracket-outer">
-    <div class="bracket-labels" id="bLabels"></div>
-    <div class="bracket-shell" id="bShell">
-      <div class="loading" style="grid-column:1/-1"><div class="spin"></div>Loading bracket data...</div>
-    </div>
+  
   </div>
 </section>
 
