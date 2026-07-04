@@ -446,6 +446,11 @@ tr.q4 .tc{color:var(--muted)}
 #thirdsDetails summary::-webkit-details-marker{display:none}
 #thirdsDetails>summary::before{content:"▶ ";color:var(--gold);font-size:.7rem;transition:transform .2s;display:inline-block}
 #thirdsDetails[open]>summary::before{transform:rotate(90deg)}
+
+.r32-col-wrap{display:none;}
+.r32-col-wrap.r32-visible{display:block;}
+.r32-toggle-btn{font-family:'DM Mono',monospace;font-size:.55rem;background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:block;}
+.r32-toggle-btn:hover{background:rgba(255,255,255,.14);color:var(--gold);}
 </style>
 </head>
 <body>
@@ -491,6 +496,7 @@ tr.q4 .tc{color:var(--muted)}
 
 <section class="section" id="bracket">
   <div class="sec-title">Tournament Bracket</div>
+  <button class="r32-toggle-btn" onclick="document.querySelectorAll('.r32-col-wrap').forEach(w=>w.classList.toggle('r32-visible'));this.textContent=this.textContent.includes('Show')?'◀ Hide R32 results':'▶ Show R32 results';">▶ Show R32 results</button>
   <div class="sec-sub">Both halves converge to the Final · % = probability of advancing to the <em>next</em> round (R32 win prob before playing, R16 win prob after) · Auto-updates every hour</div>
   <div class="r32-note">
     <strong style="color:var(--gold)">How this works:</strong> A GitHub Actions script fetches live scores every hour and writes <code>data.json</code>. This page loads that file on every visit and refreshes automatically — no manual updates needed. Flags are shown as large background glows per team. % badge = qualification probability based on current standing + pre-tournament strength.
@@ -593,11 +599,11 @@ tr.q4 .tc{color:var(--muted)}
 <!-- TOURNAMENT FORECAST -->
 <section class="section" id="forecast">
   <div class="sec-title">Tournament Forecast</div>
-  <div class="sec-sub">Monte Carlo simulation · 50,000 runs · Based on head-to-head win probabilities through the full bracket</div>
+  <div class="sec-sub">Monte Carlo simulation · 50,000 runs · All R32 results locked in · Probabilities from Round of 16 onwards</div>
   <table class="forecast-table" id="forecastTable">
     <thead><tr>
       <th>#</th><th>Team</th>
-      <th>R16</th><th>QF</th><th>SF</th><th>Final</th><th>🏆 Win</th>
+      <th>QF</th><th>SF</th><th>Final</th><th>🏆 Win</th>
     </tr></thead>
     <tbody id="forecastBody"><tr><td colspan="7" style="text-align:center;padding:1rem;color:var(--faint)">Running simulation...</td></tr></tbody>
   </table>
@@ -607,8 +613,8 @@ tr.q4 .tc{color:var(--muted)}
 
 <!-- PROJECTED R16 MATCHUPS -->
 <section class="section" id="r16proj">
-  <div class="sec-title">Projected Round of 16</div>
-  <div class="sec-sub">Expected matchups if current R32 favourites advance · Updates after each match</div>
+  <div class="sec-title">Projected Quarterfinals</div>
+  <div class="sec-sub">Projected QF matchups based on R16 results · Updates after each match</div>
   <div class="r16-grid" id="r16ProjEl">
     <div class="loading"><div class="spin"></div>Loading...</div>
   </div>
@@ -784,8 +790,10 @@ function renderBracket(bracketData){
     ${matchCard({},false,true)}
   </div>`;
 
+  const r32L = col(left,  false, 'R32');
+  const r32R = col(right, true,  'R32');
   document.getElementById('bShell').innerHTML = [
-    col(left,  false, 'R32'),
+    `<div class="r32-col-wrap r32-col-hidden">${r32L}</div>`,
     col(null,  false, 'R16'),
     col(null,  false, 'QF'),
     col(null,  false, 'SF'),
@@ -793,7 +801,7 @@ function renderBracket(bracketData){
     col(null,  true,  'SF'),
     col(null,  true,  'QF'),
     col(null,  true,  'R16'),
-    col(right, true,  'R32'),
+    `<div class="r32-col-wrap r32-col-hidden">${r32R}</div>`,
   ].join('');
 }
 
@@ -1314,39 +1322,42 @@ function renderForecast(data){
   body.innerHTML=rows.map((row,i)=>`<tr>
     <td style="color:var(--faint);font-family:'DM Mono',monospace;font-size:.6rem">${i+1}</td>
     <td><div class="fc-team"><span class="fc-flag">${f(row.nm)}</span><span class="fc-name">${row.nm}</span></div></td>
-    ${cel(row.r16)}${cel(row.qf)}${cel(row.sf)}${cel(row.fn)}
+    ${cel(row.qf)}${cel(row.sf)}${cel(row.fn)}
     <td><div style="display:flex;align-items:center;gap:4px">${bar(row.win)}<span class="fc-pct ${row.win>0?'trophy':''}">${row.win}%</span></div></td>
   </tr>`).join('');
 }
 function renderR16Projections(data){
   const el=document.getElementById('r16ProjEl');
-  if(!el||!data.bracket) return;
-  const wp=data.win_probs||{}, td={};
+  if(!el||!data.bracket)return;
+  const wp=data.win_probs||{},td={};
   (data.groups||[]).forEach(g=>g.teams.forEach(t=>{td[t.name]={rank:t.rank,points:t.points,played:t.played};}));
-  const bmap={};
-  data.bracket.forEach(m=>bmap[m.id]=m);
-  const projW=mid=>{
-    const m=bmap[mid];if(!m)return null;
-    if(m.winner) return m.winner;
+  const bmap={};data.bracket.forEach(m=>bmap[m.id]=m);
+  const projW=mid=>{const m=bmap[mid];if(!m)return null;
+    if(m.winner)return m.winner;
     const n1=m.t1.name,n2=m.t2.name;if(!n1||!n2)return n1||n2||null;
     return m.t1.prob>=m.t2.prob?n1:n2;};
-  const LABS=["R16-M89","R16-M90","R16-M93","R16-M94","R16-M91","R16-M92","R16-M95","R16-M96"];
-  el.innerHTML=_R16P.map(([a,b],i)=>{
-    const ta=projW(a),tb=projW(b);if(!ta||!tb)return '';
-    const da=td[ta]||{rank:2,points:3,played:3},db=td[tb]||{rank:2,points:3,played:3};
-    const sa=_str(ta,wp,da.rank,da.points,da.played),sb=_str(tb,wp,db.rank,db.points,db.played);
-    const tot=sa+sb||1,pa=Math.round(sa/tot*100),pb=100-pa;
-    const mA=bmap[a],mB=bmap[b];
-    const fa=mA?(ta===mA.t1.name?mA.t1.prob:mA.t2.prob):null;
-    const fb=mB?(tb===mB.t1.name?mB.t1.prob:mB.t2.prob):null;
+  const str=nm=>_str(nm,wp,(td[nm]||{}).rank||2,(td[nm]||{}).points||3,(td[nm]||{}).played||3);
+  const QFP=[["M89","M90"],["M93","M94"],["M91","M92"],["M95","M96"]];
+  const R16M={"M89":["M74","M77"],"M90":["M73","M75"],"M93":["M83","M84"],"M94":["M81","M82"],
+              "M91":["M76","M78"],"M92":["M79","M80"],"M95":["M86","M88"],"M96":["M85","M87"]};
+  const QLBS=["QF · Left-1","QF · Left-2","QF · Right-1","QF · Right-2"];
+  el.innerHTML=QFP.map(([ra,rb],i)=>{
+    const [a1,a2]=R16M[ra]||[],[b1,b2]=R16M[rb]||[];
+    const ta1=projW(a1),ta2=projW(a2),tb1=projW(b1),tb2=projW(b2);
+    if(!ta1||!ta2||!tb1||!tb2)return '';
+    const sA1=str(ta1),sA2=str(ta2),totA=sA1+sA2||1,pA=Math.round(sA1/totA*100);
+    const ta=sA1>=sA2?ta1:ta2;
+    const sB1=str(tb1),sB2=str(tb2),totB=sB1+sB2||1,pB=Math.round(sB1/totB*100);
+    const tb=sB1>=sB2?tb1:tb2;
+    const sQA=str(ta),sQB=str(tb),totQ=sQA+sQB||1,pQA=Math.round(sQA/totQ*100);
     return `<div class="r16-card">
-      <div class="r16-label">${LABS[i]} · if W(${a}) & W(${b}) advance</div>
+      <div class="r16-label">${QLBS[i]}</div>
       <div class="r16-matchup">
         <div class="r16-team"><span>${f(ta)}</span><span class="r16-team-name">${ta}</span></div>
-        <span class="r16-pct">${pa}%</span><span class="r16-vs">vs</span><span class="r16-pct">${pb}%</span>
+        <span class="r16-pct">${pQA}%</span><span class="r16-vs">vs</span><span class="r16-pct">${100-pQA}%</span>
         <div class="r16-team" style="justify-content:flex-end"><span class="r16-team-name">${tb}</span><span>${f(tb)}</span></div>
       </div>
-      <div style="font-size:.5rem;color:var(--faint);margin-top:4px;font-family:'DM Mono',monospace">${bmap[a]&&bmap[a].winner&&bmap[b]&&bmap[b].winner?'Both teams already advanced ✅':`R32: ${ta} ${fa!=null?fa+'%':'?'} · ${tb} ${fb!=null?fb+'%':'?'}`}</div>
+      <div style="font-size:.48rem;color:var(--faint);margin-top:5px;font-family:'DM Mono',monospace">R16: ${f(ta1)}${ta1}(${pA}%) vs ${f(ta2)}${ta2}(${100-pA}%) — ${f(tb1)}${tb1}(${pB}%) vs ${f(tb2)}${tb2}(${100-pB}%)</div>
     </div>`;
   }).join('');
 }
