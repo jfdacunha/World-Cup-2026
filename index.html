@@ -115,42 +115,166 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ── BRACKET ── */
-.bracket-outer{overflow-x:auto;padding-bottom:1.5rem}
+/* ── BRACKET ─────────────────────────────────────────────────────── */
+.bracket-outer{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:1rem}
 .bracket-labels{
   display:grid;
-  grid-template-columns:190px 168px 152px 140px 210px 140px 152px 168px 190px;
-  min-width:1514px;margin-bottom:8px;
+  grid-template-columns:168px 152px 140px 210px 140px 152px 168px;
+  min-width:1130px;margin-bottom:4px;padding:0 2px;
 }
-.blbl{font-family:'DM Mono',monospace;font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);text-align:center}
+.bracket-labels.r32-open{
+  grid-template-columns:190px 168px 152px 140px 210px 140px 152px 168px 190px;
+  min-width:1510px;
+}
+.blbl{
+  font-family:'DM Mono',monospace;font-size:.45rem;text-transform:uppercase;
+  letter-spacing:.13em;color:rgba(255,255,255,.25);text-align:center;
+  padding:5px 0 7px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.blbl.current-round{color:var(--gold);border-bottom-color:rgba(212,168,67,.4)}
+
+/* Bracket shell — 7 cols when R32 hidden, 9 when shown */
 .bracket-shell{
   display:grid;
-  grid-template-columns:190px 168px 152px 140px 210px 140px 152px 168px 190px;
-  min-width:1514px;
+  grid-template-columns:168px 152px 140px 210px 140px 152px 168px;
+  min-width:1130px;
 }
+.bracket-shell.r32-open{
+  grid-template-columns:190px 168px 152px 140px 210px 140px 152px 168px 190px;
+  min-width:1510px;
+}
+
+/* Column */
 .bcol{display:flex;flex-direction:column;justify-content:space-around;padding:0 5px;align-self:stretch}
 
-/* Match card */
-.match{background:var(--s1);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin:3px 0;transition:border-color .15s;flex-shrink:0}
-.match:hover{border-color:var(--border2)}
-.match.final-card{border-color:var(--gold);box-shadow:0 0 32px rgba(212,168,67,.18),0 0 80px rgba(212,168,67,.06)}
-.match.live-card{border-color:var(--green);box-shadow:0 0 12px rgba(34,197,94,.15)}
-.match-lbl{font-family:'DM Mono',monospace;font-size:.48rem;color:var(--faint);text-align:center;padding:2px 4px;border-bottom:1px solid var(--border);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ── MATCH CARD ── */
+.match{
+  background:rgba(8,15,30,.9);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:8px;overflow:hidden;margin:4px 0;
+  box-shadow:0 2px 8px rgba(0,0,0,.35);
+  flex-shrink:0;transition:border-color .2s,box-shadow .2s;
+}
+.match:hover{border-color:rgba(255,255,255,.16);box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.match.finished-card{border-color:rgba(34,197,94,.18);background:rgba(8,15,30,.95)}
+.match.live-card{border-color:rgba(34,197,94,.5);box-shadow:0 0 14px rgba(34,197,94,.18)}
+.match.match-tbd{border-color:rgba(255,255,255,.06);border-style:dashed;
+  background:rgba(255,255,255,.015);box-shadow:none}
+.match.final-card{border-color:var(--gold);background:rgba(212,168,67,.06);
+  box-shadow:0 0 32px rgba(212,168,67,.18),0 0 80px rgba(212,168,67,.06)}
+
+/* Match venue/label */
+.match-lbl{
+  font-family:'DM Mono',monospace;font-size:.42rem;color:rgba(255,255,255,.25);
+  text-align:center;padding:3px 6px 2px;letter-spacing:.05em;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* Score row */
+.match-score{
+  text-align:center;font-family:'DM Mono',monospace;font-size:.82rem;font-weight:700;
+  color:var(--gold);padding:4px 0 3px;letter-spacing:.07em;
+  border-bottom:1px solid rgba(255,255,255,.06);background:rgba(212,168,67,.06);
+}
+
+/* Countdown */
+.match-countdown{
+  font-family:'DM Mono',monospace;font-size:.48rem;color:var(--gold);
+  text-align:center;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04);
+  letter-spacing:.04em;opacity:.75;
+}
 
 /* Team row */
-.mteam{display:flex;align-items:center;border-bottom:1px solid var(--border);min-height:32px;position:relative;overflow:hidden}
+.mteam{
+  display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.045);
+  min-height:36px;position:relative;overflow:hidden;
+  transition:opacity .2s,filter .2s;
+}
 .mteam:last-child{border-bottom:none}
-.mteam.confirmed{background:rgba(212,168,67,.035)}
+.mteam.confirmed{background:rgba(212,168,67,.03)}
 .mteam.likely{background:rgba(34,197,94,.025)}
-.flag-bg{position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:1.8rem;line-height:1;opacity:.22;pointer-events:none;user-select:none;filter:blur(1px) saturate(1.3)}
+
+/* Winner: green left accent */
+.mteam.winner{
+  border-left:3px solid #22c55e;
+  background:linear-gradient(90deg,rgba(34,197,94,.1) 0%,transparent 70%);
+}
+/* Loser: heavily faded */
+.mteam.loser{opacity:.22;filter:grayscale(80%)}
+.mteam.loser .team-name{text-decoration:line-through;text-decoration-color:rgba(255,255,255,.2)}
+
+/* Flag background glow */
+.flag-bg{
+  position:absolute;right:2px;top:50%;transform:translateY(-50%);
+  font-size:2.2rem;opacity:.17;filter:blur(2px) saturate(1.3);
+  pointer-events:none;user-select:none;
+}
 .right-side .flag-bg{right:auto;left:2px}
-.mteam-inner{display:flex;align-items:center;gap:6px;padding:4px 8px;position:relative;z-index:1;width:100%}
+
+/* Team content */
+.mteam-inner{
+  display:flex;align-items:center;gap:5px;padding:4px 8px;
+  position:relative;z-index:1;width:100%;
+}
 .right-side .mteam-inner{flex-direction:row-reverse}
-.flag-icon{font-size:1rem;line-height:1;flex-shrink:0}
-.team-name{font-size:.72rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.flag-icon{font-size:1.05rem;line-height:1;flex-shrink:0}
+.team-name{
+  font-size:.7rem;font-weight:600;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;
+}
 .right-side .team-name{text-align:right}
-.mteam.tbd .team-name{color:var(--faint);font-style:italic;font-weight:400;font-size:.64rem}
-.prob{font-family:'DM Mono',monospace;font-size:.54rem;padding:1px 5px;border-radius:20px;flex-shrink:0;font-weight:500;line-height:1.65}
-.prob-sm{font-family:'DM Mono',monospace;font-size:.6rem;padding:1px 6px;border-radius:20px;font-weight:500}
+.mteam.tbd .team-name{
+  color:rgba(255,255,255,.18);font-style:italic;font-weight:400;font-size:.58rem;
+}
+
+/* Prob badges */
+.prob{
+  font-family:'DM Mono',monospace;font-size:.52rem;padding:2px 5px;
+  border-radius:20px;flex-shrink:0;font-weight:600;line-height:1.6;
+}
+.prob-sm{font-family:'DM Mono',monospace;font-size:.6rem;padding:2px 6px;border-radius:20px;font-weight:500}
+
+/* Upset badge */
+.upset-badge{
+  background:#f97316;color:#fff;font-size:.4rem;font-family:'DM Mono',monospace;
+  font-weight:700;letter-spacing:.06em;padding:1px 4px;border-radius:3px;
+  text-transform:uppercase;margin-left:3px;vertical-align:middle;
+}
+
+/* Final centre column */
+.final-col{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 6px}
+.trophy-icon{font-size:2.2rem;filter:drop-shadow(0 0 8px rgba(212,168,67,.4));margin-bottom:4px}
+.final-lbl{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.05em;text-align:center;line-height:1.1;color:var(--text)}
+.final-date{font-family:'DM Mono',monospace;font-size:.44rem;color:var(--muted);margin-top:4px;text-align:center}
+
+/* Toggle button */
+.r32-toggle-btn{
+  font-family:'DM Mono',monospace;font-size:.55rem;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.5);border-radius:6px;padding:5px 12px;cursor:pointer;
+  text-transform:uppercase;letter-spacing:.08em;display:inline-block;margin-bottom:10px;
+  transition:all .2s;
+}
+.r32-toggle-btn:hover{background:rgba(212,168,67,.12);border-color:rgba(212,168,67,.4);color:var(--gold)}
+
+/* R32 wrapper — hidden by default */
+.r32-col-wrap{display:none}
+.r32-col-wrap.r32-visible{display:block}
+
+/* Bracket legend items */
+.bracket-legend{display:flex;flex-wrap:wrap;gap:.5rem .75rem;font-size:.58rem;
+  color:var(--muted);padding:.5rem 0;margin-bottom:.75rem;align-items:center}
+.li{display:flex;align-items:center;gap:.3rem}
+.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* Mobile bracket adjustments */
+@media(max-width:700px){
+  .bracket-outer{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 .5rem 1rem}
+  .bracket-shell,.bracket-labels{min-width:980px}
+  .match .team-name{font-size:.62rem}
+  .bcol{padding:0 3px}
+}
 
 /* ── PROBABILITY TRENDS ── */
 .trends-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:1100px}
@@ -451,6 +575,7 @@ tr.q4 .tc{color:var(--muted)}
 .r32-col-wrap.r32-visible{display:block;}
 .r32-toggle-btn{font-family:'DM Mono',monospace;font-size:.55rem;background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:4px 10px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:block;}
 .r32-toggle-btn:hover{background:rgba(255,255,255,.14);color:var(--gold);}
+gold);}
 </style>
 </head>
 <body>
@@ -496,11 +621,17 @@ tr.q4 .tc{color:var(--muted)}
 
 <section class="section" id="bracket">
   <div class="sec-title">Tournament Bracket</div>
-  <button class="r32-toggle-btn" onclick="document.querySelectorAll('.r32-col-wrap').forEach(w=>w.classList.toggle('r32-visible'));this.textContent=this.textContent.includes('Show')?'◀ Hide R32 results':'▶ Show R32 results';">▶ Show R32 results</button>
+  <button class="r32-toggle-btn" onclick="
+  const open=this.textContent.includes('Show');
+  document.querySelectorAll('.r32-col-wrap').forEach(w=>w.classList.toggle('r32-visible'));
+  document.getElementById('bShell').classList.toggle('r32-open');
+  const lbl=document.getElementById('bLabels');
+  if(lbl){lbl.classList.toggle('r32-open');
+    lbl.querySelectorAll('.blbl').forEach((b,i)=>{if(i===0||i===8)b.style.display=open?'':'none';});}
+  this.textContent=open?'◀ Hide R32 results':'▶ Show R32 results';
+">▶ Show R32 results</button>
   <div class="sec-sub">Both halves converge to the Final · % = probability of advancing to the <em>next</em> round (R32 win prob before playing, R16 win prob after) · Auto-updates every hour</div>
-  <div class="r32-note">
-    <strong style="color:var(--gold)">How this works:</strong> A GitHub Actions script fetches live scores every hour and writes <code>data.json</code>. This page loads that file on every visit and refreshes automatically — no manual updates needed. Flags are shown as large background glows per team. % badge = qualification probability based on current standing + pre-tournament strength.
-  </div>
+  
   <div class="legend">
     <div class="li"><div class="ld" style="background:rgba(212,168,67,.7)"></div>Leading after current matchday</div>
     <div class="li"><div class="ld" style="background:rgba(34,197,94,.5)"></div>Pre-tournament favorite (not yet played)</div>
@@ -728,7 +859,7 @@ function matchCard(m, isRight, isFinal){
     if(typeof m.t1==='string'){
     const r1=_resolvePlaceholder(m.t1), r2=_resolvePlaceholder(m.t2);
     if(r1.name||r2.name) return matchCard({...m,t1:r1,t2:r2},isRight,isFinal);
-    return `<div class="match">
+    return `<div class="match match-tbd">
       <div class="mteam tbd"><div class="mteam-inner"><span class="team-name">${m.t1}</span></div></div>
       <div class="mteam tbd"><div class="mteam-inner"><span class="team-name">${m.t2}</span></div></div>
     </div>`;
@@ -778,7 +909,7 @@ function renderBracket(bracketData){
   document.getElementById('bLabels').innerHTML = [
     'Round of 32','Round of 16','Quarterfinals','Semifinals',
     'Final','Semifinals','Quarterfinals','Round of 16','Round of 32'
-  ].map(l=>`<div class="blbl">${l}</div>`).join('');
+  ].map((l,i)=>`<div class="blbl${l==='Round of 16'?' current-round':''}" style="${(i===0||i===8)?'display:none':''}">${l}</div>`).join('');
 
   const left  = bracketData.filter(m=>m.side==='left');
   const right = bracketData.filter(m=>m.side==='right');
