@@ -638,9 +638,12 @@ gold);}
     lbl.querySelectorAll('.blbl').forEach((b,i)=>{if(i===0||i===8)b.style.display=open?'':'none';});}
   this.textContent=open?'◀ Hide R32 results':'▶ Show R32 results';
 ">▶ Show R32 results</button></div>
-  <div class="sec-sub">% = probability of advancing to the next round · Auto-updates every hour</div>
-  
-  
+  <div class="sec-sub" style="margin-bottom:.75rem">% = probability of advancing to the next round · Auto-updates every hour</div>
+  <div class="bracket-outer">
+    <div id="bLabels" class="bracket-labels"></div>
+    <div class="bracket-shell" id="bShell">
+      <div class="loading" style="grid-column:1/-1"><div class="spin"></div>Loading bracket data...</div>
+    </div>
   </div>
 </section>
 
