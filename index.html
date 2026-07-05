@@ -878,14 +878,23 @@ function teamRow(t, isRight, hideProb){
   return `<div class="mteam ${sCls}">${bg}<div class="mteam-inner">${inner}</div></div>`;
 }
 
+const _R16_LABEL_TO_MID={'Winner R16-1':'M89','Winner R16-2':'M90','Winner R16-3':'M93','Winner R16-4':'M94','Winner R16-5':'M91','Winner R16-6':'M92','Winner R16-7':'M95','Winner R16-8':'M96'};
 function _resolvePlaceholder(label) {
-  const m = label && label.match(/^W (M[0-9]+)$/);
-  if (!m) return {status:'tbd', label};
-  const mid = m[1];
-  const wn = (window._bracketWinners||{})[mid];
-  if (!wn) return {status:'tbd', label};
-  const td = (window._bracketTeamData||{})[wn] || {};
-  return {...td, name: wn, status:'confirmed', label};
+  const m32 = label && label.match(/^W (M[0-9]+)$/);
+  if (m32) {
+    const wn=(window._bracketWinners||{})[m32[1]];
+    if(!wn)return{status:'tbd',label};
+    const td=(window._bracketTeamData||{})[wn]||{};
+    return{...td,name:wn,status:'confirmed',label};
+  }
+  const r16mid=_R16_LABEL_TO_MID[label];
+  if(r16mid){
+    const wn=(window._r16Winners||{})[r16mid];
+    if(!wn)return{status:'tbd',label};
+    const td=(window._bracketTeamData||{})[wn]||{};
+    return{...td,name:wn,status:'confirmed',label};
+  }
+  return{status:'tbd',label};
 }
 function matchCard(m, isRight, isFinal){
   if(isFinal){
@@ -946,6 +955,19 @@ function col(matches, isRight, rnd){
       : [{t1:'Winner QF-L1',t2:'Winner QF-L2',venue:'Atlanta · Jul 14',   kickoff:'2026-07-14T23:00:00Z'}]),
   };
   let data = matches || placeholders[rnd] || [];
+  if ((rnd==='QF'||rnd==='SF')&&!matches){
+    const _wp=(window._lastData||{}).win_probs||{};
+    const _tm={};((window._lastData||{}).groups||[]).forEach(g=>g.teams.forEach(t=>{_tm[t.name]={rank:t.rank,points:t.points,played:t.played};}));
+    const _qs=nm=>_str(nm,_wp,(_tm[nm]||{}).rank||2,(_tm[nm]||{}).points||3,(_tm[nm]||{}).played||3);
+    data=data.map(m=>{
+      const r1=typeof m.t1==='string'?_resolvePlaceholder(m.t1):m.t1;
+      const r2=typeof m.t2==='string'?_resolvePlaceholder(m.t2):m.t2;
+      if(!r1.name&&!r2.name)return m;
+      if(!r1.name||!r2.name)return{...m,t1:r1.name?r1:{status:'tbd',label:m.t1},t2:r2.name?r2:{status:'tbd',label:m.t2}};
+      const s1=_qs(r1.name),s2=_qs(r2.name),tot=s1+s2||1,p1=Math.max(3,Math.min(97,Math.round(s1/tot*100)));
+      return{...m,t1:{...r1,prob:p1},t2:{...r2,prob:100-p1}};
+    });
+  }
   if (rnd === 'R16' && !matches) {
     const r16r = window._r16Results || {};
     data = data.map((m, i) => {
