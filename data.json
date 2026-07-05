@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-05T22:12:37.949707+00:00",
+  "updated_at": "2026-07-05T22:23:48.778493+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -137,8 +137,8 @@
           "gd": 5,
           "points": 4,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -227,8 +227,8 @@
           "gd": 6,
           "points": 7,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -362,8 +362,8 @@
           "gd": -2,
           "points": 4,
           "rank": 3,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -2067,5 +2067,28 @@
     "Cape Verde": 0.28,
     "South Africa": 0.38,
     "Curaçao": 0.08
+  },
+  "r16_results": {
+    "M89": {
+      "score": "1-0",
+      "winner": "France",
+      "loser": "Paraguay",
+      "t1": "Paraguay",
+      "t2": "France"
+    },
+    "M90": {
+      "score": "3-0",
+      "winner": "Morocco",
+      "loser": "Canada",
+      "t1": "Canada",
+      "t2": "Morocco"
+    },
+    "M91": {
+      "score": "2-1",
+      "winner": "Norway",
+      "loser": "Brazil",
+      "t1": "Brazil",
+      "t2": "Norway"
+    }
   }
 }
