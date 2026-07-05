@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-05T21:43:20.698042+00:00",
+  "updated_at": "2026-07-05T22:12:37.949707+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1923,14 +1923,14 @@
       "goals": 7
     },
     {
-      "name": "Lionel Messi",
-      "team": "Argentina",
+      "name": "Erling Haaland",
+      "team": "Norway",
       "goals": 7
     },
     {
-      "name": "Erling Haaland",
-      "team": "Norway",
-      "goals": 6
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 7
     },
     {
       "name": "Harry Kane",
