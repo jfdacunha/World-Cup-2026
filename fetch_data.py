@@ -554,6 +554,15 @@ def build_bracket(groups_out, ko_results=None):
 # ── KNOCKOUT RESULTS FALLBACK ──────────────────────────────────────
 # Updated manually after each match as backup when API fails.
 # Format: match_id → {score, winner, loser}
+FALLBACK_R16 = {
+    # Mapping: R16 match ID → {score, winner, loser}
+    # Left side: M89=W(M74)vsW(M77), M90=W(M73)vsW(M75), M93=W(M83)vsW(M84), M94=W(M81)vsW(M82)
+    # Right side: M91=W(M76)vsW(M78), M92=W(M79)vsW(M80), M95=W(M86)vsW(M88), M96=W(M85)vsW(M87)
+    "M89": {"score":"1-0",  "winner":"France",  "loser":"Paraguay"},   # Jul 4
+    "M90": {"score":"3-0",  "winner":"Morocco", "loser":"Canada"},     # Jul 4
+    "M91": {"score":"2-1",  "winner":"Norway",  "loser":"Brazil"},     # Jul 5 — Haaland brace
+}
+
 FALLBACK_KNOCKOUT = {
     "M73": {"score":"0-1",    "winner":"Canada",     "loser":"South Africa"},
     "M74": {"score":"1-1 (p)","winner":"Paraguay",   "loser":"Germany"},    # pens
@@ -909,6 +918,40 @@ def main():
             if _t["rank"] == 3 and _t.get("qualify_prob") == 0 and not _t.get("eliminated"):
                 _t["eliminated"] = True
 
+    # ── R16 RESULTS ─────────────────────────────────────────────────────
+    # Build r16_results: combine bracket winners with FALLBACK_R16
+    # Map each R16 match to its actual participants from bracket winners
+    R16_PAIRS_MAP = {
+        "M89": ("M74","M77"), "M90": ("M73","M75"),
+        "M93": ("M83","M84"), "M94": ("M81","M82"),
+        "M91": ("M76","M78"), "M92": ("M79","M80"),
+        "M95": ("M86","M88"), "M96": ("M85","M87"),
+    }
+    _bmap_r16 = {m["id"]: m for m in bracket}
+    r16_results = {}
+    for _r16_mid, (_r32a, _r32b) in R16_PAIRS_MAP.items():
+        _ma = _bmap_r16.get(_r32a); _mb = _bmap_r16.get(_r32b)
+        if not _ma or not _mb: continue
+        _ta = _ma.get("winner",""); _tb = _mb.get("winner","")
+        if not _ta or not _tb: continue
+        _fb = FALLBACK_R16.get(_r16_mid)
+        if _fb:
+            _win = _fb.get("winner"); _los = _fb.get("loser")
+            # Only include if winner/loser match our resolved teams
+            if _win in (_ta, _tb) and _los in (_ta, _tb):
+                r16_results[_r16_mid] = {
+                    "score": _fb.get("score",""),
+                    "winner": _win, "loser": _los,
+                    "t1": _ta, "t2": _tb,
+                }
+    # Zero out R16 losers in groups_out
+    _r16_losers = {v.get("loser") for v in r16_results.values() if v.get("loser")}
+    for _g in groups_out:
+        for _t in _g["teams"]:
+            if _t["name"] in _r16_losers:
+                _t["qualify_prob"] = 0
+                _t["eliminated"]   = True
+
     # Top scorers from API
     scorers_out = []
     if API_KEY:
@@ -937,6 +980,7 @@ def main():
         "best_thirds": thirds_display,
         "scorers":     scorers_out,
         "win_probs":   WIN_PROBS,
+        "r16_results": r16_results,
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
