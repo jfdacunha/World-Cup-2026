@@ -925,6 +925,7 @@ function matchCard(m, isRight, isFinal){
 
 function col(matches, isRight, rnd){
   const side = isRight ? 'right-side' : 'left-side';
+  const R16_MIDS = isRight ? ['M91','M92','M95','M96'] : ['M89','M90','M93','M94'];
   const placeholders = {
     'R16': (isRight
       ? [{t1:'W M76',t2:'W M78',venue:'New Jersey · Jul 5', kickoff:'2026-07-05T20:00:00Z'},
@@ -944,17 +945,37 @@ function col(matches, isRight, rnd){
       ? [{t1:'Winner QF-R1',t2:'Winner QF-R2',venue:'Dallas · Jul 15',    kickoff:'2026-07-15T23:00:00Z'}]
       : [{t1:'Winner QF-L1',t2:'Winner QF-L2',venue:'Atlanta · Jul 14',   kickoff:'2026-07-14T23:00:00Z'}]),
   };
-  const data = matches || placeholders[rnd] || [];
+  let data = matches || placeholders[rnd] || [];
+  if (rnd === 'R16' && !matches) {
+    const r16r = window._r16Results || {};
+    data = data.map((m, i) => {
+      const mid = R16_MIDS[i];
+      const res = r16r[mid];
+      if (!res) return m;
+      const r1 = _resolvePlaceholder(m.t1);
+      const r2 = _resolvePlaceholder(m.t2);
+      const t1w = r1.name === res.winner;
+      return {...m, score:res.score, winner:res.winner,
+        t1:{...r1, status:t1w?'winner':'loser'},
+        t2:{...r2, status:t1w?'loser':'winner'}};
+    });
+    data.forEach((m,i)=>{if(m.winner)window._r16Winners[R16_MIDS[i]]=m.winner;});
+  }
   return `<div class="bcol ${side}">${data.map(m=>matchCard(m,isRight,false)).join('')}</div>`;
 }
 
 function renderBracket(bracketData){
   window._bracketWinners={};
   window._bracketTeamData={};
+  window._r16Results={};
+  window._r16Winners={};
   bracketData.forEach(m=>{
     if(m.winner) window._bracketWinners[m.id]=m.winner;
     [m.t1,m.t2].forEach(t=>{if(t&&t.name) window._bracketTeamData[t.name]=t;});
   });
+  const _r16d=(window._lastData||{}).r16_results||{};
+  window._r16Results=_r16d;
+  Object.entries(_r16d).forEach(([mid,res])=>{if(res.winner)window._r16Winners[mid]=res.winner;});
   // Column labels
   document.getElementById('bLabels').innerHTML = [
     'Round of 32','Round of 16','Quarterfinals','Semifinals',
@@ -1465,7 +1486,11 @@ function runMonteCarlo(bracket,wp,td,N=50000){
   for(let i=0;i<N;i++){
     const r32={};
     bracket.forEach(m=>{if(m.t1.name&&m.t2.name)r32[m.id]=_pick(m.t1.name,m.t2.name,wp,td);});
-    const r16=_R16P.map(([a,b])=>{const ta=r32[a],tb=r32[b];if(!ta||!tb)return null;
+    const _R16KN=(window._lastData&&window._lastData.r16_results)||{};
+    const _R16MID=['M89','M90','M93','M94','M91','M92','M95','M96'];
+    const r16=_R16P.map(([a,b],_i)=>{const ta=r32[a],tb=r32[b];if(!ta||!tb)return null;
+      const _rk=(_R16KN[_R16MID[_i]]||{}).winner;
+      if(_rk)return _rk;
       if(c[ta])c[ta].r16++;if(c[tb])c[tb].r16++;return _pick(ta,tb,wp,td);});
     const qf=_QFP.map(([a,b])=>{const ta=r16[a],tb=r16[b];if(!ta||!tb)return null;
       if(c[ta])c[ta].qf++;if(c[tb])c[tb].qf++;return _pick(ta,tb,wp,td);});
@@ -1490,6 +1515,7 @@ function renderForecast(data){
   // Also exclude by qualify_prob===0 from groups
   const elim0=new Set();
   (data.groups||[]).forEach(g=>g.teams.forEach(t=>{if(t.qualify_prob===0||t.eliminated)elim0.add(t.name);}));
+  Object.values(data.r16_results||{}).forEach(res=>{if(res.loser){elim0.add(res.loser);koLosers.add(res.loser);}});
 
   const rows=Object.entries(C)
     .filter(([nm])=>!koLosers.has(nm)&&!elim0.has(nm))
@@ -1583,6 +1609,7 @@ async function loadData(attempt = 1, isManual = false){
     const data = JSON.parse(text);
     if(!data.groups || !data.bracket) throw new Error('Incomplete data');
 
+    window._lastData = data;
     renderBracket(data.bracket || []);
     renderGroups(data.groups   || []);
     renderPowerRankings(data.groups || [], data.bracket || []);
