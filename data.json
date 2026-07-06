@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-05T23:48:00.307881+00:00",
+  "updated_at": "2026-07-06T03:59:49.615141+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1935,11 +1935,21 @@
     {
       "name": "Harry Kane",
       "team": "England",
-      "goals": 5
+      "goals": 6
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 4
     },
     {
       "name": "Vinicius Junior",
       "team": "Brazil",
+      "goals": 4
+    },
+    {
+      "name": "Jude Bellingham",
+      "team": "England",
       "goals": 4
     },
     {
@@ -1958,7 +1968,7 @@
       "goals": 4
     },
     {
-      "name": "Julián Quiñones",
+      "name": "Raúl Jiménez",
       "team": "Mexico",
       "goals": 3
     },
@@ -2005,16 +2015,6 @@
     {
       "name": "Matheus Cunha",
       "team": "Brazil",
-      "goals": 3
-    },
-    {
-      "name": "Brian Brobbey",
-      "team": "Netherlands",
-      "goals": 3
-    },
-    {
-      "name": "Cody Gakpo",
-      "team": "Netherlands",
       "goals": 3
     }
   ],
