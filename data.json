@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T08:49:05.308824+00:00",
+  "updated_at": "2026-07-07T09:01:02.936828+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -17,8 +17,8 @@
           "gd": 6,
           "points": 9,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -332,8 +332,8 @@
           "gd": 4,
           "points": 6,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1082,8 +1082,8 @@
           "gd": 5,
           "points": 5,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -2083,12 +2083,33 @@
       "t1": "Canada",
       "t2": "Morocco"
     },
+    "M93": {
+      "score": "1-0",
+      "winner": "Spain",
+      "loser": "Portugal",
+      "t1": "Portugal",
+      "t2": "Spain"
+    },
+    "M94": {
+      "score": "4-1",
+      "winner": "Belgium",
+      "loser": "United States",
+      "t1": "United States",
+      "t2": "Belgium"
+    },
     "M91": {
       "score": "2-1",
       "winner": "Norway",
       "loser": "Brazil",
       "t1": "Brazil",
       "t2": "Norway"
+    },
+    "M92": {
+      "score": "3-2",
+      "winner": "England",
+      "loser": "Mexico",
+      "t1": "Mexico",
+      "t2": "England"
     }
   }
 }
