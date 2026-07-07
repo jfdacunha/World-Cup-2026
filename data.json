@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T17:30:47.402839+00:00",
+  "updated_at": "2026-07-07T18:50:52.414910+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1918,6 +1918,11 @@
   ],
   "scorers": [
     {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 8
+    },
+    {
       "name": "Kylian Mbappé",
       "team": "France",
       "goals": 7
@@ -1925,11 +1930,6 @@
     {
       "name": "Erling Haaland",
       "team": "Norway",
-      "goals": 7
-    },
-    {
-      "name": "Lionel Messi",
-      "team": "Argentina",
       "goals": 7
     },
     {
