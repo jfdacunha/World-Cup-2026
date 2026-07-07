@@ -555,12 +555,15 @@ def build_bracket(groups_out, ko_results=None):
 # Updated manually after each match as backup when API fails.
 # Format: match_id → {score, winner, loser}
 FALLBACK_R16 = {
-    # Mapping: R16 match ID → {score, winner, loser}
-    # Left side: M89=W(M74)vsW(M77), M90=W(M73)vsW(M75), M93=W(M83)vsW(M84), M94=W(M81)vsW(M82)
-    # Right side: M91=W(M76)vsW(M78), M92=W(M79)vsW(M80), M95=W(M86)vsW(M88), M96=W(M85)vsW(M87)
-    "M89": {"score":"1-0",  "winner":"France",  "loser":"Paraguay"},   # Jul 4
-    "M90": {"score":"3-0",  "winner":"Morocco", "loser":"Canada"},     # Jul 4
-    "M91": {"score":"2-1",  "winner":"Norway",  "loser":"Brazil"},     # Jul 5 — Haaland brace
+    # R16 match results — keyed by match ID
+    # Left: M89=W(M74)vsW(M77), M90=W(M73)vsW(M75), M93=W(M83)vsW(M84), M94=W(M81)vsW(M82)
+    # Right: M91=W(M76)vsW(M78), M92=W(M79)vsW(M80), M95=W(M86)vsW(M88), M96=W(M85)vsW(M87)
+    "M89": {"score":"1-0",  "winner":"France",          "loser":"Paraguay"},        # Jul 4
+    "M90": {"score":"3-0",  "winner":"Morocco",         "loser":"Canada"},          # Jul 4
+    "M91": {"score":"2-1",  "winner":"Norway",          "loser":"Brazil"},          # Jul 5 — Haaland brace
+    "M92": {"score":"3-2",  "winner":"England",         "loser":"Mexico"},          # Jul 5 — Bellingham brace
+    "M93": {"score":"1-0",  "winner":"Spain",           "loser":"Portugal"},        # Jul 6
+    "M94": {"score":"4-1",  "winner":"Belgium",         "loser":"United States"},   # Jul 6
 }
 
 FALLBACK_KNOCKOUT = {
