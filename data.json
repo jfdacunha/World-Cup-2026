@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09T21:06:51.235259+00:00",
+  "updated_at": "2026-07-09T21:43:37.429588+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1918,14 +1918,14 @@
   ],
   "scorers": [
     {
-      "name": "Lionel Messi",
-      "team": "Argentina",
+      "name": "Kylian Mbappé",
+      "team": "France",
       "goals": 8
     },
     {
-      "name": "Kylian Mbappé",
-      "team": "France",
-      "goals": 7
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 8
     },
     {
       "name": "Erling Haaland",
@@ -1936,6 +1936,11 @@
       "name": "Harry Kane",
       "team": "England",
       "goals": 6
+    },
+    {
+      "name": "Ousmane Dembélé",
+      "team": "France",
+      "goals": 5
     },
     {
       "name": "Julián Quiñones",
@@ -1955,11 +1960,6 @@
     {
       "name": "Mikel Oyarzabal",
       "team": "Spain",
-      "goals": 4
-    },
-    {
-      "name": "Ousmane Dembélé",
-      "team": "France",
       "goals": 4
     },
     {
