@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-11T09:44:51.818591+00:00",
+  "updated_at": "2026-07-11T09:48:10.131894+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -242,8 +242,8 @@
           "gd": 3,
           "points": 7,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -647,8 +647,8 @@
           "gd": 4,
           "points": 5,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -662,8 +662,8 @@
           "gd": 2,
           "points": 5,
           "rank": 2,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -1067,8 +1067,8 @@
           "gd": 3,
           "points": 7,
           "rank": 1,
-          "qualify_prob": 99,
-          "eliminated": null,
+          "qualify_prob": 0,
+          "eliminated": true,
           "live_match": false
         },
         {
@@ -2110,6 +2110,36 @@
       "loser": "Mexico",
       "t1": "Mexico",
       "t2": "England"
+    },
+    "M95": {
+      "score": "3-2",
+      "winner": "Argentina",
+      "loser": "Egypt",
+      "t1": "Argentina",
+      "t2": "Egypt"
+    },
+    "M96": {
+      "score": "0-0 (p)",
+      "winner": "Switzerland",
+      "loser": "Colombia",
+      "t1": "Switzerland",
+      "t2": "Colombia"
+    }
+  },
+  "qf_results": {
+    "QF-L1": {
+      "score": "2-0",
+      "winner": "France",
+      "loser": "Morocco",
+      "t1": "France",
+      "t2": "Morocco"
+    },
+    "QF-L2": {
+      "score": "2-1",
+      "winner": "Spain",
+      "loser": "Belgium",
+      "t1": "Spain",
+      "t2": "Belgium"
     }
   }
 }
