@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-11T21:34:07.300597+00:00",
+  "updated_at": "2026-07-11T21:54:53.260861+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1938,6 +1938,11 @@
       "goals": 6
     },
     {
+      "name": "Jude Bellingham",
+      "team": "England",
+      "goals": 5
+    },
+    {
       "name": "Ousmane Dembélé",
       "team": "France",
       "goals": 5
@@ -1950,11 +1955,6 @@
     {
       "name": "Vinicius Junior",
       "team": "Brazil",
-      "goals": 4
-    },
-    {
-      "name": "Jude Bellingham",
-      "team": "England",
       "goals": 4
     },
     {
