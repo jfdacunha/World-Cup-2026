@@ -554,6 +554,19 @@ def build_bracket(groups_out, ko_results=None):
 # ── KNOCKOUT RESULTS FALLBACK ──────────────────────────────────────
 # Updated manually after each match as backup when API fails.
 # Format: match_id → {score, winner, loser}
+FALLBACK_QF = {
+    # QF-L1: W(M89) vs W(M90) = France vs Morocco
+    # QF-L2: W(M93) vs W(M94) = Spain vs Belgium
+    # QF-R1: W(M91) vs W(M92) = Norway vs England (today Jul 11)
+    # QF-R2: W(M95) vs W(M96) = Argentina vs Switzerland (today Jul 11)
+    "QF-L1": {"score":"2-0",  "winner":"France",       "loser":"Morocco"},   # Jul 9 — Mbappé goal+assist
+    "QF-L2": {"score":"2-1",  "winner":"Spain",        "loser":"Belgium"},   # Jul 10 — Merino winner
+}
+QF_PAIRS_MAP = {
+    "QF-L1": ("M89","M90"), "QF-L2": ("M93","M94"),
+    "QF-R1": ("M91","M92"), "QF-R2": ("M95","M96"),
+}
+
 FALLBACK_R16 = {
     # R16 match results — keyed by match ID
     # Left: M89=W(M74)vsW(M77), M90=W(M73)vsW(M75), M93=W(M83)vsW(M84), M94=W(M81)vsW(M82)
@@ -564,6 +577,8 @@ FALLBACK_R16 = {
     "M92": {"score":"3-2",  "winner":"England",         "loser":"Mexico"},          # Jul 5 — Bellingham brace
     "M93": {"score":"1-0",  "winner":"Spain",           "loser":"Portugal"},        # Jul 6
     "M94": {"score":"4-1",  "winner":"Belgium",         "loser":"United States"},   # Jul 6
+    "M95": {"score":"3-2",  "winner":"Argentina",       "loser":"Egypt"},            # Jul 7 — Messi comeback
+    "M96": {"score":"0-0 (p)","winner":"Switzerland",   "loser":"Colombia"},         # Jul 7 — pens 4-3
 }
 
 FALLBACK_KNOCKOUT = {
@@ -947,6 +962,28 @@ def main():
                     "winner": _win, "loser": _los,
                     "t1": _ta, "t2": _tb,
                 }
+    # ── QF RESULTS ─────────────────────────────────────────────────────
+    qf_results = {}
+    for _qf_mid, (_r16a, _r16b) in QF_PAIRS_MAP.items():
+        _ta = r16_results.get(_r16a, {}).get("winner")
+        _tb = r16_results.get(_r16b, {}).get("winner")
+        if not _ta or not _tb: continue
+        _fb_qf = FALLBACK_QF.get(_qf_mid)
+        if _fb_qf:
+            _win_qf = _fb_qf.get("winner"); _los_qf = _fb_qf.get("loser")
+            if _win_qf in (_ta, _tb) and _los_qf in (_ta, _tb):
+                qf_results[_qf_mid] = {
+                    "score": _fb_qf.get("score",""),
+                    "winner": _win_qf, "loser": _los_qf, "t1": _ta, "t2": _tb,
+                }
+    # Zero out QF losers in groups_out
+    _qf_losers = {v.get("loser") for v in qf_results.values() if v.get("loser")}
+    for _g in groups_out:
+        for _t in _g["teams"]:
+            if _t["name"] in _qf_losers and not _t.get("eliminated"):
+                _t["qualify_prob"] = 0
+                _t["eliminated"]   = True
+
     # Zero out R16 losers in groups_out
     _r16_losers = {v.get("loser") for v in r16_results.values() if v.get("loser")}
     for _g in groups_out:
@@ -984,6 +1021,7 @@ def main():
         "scorers":     scorers_out,
         "win_probs":   WIN_PROBS,
         "r16_results": r16_results,
+        "qf_results":  qf_results,
     }
     out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
     with open(out_path, "w", encoding="utf-8") as f:
