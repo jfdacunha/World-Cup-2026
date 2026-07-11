@@ -879,6 +879,7 @@ function teamRow(t, isRight, hideProb){
 }
 
 const _R16_LABEL_TO_MID={'Winner R16-1':'M89','Winner R16-2':'M90','Winner R16-3':'M93','Winner R16-4':'M94','Winner R16-5':'M91','Winner R16-6':'M92','Winner R16-7':'M95','Winner R16-8':'M96'};
+const _QF_LABEL_TO_ID={'Winner QF-L1':'QF-L1','Winner QF-L2':'QF-L2','Winner QF-R1':'QF-R1','Winner QF-R2':'QF-R2'};
 function _resolvePlaceholder(label) {
   const m32 = label && label.match(/^W (M[0-9]+)$/);
   if (m32) {
@@ -890,6 +891,13 @@ function _resolvePlaceholder(label) {
   const r16mid=_R16_LABEL_TO_MID[label];
   if(r16mid){
     const wn=(window._r16Winners||{})[r16mid];
+    if(!wn)return{status:'tbd',label};
+    const td=(window._bracketTeamData||{})[wn]||{};
+    return{...td,name:wn,status:'confirmed',label};
+  }
+  const qfid=_QF_LABEL_TO_ID[label];
+  if(qfid){
+    const wn=(window._qfWinners||{})[qfid];
     if(!wn)return{status:'tbd',label};
     const td=(window._bracketTeamData||{})[wn]||{};
     return{...td,name:wn,status:'confirmed',label};
@@ -959,10 +967,22 @@ function col(matches, isRight, rnd){
     const _wp=(window._lastData||{}).win_probs||{};
     const _tm={};((window._lastData||{}).groups||[]).forEach(g=>g.teams.forEach(t=>{_tm[t.name]={rank:t.rank,points:t.points,played:t.played};}));
     const _qs=nm=>_str(nm,_wp,(_tm[nm]||{}).rank||2,(_tm[nm]||{}).points||3,(_tm[nm]||{}).played||3);
-    data=data.map(m=>{
+    // QF match IDs by column/index
+    const _QF_MIDS=isRight?['QF-R1','QF-R2']:['QF-L1','QF-L2'];
+    const _qfr=window._qfResults||{};
+    data=data.map((m,_qi)=>{
+      const _qmid=rnd==='QF'?_QF_MIDS[_qi]:null;
+      const _qres=_qmid?_qfr[_qmid]:null;
       const r1=typeof m.t1==='string'?_resolvePlaceholder(m.t1):m.t1;
       const r2=typeof m.t2==='string'?_resolvePlaceholder(m.t2):m.t2;
       if(!r1.name&&!r2.name)return m;
+      if(_qres){
+        // QF match has a result — show score + winner/loser
+        const t1w=r1.name===_qres.winner;
+        return{...m,score:_qres.score,winner:_qres.winner,
+          t1:{...r1,status:t1w?'winner':'loser'},
+          t2:{...r2,status:t1w?'loser':'winner'}};
+      }
       if(!r1.name||!r2.name)return{...m,t1:r1.name?r1:{status:'tbd',label:m.t1},t2:r2.name?r2:{status:'tbd',label:m.t2}};
       const s1=_qs(r1.name),s2=_qs(r2.name),tot=s1+s2||1,p1=Math.max(3,Math.min(97,Math.round(s1/tot*100)));
       return{...m,t1:{...r1,prob:p1},t2:{...r2,prob:100-p1}};
@@ -998,6 +1018,10 @@ function renderBracket(bracketData){
   const _r16d=(window._lastData||{}).r16_results||{};
   window._r16Results=_r16d;
   Object.entries(_r16d).forEach(([mid,res])=>{if(res.winner)window._r16Winners[mid]=res.winner;});
+  window._qfResults={};window._qfWinners={};
+  const _qfd=(window._lastData||{}).qf_results||{};
+  window._qfResults=_qfd;
+  Object.entries(_qfd).forEach(([mid,res])=>{if(res.winner)window._qfWinners[mid]=res.winner;});
   // Column labels
   document.getElementById('bLabels').innerHTML = [
     'Round of 32','Round of 16','Quarterfinals','Semifinals',
@@ -1514,7 +1538,13 @@ function runMonteCarlo(bracket,wp,td,N=50000){
       const _rk=(_R16KN[_R16MID[_i]]||{}).winner;
       if(_rk)return _rk;
       if(c[ta])c[ta].r16++;if(c[tb])c[tb].r16++;return _pick(ta,tb,wp,td);});
-    const qf=_QFP.map(([a,b])=>{const ta=r16[a],tb=r16[b];if(!ta||!tb)return null;
+    const _QF_KN=(window._lastData&&window._lastData.qf_results)||{};
+    const _QF_ID_MAP={'QF-L1':0,'QF-L2':1,'QF-R1':4,'QF-R2':6};
+    const qf=_QFP.map(([a,b],_qi)=>{const ta=r16[a],tb=r16[b];if(!ta||!tb)return null;
+      // Check if this QF match has a known result
+      const _qfEntry=Object.entries(_QF_ID_MAP).find(([,i])=>i===_qi);
+      const _qfKnown=_qfEntry?(_QF_KN[_qfEntry[0]]||{}).winner:null;
+      if(_qfKnown)return _qfKnown;
       if(c[ta])c[ta].qf++;if(c[tb])c[tb].qf++;return _pick(ta,tb,wp,td);});
     const sf=_SFP.map(([a,b])=>{const ta=qf[a],tb=qf[b];if(!ta||!tb)return null;
       if(c[ta])c[ta].sf++;if(c[tb])c[tb].sf++;return _pick(ta,tb,wp,td);});
@@ -1538,6 +1568,7 @@ function renderForecast(data){
   const elim0=new Set();
   (data.groups||[]).forEach(g=>g.teams.forEach(t=>{if(t.qualify_prob===0||t.eliminated)elim0.add(t.name);}));
   Object.values(data.r16_results||{}).forEach(res=>{if(res.loser){elim0.add(res.loser);koLosers.add(res.loser);}});
+  Object.values(data.qf_results||{}).forEach(res=>{if(res.loser){elim0.add(res.loser);koLosers.add(res.loser);}});
 
   const rows=Object.entries(C)
     .filter(([nm])=>!koLosers.has(nm)&&!elim0.has(nm))
