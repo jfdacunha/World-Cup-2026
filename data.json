@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T18:48:17.520658+00:00",
+  "updated_at": "2026-07-14T19:25:51.742022+00:00",
   "source": "live",
   "live_count": 0,
   "groups": [
@@ -1943,6 +1943,11 @@
       "goals": 6
     },
     {
+      "name": "Mikel Oyarzabal",
+      "team": "Spain",
+      "goals": 5
+    },
+    {
       "name": "Ousmane Dembélé",
       "team": "France",
       "goals": 5
@@ -1955,11 +1960,6 @@
     {
       "name": "Vinicius Junior",
       "team": "Brazil",
-      "goals": 4
-    },
-    {
-      "name": "Mikel Oyarzabal",
-      "team": "Spain",
       "goals": 4
     },
     {
